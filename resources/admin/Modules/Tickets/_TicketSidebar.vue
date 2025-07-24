@@ -198,14 +198,17 @@
                         >
                             <div class="fs_wc-order-preview-address">
                                 <h2>{{ addressType === 'billing_address' ? 'Billing Details' : 'Shipping Details' }}</h2>
-                                <p v-if="orders.orderInfo[addressType]">
-                                    <strong>Name:</strong> {{ orders.orderInfo[addressType].full_name }}<br>
-                                    <strong>Email:</strong> {{ orders.orderInfo[addressType].email }}<br>
-                                    <strong>Address:</strong> {{ formatFullAddress(orders.orderInfo[addressType].formatted_address) }} <br>
-                                    <strong>Payment Method:</strong> {{ orders.orderInfo.payment_method }} <br>
-                                    <strong>Purchase Date:</strong> {{ orders.orderInfo.created_at }}
+                                <div v-if="orders.orderInfo[addressType]">
+                                    <p> <strong>{{ $t('Name') }}: </strong> {{ orders.orderInfo[addressType].full_name }}</p>
+                                    <p><strong>{{ $t('Email') }}: </strong> {{ orders.orderInfo[addressType].email }}</p>
+                                    <p><strong>{{ $t('Address') }}: </strong> {{ formatFullAddress(orders.orderInfo[addressType].formatted_address) }} </p>
+                                    <p><strong>{{ $t('Payment Via') }}: </strong> {{ orders.orderInfo.payment_method }} </p>
+                                    <p>
+                                        <strong>{{ $t('Purchase Date') }}: </strong>
+                                        {{ dateTimeFormat(orders.orderInfo.created_at, 'DD MMM YYYY, hh:mm A') }}
+                                    </p>
 
-                                </p>
+                                </div>
                                 <p v-else>No {{ addressType === 'billing_address' ? 'billing' : 'shipping' }} address available</p>
                             </div>
                         </el-col>
@@ -315,6 +318,7 @@ export default {
             translate,
             handleError,
             has_pro,
+            dateTimeFormat
         } = useFluentHelper();
         const emit = context.emit;
         const { notify } = useNotify();
@@ -464,9 +468,13 @@ export default {
         };
 
         const getOrderTooltip = (type, order) => {
+            const formattedDate = type === 'woo_purchases'
+                ? dateTimeFormat(order.date, 'DD MMM YYYY, hh:mm A')
+                : dateTimeFormat(order.created_at, 'DD MMM YYYY, hh:mm A');
+
             return type === 'woo_purchases'
-                ? `Purchase date: ${order.date}, Amount: ${order.currency}${order.total}`
-                : `Purchase date: ${order.created_at}, Amount: ${order.currency}${order.total_amount}`;
+                ? `Purchase date: ${formattedDate}, Amount: ${order.currency}${order.total}`
+                : `Purchase date: ${formattedDate}, Amount: ${order.currency}${order.total_amount}`;
         };
 
         const formatFullAddress = (address) => {
@@ -529,7 +537,8 @@ export default {
             formatFullAddress,
             getType,
             openDrawer,
-            getOrderTooltip
+            getOrderTooltip,
+            dateTimeFormat
         }
     }
 }
