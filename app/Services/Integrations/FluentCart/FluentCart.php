@@ -15,29 +15,34 @@ class FluentCart
     {
         $wpUserId = $customer->user_id;
 
-        $orders = Order::whereHas('customer', function($query) use ($wpUserId) {
+        $orders = Order::whereHas('customer', function ($query) use ($wpUserId) {
             $query->where('user_id', $wpUserId);
         })
             ->with(['shipping_address', 'billing_address', 'order_items'])
-            ->orderBy('created_at', 'desc')
+            ->orderByDesc('created_at')
             ->get();
 
-        $formattedOrders = $orders->map(function($order) {
-            $orderArray = $order->toArray();
-            $orderArray['currency'] = CurrenciesHelper::getCurrencySign($order->currency);
+        if ($orders->isEmpty()) {
+            return $widgets;
+        }
 
-            // Divide total_amount by 100 and format with 2 decimal places
-            if (isset($orderArray['total_amount'])) {
-                $orderArray['total_amount'] = number_format($orderArray['total_amount'] / 100, 2, '.', '');
+        $formattedOrders = $orders->map(function ($order) {
+            $orderData = $order->toArray();
+            $orderData['currency'] = CurrenciesHelper::getCurrencySign($order->currency);
+
+            if (!empty($orderData['total_amount'])) {
+                // Format total_amount as float with 2 decimal places
+                $orderData['total_amount'] = number_format($orderData['total_amount'] / 100, 2, '.', '');
             }
-            return $orderArray;
-        })->toArray();
 
+            return $orderData;
+        });
 
         $widgets['fct_purchases'] = [
-            'title' => __('Fluent Cart Purchases', 'fluent-support'),
-            'orders'  => $formattedOrders,
+            'title'  => __('Fluent Cart Purchases', 'fluent-support'),
+            'orders' => $formattedOrders->toArray(),
         ];
+
         return $widgets;
     }
 }
