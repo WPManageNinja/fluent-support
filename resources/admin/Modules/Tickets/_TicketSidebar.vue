@@ -115,7 +115,7 @@
                         >
                             <a
                                 @click="openDrawer(widget_key, order, widget.products)"
-                                class="fs_wc_order_link"
+                                class="fs_order_link"
                             >#{{ order.id }}</a>
                         </el-tooltip>
                         &nbsp; - <el-tag class="ml-2" :type="getType(order.status)">{{ order.status }}</el-tag>
@@ -134,9 +134,9 @@
             size="50%"
             :with-header="false"
         >
-            <el-card v-if="drawerType === 'woo_purchases'" class="fs_wc_order_box-card">
+            <el-card v-if="drawerType === 'woo_purchases'" class="fs_order_box_card">
                 <template #header>
-                    <div class="fs_wc_card-header">
+                    <div class="fs_order_card_header">
                         <h3>{{ $t('Order') }} #{{ orders.orderInfo.id }}</h3>
                         <el-tag class="ml-2" :type="getType(orders.orderInfo.status)">
                             {{ orders.orderInfo.status }}
@@ -174,15 +174,15 @@
                         </el-table-column>
                     </el-table>
                 </div>
-                <div class="fs_wc_card_footer">
+                <div class="fs_order_card_footer">
                     <a :href="orders.orderInfo.order_link" target="_blank" class="el-button el-button--primary">{{ $t('Edit') }}</a>
                     <el-button @click="cancelClick" type="danger">{{ $t('Close') }}</el-button>
                 </div>
             </el-card>
 
-            <el-card v-else-if="drawerType === 'fct_purchases'" class="fs_wc_order_box-card">
+            <el-card v-else-if="drawerType === 'fct_purchases'" class="fs_order_box_card">
                 <template #header>
-                    <div class="fs_wc_card-header">
+                    <div class="fs_order_card_header">
                         <h3>Order #{{ orders.orderInfo.id }}</h3>
                         <el-tag class="ml-2" :type="getType(orders.orderInfo.status)">
                             {{ orders.orderInfo.status }}
@@ -202,7 +202,10 @@
                                     <p> <strong>{{ $t('Name') }}: </strong> {{ orders.orderInfo[addressType].full_name }}</p>
                                     <p><strong>{{ $t('Email') }}: </strong> {{ orders.orderInfo[addressType].email }}</p>
                                     <p><strong>{{ $t('Address') }}: </strong> {{ formatFullAddress(orders.orderInfo[addressType].formatted_address) }} </p>
-                                    <p><strong>{{ $t('Payment Via') }}: </strong> {{ orders.orderInfo.payment_method }} </p>
+                                    <p>
+                                        <strong>{{ $t('Payment Via') }}:</strong>
+                                        {{ getPaymentMethodName(orders.orderInfo.payment_method) }}
+                                    </p>
                                     <p>
                                         <strong>{{ $t('Purchase Date') }}: </strong>
                                         {{ dateTimeFormat(orders.orderInfo.created_at, 'DD MMM YYYY, hh:mm A') }}
@@ -225,9 +228,15 @@
                         </el-table-column>
                     </el-table>
                 </div>
-                <div class="fs_wc_card_footer">
-                    <a :href="orders.orderInfo.billing_address.order.customer.user_link" target="_blank" class="el-button el-button--primary">Edit</a>
-                    <el-button @click="cancelClick" type="danger">Close</el-button>
+                <div class="fs_order_card_footer">
+                    <a
+                        :href="`${origin}/wp-admin/admin.php?page=fluent-cart#/orders/${orders.orderInfo.id}/view`"
+                        target="_blank"
+                        class="el-button el-button--primary">
+                        {{ $t('Edit') }}
+                    </a>
+
+                    <el-button @click="cancelClick" type="danger">{{ $t('Close') }}</el-button>
                 </div>
             </el-card>
         </el-drawer>
@@ -339,7 +348,8 @@ export default {
             ticketTone: '',
             agents: appVars.support_agents,
             orders: null,
-            customerID: null
+            customerID: null,
+            origin: window.location.origin,
         });
 
         const fetchWidgets = () => {
@@ -399,6 +409,15 @@ export default {
                 .filter(Boolean)
                 .join(', ');
             return address;
+        }
+
+        const getPaymentMethodName  = (method) => {
+            const map = {
+                offline_payment: 'Offline Payment',
+                stripe: 'Stripe',
+                paypal: 'PayPal',
+            };
+            return map[method] || method;
         }
 
         const handleClose = (watcherId) => {
@@ -538,27 +557,10 @@ export default {
             getType,
             openDrawer,
             getOrderTooltip,
+            getPaymentMethodName,
             dateTimeFormat
         }
     }
 }
 </script>
 
-<style lang="scss">
-.fs_wc_order_box-card{
-    margin-top: 20px;
-}
-.fs_wc_card-header, .fs_wc_card_footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.fs_wc_card_footer {
-    margin-top: 50px;
-    border-top: 1px solid #e4e7ed;
-    padding-top: 30px;
-}
-.fs_wc_order_link{
-    cursor: pointer;
-}
-</style>
