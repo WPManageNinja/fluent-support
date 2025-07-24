@@ -220,7 +220,7 @@
                         <el-table-column prop="quantity" label="Quantity" width="20%" align="center" />
                         <el-table-column label="Total" width="20%" align="center">
                             <template #default="scope">
-                                <span v-html="orders.orderInfo.currency"></span>{{ scope.row.line_total }}
+                                <span v-html="scope.row.formatted_total"></span>
                             </template>
                         </el-table-column>
                     </el-table>

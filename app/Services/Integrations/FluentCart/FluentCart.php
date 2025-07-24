@@ -25,8 +25,14 @@ class FluentCart
         $formattedOrders = $orders->map(function($order) {
             $orderArray = $order->toArray();
             $orderArray['currency'] = CurrenciesHelper::getCurrencySign($order->currency);
+
+            // Divide total_amount by 100 and format with 2 decimal places
+            if (isset($orderArray['total_amount'])) {
+                $orderArray['total_amount'] = number_format($orderArray['total_amount'] / 100, 2, '.', '');
+            }
             return $orderArray;
         })->toArray();
+
 
         $widgets['fct_purchases'] = [
             'title' => __('Fluent Cart Purchases', 'fluent-support'),
