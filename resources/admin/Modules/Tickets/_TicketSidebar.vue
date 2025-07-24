@@ -215,12 +215,12 @@
                     </el-row>
 
                     <el-table :data="orders.products" style="width: 100%; margin-top: 20px;">
-                        <el-table-column prop="post_title" label="Product" width="40%" />
+                        <el-table-column prop="post_title" label="Product" width="30%" />
                         <el-table-column prop="title" label="Variant" width="20%" />
-                        <el-table-column prop="quantity" label="Quantity" width="10%" align="center" />
+                        <el-table-column prop="quantity" label="Quantity" width="20%" align="center" />
                         <el-table-column label="Total" width="20%" align="center">
                             <template #default="scope">
-                                {{ orders.orderInfo.currency }}{{ scope.row.line_total }}
+                                <span v-html="orders.orderInfo.currency"></span>{{ scope.row.line_total }}
                             </template>
                         </el-table-column>
                     </el-table>

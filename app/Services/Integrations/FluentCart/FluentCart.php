@@ -2,6 +2,7 @@
 
 namespace FluentSupport\App\Services\Integrations\FluentCart;
 use FluentCart\App\Models\Order;
+use FluentCart\App\Helpers\CurrenciesHelper;
 
 class FluentCart
 {
@@ -14,17 +15,18 @@ class FluentCart
     {
         $wpUserId = $customer->user_id;
 
-        $formattedOrders = Order::whereHas('customer', function($query) use ($wpUserId) {
+        $orders = Order::whereHas('customer', function($query) use ($wpUserId) {
             $query->where('user_id', $wpUserId);
         })
-            ->with([
-                'shipping_address',
-                'billing_address',
-                'order_items'
-            ])
+            ->with(['shipping_address', 'billing_address', 'order_items'])
             ->orderBy('created_at', 'desc')
-            ->get()
-            ->toArray();
+            ->get();
+
+        $formattedOrders = $orders->map(function($order) {
+            $orderArray = $order->toArray();
+            $orderArray['currency'] = CurrenciesHelper::getCurrencySign($order->currency);
+            return $orderArray;
+        })->toArray();
 
         $widgets['fct_purchases'] = [
             'title' => __('Fluent Cart Purchases', 'fluent-support'),
