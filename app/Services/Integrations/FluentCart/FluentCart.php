@@ -3,6 +3,8 @@
 namespace FluentSupport\App\Services\Integrations\FluentCart;
 use FluentCart\App\Models\Order;
 use FluentCart\App\Helpers\CurrenciesHelper;
+use FluentSupport\Framework\Support\Arr;
+use FluentSupport\App\Models\Customer;
 
 class FluentCart
 {
@@ -18,7 +20,12 @@ class FluentCart
         $orders = Order::whereHas('customer', function ($query) use ($wpUserId) {
             $query->where('user_id', $wpUserId);
         })
-            ->with(['shipping_address', 'billing_address', 'order_items'])
+            ->select(['id', 'status', 'created_at', 'total_amount', 'currency'])
+            ->with([
+                'shipping_address',
+                'billing_address',
+                'order_items'
+            ])
             ->orderByDesc('created_at')
             ->get();
 
@@ -27,12 +34,19 @@ class FluentCart
         }
 
         $formattedOrders = $orders->map(function ($order) {
-            $orderData = $order->toArray();
-            $orderData['currency'] = CurrenciesHelper::getCurrencySign($order->currency);
+            $orderData = [
+                'id' => $order->id,
+                'status' => $order->status,
+                'date' => $order->created_at->format('Y-m-d H:i:s'),
+                'currency' => CurrenciesHelper::getCurrencySign($order->currency),
+                'billing_address' => $order->billing_address,
+                'shipping_address' => $order->shipping_address,
+                'order_items' => $order->order_items
+            ];
 
-            if (!empty($orderData['total_amount'])) {
-                // Format total_amount as float with 2 decimal places
-                $orderData['total_amount'] = number_format($orderData['total_amount'] / 100, 2, '.', '');
+            if (!empty($order->total_amount)) {
+                // Format total as float with 2 decimal places and standardize field name like WooCommerce
+                $orderData['total'] = number_format($order->total_amount / 100, 2, '.', '');
             }
 
             return $orderData;

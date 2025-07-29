@@ -216,7 +216,6 @@
                             </div>
                         </el-col>
                     </el-row>
-
                     <el-table :data="orders.products" style="width: 100%; margin-top: 20px;">
                         <el-table-column prop="post_title" label="Product" width="30%" />
                         <el-table-column prop="title" label="Variant" width="20%" />
@@ -488,13 +487,8 @@ export default {
         };
 
         const getOrderTooltip = (type, order) => {
-            const formattedDate = type === 'woo_purchases'
-                ? dateTimeFormat(order.date, 'DD MMM YYYY, hh:mm A')
-                : dateTimeFormat(order.created_at, 'DD MMM YYYY, hh:mm A');
-
-            return type === 'woo_purchases'
-                ? `Purchase date: ${formattedDate}, Amount: ${getCurrencySymbol(order.currency)}${order.total}`
-                : `Purchase date: ${formattedDate}, Amount: ${getCurrencySymbol(order.currency)}${order.total_amount}`;
+            const formattedDate = dateTimeFormat(order.date, 'DD MMM YYYY, hh:mm A');
+            return `Purchase date: ${formattedDate}, Amount: ${getCurrencySymbol(order.currency)}${order.total}`;
         };
 
         const getDisplayCurrency = (currency) => {
