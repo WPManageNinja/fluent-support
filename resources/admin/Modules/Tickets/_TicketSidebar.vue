@@ -327,6 +327,7 @@ export default {
             translate,
             handleError,
             has_pro,
+            getCurrencySymbol,
             dateTimeFormat
         } = useFluentHelper();
         const emit = context.emit;
@@ -492,8 +493,15 @@ export default {
                 : dateTimeFormat(order.created_at, 'DD MMM YYYY, hh:mm A');
 
             return type === 'woo_purchases'
-                ? `Purchase date: ${formattedDate}, Amount: ${order.currency}${order.total}`
-                : `Purchase date: ${formattedDate}, Amount: ${order.currency}${order.total_amount}`;
+                ? `Purchase date: ${formattedDate}, Amount: ${getCurrencySymbol(order.currency)}${order.total}`
+                : `Purchase date: ${formattedDate}, Amount: ${getCurrencySymbol(order.currency)}${order.total_amount}`;
+        };
+
+        const getDisplayCurrency = (currency) => {
+            if (currency && currency.length <= 3 && currency.match(/^[A-Z]{3}$/)) {
+                return getCurrencySymbol(currency);
+            }
+            return currency || '';
         };
 
         const formatFullAddress = (address) => {
@@ -557,6 +565,7 @@ export default {
             getType,
             openDrawer,
             getOrderTooltip,
+            getDisplayCurrency,
             getPaymentMethodName,
             dateTimeFormat
         }
