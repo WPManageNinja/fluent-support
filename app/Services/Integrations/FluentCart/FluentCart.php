@@ -11,6 +11,7 @@ class FluentCart
     public function boot()
     {
         add_filter('fluent_support/customer_extra_widgets', array($this, 'getFluentCartPurchaseWidgets'), 120, 2);
+        add_action('fluent_cart/order_created', [$this, 'addCustomer'], 10, 1);
     }
 
     public function getFluentCartPurchaseWidgets($widgets, $customer)
@@ -59,4 +60,66 @@ class FluentCart
 
         return $widgets;
     }
+
+    public function addCustomer($param)
+    {
+        $fluentCartCustomer = Arr::get($param, 'customer');
+
+        if (empty($fluentCartCustomer['email'])) {
+            return;
+        }
+
+        $customerData = [
+            'email' => $fluentCartCustomer['email'],
+            'first_name' => $fluentCartCustomer['first_name'] ?? '',
+            'last_name' => $fluentCartCustomer['last_name'] ?? '',
+            'status' => 'active'
+        ];
+
+        // Add user_id if available
+        if (!empty($fluentCartCustomer['user_id'])) {
+            $customerData['user_id'] = $fluentCartCustomer['user_id'];
+        }
+
+        // Address field mappings for efficient processing
+        $addressMappings = [
+            'city' => 'city',
+            'state' => 'state',
+            'country' => 'country',
+            'postcode' => 'zip'
+        ];
+
+        // Process primary address fields
+        foreach ($addressMappings as $source => $target) {
+            if (!empty($fluentCartCustomer[$source])) {
+                $customerData[$target] = $fluentCartCustomer[$source];
+            }
+        }
+
+        // Use billing address as fallback and add address lines
+        $billingAddress = $fluentCartCustomer['primary_billing_address'] ?? [];
+        if (!empty($billingAddress)) {
+            foreach ($addressMappings as $source => $target) {
+                if (empty($customerData[$target]) && !empty($billingAddress[$source])) {
+                    $customerData[$target] = $billingAddress[$source];
+                }
+            }
+
+            foreach (['address_1' => 'address_line_1', 'address_2' => 'address_line_2'] as $source => $target) {
+                if (!empty($billingAddress[$source])) {
+                    $customerData[$target] = $billingAddress[$source];
+                }
+            }
+        }
+
+        try {
+            $customer = Customer::maybeCreateCustomer($customerData);
+            if ($customer) {
+                error_log("FluentCart customer synced to Fluent Support: {$customer->email}");
+            }
+        } catch (\Exception $e) {
+            error_log("Error syncing FluentCart customer: {$e->getMessage()}");
+        }
+    }
+
 }
