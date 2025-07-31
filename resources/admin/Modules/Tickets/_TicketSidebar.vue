@@ -150,9 +150,9 @@
                                 <h2>{{ $t('Billing details') }}</h2>
                                 <p v-html="orders.orderInfo.billing_address"></p>
                                 <p><strong>{{ $t('Email') }}: </strong>{{ orders.orderInfo.email }}</p>
-                                <p><strong>{{ $t('Phone') }}: </strong>{{ orders.orderInfo.phone }}</p>
-                                <p><strong>{{ $t('Payment Via') }}: </strong>{{ orders.orderInfo.payment_method }}</p>
-                                <p><strong>{{ $t('Purchase Date') }}: </strong>{{ orders.orderInfo.date }}</p>
+                                <p v-if="orders.orderInfo.phone"><strong>{{ $t('Phone') }}: </strong>{{ orders.orderInfo.phone }}</p>
+                                <p v-if="orders.orderInfo.payment_method"><strong>{{ $t('Payment Via') }}: </strong>{{ orders.orderInfo.payment_method }}</p>
+                                <p v-if="orders.orderInfo.date"><strong>{{ $t('Purchase Date') }}: </strong>{{ orders.orderInfo.date }}</p>
                             </div>
                         </el-col>
                         <el-col :span="12">
@@ -199,14 +199,14 @@
                             <div class="fs_wc-order-preview-address">
                                 <h2>{{ addressType === 'billing_address' ? 'Billing Details' : 'Shipping Details' }}</h2>
                                 <div v-if="orders.orderInfo[addressType]">
-                                    <p> <strong>{{ $t('Name') }}: </strong> {{ orders.orderInfo[addressType].full_name }}</p>
+                                    <p><strong>{{ $t('Name') }}: </strong> {{ orders.orderInfo[addressType].full_name }}</p>
                                     <p><strong>{{ $t('Email') }}: </strong> {{ orders.orderInfo[addressType].email }}</p>
                                     <p><strong>{{ $t('Address') }}: </strong> {{ formatFullAddress(orders.orderInfo[addressType].formatted_address) }} </p>
-                                    <p>
+                                    <p v-if="orders.orderInfo.payment_method">
                                         <strong>{{ $t('Payment Via') }}:</strong>
                                         {{ getPaymentMethodName(orders.orderInfo.payment_method) }}
                                     </p>
-                                    <p>
+                                    <p v-if="orders.orderInfo.created_at">
                                         <strong>{{ $t('Purchase Date') }}: </strong>
                                         {{ dateTimeFormat(orders.orderInfo.created_at, 'DD MMM YYYY, hh:mm A') }}
                                     </p>

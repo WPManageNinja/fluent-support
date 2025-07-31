@@ -125,9 +125,9 @@
                                                             <h2>{{$t('Billing details')}}</h2>
                                                             <p v-html="orders.orderInfo.billing_address"></p>
                                                             <p><strong>{{$t('Email')}}: </strong>{{orders.orderInfo.email}}</p>
-                                                            <p><strong>{{$t('Phone')}}: </strong>{{orders.orderInfo.phone}}</p>
-                                                            <p><strong>{{$t('Payment Via')}}: </strong>{{orders.orderInfo.payment_method}}</p>
-                                                            <p><strong>{{$t('Purchase Date')}}: </strong>{{orders.orderInfo.date}}</p>
+                                                            <p v-if="orders.orderInfo.phone"><strong>{{$t('Phone')}}: </strong>{{orders.orderInfo.phone}}</p>
+                                                            <p v-if="orders.orderInfo.payment_method"><strong>{{$t('Payment Via')}}: </strong>{{orders.orderInfo.payment_method}}</p>
+                                                            <p v-if="orders.orderInfo.date"><strong>{{$t('Purchase Date')}}: </strong>{{orders.orderInfo.date}}</p>
                                                         </div>
                                                     </el-col>
                                                     <el-col :span="12">
