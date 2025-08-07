@@ -9,7 +9,7 @@ class FluentBotAPI
     protected $apiKey;
     protected $apiUrl;
 
-    public function __construct(string $apiKey, string $apiUrl)
+    public function __construct(?string $apiKey, string $apiUrl)
     {
         $this->apiKey = $apiKey;
         $this->apiUrl = $apiUrl;
@@ -43,23 +43,35 @@ class FluentBotAPI
             return new \WP_Error($statusCode, __($error, 'fluent-support'));
         }
 
-        $content = $responseBody['content'] ?? $responseBody['response'] ?? '';
+        $content = $responseBody['message'] ?? $responseBody['content'] ?? $responseBody['response'] ?? '';
+        $content = $content[0];
 
         if (empty($content)) {
             return new \WP_Error('fluent_bot_error', __('No AI response found in the API response.', 'fluent-support'));
         }
 
-        do_action('fluent_support/ai_response_success', $ticketId, $prompt, $responseBody['totalTokens'], "Fluent Bot");
+        $totalTokens = $responseBody['token_usage']['total_tokens'] ?? $responseBody['totalTokens'] ?? 0;
+        do_action('fluent_support/ai_response_success', $ticketId, $prompt, $totalTokens, "Fluent Bot");
 
-        return $content;
+        // Return both content and conversation_id if available
+        $result = [
+            'content' => $content,
+            'conversation_id' => $responseBody['conversation_id'] ?? null
+        ];
+
+        return $result;
     }
 
     protected function sendRequest(array $payload)
     {
+        $payload['stream'] = false;
         $headers = [
-            'Authorization' => 'Bearer ' . $this->apiKey,
             'Content-Type'  => 'application/json',
         ];
+        // Add Authorization header only if API key is provided
+        if (!empty($this->apiKey)) {
+            $headers['Authorization'] = 'Bearer ' . $this->apiKey;
+        }
 
         $timeout = apply_filters('fs_ai_request_timeout', 60);
 
