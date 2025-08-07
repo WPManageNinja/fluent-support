@@ -166,7 +166,8 @@ export default {
             showDraft: false,
             finalPrompts: '',
             products: appVars.support_products,
-            selectedProduct: props.productID ? parseInt(props.productID) : 0
+            selectedProduct: props.productID ? parseInt(props.productID) : 0,
+            conversationId: null
         });
 
         const title = 'Generate Responses with Fluent Bot';
@@ -209,14 +210,25 @@ export default {
                 product_id: state.selectedProduct,
             };
 
-            const isTypedPrompt = state.prompt.trim().length > 0;
-            if (isTypedPrompt && state.aiResponse) {
-                requestData.previous_response = state.aiResponse;
+            // Include conversation_id if we have one from previous interactions
+            if (state.conversationId) {
+                requestData.conversation_id = state.conversationId;
             }
 
             post(`fluent-bot/${state.ticketID}/generate-response`, requestData)
                 .then(response => {
-                    state.aiResponse = response;
+                    // Handle both old string response and new object response
+                    if (typeof response === 'object' && response.content) {
+                        state.aiResponse = response.content;
+                        // Store conversation_id for future requests
+                        if (response.conversation_id) {
+                            state.conversationId = response.conversation_id;
+                        }
+                    } else {
+                        // Backward compatibility for old string responses
+                        state.aiResponse = response;
+                    }
+
                     state.loading = false;
                     state.finalPrompts = trimmedPrompt;
 
@@ -270,6 +282,7 @@ export default {
             state.aiResponse = '';
             state.selectedPrompt = '';
             state.prompt = '';
+            state.conversationId = null;
             removeDraft();
         };
 

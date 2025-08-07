@@ -29,19 +29,19 @@
 
                     <div class="fs_bot_config_card">
                         <div class="fs_input_row">
-                            <label>{{ $t('API Key') }}</label>
+                            <label>{{ $t('API Key') }} <span style="color: #999; font-size: 12px;">({{ $t('Optional') }})</span></label>
                             <el-input
                                 v-model="config.generalApiKey"
                                 show-password
-                                :placeholder="$t('Enter API Key')"
+                                :placeholder="$t('Enter API Key (Optional)')"
                             />
                         </div>
                         <div class="fs_input_row">
-                            <label>{{ $t('Bot ID') }}</label>
+                            <label>{{ $t('Bot ID') }} <span style="color: #e74c3c;">*</span></label>
                             <el-input
                                 v-model="config.generalBotId"
                                 show-password
-                                :placeholder="$t('Enter General Bot ID')"
+                                :placeholder="$t('Enter General Bot ID (Required)')"
                             />
                         </div>
                     </div>
@@ -78,20 +78,20 @@
                                 </div>
 
                                 <div class="fs_input_row">
-                                    <label>{{ $t('API Key') }}</label>
+                                    <label>{{ $t('API Key') }} <span style="color: #999; font-size: 12px;">({{ $t('Optional') }})</span></label>
                                     <el-input
                                         v-model="mapping.apiKey"
                                         show-password
-                                        :placeholder="$t('Enter API Key')"
+                                        :placeholder="$t('Enter API Key (Optional)')"
                                     />
                                 </div>
 
                                 <div class="fs_input_row">
-                                    <label>{{ $t('Bot ID') }}</label>
+                                    <label>{{ $t('Bot ID') }} <span style="color: #e74c3c;">*</span></label>
                                     <el-input
                                         v-model="mapping.botId"
                                         show-password
-                                        :placeholder="$t('Enter Bot ID')"
+                                        :placeholder="$t('Enter Bot ID (Required)')"
                                     />
                                 </div>
                             </el-card>
