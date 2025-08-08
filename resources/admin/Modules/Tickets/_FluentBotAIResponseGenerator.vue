@@ -206,13 +206,26 @@ export default {
 
             // Step 2: Handle code blocks properly
             cleanText = cleanText
-                // Reconstruct broken PHP code
+                // Reconstruct broken PHP code with proper formatting
                 .replace(/add_filter\s*\(/g, '\n\nadd_filter(')
-                .replace(/}\s*,\s*\d+\s*,\s*\d+\s*;?\s*```?/g, '}, 10, 5);\n\n')
+                .replace(/}\s*,\s*\d+\s*,\s*\d+\s*;?\s*```?/g, '\n}, 10, 5);\n\n')
 
-                // Handle existing code blocks - preserve structure but remove markdown
+                // Add proper line breaks in PHP code patterns
+                .replace(/(\$\w+\s*=)/g, '\n    $1') // Variables on new lines
+                .replace(/(if\s*\()/g, '\n    $1') // If statements
+                .replace(/(return\s+)/g, '\n        $1') // Return statements
+                .replace(/(\{)([^}])/g, '$1\n        $2') // After opening braces
+                .replace(/(;)(\s*)([a-zA-Z$])/g, '$1\n    $3') // After semicolons
+
+                // Handle existing code blocks - preserve structure and line breaks
                 .replace(/```[\w]*\n?([\s\S]*?)```/g, function(match, code) {
-                    return '\n\n' + code.trim() + '\n\n';
+                    // Preserve the code structure with proper formatting
+                    let formattedCode = code
+                        .replace(/^\s+|\s+$/g, '') // Trim
+                        .replace(/\t/g, '    ') // Convert tabs to spaces
+                        .replace(/\r\n/g, '\n') // Normalize line endings
+                        .replace(/\r/g, '\n'); // Normalize line endings
+                    return '\n\n' + formattedCode + '\n\n';
                 })
 
                 // Clean up inline code markers but keep the content
@@ -268,18 +281,28 @@ export default {
                 .replace(/([a-z])\s*Here's\s*/g, '$1\n\nHere\'s ')
                 .replace(/([a-z])\s*Below\s*/g, '$1\n\nBelow ')
 
-                // Fix broken code blocks - reconstruct them properly
+                // Fix broken code blocks - reconstruct them properly with line breaks
                 .replace(/add_filter\(/g, '\n\n```php\nadd_filter(') // Start code block
-                .replace(/}\s*,\s*\d+\s*,\s*\d+\s*;?\s*```?/g, '}, 10, 5);\n```\n\n') // End code block
-                .replace(/}\s*,\s*\d+\s*,\s*\d+\s*;?\s*$/g, '}, 10, 5);\n```\n\n') // End code block at end
+                .replace(/}\s*,\s*\d+\s*,\s*\d+\s*;?\s*```?/g, '\n}, 10, 5);\n```\n\n') // End code block
+                .replace(/}\s*,\s*\d+\s*,\s*\d+\s*;?\s*$/g, '\n}, 10, 5);\n```\n\n') // End code block at end
+
+                // Add line breaks in common PHP patterns
+                .replace(/(\$\w+\s*=)/g, '\n    $1') // Variables on new lines
+                .replace(/(if\s*\()/g, '\n    $1') // If statements on new lines
+                .replace(/(return\s+)/g, '\n        $1') // Return statements indented
+                .replace(/(\{)/g, '$1\n') // Opening braces
+                .replace(/(;)(\s*)(\w)/g, '$1\n    $3') // Semicolons followed by code
 
                 // Handle existing code blocks
                 .replace(/```(\w*)\s*([\s\S]*?)```/g, function(match, lang, code) {
-                    // Clean up the code content
+                    // Clean up the code content but preserve line breaks
                     let cleanCode = code
-                        .replace(/\s+/g, ' ') // Normalize spaces
-                        .replace(/\s*\n\s*/g, '\n') // Clean line breaks
-                        .trim();
+                        .replace(/^\s+|\s+$/g, '') // Trim start and end whitespace
+                        .replace(/\t/g, '    ') // Convert tabs to spaces
+                        .replace(/\r\n/g, '\n') // Normalize line endings
+                        .replace(/\r/g, '\n') // Normalize line endings
+                        .replace(/\n\s*\n/g, '\n') // Remove empty lines
+                        .replace(/\s+$/gm, ''); // Remove trailing spaces on each line
                     return `\n\n<pre><code class="language-${lang || 'php'}">${cleanCode}</code></pre>\n\n`;
                 })
 
@@ -809,8 +832,10 @@ export default {
     color: #24292e;
     font-family: inherit;
     font-size: inherit;
-    white-space: pre;
-    word-wrap: normal;
+    white-space: pre-wrap; /* Allow line wrapping */
+    word-wrap: break-word;
+    display: block;
+    line-height: 1.5;
 }
 
 .fs_response_text code.language-php {
