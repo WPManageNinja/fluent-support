@@ -245,6 +245,7 @@ export default {
 
         const selectPresetPrompt = (preset) => {
             state.selectedPrompt = preset;
+            state.conversationId = null;
             const selectedPrompt = state.presetPrompts.find(item => item.text === preset.text);
             state.presetPrompt = `${selectedPrompt.description}`;
             state.prompt = '';
