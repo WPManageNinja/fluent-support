@@ -185,33 +185,63 @@ export default {
 
             let cleanText = text;
 
-            // Convert markdown-style formatting to plain text with proper spacing
+            // Step 1: Fix broken text structure from streaming chunks
             cleanText = cleanText
-                // Add proper line breaks before bullet points
-                .replace(/([.!?])(\*   \*\*)/g, '$1\n\n$2')
-                .replace(/([a-z])(\*   \*\*)/g, '$1\n\n$2')
-                .replace(/([a-z])(\*   )/g, '$1\n\n$2')
+                // Fix missing spaces between concatenated words
+                .replace(/([a-z])([A-Z][a-z])/g, '$1 $2') // "yourHere's" → "your Here's"
+                .replace(/([.!?:])([A-Z])/g, '$1\n\n$2') // Add breaks after sentences
 
-                // Convert bullet points to clean format
-                .replace(/\*   \*\*(.*?)\*\*:/g, '\n\n• $1:')
-                .replace(/\*   /g, '\n\n• ')
+                // Fix broken "Here's a breakdown" type phrases
+                .replace(/([a-z])\s*Here's\s*/gi, '$1\n\nHere\'s ')
+                .replace(/([a-z])\s*Below\s*/gi, '$1\n\nBelow ')
 
-                // Clean up markdown formatting but keep the text
-                .replace(/\*\*(.*?)\*\*/g, '$1') // Remove bold markers
-                .replace(/\*(.*?)\*/g, '$1') // Remove italic markers
-                .replace(/`([^`]+)`/g, '$1') // Remove code markers
+                // Fix numbered lists that got broken
+                .replace(/([a-z])(\d+\.\s+[A-Z])/g, '$1\n\n$2') // "text1. Item" → "text\n\n1. Item"
 
-                // Handle code blocks
-                .replace(/```[\w]*\n?([\s\S]*?)```/g, '\n\n$1\n\n')
+                // Fix bullet points that got broken
+                .replace(/([a-z])\s*(\*\s+\*\*)/g, '$1\n\n• **') // "text*   **Title" → "text\n\n• **Title"
+                .replace(/([a-z])\s*(\*\s+)/g, '$1\n\n• ') // "text*   " → "text\n\n• "
+                .replace(/\*\s+\*\*([^*]+)\*\*:/g, '• **$1**:') // Convert markdown bullets
+                .replace(/\*\s+/g, '• ') // Convert remaining bullets
 
-                // Add proper spacing after sentences
-                .replace(/([.!?])([A-Z])/g, '$1\n\n$2')
+            // Step 2: Handle code blocks properly
+            cleanText = cleanText
+                // Reconstruct broken PHP code
+                .replace(/add_filter\s*\(/g, '\n\nadd_filter(')
+                .replace(/}\s*,\s*\d+\s*,\s*\d+\s*;?\s*```?/g, '}, 10, 5);\n\n')
 
-                // Clean up multiple line breaks
-                .replace(/\n{3,}/g, '\n\n')
+                // Handle existing code blocks - preserve structure but remove markdown
+                .replace(/```[\w]*\n?([\s\S]*?)```/g, function(match, code) {
+                    return '\n\n' + code.trim() + '\n\n';
+                })
 
-                // Trim whitespace
-                .trim();
+                // Clean up inline code markers but keep the content
+                .replace(/`([^`]+)`/g, '$1')
+
+            // Step 3: Clean up markdown but preserve structure
+            cleanText = cleanText
+                .replace(/\*\*([^*]+)\*\*/g, '$1') // Remove bold markers
+                .replace(/\*([^*]+)\*/g, '$1') // Remove italic markers
+                .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // Convert links to text
+
+            // Step 4: Fix spacing and structure
+            cleanText = cleanText
+                // Ensure proper spacing around bullet points
+                .replace(/([.!?])\s*•/g, '$1\n\n•')
+                .replace(/•\s*([A-Z])/g, '• $1')
+
+                // Fix spacing around numbered lists
+                .replace(/([.!?])\s*(\d+\.)/g, '$1\n\n$2')
+
+                // Clean up excessive whitespace
+                .replace(/\n{3,}/g, '\n\n') // Max 2 line breaks
+                .replace(/[ \t]{2,}/g, ' ') // Max 1 space between words
+                .replace(/^\s+|\s+$/g, '') // Trim start and end
+
+                // Fix common spacing issues
+                .replace(/([.!?])\s*([a-z])/g, '$1 $2') // Space after punctuation
+                .replace(/:\s*([a-z])/g, ': $1') // Space after colons
+                .replace(/,\s*([a-z])/g, ', $1'); // Space after commas
 
             return cleanText;
         };
@@ -223,19 +253,38 @@ export default {
 
             let formatted = state.aiResponse;
 
-            // Fix the specific formatting issues from the AI response
+            // First, reconstruct the text properly from broken chunks
             formatted = formatted
-                // Add line breaks before bullet points that are missing them
-                .replace(/([.!?])\*   \*\*/g, '$1\n\n*   **') // Add line break before bullet points after sentences
-                .replace(/([a-z])\*   \*\*/g, '$1\n\n*   **') // Add line break before bullet points after text
-                .replace(/([a-z])\*   /g, '$1\n\n*   ') // Add line break before bullet points
+                // Fix broken sentences that got concatenated
+                .replace(/([a-z])([A-Z][a-z]+)/g, '$1 $2') // Add space between joined words
+                .replace(/([.!?:])([A-Z])/g, '$1\n\n$2') // Add paragraph breaks after sentences
 
-                // Convert markdown bullet points to HTML
-                .replace(/\*   \*\*(.*?)\*\*:/g, '\n\n• <strong>$1</strong>:') // Bullet with bold title
-                .replace(/\*   /g, '\n\n• ') // Regular bullet points
+                // Fix broken bullet points and lists
+                .replace(/([a-z])(\d+\.\s+)/g, '$1\n\n$2') // Fix numbered lists
+                .replace(/([.!?:])\s*(\*\s+)/g, '$1\n\n• ') // Fix bullet points
+                .replace(/([a-z])\s*(\*\s+\*\*)/g, '$1\n\n• **') // Fix bullet points with bold
 
-                // Handle code blocks
-                .replace(/```(\w*)\n?([\s\S]*?)```/g, '\n\n<pre><code>$2</code></pre>\n\n') // Code blocks
+                // Fix "Here's" and similar breaks
+                .replace(/([a-z])\s*Here's\s*/g, '$1\n\nHere\'s ')
+                .replace(/([a-z])\s*Below\s*/g, '$1\n\nBelow ')
+
+                // Fix broken code blocks - reconstruct them properly
+                .replace(/add_filter\(/g, '\n\n```php\nadd_filter(') // Start code block
+                .replace(/}\s*,\s*\d+\s*,\s*\d+\s*;?\s*```?/g, '}, 10, 5);\n```\n\n') // End code block
+                .replace(/}\s*,\s*\d+\s*,\s*\d+\s*;?\s*$/g, '}, 10, 5);\n```\n\n') // End code block at end
+
+                // Handle existing code blocks
+                .replace(/```(\w*)\s*([\s\S]*?)```/g, function(match, lang, code) {
+                    // Clean up the code content
+                    let cleanCode = code
+                        .replace(/\s+/g, ' ') // Normalize spaces
+                        .replace(/\s*\n\s*/g, '\n') // Clean line breaks
+                        .trim();
+                    return `\n\n<pre><code class="language-${lang || 'php'}">${cleanCode}</code></pre>\n\n`;
+                })
+
+                // Handle broken code snippets that didn't get wrapped
+                .replace(/(add_filter\([^}]+}\s*,\s*\d+\s*,\s*\d+)/g, '\n\n<pre><code class="language-php">$1);</code></pre>\n\n')
 
                 // Handle inline code and markdown
                 .replace(/`([^`\n]+)`/g, '<code>$1</code>') // Inline code
@@ -243,23 +292,26 @@ export default {
                 .replace(/\*(.*?)\*/g, '<em>$1</em>') // Italic text
 
                 // Handle links
-                .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>') // Links
+                .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>')
 
-                // Add line breaks after sentences that don't have them
-                .replace(/([.!?])([A-Z])/g, '$1\n\n$2') // Add paragraph break after sentence ending before capital letter
+                // Convert bullet points to proper HTML
+                .replace(/•\s*<strong>([^<]*)<\/strong>:/g, '• <strong>$1</strong>:')
+                .replace(/^\s*•\s*/gm, '• ') // Clean up bullet formatting
 
-                // Handle indentation (4+ spaces at start of line)
-                .replace(/\n    /g, '\n&nbsp;&nbsp;&nbsp;&nbsp;') // Preserve indentation
+                // Handle indentation and spacing
+                .replace(/\n    /g, '\n&nbsp;&nbsp;&nbsp;&nbsp;')
+                .replace(/  +/g, '&nbsp;&nbsp;') // Preserve multiple spaces
 
-                // Clean up multiple line breaks
+                // Clean up line breaks
                 .replace(/\n{3,}/g, '\n\n') // Max 2 line breaks
 
-                // Convert line breaks to HTML
-                .replace(/\n\n/g, '</p>\n<p>') // Double line breaks = new paragraph
-                .replace(/\n/g, '<br>') // Single line breaks = line break
+                // Convert to HTML structure
+                .replace(/\n\n/g, '</p>\n<p>') // Paragraphs
+                .replace(/\n/g, '<br>') // Line breaks
 
-                // Clean up bullet point formatting
-                .replace(/<p>• /g, '<p class="bullet-point">• '); // Add class to bullet points
+                // Fix bullet point paragraphs
+                .replace(/<p>• /g, '<p class="bullet-point">• ')
+                .replace(/<br>• /g, '<br><span class="bullet-point">• </span>');
 
             // Wrap in paragraph tags
             if (!formatted.startsWith('<p>')) {
@@ -269,11 +321,15 @@ export default {
                 formatted = formatted + '</p>';
             }
 
-            // Clean up empty paragraphs and fix spacing
+            // Final cleanup
             formatted = formatted
                 .replace(/<p>\s*<\/p>/g, '') // Remove empty paragraphs
                 .replace(/<p><\/p>/g, '') // Remove empty paragraphs
-                .replace(/(<\/p>\s*<p[^>]*>)/g, '$1'); // Clean up paragraph spacing
+                .replace(/(<\/p>\s*<p[^>]*>)/g, '$1') // Clean spacing
+                .replace(/<p>\s*<br>/g, '<p>') // Remove unnecessary breaks at paragraph start
+                .replace(/<br>\s*<\/p>/g, '</p>') // Remove unnecessary breaks at paragraph end
+                .replace(/<p>\s*<pre>/g, '</p>\n<pre>') // Fix code block paragraphs
+                .replace(/<\/pre>\s*<\/p>/g, '</pre>\n<p>'); // Fix code block paragraphs
 
             console.log('Formatted response:', formatted);
 
@@ -509,6 +565,7 @@ export default {
             try {
                 // Copy the clean text version instead of HTML
                 const cleanText = getCleanTextForEditor(state.aiResponse);
+                console.log('Copying text:', cleanText);
                 await navigator.clipboard.writeText(cleanText);
                 notify({
                     message: "Copied to clipboard",
@@ -516,6 +573,7 @@ export default {
                     position: "bottom-right",
                 });
             } catch (error) {
+                console.error('Copy error:', error);
                 notify({
                     message: "Something went wrong",
                     type: "danger",
@@ -546,6 +604,7 @@ export default {
         const insertReply = (aiResponse) => {
             // Create a clean version for text editor insertion
             const cleanText = getCleanTextForEditor(aiResponse);
+            console.log('Inserting text:', cleanText);
             emit('insert', cleanText);
             resetData();
         };
@@ -738,6 +797,9 @@ export default {
     padding: 16px;
     overflow-x: auto;
     margin: 1em 0;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 14px;
+    line-height: 1.4;
 }
 
 .fs_response_text pre code {
@@ -745,11 +807,28 @@ export default {
     padding: 0;
     border-radius: 0;
     color: #24292e;
+    font-family: inherit;
+    font-size: inherit;
+    white-space: pre;
+    word-wrap: normal;
+}
+
+.fs_response_text code.language-php {
+    color: #d73a49;
+}
+
+.fs_response_text pre code.language-php {
+    color: #24292e;
 }
 
 .fs_response_text .bullet-point {
     margin-left: 0;
     padding-left: 0;
+}
+
+.fs_response_text span.bullet-point {
+    display: inline;
+    margin-left: 0;
 }
 
 .fs_response_text a {
