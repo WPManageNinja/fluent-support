@@ -26,7 +26,7 @@ class FluentBotHelper
         }
 
         $payload['prompt'] = $prompt;
-
+        $payload['stream'] = false;
         return $this->makeAPICall($payload, $prompt, $ticket->id,'ticket_reply', $productId);
     }
 

@@ -43,7 +43,7 @@ class FluentBotAPI
             return new \WP_Error($statusCode, __($error, 'fluent-support'));
         }
 
-        $content = $responseBody['message'] ?? '';
+        $content = $responseBody['response'] ?? '';
 
         if (empty($content)) {
             return new \WP_Error('fluent_bot_error', __('No AI response found in the API response.', 'fluent-support'));
@@ -61,7 +61,6 @@ class FluentBotAPI
 
     protected function sendRequest(array $payload)
     {
-        $payload['stream'] = false;
         $headers = [
             'Content-Type'  => 'application/json',
         ];
@@ -71,7 +70,7 @@ class FluentBotAPI
         }
 
         $timeout = apply_filters('fs_ai_request_timeout', 60);
-        dd(wp_json_encode($payload));
+
         return wp_remote_post($this->apiUrl, [
             'headers' => $headers,
             'body'    => wp_json_encode($payload),
