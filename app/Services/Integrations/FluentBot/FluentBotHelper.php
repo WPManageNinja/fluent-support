@@ -30,6 +30,22 @@ class FluentBotHelper
         return $this->makeAPICall($payload, $prompt, $ticket->id,'ticket_reply', $productId);
     }
 
+    public function generateStreamResponse($prompt, $ticket, $productId, $conversationId = null)
+    {
+        $prompt = apply_filters('fluent_support/generate_response', $prompt, $ticket);
+        $payload = [
+            'ticket_conversation' => $this->getTicketMessages($ticket),
+        ];
+
+        if ($conversationId) {
+            $payload['conversation_id'] = $conversationId;
+        }
+
+        $payload['prompt'] = $prompt;
+        $payload['stream'] = true;
+        return $this->makeStreamAPICall($payload, $prompt, $ticket->id,'ticket_reply', $productId);
+    }
+
     public function modifyResponse($prompt, $selectedText, $ticketId)
     {
         $prompt = apply_filters('fluent_support/modify_selected_text', $prompt);
@@ -106,6 +122,23 @@ class FluentBotHelper
         return $result;
     }
 
+    private function makeStreamAPICall(array $payload, string $prompt, int $ticketId, string $type = 'default', $productId = null)
+    {
+        $apiUrl = static::BASE_URL . static::ENDPOINTS[$type];
+
+        $credentials = $this->resolveApiCredentials($productId);
+
+        if (is_wp_error($credentials)) {
+            echo "data: " . json_encode(['error' => $credentials->get_error_message()]) . "\n\n";
+            return;
+        }
+
+        // Use bot_id instead of botId for the new API
+        $payload['bot_id'] = $credentials['botId'];
+
+        $api = new FluentBotAPI($credentials['apiKey'], $apiUrl);
+        $api->makeStreamRequest($ticketId, $payload, $prompt);
+    }
 
     private function resolveApiCredentials($productId)
     {

@@ -216,6 +216,7 @@ $router->prefix('public')->withPolicy('PublicPolicy')->group(function ($router) 
 $router->prefix('fluent-bot')->withPolicy('AgentTicketPolicy')->group(function ($router) {
     $router->get('/preset-prompts', 'FluentBotController@getPresetPrompts')->int('id');
     $router->post('/{id}/generate-response', 'FluentBotController@generateResponse')->int('id');
+    $router->post('/{id}/generate-stream-response', 'FluentBotController@generateStreamResponse')->int('id');
     $router->post('/{id}/get-ticket-summary', 'FluentBotController@getTicketSummary')->int('id');
     $router->post('/{id}/get-ticket-tone', 'FluentBotController@getTicketTone')->int('id');
 });

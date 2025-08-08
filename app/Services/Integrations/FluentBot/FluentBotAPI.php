@@ -59,6 +59,82 @@ class FluentBotAPI
         ];
     }
 
+    public function makeStreamRequest(int $ticketId, array $args = [], $prompt)
+    {
+        $timeout = apply_filters('fs_ai_request_timeout', 120);
+
+        // Use cURL for streaming
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $this->apiUrl);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, wp_json_encode($args));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Content-Type: application/json',
+            !empty($this->apiKey) ? 'Authorization: Bearer ' . $this->apiKey : ''
+        ]);
+
+        $buffer = '';
+        $conversationId = null;
+
+        curl_setopt($ch, CURLOPT_WRITEFUNCTION, function($ch, $data) use (&$buffer, &$conversationId) {
+            $buffer .= $data;
+
+            // Process complete SSE events from the AI API
+            $events = explode("\n\n", $buffer);
+            $buffer = array_pop($events); // Keep incomplete event in buffer
+
+            foreach ($events as $event) {
+                if (trim($event)) {
+                    $lines = explode("\n", $event);
+                    $eventType = '';
+                    $eventData = '';
+
+                    foreach ($lines as $line) {
+                        if (strpos($line, 'event: ') === 0) {
+                            $eventType = trim(substr($line, 7));
+                        } elseif (strpos($line, 'data: ') === 0) {
+                            $eventData = substr($line, 6);
+                        }
+                    }
+
+                    // Forward the event to the browser
+                    if ($eventType && $eventData !== null) {
+                        echo "event: {$eventType}\n";
+                        echo "data: {$eventData}\n\n";
+
+                        // Store conversation_id for later use
+                        if ($eventType === 'conversation_id') {
+                            $conversationId = $eventData;
+                        }
+
+                        flush();
+                    }
+                }
+            }
+
+            return strlen($data);
+        });
+
+        curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_BUFFERSIZE, 128); // Smaller buffer for faster streaming
+
+        $result = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+        if (curl_error($ch)) {
+            echo "event: error\n";
+            echo "data: " . json_encode(['error' => curl_error($ch)]) . "\n\n";
+            flush();
+        }
+
+        curl_close($ch);
+
+        if ($httpCode === 200) {
+            do_action('fluent_support/ai_response_success', $ticketId, $prompt, 0, "Fluent Bot");
+        }
+    }
+
     protected function sendRequest(array $payload)
     {
         $headers = [
