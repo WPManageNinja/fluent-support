@@ -100,7 +100,7 @@
                 <div :class="['fs_response_content', { 'full-size': isFullSize, 'typing': isStreaming }]">
                     <div class="fs_response_text" v-html="formattedResponse"></div>
                     <div v-if="isStreaming && typingQueue.length === 0" class="fs_streaming_indicator">
-                        <span>Thinking</span><span class="fs_typing_dots">●●●</span>
+                        <span>Generating</span><span class="fs_typing_dots">●●●</span>
                     </div>
                 </div>
             </div>
@@ -140,9 +140,12 @@
 </template>
 
 <script>
-import { reactive, toRefs, onMounted, computed } from "vue";
+import { reactive, toRefs, onMounted, computed, onBeforeUnmount } from "vue";
 import { useRoute } from "vue-router";
 import { useFluentHelper, useNotify } from "@/admin/Composable/FluentFrameworkHelper";
+import { marked } from 'marked';
+import DOMPurify from 'dompurify';
+import hljs from 'highlight.js';
 
 export default {
     name: 'FluentBotAIResponseGenerator',
@@ -154,6 +157,19 @@ export default {
         const emit = context.emit;
         const { notify } = useNotify();
 
+        // Configure marked with highlight.js
+        marked.setOptions({
+            breaks: true,
+            gfm: true,
+            headerIds: false,
+            mangle: false,
+            highlight: (code, lang) => {
+                if (lang && hljs.getLanguage(lang)) {
+                    return hljs.highlight(code, { language: lang }).value;
+                }
+                return hljs.highlightAuto(code).value;
+            }
+        });
 
         const state = reactive({
             prompt: '',
@@ -180,183 +196,105 @@ export default {
         const title = 'Generate Responses with Fluent Bot';
         const description = 'Let Fluent Bot generate ticket responses to enhance support efficiency.';
 
+        // Function to format text for editor insertion with better formatting
+        const getFormattedTextForEditor = (text) => {
+            if (!text) return '';
+
+            // Convert markdown to well-formatted plain text while preserving structure
+            return text
+                // Convert headings to bold text with proper spacing
+                .replace(/#{1,6}\s+(.+)/g, (match, heading) => `\n\n**${heading.trim()}**\n\n`)
+
+                // Preserve bold formatting
+                .replace(/\*\*([^*]+)\*\*/g, '**$1**')
+
+                // Convert italic to emphasis
+                .replace(/\*([^*]+)\*/g, '_$1_')
+
+                // Format code blocks with proper indentation
+                .replace(/```(\w*)\n?([\s\S]*?)```/g, (match, lang, code) => {
+                    const formattedCode = code.trim()
+                        .split('\n')
+                        .map(line => `    ${line}`) // Indent each line
+                        .join('\n');
+                    return `\n\n${lang ? `${lang.toUpperCase()} Code:` : 'Code:'}\n${formattedCode}\n\n`;
+                })
+
+                // Format inline code
+                .replace(/`([^`]+)`/g, '`$1`')
+
+                // Convert links to readable format
+                .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1 ($2)')
+
+                // Format bullet points
+                .replace(/^\s*[-*+]\s+/gm, '• ')
+
+                // Format numbered lists
+                .replace(/^\s*(\d+)\.\s+/gm, '$1. ')
+
+                // Clean up excessive line breaks but preserve paragraph structure
+                .replace(/\n{3,}/g, '\n\n')
+
+                // Ensure proper spacing around formatted elements
+                .replace(/(\*\*[^*]+\*\*)/g, '\n$1\n')
+                .replace(/\n{3,}/g, '\n\n')
+
+                .trim();
+        };
+
+        // Keep the old function for copy functionality (plain text)
         const getCleanTextForEditor = (text) => {
             if (!text) return '';
 
-            let cleanText = text;
-
-            // Step 1: Fix broken text structure from streaming chunks
-            cleanText = cleanText
-                // Fix missing spaces between concatenated words
-                .replace(/([a-z])([A-Z][a-z])/g, '$1 $2') // "yourHere's" → "your Here's"
-                .replace(/([.!?:])([A-Z])/g, '$1\n\n$2') // Add breaks after sentences
-
-                // Fix broken "Here's a breakdown" type phrases
-                .replace(/([a-z])\s*Here's\s*/gi, '$1\n\nHere\'s ')
-                .replace(/([a-z])\s*Below\s*/gi, '$1\n\nBelow ')
-
-                // Fix numbered lists that got broken
-                .replace(/([a-z])(\d+\.\s+[A-Z])/g, '$1\n\n$2') // "text1. Item" → "text\n\n1. Item"
-
-                // Fix bullet points that got broken
-                .replace(/([a-z])\s*(\*\s+\*\*)/g, '$1\n\n• **') // "text*   **Title" → "text\n\n• **Title"
-                .replace(/([a-z])\s*(\*\s+)/g, '$1\n\n• ') // "text*   " → "text\n\n• "
-                .replace(/\*\s+\*\*([^*]+)\*\*:/g, '• **$1**:') // Convert markdown bullets
-                .replace(/\*\s+/g, '• ') // Convert remaining bullets
-
-            // Step 2: Handle code blocks properly
-            cleanText = cleanText
-                // Reconstruct broken PHP code with proper formatting
-                .replace(/add_filter\s*\(/g, '\n\nadd_filter(')
-                .replace(/}\s*,\s*\d+\s*,\s*\d+\s*;?\s*```?/g, '\n}, 10, 5);\n\n')
-
-                // Add proper line breaks in PHP code patterns
-                .replace(/(\$\w+\s*=)/g, '\n    $1') // Variables on new lines
-                .replace(/(if\s*\()/g, '\n    $1') // If statements
-                .replace(/(return\s+)/g, '\n        $1') // Return statements
-                .replace(/(\{)([^}])/g, '$1\n        $2') // After opening braces
-                .replace(/(;)(\s*)([a-zA-Z$])/g, '$1\n    $3') // After semicolons
-
-                // Handle existing code blocks - preserve structure and line breaks
-                .replace(/```[\w]*\n?([\s\S]*?)```/g, function(match, code) {
-                    // Preserve the code structure with proper formatting
-                    let formattedCode = code
-                        .replace(/^\s+|\s+$/g, '') // Trim
-                        .replace(/\t/g, '    ') // Convert tabs to spaces
-                        .replace(/\r\n/g, '\n') // Normalize line endings
-                        .replace(/\r/g, '\n'); // Normalize line endings
-                    return '\n\n' + formattedCode + '\n\n';
+            // Remove markdown syntax for plain text insertion
+            return text
+                .replace(/#+\s+/g, '') // Remove headings
+                .replace(/\*\*/g, '') // Remove bold
+                .replace(/\*/g, '') // Remove italic
+                .replace(/`{3}[\s\S]*?`{3}/g, match => {
+                    // Preserve code blocks but remove the backticks
+                    return match
+                        .replace(/^```\w*\n/, '') // Remove opening ```
+                        .replace(/```$/, ''); // Remove closing ```
                 })
-
-                // Clean up inline code markers but keep the content
-                .replace(/`([^`]+)`/g, '$1')
-
-            // Step 3: Clean up markdown but preserve structure
-            cleanText = cleanText
-                .replace(/\*\*([^*]+)\*\*/g, '$1') // Remove bold markers
-                .replace(/\*([^*]+)\*/g, '$1') // Remove italic markers
-                .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // Convert links to text
-
-            // Step 4: Fix spacing and structure
-            cleanText = cleanText
-                // Ensure proper spacing around bullet points
-                .replace(/([.!?])\s*•/g, '$1\n\n•')
-                .replace(/•\s*([A-Z])/g, '• $1')
-
-                // Fix spacing around numbered lists
-                .replace(/([.!?])\s*(\d+\.)/g, '$1\n\n$2')
-
-                // Clean up excessive whitespace
-                .replace(/\n{3,}/g, '\n\n') // Max 2 line breaks
-                .replace(/[ \t]{2,}/g, ' ') // Max 1 space between words
-                .replace(/^\s+|\s+$/g, '') // Trim start and end
-
-                // Fix common spacing issues
-                .replace(/([.!?])\s*([a-z])/g, '$1 $2') // Space after punctuation
-                .replace(/:\s*([a-z])/g, ': $1') // Space after colons
-                .replace(/,\s*([a-z])/g, ', $1'); // Space after commas
-
-            return cleanText;
+                .replace(/`([^`]+)`/g, '$1') // Remove inline code markers
+                .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1') // Convert links to text
+                .trim();
         };
 
+        // New improved markdown formatting
         const formattedResponse = computed(() => {
             if (!state.aiResponse) return '';
 
-            console.log('Raw aiResponse:', JSON.stringify(state.aiResponse));
+            // Pre-process the text to fix common streaming issues
+            let text = state.aiResponse
+                .replace(/([a-z])([A-Z][a-z])/g, '$1 $2') // Fix missing spaces between concatenated words
+                .replace(/\n{3,}/g, '\n\n') // Normalize excess line breaks
 
-            let formatted = state.aiResponse;
-
-            // First, reconstruct the text properly from broken chunks
-            formatted = formatted
-                // Fix broken sentences that got concatenated
-                .replace(/([a-z])([A-Z][a-z]+)/g, '$1 $2') // Add space between joined words
-                .replace(/([.!?:])([A-Z])/g, '$1\n\n$2') // Add paragraph breaks after sentences
-
-                // Fix broken bullet points and lists
-                .replace(/([a-z])(\d+\.\s+)/g, '$1\n\n$2') // Fix numbered lists
-                .replace(/([.!?:])\s*(\*\s+)/g, '$1\n\n• ') // Fix bullet points
-                .replace(/([a-z])\s*(\*\s+\*\*)/g, '$1\n\n• **') // Fix bullet points with bold
-
-                // Fix "Here's" and similar breaks
-                .replace(/([a-z])\s*Here's\s*/g, '$1\n\nHere\'s ')
-                .replace(/([a-z])\s*Below\s*/g, '$1\n\nBelow ')
-
-                // Fix broken code blocks - reconstruct them properly with line breaks
-                .replace(/add_filter\(/g, '\n\n```php\nadd_filter(') // Start code block
-                .replace(/}\s*,\s*\d+\s*,\s*\d+\s*;?\s*```?/g, '\n}, 10, 5);\n```\n\n') // End code block
-                .replace(/}\s*,\s*\d+\s*,\s*\d+\s*;?\s*$/g, '\n}, 10, 5);\n```\n\n') // End code block at end
-
-                // Add line breaks in common PHP patterns
-                .replace(/(\$\w+\s*=)/g, '\n    $1') // Variables on new lines
-                .replace(/(if\s*\()/g, '\n    $1') // If statements on new lines
-                .replace(/(return\s+)/g, '\n        $1') // Return statements indented
-                .replace(/(\{)/g, '$1\n') // Opening braces
-                .replace(/(;)(\s*)(\w)/g, '$1\n    $3') // Semicolons followed by code
-
-                // Handle existing code blocks
-                .replace(/```(\w*)\s*([\s\S]*?)```/g, function(match, lang, code) {
-                    // Clean up the code content but preserve line breaks
-                    let cleanCode = code
-                        .replace(/^\s+|\s+$/g, '') // Trim start and end whitespace
-                        .replace(/\t/g, '    ') // Convert tabs to spaces
-                        .replace(/\r\n/g, '\n') // Normalize line endings
-                        .replace(/\r/g, '\n') // Normalize line endings
-                        .replace(/\n\s*\n/g, '\n') // Remove empty lines
-                        .replace(/\s+$/gm, ''); // Remove trailing spaces on each line
-                    return `\n\n<pre><code class="language-${lang || 'php'}">${cleanCode}</code></pre>\n\n`;
+                // Fix broken code blocks
+                .replace(/```(\w*)\s*([\s\S]*?)```/g, (match, lang, code) => {
+                    // Ensure code blocks are properly formatted
+                    return `\n\n\`\`\`${lang}\n${code.trim()}\n\`\`\`\n\n`;
                 })
 
-                // Handle broken code snippets that didn't get wrapped
-                .replace(/(add_filter\([^}]+}\s*,\s*\d+\s*,\s*\d+)/g, '\n\n<pre><code class="language-php">$1);</code></pre>\n\n')
+                // Handle broken inline code
+                .replace(/`([^`\n]+)`/g, '`$1`')
 
-                // Handle inline code and markdown
-                .replace(/`([^`\n]+)`/g, '<code>$1</code>') // Inline code
-                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold text
-                .replace(/\*(.*?)\*/g, '<em>$1</em>') // Italic text
+                // Fix bullet points
+                .replace(/([.!?])\s*•/g, '$1\n\n•')
+                .replace(/•\s*([A-Z])/g, '• $1')
 
-                // Handle links
-                .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>')
+                // Fix numbered lists
+                .replace(/([.!?])\s*(\d+\.)/g, '$1\n\n$2')
 
-                // Convert bullet points to proper HTML
-                .replace(/•\s*<strong>([^<]*)<\/strong>:/g, '• <strong>$1</strong>:')
-                .replace(/^\s*•\s*/gm, '• ') // Clean up bullet formatting
+                // Ensure proper spacing
+                .replace(/([.!?])\s*([A-Z])/g, '$1\n\n$2'); // Line break after sentences
 
-                // Handle indentation and spacing
-                .replace(/\n    /g, '\n&nbsp;&nbsp;&nbsp;&nbsp;')
-                .replace(/  +/g, '&nbsp;&nbsp;') // Preserve multiple spaces
+            // Convert to HTML using marked
+            const html = marked.parse(text);
 
-                // Clean up line breaks
-                .replace(/\n{3,}/g, '\n\n') // Max 2 line breaks
-
-                // Convert to HTML structure
-                .replace(/\n\n/g, '</p>\n<p>') // Paragraphs
-                .replace(/\n/g, '<br>') // Line breaks
-
-                // Fix bullet point paragraphs
-                .replace(/<p>• /g, '<p class="bullet-point">• ')
-                .replace(/<br>• /g, '<br><span class="bullet-point">• </span>');
-
-            // Wrap in paragraph tags
-            if (!formatted.startsWith('<p>')) {
-                formatted = '<p>' + formatted;
-            }
-            if (!formatted.endsWith('</p>')) {
-                formatted = formatted + '</p>';
-            }
-
-            // Final cleanup
-            formatted = formatted
-                .replace(/<p>\s*<\/p>/g, '') // Remove empty paragraphs
-                .replace(/<p><\/p>/g, '') // Remove empty paragraphs
-                .replace(/(<\/p>\s*<p[^>]*>)/g, '$1') // Clean spacing
-                .replace(/<p>\s*<br>/g, '<p>') // Remove unnecessary breaks at paragraph start
-                .replace(/<br>\s*<\/p>/g, '</p>') // Remove unnecessary breaks at paragraph end
-                .replace(/<p>\s*<pre>/g, '</p>\n<pre>') // Fix code block paragraphs
-                .replace(/<\/pre>\s*<\/p>/g, '</pre>\n<p>'); // Fix code block paragraphs
-
-            console.log('Formatted response:', formatted);
-
-            return formatted;
+            // Sanitize and return
+            return DOMPurify.sanitize(html);
         });
 
         const saveDraft = () => {
@@ -372,45 +310,9 @@ export default {
             state.draftData = draft;
         };
 
-        // Letter-by-letter typing effect
-        let typingInterval = null;
-        const typingSpeed = 30; // milliseconds between each character (lower = faster)
-
-        const startTypingEffect = () => {
-            if (typingInterval) {
-                clearInterval(typingInterval);
-            }
-
-            typingInterval = setInterval(() => {
-                if (state.typingQueue.length > 0) {
-                    const nextChar = state.typingQueue.shift();
-                    state.displayedText += nextChar;
-                    state.aiResponse = state.displayedText;
-                } else if (!state.isStreaming) {
-                    // Streaming finished and queue is empty
-                    clearInterval(typingInterval);
-                    typingInterval = null;
-                }
-            }, typingSpeed);
-        };
-
-        const addToTypingQueue = (text) => {
-            console.log('Adding to queue - raw text:', JSON.stringify(text));
-
-            // Don't process the text here - just add it as-is to preserve all formatting
-            // The formatting will be handled by the formattedResponse computed property
-
-            // Add each character to the queue, preserving all characters including spaces and newlines
-            for (let i = 0; i < text.length; i++) {
-                state.typingQueue.push(text[i]);
-            }
-
-            console.log('Queue length after adding:', state.typingQueue.length);
-
-            // Start typing if not already started
-            if (!typingInterval) {
-                startTypingEffect();
-            }
+        const addToStream = (text) => {
+            // Display text immediately without queuing
+            state.aiResponse += text;
         };
 
         const generateResponse = (prompt) => {
@@ -429,12 +331,6 @@ export default {
             state.typingQueue = [];
             state.streamBuffer = '';
 
-            // Clear any existing typing interval
-            if (typingInterval) {
-                clearInterval(typingInterval);
-                typingInterval = null;
-            }
-
             const requestData = {
                 content: trimmedPrompt,
                 id: state.ticketID,
@@ -452,9 +348,6 @@ export default {
             const baseUrl = appVars.rest.url;
             const nonce = appVars.rest.nonce;
 
-            console.log('Starting streaming request to:', `${baseUrl}fluent-bot/${state.ticketID}/generate-stream-response`);
-            console.log('Request data:', requestData);
-
             fetch(`${baseUrl}/fluent-bot/${state.ticketID}/generate-stream-response`, {
                 method: 'POST',
                 headers: {
@@ -463,106 +356,91 @@ export default {
                 },
                 body: JSON.stringify(requestData)
             })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
 
-                const reader = response.body.getReader();
-                const decoder = new TextDecoder();
-                let buffer = '';
+                    const reader = response.body.getReader();
+                    const decoder = new TextDecoder();
+                    let buffer = '';
 
-                function readStream() {
-                    return reader.read().then(({ done, value }) => {
-                        if (done) {
-                            state.loading = false;
-                            state.isStreaming = false;
-                            state.finalPrompts = trimmedPrompt;
+                    function readStream() {
+                        return reader.read().then(({ done, value }) => {
+                            if (done) {
+                                state.loading = false;
+                                state.isStreaming = false;
+                                state.finalPrompts = trimmedPrompt;
 
-                            if (state.prompt || state.aiResponse) {
-                                state.selectedPrompt = '';
-                                saveDraft();
-                            }
-                            return;
-                        }
-
-                        const chunk = decoder.decode(value, { stream: true });
-                        console.log('Received chunk:', chunk);
-                        buffer += chunk;
-
-                        // Process complete SSE events
-                        const events = buffer.split('\n\n');
-                        buffer = events.pop() || ''; // Keep incomplete event in buffer
-
-                        console.log('Processing events:', events.length);
-
-                        events.forEach(event => {
-                            if (event.trim()) {
-                                const lines = event.split('\n');
-                                let eventType = '';
-                                let data = '';
-
-                                lines.forEach(line => {
-                                    if (line.startsWith('event: ')) {
-                                        eventType = line.substring(7).trim();
-                                    } else if (line.startsWith('data: ')) {
-                                        data += line.substring(6);
-                                    }
-                                });
-
-                                console.log('Event type:', eventType, 'Data:', data);
-
-                                // Only append message events and ignore control characters
-                                if (eventType === 'message' && data && data !== '<|>') {
-                                    // Add to stream buffer and typing queue for letter-by-letter effect
-                                    state.streamBuffer += data;
-                                    addToTypingQueue(data);
-                                    console.log('Added to typing queue:', data);
-                                } else if (eventType === 'conversation_id' && data) {
-                                    state.conversationId = data.trim();
-                                    console.log('Set conversation ID:', state.conversationId);
-                                } else if (eventType === 'end') {
-                                    // Stream completed - wait for typing to finish
-                                    state.loading = false;
-                                    state.isStreaming = false;
-
-                                    // Wait for typing queue to empty before finalizing
-                                    const waitForTyping = () => {
-                                        if (state.typingQueue.length === 0 && !typingInterval) {
-                                            state.finalPrompts = trimmedPrompt;
-
-                                            if (state.prompt || state.aiResponse) {
-                                                state.selectedPrompt = '';
-                                                saveDraft();
-                                            }
-                                        } else {
-                                            setTimeout(waitForTyping, 100);
-                                        }
-                                    };
-
-                                    waitForTyping();
-                                    return;
-                                } else if (eventType === 'error') {
-                                    state.loading = false;
-                                    state.isStreaming = false;
-                                    state.errorMessage = 'Failed to generate response. Please try again.';
-                                    return;
+                                if (state.prompt || state.aiResponse) {
+                                    state.selectedPrompt = '';
+                                    saveDraft();
                                 }
+                                return;
                             }
+
+                            const chunk = decoder.decode(value, { stream: true });
+                            buffer += chunk;
+
+                            // Process complete SSE events
+                            const events = buffer.split('\n\n');
+                            buffer = events.pop() || ''; // Keep incomplete event in buffer
+
+                            events.forEach(event => {
+                                if (event.trim()) {
+                                    const lines = event.split('\n');
+                                    let eventType = '';
+                                    let data = '';
+
+                                    lines.forEach(line => {
+                                        if (line.startsWith('event: ')) {
+                                            eventType = line.substring(7).trim();
+                                        } else if (line.startsWith('data: ')) {
+                                            data += line.substring(6);
+                                        }
+                                    });
+
+                                    // Only append message events and ignore control characters
+                                    if (eventType === 'message' && data && data !== '<|>') {
+                                        // Add to stream buffer and display immediately
+                                        state.streamBuffer += data;
+                                        addToStream(data);
+                                    } else if (eventType === 'conversation_id' && data) {
+                                        state.conversationId = data.trim();
+                                    } else if (eventType === 'end') {
+                                        // Stream completed - wait for typing to finish
+                                        state.loading = false;
+                                        state.isStreaming = false;
+
+                                        // Finalize immediately since we're using direct streaming
+                                        state.finalPrompts = trimmedPrompt;
+
+                                        if (state.prompt || state.aiResponse) {
+                                            state.selectedPrompt = '';
+                                            saveDraft();
+                                        }
+                                        return;
+                                    } else if (eventType === 'error') {
+                                        state.loading = false;
+                                        state.isStreaming = false;
+                                        state.errorMessage = 'Failed to generate response. Please try again.';
+                                        return;
+                                    }
+                                }
+                            });
+
+                            return readStream();
                         });
+                    }
 
-                        return readStream();
-                    });
-                }
-
-                return readStream();
-            })
-            .catch(error => {
-                state.loading = false;
-                state.isStreaming = false;
-                state.errorMessage = 'Failed to generate response. Please try again.';
-                console.error('Streaming error:', error);
-            });
+                    return readStream();
+                })
+                .catch(error => {
+                    state.loading = false;
+                    state.isStreaming = false;
+                    state.errorMessage = 'Failed to generate response. Please try again.';
+                    console.error('Streaming error:', error);
+                });
         };
 
         const selectPresetPrompt = (preset) => {
@@ -588,7 +466,6 @@ export default {
             try {
                 // Copy the clean text version instead of HTML
                 const cleanText = getCleanTextForEditor(state.aiResponse);
-                console.log('Copying text:', cleanText);
                 await navigator.clipboard.writeText(cleanText);
                 notify({
                     message: "Copied to clipboard",
@@ -615,19 +492,12 @@ export default {
             state.typingQueue = [];
             state.streamBuffer = '';
 
-            // Clear typing interval
-            if (typingInterval) {
-                clearInterval(typingInterval);
-                typingInterval = null;
-            }
-
             removeDraft();
         };
 
         const insertReply = (aiResponse) => {
             // Create a clean version for text editor insertion
             const cleanText = getCleanTextForEditor(aiResponse);
-            console.log('Inserting text:', cleanText);
             emit('insert', cleanText);
             resetData();
         };
@@ -656,12 +526,6 @@ export default {
         };
 
         const selectDraft = (draft) => {
-            // Clear any ongoing typing
-            if (typingInterval) {
-                clearInterval(typingInterval);
-                typingInterval = null;
-            }
-
             state.aiResponse = draft;
             state.displayedText = draft;
             state.typingQueue = [];
@@ -671,6 +535,11 @@ export default {
         onMounted(() => {
             fetchPresets();
             removeDraft();
+        });
+
+        // Clean up when component is destroyed
+        onBeforeUnmount(() => {
+            // No cleanup needed for direct streaming
         });
 
         return {
@@ -694,59 +563,54 @@ export default {
 };
 </script>
 
-<style >
+<style>
 .fs_product_selector {
     padding: 20px 20px 0 20px;
     display: flex;
     flex-direction: column;
     gap: 5px;
-
-    .fs_product_label {
-        color: #0E121B;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 20px;
-        letter-spacing: -0.084px;
-    }
-
-    .fs_select_field {
-        .el-select__wrapper {
-            display: flex;
-            padding: 5px 5px 5px 12px;
-            align-items: center;
-            gap: 8px;
-            align-self: stretch;
-            border-radius: 10px;
-            border: 1px solid #E1E4EA;
-            background: #FFF;
-            box-shadow: 0px 1px 2px 0px rgba(10, 13, 20, 0.03);
-        }
-
-        .el-select__wrapper.is-focused {
-            border-radius: 8px;
-            border: 1px solid #0E121B;
-            background: #FFF;
-            box-shadow: 0px 0px 0px 2px #FFF,
-            0px 0px 0px 4px rgba(153, 160, 174, 0.16);
-        }
-
-        .el-select__placeholder {
-            color: #99A0AE;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 20px;
-            letter-spacing: -0.084px;
-        }
-
-    }
 }
-.el-select-dropdown__wrap{
-    .el-select-dropdown__item.is-selected {
-        color: #525866;
-        font-weight: bold;
-    }
+
+.fs_product_selector .fs_product_label {
+    color: #0E121B;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: -0.084px;
+}
+
+.fs_product_selector .fs_select_field .el-select__wrapper {
+    display: flex;
+    padding: 5px 5px 5px 12px;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+    border-radius: 10px;
+    border: 1px solid #E1E4EA;
+    background: #FFF;
+    box-shadow: 0px 1px 2px 0px rgba(10, 13, 20, 0.03);
+}
+
+.fs_product_selector .fs_select_field .el-select__wrapper.is-focused {
+    border-radius: 8px;
+    border: 1px solid #0E121B;
+    background: #FFF;
+    box-shadow: 0px 0px 0px 2px #FFF, 0px 0px 0px 4px rgba(153, 160, 174, 0.16);
+}
+
+.fs_product_selector .fs_select_field .el-select__placeholder {
+    color: #99A0AE;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.084px;
+}
+
+.el-select-dropdown__wrap .el-select-dropdown__item.is-selected {
+    color: #525866;
+    font-weight: bold;
 }
 
 .fs_streaming_indicator {
@@ -888,5 +752,75 @@ export default {
     opacity: 0.6;
     cursor: not-allowed;
 }
-</style>
 
+/* Additional styles for highlight.js integration */
+.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    color: #333;
+    background: #f8f8f8;
+}
+
+/* Style fixes for markdown formatting */
+.fs_response_text ul {
+    list-style-type: disc;
+    margin-left: 1.5em;
+    margin-bottom: 1em;
+}
+
+.fs_response_text ol {
+    list-style-type: decimal;
+    margin-left: 1.5em;
+    margin-bottom: 1em;
+}
+
+.fs_response_text h1,
+.fs_response_text h2,
+.fs_response_text h3,
+.fs_response_text h4 {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+}
+
+.fs_response_text h1 {
+    font-size: 1.4em;
+}
+
+.fs_response_text h2 {
+    font-size: 1.3em;
+}
+
+.fs_response_text h3 {
+    font-size: 1.2em;
+}
+
+.fs_response_text h4 {
+    font-size: 1.1em;
+}
+
+.fs_response_text blockquote {
+    padding-left: 1em;
+    border-left: 4px solid #e1e4e8;
+    color: #6a737d;
+    margin: 0 0 1em;
+}
+
+.fs_response_text table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.fs_response_text table th,
+.fs_response_text table td {
+    padding: 8px;
+    border: 1px solid #e1e4e8;
+    text-align: left;
+}
+
+.fs_response_text table th {
+    background-color: #f6f8fa;
+}
+</style>
