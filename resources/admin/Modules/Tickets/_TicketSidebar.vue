@@ -123,6 +123,30 @@
                 </ul>
             </div>
 
+            <div class="fs_tk_card_body" v-else-if="widget_key === 'fct_license'">
+                <ul>
+                    <li v-for="license in widget.licenses" :key="'license_'+license.id" class="fs_license_item_wrapper">
+                        <div class="fs_license_content">
+                            <el-tooltip
+                                :content="license.expiration_tooltip"
+                                placement="top"
+                            >
+                                <a
+                                    :href="`${origin}/wp-admin/admin.php?page=fluent-cart#/licenses/${license.id}/view`"
+                                    target="_blank"
+                                    class="fs_license_link"
+                                >
+                                    <el-icon><ShoppingBag /></el-icon>
+                                    <span class="fs_license_text">{{ license.product_name }}</span>
+                                </a>
+                            </el-tooltip>
+                            <span>&nbsp;-&nbsp;</span>
+                            <el-tag :type="getLicenseType(license.status)">{{ license.status }}</el-tag>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
             <div class="fs_tk_card_body" v-else>
                 <div v-html="widget.body_html"></div>
             </div>
@@ -519,6 +543,16 @@ export default {
             }
         }
 
+        const getLicenseType = (status) => {
+            switch(status?.toString().toLowerCase()) {
+                case 'active': return 'success';
+                case 'expired': return 'danger';
+                case 'disabled': return 'warning';
+                case 'inactive': return 'info';
+                default: return 'info';
+            }
+        }
+
         watch(() => props.watcher_ids, (newIds) => {
             state.watcherIds = newIds;
         });
@@ -557,6 +591,7 @@ export default {
             cancelClick,
             formatFullAddress,
             getType,
+            getLicenseType,
             openDrawer,
             getOrderTooltip,
             getDisplayCurrency,

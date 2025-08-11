@@ -1432,3 +1432,61 @@ ul.fs_tk_actions {
     align-items: center;
     gap: 8px;
 }
+.fs_license_item_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    min-height: 28px;
+    overflow: hidden;
+
+    .fs_license_content {
+        flex: 1;
+        min-width: 0;
+        margin-right: 12px;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+
+        .fs_license_link {
+            color: #556575;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: flex-start;
+            gap: 6px;
+            line-height: 1.4;
+            min-width: 0;
+            max-width: 100%;
+            overflow: hidden;
+
+            &:hover {
+                color: #556575;
+                text-decoration: underline;
+            }
+
+            .el-icon {
+                font-size: 14px;
+                flex-shrink: 0;
+                transition: color 0.2s ease;
+                margin-top: 1px;
+            }
+
+            .fs_license_text {
+                flex: 1;
+                min-width: 0;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                line-height: 1.4;
+            }
+        }
+    }
+
+    .fs_license_status {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+    }
+}
