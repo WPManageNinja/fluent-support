@@ -1653,5 +1653,68 @@ class Ticket extends Model
 
     }
 
+    /**
+     * Add FluentCart custom fields to workflow conditions
+     */
+    public function addToWorkflow($customField, $key)
+    {
+        $options = [];
+
+        if ($key == 'fct_products') {
+            $options = $this->getProductWorkflowOptions();
+        } elseif ($key == 'fct_orders') {
+            $options = $this->getOrderWorkflowOptions();
+        }
+
+        return [
+            'title'     => $customField['label'],
+            'data_type' => 'single_dropdown',
+            'group'     => 'Custom Fields',
+            'options'   => $options
+        ];
+    }
+
+    /**
+     * Get product options for workflow
+     */
+    private function getProductWorkflowOptions()
+    {
+        $options = [];
+        $products = $this->getFluentCartProducts();
+
+        if ($products) {
+            foreach ($products as $product) {
+                $options[$product->ID] = $product->post_title;
+            }
+        }
+
+        return $options;
+    }
+
+    /**
+     * Get order options for workflow
+     */
+    private function getOrderWorkflowOptions()
+    {
+        $options = [];
+
+        if (!class_exists('\FluentCart\App\Models\Order')) {
+            return $options;
+        }
+
+        try {
+            $orders = \FluentCart\App\Models\Order::orderByDesc('created_at')
+                ->limit(1000)
+                ->get();
+
+            foreach ($orders as $order) {
+                $options[$order->id] = sprintf(__('Order #%d - %s', 'fluent-support-pro'), $order->id, $order->created_at->format('M d, Y'));
+            }
+        } catch (\Exception $e) {
+            // Handle error silently
+        }
+
+        return $options;
+    }
 }
 
