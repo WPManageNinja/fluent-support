@@ -391,7 +391,6 @@ export default {
             translate,
             handleError,
             has_pro,
-            getCurrencySymbol,
             dateTimeFormat
         } = useFluentHelper();
         const emit = context.emit;
@@ -553,13 +552,10 @@ export default {
 
         const getOrderTooltip = (type, order) => {
             const formattedDate = dateTimeFormat(order.date, 'DD MMM YYYY, hh:mm A');
-            return `Purchase date: ${formattedDate}, Amount: ${getCurrencySymbol(order.currency)}${order.total}`;
+            return `Purchase date: ${formattedDate}, Amount: ${order.currency} ${order.total}`;
         };
 
         const getDisplayCurrency = (currency) => {
-            if (currency && currency.length <= 3 && currency.match(/^[A-Z]{3}$/)) {
-                return getCurrencySymbol(currency);
-            }
             return currency || '';
         };
 
@@ -606,8 +602,6 @@ export default {
                 default: return 'info';
             }
         }
-
-
 
         watch(() => props.watcher_ids, (newIds) => {
             state.watcherIds = newIds;

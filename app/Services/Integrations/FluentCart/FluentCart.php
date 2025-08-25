@@ -2,7 +2,6 @@
 
 namespace FluentSupport\App\Services\Integrations\FluentCart;
 use FluentCart\App\Models\Order;
-use FluentCart\App\Helpers\CurrenciesHelper;
 use FluentSupport\Framework\Support\Arr;
 use FluentSupport\App\Models\Customer;
 
@@ -48,7 +47,7 @@ class FluentCart
                 'license_type' => $licenseType,
                 'price' => $item->unit_price,
                 'currency' => $item->order->currency,
-                'formatted_price' => CurrenciesHelper::getCurrencySign($item->order->currency) . number_format($item->unit_price / 100, 2, '.', ''),
+                'formatted_price' => $item->formatted_total,
                 'status' => $this->getProductStatus($item),
                 'sites_info' => $this->getSitesInfo($licenseType),
                 'order' => [
@@ -56,7 +55,7 @@ class FluentCart
                     'invoice_no' => $item->order->invoice_no,
                     'status' => $item->order->status,
                     'date' => $item->order->created_at->format('Y-m-d H:i:s'),
-                    'currency' => CurrenciesHelper::getCurrencySign($item->order->currency),
+                    'currency' => $item->order->currency,
                     'total' => number_format($item->order->total_amount / 100, 2, '.', ''),
                     'quantity' => $item->quantity
                 ]
