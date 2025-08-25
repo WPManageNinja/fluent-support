@@ -31,7 +31,7 @@ class FluentCart
             ->select(['id', 'order_id', 'post_id', 'post_title', 'title', 'payment_type', 'unit_price', 'subtotal', 'quantity'])
             ->orderByDesc('id')
             ->get();
-//        dd($orderItems->toArray());
+
         if ($orderItems->isEmpty()) {
             return $widgets;
         }
@@ -223,12 +223,13 @@ class FluentCart
      * Determine the license type based on order item payment type
      *
      * @param \FluentCart\App\Models\OrderItem $item
-     * @return string
+     * @return string|null
      */
     private function getLicenseType($item)
     {
         switch ($item->payment_type) {
             case 'subscription':
+                // Return 'Subscription' for internal logic but don't display it as license type
                 return 'Subscription';
             case 'payment':
             default:
@@ -236,7 +237,8 @@ class FluentCart
                 if (stripos($item->post_title, 'lifetime') !== false || stripos($item->title, 'lifetime') !== false) {
                     return 'Lifetime License';
                 }
-                return 'Single Site Annual License';
+                // Don't show license type for regular one-time purchases
+                return null;
         }
     }
 
@@ -274,22 +276,22 @@ class FluentCart
     /**
      * Get sites information for the license type
      *
-     * @param string $licenseType
+     * @param string|null $licenseType
      * @return array|null
      */
     private function getSitesInfo($licenseType)
     {
-        // For lifetime licenses, don't show sites info
-        if (stripos($licenseType, 'lifetime') !== false) {
-            return null;
+        // Only show sites info for subscriptions
+        if ($licenseType === 'Subscription') {
+            // In a real implementation, this would come from the license data
+            return [
+                'used' => 1,
+                'total' => 1
+            ];
         }
 
-        // For other licenses, show default sites info
-        // In a real implementation, this would come from the license data
-        return [
-            'used' => 1,
-            'total' => 1
-        ];
+        // Don't show sites info for lifetime licenses or one-time purchases
+        return null;
     }
 
 }

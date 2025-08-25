@@ -127,13 +127,13 @@
                 <div v-for="(product, product_key) in widget.products" :key="product_key" class="fct_product_item">
                     <div class="fct_product_content">
                         <h3 class="fct_product_title">{{ product.product_name }}</h3>
-                        <div class="fct_license_type">{{ product.license_type }}</div>
+                        <div class="fct_license_type" v-if="product.license_type && product.license_type !== 'Subscription'">{{ product.license_type }}</div>
                         <div class="fct_product_price_row">
                             <span class="fct_product_price" v-html="product.formatted_price"></span>
                             <span class="fct_product_type_icon">
-                                <el-icon v-if="product.license_type.includes('Subscription')"><Refresh /></el-icon>
+                                <el-icon v-if="product.license_type && product.license_type.includes('Subscription')"><Refresh /></el-icon>
                                 <el-icon v-else><ShoppingBag /></el-icon>
-                                {{ product.license_type.includes('Subscription') ? 'Subscription' : 'Product' }}
+                                {{ (product.license_type && product.license_type.includes('Subscription')) ? 'Subscription' : 'Product' }}
                             </span>
                         </div>
                         <div class="fct_product_sites" v-if="product.sites_info">
