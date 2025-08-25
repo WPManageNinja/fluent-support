@@ -105,7 +105,7 @@
                 <h3 v-html="widget.title || widget.header"></h3>
             </div>
 
-            <div class="fs_tk_card_body" v-if="widget_key === 'woo_purchases' || widget_key === 'fct_purchases'">
+            <div class="fs_tk_card_body" v-if="widget_key === 'woo_purchases'">
                 <ul>
                     <li v-for="(order, order_key) in widget.orders" :key="order_key">
                         <el-tooltip
@@ -121,6 +121,47 @@
                         &nbsp; - <el-tag class="ml-2" :type="getType(order.status)">{{ order.status }}</el-tag>
                     </li>
                 </ul>
+            </div>
+
+            <div class="fs_tk_card_body" v-else-if="widget_key === 'fct_purchases'">
+                <div v-for="(product, product_key) in widget.products" :key="product_key" class="fct_product_item">
+                    <div class="fct_product_content">
+                        <h3 class="fct_product_title">{{ product.product_name }}</h3>
+                        <div class="fct_license_type">{{ product.license_type }}</div>
+                        <div class="fct_product_price_row">
+                            <span class="fct_product_price" v-html="product.formatted_price"></span>
+                            <span class="fct_product_type_icon">
+                                <el-icon v-if="product.license_type.includes('Subscription')"><Refresh /></el-icon>
+                                <el-icon v-else><ShoppingBag /></el-icon>
+                                {{ product.license_type.includes('Subscription') ? 'Subscription' : 'Product' }}
+                            </span>
+                        </div>
+                        <div class="fct_product_sites" v-if="product.sites_info">
+                            Sites: <strong>{{ product.sites_info.used }}/{{ product.sites_info.total }}</strong>
+                            <span class="fct_expired_badge" v-if="product.status === 'expired'">
+                                <el-icon><Timer /></el-icon>
+                                Expired
+                            </span>
+                        </div>
+                        <div class="fct_product_status_row">
+                            <span class="fct_status_indicator" :class="'fct_status_' + product.status.toLowerCase()">
+                                <span class="fct_status_dot"></span>
+                                {{ product.status }}
+                                <span class="fct_status_paid">(paid)</span>
+                            </span>
+                            <div class="fct_order_links">
+                                <a
+                                    :href="`${origin}/wp-admin/admin.php?page=fluent-cart#/orders/${product.order.id}/view`"
+                                    target="_blank"
+                                    class="fct_order_link"
+                                    :title="`View Order #${product.order.invoice_no || 'WPMN-' + product.order.id}`"
+                                >
+                                    #{{ product.order.id }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="fs_tk_card_body" v-else-if="widget_key === 'fct_license'">
@@ -553,6 +594,21 @@ export default {
             }
         }
 
+        const getProductStatusType = (status) => {
+            switch(status?.toString().toLowerCase()) {
+                case 'active': return 'success';
+                case 'completed': return 'success';
+                case 'processing': return 'primary';
+                case 'on-hold': return 'warning';
+                case 'expired': return 'danger';
+                case 'canceled': return 'danger';
+                case 'failed': return 'danger';
+                default: return 'info';
+            }
+        }
+
+
+
         watch(() => props.watcher_ids, (newIds) => {
             state.watcherIds = newIds;
         });
@@ -592,6 +648,7 @@ export default {
             formatFullAddress,
             getType,
             getLicenseType,
+            getProductStatusType,
             openDrawer,
             getOrderTooltip,
             getDisplayCurrency,
@@ -601,4 +658,159 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.fct_product_item {
+    margin-bottom: 0;
+    padding: 12px 0;
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.fct_product_item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.fct_product_content {
+    padding: 0;
+}
+
+.fct_product_title {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    color: #1a1a1a;
+    line-height: 1.3;
+}
+
+.fct_license_type {
+    font-size: 12px;
+    color: #6b7280;
+    margin-bottom: 6px;
+    font-weight: 400;
+}
+
+.fct_product_price_row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.fct_product_price {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.fct_product_type_icon {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 11px;
+    color: #6b7280;
+}
+
+.fct_product_type_icon .el-icon {
+    font-size: 12px;
+}
+
+.fct_product_sites {
+    font-size: 12px;
+    color: #6b7280;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.fct_expired_badge {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    color: #dc2626;
+    font-size: 11px;
+}
+
+.fct_expired_badge .el-icon {
+    font-size: 11px;
+}
+
+.fct_product_status_row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.fct_status_indicator {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.fct_status_dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.fct_status_active .fct_status_dot {
+    background-color: #10b981;
+}
+
+.fct_status_completed .fct_status_dot {
+    background-color: #3b82f6;
+}
+
+.fct_status_expired .fct_status_dot {
+    background-color: #dc2626;
+}
+
+.fct_status_active {
+    color: #10b981;
+}
+
+.fct_status_completed {
+    color: #3b82f6;
+}
+
+.fct_status_expired {
+    color: #dc2626;
+}
+
+.fct_status_paid {
+    color: #6b7280;
+    font-weight: 400;
+    font-size: 11px;
+}
+
+.fct_order_links {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.fct_order_link {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 12px;
+    padding: 2px 4px;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+}
+
+.fct_order_link:hover {
+    color: #1d4ed8;
+    background-color: #f0f9ff;
+    text-decoration: underline;
+}
+</style>
 

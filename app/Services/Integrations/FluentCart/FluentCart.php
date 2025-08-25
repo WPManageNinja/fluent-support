@@ -19,44 +19,58 @@ class FluentCart
     {
         $wpUserId = $customer->user_id;
 
-        $orders = Order::whereHas('customer', function ($query) use ($wpUserId) {
+        // Get all order items for this customer, grouped by product
+        $orderItems = \FluentCart\App\Models\OrderItem::whereHas('order.customer', function ($query) use ($wpUserId) {
             $query->where('user_id', $wpUserId);
         })
-            ->select(['id', 'status', 'created_at', 'total_amount', 'currency'])
             ->with([
-                'shipping_address',
-                'billing_address',
-                'order_items'
+                'order' => function ($query) {
+                    $query->select(['id', 'status', 'created_at', 'total_amount', 'currency', 'invoice_no']);
+                }
             ])
-            ->orderByDesc('created_at')
+            ->select(['id', 'order_id', 'post_id', 'post_title', 'title', 'payment_type', 'unit_price', 'subtotal', 'quantity'])
+            ->orderByDesc('id')
             ->get();
-
-        if ($orders->isEmpty()) {
+//        dd($orderItems->toArray());
+        if ($orderItems->isEmpty()) {
             return $widgets;
         }
 
-        $formattedOrders = $orders->map(function ($order) {
-            $orderData = [
-                'id' => $order->id,
-                'status' => $order->status,
-                'date' => $order->created_at->format('Y-m-d H:i:s'),
-                'currency' => CurrenciesHelper::getCurrencySign($order->currency),
-                'billing_address' => $order->billing_address,
-                'shipping_address' => $order->shipping_address,
-                'order_items' => $order->order_items
+        // Create individual product entries for each order item (no grouping)
+        $formattedProducts = [];
+
+        foreach ($orderItems as $item) {
+            $licenseType = $this->getLicenseType($item);
+
+            $formattedProducts[] = [
+                'product_name' => $item->post_title,
+                'variation_name' => $item->title !== $item->post_title ? $item->title : null,
+                'license_type' => $licenseType,
+                'price' => $item->unit_price,
+                'currency' => $item->order->currency,
+                'formatted_price' => CurrenciesHelper::getCurrencySign($item->order->currency) . number_format($item->unit_price / 100, 2, '.', ''),
+                'status' => $this->getProductStatus($item),
+                'sites_info' => $this->getSitesInfo($licenseType),
+                'order' => [
+                    'id' => $item->order->id,
+                    'invoice_no' => $item->order->invoice_no,
+                    'status' => $item->order->status,
+                    'date' => $item->order->created_at->format('Y-m-d H:i:s'),
+                    'currency' => CurrenciesHelper::getCurrencySign($item->order->currency),
+                    'total' => number_format($item->order->total_amount / 100, 2, '.', ''),
+                    'quantity' => $item->quantity
+                ]
             ];
+        }
 
-            if (!empty($order->total_amount)) {
-                // Format total as float with 2 decimal places and standardize field name like WooCommerce
-                $orderData['total'] = number_format($order->total_amount / 100, 2, '.', '');
-            }
-
-            return $orderData;
+        // Sort products by most recent order date
+        usort($formattedProducts, function ($a, $b) {
+            return strtotime($b['order']['date']) - strtotime($a['order']['date']);
         });
 
         $widgets['fct_purchases'] = [
-            'title'  => __('Fluent Cart Purchases', 'fluent-support'),
-            'orders' => $formattedOrders->toArray(),
+            'title'  => __('Purchases', 'fluent-support'),
+            'products' => $formattedProducts,
         ];
 
         return $widgets;
@@ -203,6 +217,79 @@ class FluentCart
         } catch (\Exception $e) {
             return null;
         }
+    }
+
+    /**
+     * Determine the license type based on order item payment type
+     *
+     * @param \FluentCart\App\Models\OrderItem $item
+     * @return string
+     */
+    private function getLicenseType($item)
+    {
+        switch ($item->payment_type) {
+            case 'subscription':
+                return 'Subscription';
+            case 'payment':
+            default:
+                // Check if it's a lifetime license based on product name or other criteria
+                if (stripos($item->post_title, 'lifetime') !== false || stripos($item->title, 'lifetime') !== false) {
+                    return 'Lifetime License';
+                }
+                return 'Single Site Annual License';
+        }
+    }
+
+    /**
+     * Determine the product status based on order status and payment type
+     *
+     * @param \FluentCart\App\Models\OrderItem $item
+     * @return string
+     */
+    private function getProductStatus($item)
+    {
+        $orderStatus = $item->order->status;
+
+        switch ($orderStatus) {
+            case 'completed':
+                // For subscriptions, we might want to check if it's still active
+                if ($item->payment_type === 'subscription') {
+                    // This would need additional logic to check subscription status
+                    // For now, we'll assume completed subscriptions are active
+                    return 'active';
+                }
+                return 'completed';
+            case 'processing':
+                return 'active';
+            case 'on-hold':
+                return 'on-hold';
+            case 'canceled':
+            case 'failed':
+                return 'expired';
+            default:
+                return 'pending';
+        }
+    }
+
+    /**
+     * Get sites information for the license type
+     *
+     * @param string $licenseType
+     * @return array|null
+     */
+    private function getSitesInfo($licenseType)
+    {
+        // For lifetime licenses, don't show sites info
+        if (stripos($licenseType, 'lifetime') !== false) {
+            return null;
+        }
+
+        // For other licenses, show default sites info
+        // In a real implementation, this would come from the license data
+        return [
+            'used' => 1,
+            'total' => 1
+        ];
     }
 
 }
