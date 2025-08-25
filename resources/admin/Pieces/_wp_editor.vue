@@ -60,13 +60,13 @@
                 </el-button>
             </div>
 
-            <div class="fc_shortcode_box" v-if="showShortcodes" >
-                <el-dropdown type="primary" trigger="click">
+            <div class="fc_shortcode_box" v-if="hasShortcodes" >
+                <el-dropdown type="primary" trigger="click" :popper-options="{ strategy: 'fixed' }">
                     <el-button size="small" type="primary">
                         {{$t('Shortcodes')}} <el-icon style="vertical-align: middle;"><ArrowDown /></el-icon>
                     </el-button>
                     <template #dropdown>
-                        <el-dropdown-menu>
+                        <el-dropdown-menu class="fs_shortcode_dropdown">
                             <el-dropdown-item v-for="(value, key) in shortcodes" :key="key" :value="key" @click="insertShortcode">
                                 {{ value }}
                             </el-dropdown-item>
@@ -138,10 +138,10 @@ export default {
                 return '';
             }
         },
-        editorShortcodes: {
-            type: Array,
+        editor_shortcodes: {
+            type: Object,
             default() {
-                return []
+                return {}
             }
         },
         height: {
@@ -234,19 +234,7 @@ export default {
             app_ready: false,
             buttonInitiated: false,
             currentEditor: false,
-            shortcodes: {
-                '{{customer.first_name}}': 'Customer First Name',
-                '{{customer.last_name}}': 'Customer Last Name',
-                '{{customer.full_name}}': 'Customer Full Name',
-                '{{customer.email}}': 'Customer Email',
-                '{{customer.title}}': 'Customer Title',
-                '{{customer.status}}': 'Customer Status',
-                '{{agent.first_name}}': 'Agent First Name',
-                '{{agent.last_name}}': 'Agent Last Name',
-                '{{agent.full_name}}': 'Agent Full Name',
-                '{{agent.email}}': 'Agent Email',
-                '{{agent.title}}': 'Agent Title'
-            },
+
             showActionBar: false,
             actionBarStyle: {},
             showChatGPTPromptBox: false,
@@ -256,6 +244,14 @@ export default {
             editorData: {},
             appVars: this.appVars,
             loadingImage: false
+        }
+    },
+    computed: {
+        shortcodes() {
+            return this.editor_shortcodes;
+        },
+        hasShortcodes() {
+            return this.editor_shortcodes && Object.keys(this.editor_shortcodes).length > 0;
         }
     },
     watch: {
@@ -371,9 +367,33 @@ export default {
         },
 
         insertShortcode(content) {
-            let tinyInstance = tinyMCE.editors[wpActiveEditor];
-            tinyInstance.insertContent(content.target._value);
-            this.$emit('update:modelValue', this.modelValue + content.target._value)
+            const shortcode = content.target._value;
+
+            if (this.hasWpEditor) {
+                let tinyInstance = tinyMCE.get(this.editor_id);
+                if (tinyInstance) {
+                    tinyInstance.focus();
+                    tinyInstance.insertContent(shortcode);
+                    const updatedContent = tinyInstance.getContent();
+                    this.$emit('update:modelValue', updatedContent);
+                }
+            } else {
+                const textarea = document.querySelector(`#${this.editor_id}`);
+                if (textarea) {
+                    const start = textarea.selectionStart;
+                    const end = textarea.selectionEnd;
+                    const text = textarea.value;
+                    const before = text.substring(0, start);
+                    const after = text.substring(end, text.length);
+                    const newValue = before + shortcode + after;
+                    this.plain_content = newValue;
+                    // Set cursor position after the inserted shortcode
+                    this.$nextTick(() => {
+                        textarea.selectionStart = textarea.selectionEnd = start + shortcode.length;
+                        textarea.focus();
+                    });
+                }
+            }
         },
 
         insertTemplate(content) {
@@ -656,5 +676,65 @@ export default {
     align-items: center;
     z-index: 10;
     pointer-events: none;
+}
+
+.fc_shortcode_box {
+    .el-dropdown-menu {
+        max-height: 300px;
+        overflow-y: auto;
+        z-index: 9999 !important;
+        position: relative;
+
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 3px;
+
+            &:hover {
+                background: #a8a8a8;
+            }
+        }
+    }
+}
+
+// Ensure dropdown works properly in modals
+.fs_shortcode_dropdown {
+    max-height: 300px !important;
+    overflow-y: auto !important;
+    z-index: 9999 !important;
+
+    // Prevent scroll events from bubbling to background
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #c1c1c1;
+        border-radius: 3px;
+
+        &:hover {
+            background: #a8a8a8;
+        }
+    }
+}
+
+.el-dropdown-menu.fs_shortcode_dropdown.el-popper {
+    max-height: 300px !important;
+    overflow-y: auto !important;
+    z-index: 9999 !important;
+    position: fixed !important;
 }
 </style>

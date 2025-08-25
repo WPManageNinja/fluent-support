@@ -1450,5 +1450,65 @@ textarea {
     cursor: pointer;
 }
 
+.fs_email_settings_form {
+    .el-form-item__label {
+        width: 100%;
+    }
+}
+.fs_subject_label_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.fs_subject_shortcode_dropdown {
+    flex-shrink: 0;
+
+    .fs_shortcode_icon_btn {
+        padding: 2px 6px;
+        height: auto;
+        background: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        color: #606266;
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 1;
+
+        &:hover {
+            background: none !important;
+            color: #409eff;
+        }
+
+        &:focus {
+            background: none !important;
+            box-shadow: none !important;
+        }
+    }
+
+    .fs_shortcode_dropdown {
+        max-height: 300px !important;
+        overflow-y: auto !important;
+        z-index: 9999 !important;
+
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 3px;
+
+            &:hover {
+                background: #a8a8a8;
+            }
+        }
+    }
+}
 
 

@@ -773,3 +773,65 @@ ul.fs_contact_results {
     color: #8492a6;
     font-size: 13px;
 }
+
+.fs_clickable_shortcode {
+    background-color: #f3f4f6;
+    border: 1px solid #d1d5db;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    position: relative;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 12px;
+    color: #565865;
+    margin-bottom: 2px;
+    cursor: pointer;
+
+    &::before {
+        content: '';
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="13" height="14" viewBox="0 0 13 14" fill="none"%3E%3Cpath d="M4.875 8.625C4.875 7.09294 4.875 6.3269 5.35095 5.85095C5.8269 5.375 6.59294 5.375 8.125 5.375L8.66667 5.375C10.1987 5.375 10.9648 5.375 11.4407 5.85095C11.9167 6.3269 11.9167 7.09294 11.9167 8.625V9.16667C11.9167 10.6987 11.9167 11.4648 11.4407 11.9407C10.9648 12.4167 10.1987 12.4167 8.66667 12.4167H8.125C6.59293 12.4167 5.8269 12.4167 5.35095 11.9407C4.875 11.4648 4.875 10.6987 4.875 9.16667L4.875 8.625Z" stroke="%23565865" stroke-linecap="round" stroke-linejoin="round"%3E%3C/path%3E%3Cpath d="M9.20818 5.37467C9.20692 3.77292 9.18266 2.94325 8.71644 2.37516C8.62641 2.26545 8.52581 2.16485 8.41611 2.07482C7.81683 1.58301 6.92647 1.58301 5.14575 1.58301C3.36503 1.58301 2.47467 1.58301 1.8754 2.07482C1.76569 2.16485 1.6651 2.26545 1.57506 2.37516C1.08325 2.97443 1.08325 3.86479 1.08325 5.64551C1.08325 7.42623 1.08325 8.31659 1.57506 8.91586C1.6651 9.02557 1.76569 9.12616 1.8754 9.2162C2.44349 9.68242 3.27316 9.70668 4.87492 9.70794" stroke="%23565865" stroke-linecap="round" stroke-linejoin="round"%3E%3C/path%3E%3C/svg%3E');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0.7;
+        transition: opacity 0.2s ease;
+        flex-shrink: 0;
+    }
+
+    &:hover::before {
+        opacity: 1;
+    }
+
+    &:active {
+        transform: translateY(0);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    &::after {
+        content: 'Click to copy';
+        position: absolute;
+        bottom: 125%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #333;
+        color: #fff;
+        font-size: 10px;
+        padding: 2px 6px;
+        border-radius: 4px;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease, content 0.2s ease;
+        z-index: 10;
+    }
+
+    &:hover::after {
+        opacity: 1;
+    }
+}
+

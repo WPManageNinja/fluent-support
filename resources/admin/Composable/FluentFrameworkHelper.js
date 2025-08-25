@@ -153,72 +153,47 @@ export function useFluentHelper(){
             })
     }
 
-    function getCurrencySymbol(currencyCode) {
-        const currencySymbols = {
-            'USD': '$',
-            'EUR': '€',
-            'GBP': '£',
-            'JPY': '¥',
-            'CNY': '¥',
-            'KRW': '₩',
-            'INR': '₹',
-            'CAD': 'C$',
-            'AUD': 'A$',
-            'CHF': 'CHF',
-            'SEK': 'kr',
-            'NOK': 'kr',
-            'DKK': 'kr',
-            'PLN': 'zł',
-            'CZK': 'Kč',
-            'HUF': 'Ft',
-            'RUB': '₽',
-            'BRL': 'R$',
-            'MXN': '$',
-            'ZAR': 'R',
-            'SGD': 'S$',
-            'HKD': 'HK$',
-            'NZD': 'NZ$',
-            'THB': '฿',
-            'MYR': 'RM',
-            'PHP': '₱',
-            'IDR': 'Rp',
-            'VND': '₫',
-            'TRY': '₺',
-            'ILS': '₪',
-            'AED': 'د.إ',
-            'SAR': 'ر.س',
-            'EGP': 'ج.م',
-            'NGN': '₦',
-            'KES': 'KSh',
-            'GHS': '₵',
-            'XOF': 'CFA',
-            'XAF': 'FCFA',
-            'MAD': 'د.م.',
-            'TND': 'د.ت',
-            'DZD': 'د.ج',
-            'LYD': 'ل.د',
-            'SDG': 'ج.س.',
-            'ETB': 'Br',
-            'UGX': 'USh',
-            'TZS': 'TSh',
-            'RWF': 'RF',
-            'MWK': 'MK',
-            'ZMW': 'ZK',
-            'BWP': 'P',
-            'SZL': 'L',
-            'LSL': 'L',
-            'NAD': 'N$',
-            'MZN': 'MT',
-            'AOA': 'Kz',
-            'CVE': '$',
-            'GMD': 'D',
-            'GNF': 'FG',
-            'LRD': 'L$',
-            'SLL': 'Le',
-            'STD': 'Db'
-        };
+    function copyToClipboard(text, successMessage = 'Copied to clipboard!', errorMessage = 'Failed to copy to clipboard') {
+        if (!text) {
+            notify({
+                type: 'warning',
+                title: 'Warning',
+                message: 'Nothing to copy',
+                position: 'bottom-right'
+            });
+            return Promise.resolve(false);
+        }
 
-        return currencySymbols[currencyCode] || currencyCode;
+        // Use modern clipboard API
+        if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(() => {
+                notify({
+                    type: 'success',
+                    title: 'Success',
+                    message: successMessage,
+                    position: 'bottom-right'
+                });
+                return true;
+            }).catch((err) => {
+                console.error('Failed to copy:', err);
+                notify({
+                    type: 'error',
+                    title: 'Error',
+                    message: errorMessage,
+                    position: 'bottom-right'
+                });
+                return false;
+            });
+        } else {
+            // For non-secure contexts, show error message
+            notify({
+                type: 'error',
+                title: 'Error',
+                message: 'Copy to clipboard requires HTTPS',
+                position: 'bottom-right'
+            });
+            return Promise.resolve(false);
+        }
     }
 
     return {
@@ -246,7 +221,7 @@ export function useFluentHelper(){
         renewOptions,
         useScrollToRef,
         smartDate,
-        getCurrencySymbol
+        copyToClipboard
     }
 }
 

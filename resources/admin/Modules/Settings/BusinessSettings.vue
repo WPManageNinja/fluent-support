@@ -14,7 +14,7 @@
         >
             <form-builder
                 v-if="app_ready"
-                :fields="fields"
+                :fields="processedFields"
                 :form-data="settings"
                 label_position="top"
             >
@@ -23,7 +23,7 @@
                         size="default"
                         type="success"
                         @click="saveSettings()"
-                        >{{ translate("Save Settings") }}</el-button
+                    >{{ translate("Save Settings") }}</el-button
                     >
                 </template>
             </form-builder>
@@ -40,7 +40,7 @@
 
 <script type="text/babel">
 import FormBuilder from "../../Pieces/FormElements/_FormBuilder";
-import { onMounted, reactive, toRefs } from "vue";
+ import { onMounted, onUnmounted, reactive, toRefs, computed } from "vue";
 import { useFluentHelper, useNotify } from "@/admin/Composable/FluentFrameworkHelper";
 export default {
     name: "BusinessSettings",
@@ -54,7 +54,8 @@ export default {
             post,
             handleError,
             setTitle,
-            translate
+            translate,
+            copyToClipboard
         } = useFluentHelper();
 
         const { notify } = useNotify();
@@ -66,6 +67,26 @@ export default {
             loading: false,
             app_ready: false,
             settings_key: "global_business_settings",
+        });
+
+        const makeShortcodesClickable = (helpText) => {
+            if (!helpText) return helpText;
+
+            return helpText.replace(
+                /<code>(\[.*?\])<\/code>/g,
+                '<code class="fs_clickable_shortcode" data-shortcode="$1">$1</code>'
+            );
+        };
+
+        const processedFields = computed(() => {
+            const processed = {};
+            Object.keys(state.fields).forEach(key => {
+                processed[key] = {
+                    ...state.fields[key],
+                    inline_help: makeShortcodesClickable(state.fields[key].inline_help)
+                };
+            });
+            return processed;
         });
 
         const fetchSettings = async() => {
@@ -108,16 +129,46 @@ export default {
                 });
         };
 
+        // Function to copy shortcode using global copyToClipboard helper
+        const copyShortcode = (shortcode) => {
+            const successMessage = translate('Shortcode copied to clipboard: ') + shortcode;
+            const errorMessage = translate('Failed to copy shortcode');
+
+            return copyToClipboard(shortcode, successMessage, errorMessage);
+        };
+
+        const handleClick = (e) => {
+            if (
+                e.target.classList.contains("fs_clickable_shortcode") ||
+                e.target.closest(".fs_clickable_shortcode")
+            ) {
+                const shortcodeElement = e.target.classList.contains("fs_clickable_shortcode")
+                    ? e.target
+                    : e.target.closest(".fs_clickable_shortcode");
+                const shortcode = shortcodeElement.getAttribute("data-shortcode");
+                if (shortcode) {
+                    copyShortcode(shortcode);
+                }
+            }
+        };
+
         onMounted(() => {
             fetchSettings();
             setTitle("Business Settings");
+
+            document.addEventListener("click", handleClick);
+        });
+
+        onUnmounted(() => {
+            document.removeEventListener("click", handleClick);
         });
 
         return {
             ...toRefs(state),
             translate,
             fetchSettings,
-            saveSettings
+            saveSettings,
+            processedFields,
         }
     },
 };

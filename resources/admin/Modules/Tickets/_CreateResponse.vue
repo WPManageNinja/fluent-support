@@ -20,7 +20,7 @@
                 </el-select>
             </el-form-item>
         </div>
-        <wp-editor :autofocus="true" v-if="editor_ready" v-model="response_body" :ticketId="ticket.id" :productID="ticket.product_id" :is_agent="is_agent" :is_direct_paste="true" :show-shortcodes="true" :openAIIntegration="openAIIntegration" :fluentBotIntegration="fluentBotIntegration"
+        <wp-editor :autofocus="true" v-if="editor_ready" v-model="response_body" :ticketId="ticket.id" :productID="ticket.product_id" :is_agent="is_agent" :is_direct_paste="true" :editor_shortcodes="shortcodes" :openAIIntegration="openAIIntegration" :fluentBotIntegration="fluentBotIntegration"
                    :show-saved-replies="true" :show-cc-toggle-button="ticket.source === 'email' && type !== 'note'" :add_cc="selected_cc?.length > 0 || show_cc_option" @toggleCcOption="toggleCcOption"/>
         <div class="fs_row">
             <div class="fs_half">

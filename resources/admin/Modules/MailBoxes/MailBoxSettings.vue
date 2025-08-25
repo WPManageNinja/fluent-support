@@ -29,13 +29,7 @@
             </el-form-item>
 
             <el-form-item :label="translate('Email Footer For Customers')" v-if="has_pro">
-                <wp-editor :height="100" v-model="mailbox.email_footer"/>
-                <div>
-                    <el-button size="small" style="cursor: pointer;" @click="show_codes = !show_codes">{{translate('see_available_dynamic_shortcodes')}}:</el-button>
-                    <ul v-if="show_codes">
-                        <li v-for="(code, codeName) in smartCodes">{{code}}: {{codeName}}</li>
-                    </ul>
-                </div>
+                <wp-editor :height="100" v-model="mailbox.email_footer" :editor_shortcodes="shortCodes"/>
             </el-form-item>
 
             <el-form-item :label="translate('Inbox Color')">
@@ -71,15 +65,15 @@ export default {
         const {
             handleError,
             translate,
-            put
+            put,
+            has_pro
 
         } = useFluentHelper();
 
         const { notify } = useNotify();
 
         const state = reactive({
-            show_codes: false,
-            smartCodes: {
+            shortCodes: {
                 '{{customer.first_name}}': translate('Customer First name'),
                 '{{customer.last_name}}': translate('Customer Last name'),
                 '{{customer.email}}': translate('Customer Email'),
@@ -140,6 +134,7 @@ export default {
             saveSettings,
             translate,
             filtered_client_notifications,
+            has_pro,
             ...toRefs(state)
         }
     }

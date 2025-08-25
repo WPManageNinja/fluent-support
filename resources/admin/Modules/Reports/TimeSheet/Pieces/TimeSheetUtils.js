@@ -62,6 +62,7 @@ export const timesheetUtils = {
             action,
             [config.itemKey]: selectedItems,
             dateRange: dateRange,
+            _wpnonce: window.fluentSupportAdmin.nonce,
         });
 
         location.href = `${window.fluentSupportAdmin.ajaxurl}?${queryParams.toString()}`;

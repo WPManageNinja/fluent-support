@@ -428,13 +428,13 @@ export default {
             }
 
             if (agents === '') {
-                agents = '';
                 handleError(translate('No agent found, Please select or make sure you have agents to export'));
                 return false;
             }
 
             location.href = window.ajaxurl + '?' + jQuery.param({
                 action: 'fs_export_agent_report',
+                _wpnonce: fluentSupportAdmin.nonce,
                 columns: state.selected_options,
                 from_date: from,
                 to_date: to,
