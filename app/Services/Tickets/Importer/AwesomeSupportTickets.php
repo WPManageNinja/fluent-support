@@ -96,7 +96,7 @@ class AwesomeSupportTickets extends BaseImporter
                 $customerData = $this->resolvePerson($ticket->post_author);
 
                 if (!$customerData) {
-                    continue;
+                    $customerData = $this->getUnknownCustomerData($ticket->post_author);
                 }
 
                 $replies = $this->getReplies($ticket);

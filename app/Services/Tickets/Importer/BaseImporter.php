@@ -403,4 +403,13 @@ abstract class BaseImporter
             'email'     => $person->user_email
         ];
     }
+
+    public function getUnknownCustomerData($authorId): array
+    {
+        return [
+            'user_id'   => 0,
+            'full_name' => 'Unknown User',
+            'email'     => 'unknown-' . $authorId . '@example.com',
+        ];
+    }
 }
