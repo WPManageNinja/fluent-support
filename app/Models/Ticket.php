@@ -1034,6 +1034,8 @@ class Ticket extends Model
 
         $createCustomer = Customer::create($customerData);
 
+        do_action('fluent_support/customer_created', $createCustomer);
+
         if (!$createCustomer) {
             return false;
         }
