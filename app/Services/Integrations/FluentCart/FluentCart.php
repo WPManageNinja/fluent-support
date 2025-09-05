@@ -2,6 +2,7 @@
 
 namespace FluentSupport\App\Services\Integrations\FluentCart;
 use FluentCart\App\Models\Order;
+use FluentSupport\App\Services\Helper;
 use FluentSupport\Framework\Support\Arr;
 use FluentSupport\App\Models\Customer;
 
@@ -12,6 +13,9 @@ class FluentCart
         add_filter('fluent_support/customer_extra_widgets', array($this, 'getFluentCartPurchaseWidgets'), 120, 2);
         add_filter('fluent_support/customer_extra_widgets', array($this, 'getFluentCartProLicenseWidget'), 125, 2);
         add_action('fluent_cart/order_created', [$this, 'addCustomer'], 10, 1);
+        if (!apply_filters('fluent_support/disable_fc_menu', false)) {
+            $this->renderCustomerPortalInFluentCartDashboard();
+        }
     }
 
     public function getFluentCartPurchaseWidgets($widgets, $customer)
@@ -293,4 +297,19 @@ class FluentCart
         return null;
     }
 
+    private function renderCustomerPortalInFluentCartDashboard()
+    {
+        if (!function_exists('fluent_cart_api') || Helper::getBusinessSettings('enable_fc_menu') != 'yes' ) {
+            return;
+        }
+
+        fluent_cart_api()->addCustomerDashboardEndpoint('fluent-support', [
+            'title'           => __('Support', 'fluent-support'),
+            'render_callback' => function () {
+                echo do_shortcode('[fluent_support_portal]');
+            },
+            'priority'        => 'high',
+            'page_id_x'       => apply_filters('fluent_support/fc_menu_page_id', 573),
+        ]);
+    }
 }
