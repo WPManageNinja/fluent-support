@@ -7,7 +7,7 @@ use FluentSupport\Framework\Support\Arr;
 use WP_Error;
 class FluentBotHelper
 {
-    const BASE_URL = 'http://beta.fluentbot.ai:8100';
+    const BASE_URL = 'https://beta.fluentbot.ai/ai';
 
     const ENDPOINTS = [
         'default' => '/responses',
