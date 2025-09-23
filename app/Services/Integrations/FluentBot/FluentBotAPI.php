@@ -87,24 +87,42 @@ class FluentBotAPI
                 if (trim($event)) {
                     $lines = explode("\n", $event);
                     $eventType = '';
-                    $eventData = '';
+                    $eventId = '';
+                    $eventDataLines = [];
 
                     foreach ($lines as $line) {
                         if (strpos($line, 'event: ') === 0) {
                             $eventType = trim(substr($line, 7));
+                        } elseif (strpos($line, 'id: ') === 0) {
+                            $eventId = trim(substr($line, 4));
                         } elseif (strpos($line, 'data: ') === 0) {
-                            $eventData = substr($line, 6);
+                            $eventDataLines[] = substr($line, 6);
                         }
                     }
 
-                    // Forward the event to the browser
-                    if ($eventType && $eventData !== null) {
+                    // Forward the event to the browser with proper formatting
+                    if ($eventType) {
                         echo "event: {$eventType}\n";
-                        echo "data: {$eventData}\n\n";
+
+                        // Include ID if present
+                        if ($eventId !== '') {
+                            echo "id: {$eventId}\n";
+                        }
+
+                        // Handle multiple data lines properly
+                        if (!empty($eventDataLines)) {
+                            foreach ($eventDataLines as $dataLine) {
+                                echo "data: {$dataLine}\n";
+                            }
+                        } else {
+                            echo "data: \n";
+                        }
+
+                        echo "\n";
 
                         // Store conversation_id for later use
-                        if ($eventType === 'conversation_id') {
-                            $conversationId = $eventData;
+                        if ($eventType === 'conversation_id' && !empty($eventDataLines)) {
+                            $conversationId = $eventDataLines[0];
                         }
 
                         flush();
