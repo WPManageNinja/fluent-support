@@ -262,40 +262,30 @@ export default {
                 .trim();
         };
 
-        // New improved markdown formatting
+        // Optimized markdown formatting with reduced recalculations
         const formattedResponse = computed(() => {
             if (!state.aiResponse) return '';
 
-            // Pre-process the text to fix common streaming issues
-            let text = state.aiResponse
-                .replace(/([a-z])([A-Z][a-z])/g, '$1 $2') // Fix missing spaces between concatenated words
-                .replace(/\n{3,}/g, '\n\n') // Normalize excess line breaks
+            // Use raw text without preprocessing to avoid extra gaps
+            let text = state.aiResponse;
 
-                // Fix broken code blocks
-                .replace(/```(\w*)\s*([\s\S]*?)```/g, (match, lang, code) => {
-                    // Ensure code blocks are properly formatted
-                    return `\n\n\`\`\`${lang}\n${code.trim()}\n\`\`\`\n\n`;
-                })
+            // Simple HTML conversion to match backend formatting
+            const html = text
+                // Convert **bold** to <strong>
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                // Convert numbered lists
+                .replace(/^(\d+\.\s+)/gm, '<strong>$1</strong>')
+                // Convert bullet points with proper formatting: *   **Text:** becomes • Text:
+                .replace(/^\s*\*\s+\*\*(.*?)\*\*/gm, '&nbsp;&nbsp;&nbsp;&nbsp;• <strong>$1</strong>')
+                // Convert regular bullet points: *   Text becomes • Text
+                .replace(/^\s*\*\s+/gm, '&nbsp;&nbsp;&nbsp;&nbsp;• ')
+                // Convert line breaks to <br>
+                .replace(/\n/g, '<br>');
 
-                // Handle broken inline code
-                .replace(/`([^`\n]+)`/g, '`$1`')
-
-                // Fix bullet points
-                .replace(/([.!?])\s*•/g, '$1\n\n•')
-                .replace(/•\s*([A-Z])/g, '• $1')
-
-                // Fix numbered lists
-                .replace(/([.!?])\s*(\d+\.)/g, '$1\n\n$2')
-
-                // Ensure proper spacing
-                .replace(/([.!?])\s*([A-Z])/g, '$1\n\n$2'); // Line break after sentences
-
-            // Convert to HTML using marked
-            const html = marked.parse(text);
-
-            // Sanitize and return
+            // Sanitize and return the HTML output
             return DOMPurify.sanitize(html);
         });
+
 
         const saveDraft = () => {
             const draftKey = 'createResponseDraft';
@@ -311,8 +301,10 @@ export default {
         };
 
         const addToStream = (text) => {
-            // Display text immediately without queuing
-            state.aiResponse += text;
+            // Don't clean the text here - preserve original formatting from SSE
+            if (text) {
+                state.aiResponse += text;
+            }
         };
 
         const generateResponse = (prompt) => {
@@ -390,31 +382,33 @@ export default {
                                 if (event.trim()) {
                                     const lines = event.split('\n');
                                     let eventType = '';
-                                    let data = '';
+                                    let eventId = '';
+                                    let dataLines = [];
 
                                     lines.forEach(line => {
                                         if (line.startsWith('event: ')) {
                                             eventType = line.substring(7).trim();
+                                        } else if (line.startsWith('id: ')) {
+                                            eventId = line.substring(4).trim();
                                         } else if (line.startsWith('data: ')) {
-                                            data += line.substring(6);
+                                            dataLines.push(line.substring(6));
                                         }
                                     });
 
+                                    // Join data lines preserving original structure
+                                    const data = dataLines.join('\n');
+
                                     // Only append message events and ignore control characters
                                     if (eventType === 'message' && data && data !== '<|>') {
-                                        // Add to stream buffer and display immediately
+                                        // Add to stream buffer and display immediately - preserve original formatting
                                         state.streamBuffer += data;
                                         addToStream(data);
                                     } else if (eventType === 'conversation_id' && data) {
                                         state.conversationId = data.trim();
                                     } else if (eventType === 'end') {
-                                        // Stream completed - wait for typing to finish
                                         state.loading = false;
                                         state.isStreaming = false;
-
-                                        // Finalize immediately since we're using direct streaming
                                         state.finalPrompts = trimmedPrompt;
-
                                         if (state.prompt || state.aiResponse) {
                                             state.selectedPrompt = '';
                                             saveDraft();
@@ -439,7 +433,6 @@ export default {
                     state.loading = false;
                     state.isStreaming = false;
                     state.errorMessage = 'Failed to generate response. Please try again.';
-                    console.error('Streaming error:', error);
                 });
         };
 
@@ -473,7 +466,6 @@ export default {
                     position: "bottom-right",
                 });
             } catch (error) {
-                console.error('Copy error:', error);
                 notify({
                     message: "Something went wrong",
                     type: "danger",
