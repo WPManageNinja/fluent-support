@@ -262,28 +262,21 @@ export default {
                 .trim();
         };
 
-        // Optimized markdown formatting with reduced recalculations
+        // Use marked library for markdown formatting
         const formattedResponse = computed(() => {
             if (!state.aiResponse) return '';
 
-            // Use raw text without preprocessing to avoid extra gaps
-            let text = state.aiResponse;
+            try {
+                // Use marked to convert markdown to HTML
+                const html = marked.parse(state.aiResponse);
 
-            // Simple HTML conversion to match backend formatting
-            const html = text
-                // Convert **bold** to <strong>
-                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                // Convert numbered lists
-                .replace(/^(\d+\.\s+)/gm, '<strong>$1</strong>')
-                // Convert bullet points with proper formatting: *   **Text:** becomes • Text:
-                .replace(/^\s*\*\s+\*\*(.*?)\*\*/gm, '&nbsp;&nbsp;&nbsp;&nbsp;• <strong>$1</strong>')
-                // Convert regular bullet points: *   Text becomes • Text
-                .replace(/^\s*\*\s+/gm, '&nbsp;&nbsp;&nbsp;&nbsp;• ')
-                // Convert line breaks to <br>
-                .replace(/\n/g, '<br>');
-
-            // Sanitize and return the HTML output
-            return DOMPurify.sanitize(html);
+                // Sanitize and return the HTML output
+                return DOMPurify.sanitize(html);
+            } catch (error) {
+                console.error('Error parsing markdown:', error);
+                // Fallback to plain text with line breaks
+                return DOMPurify.sanitize(state.aiResponse.replace(/\n/g, '<br>'));
+            }
         });
 
 
@@ -759,21 +752,31 @@ export default {
     list-style-type: disc;
     margin-left: 1.5em;
     margin-bottom: 1em;
+    padding-left: 0;
 }
 
 .fs_response_text ol {
     list-style-type: decimal;
     margin-left: 1.5em;
     margin-bottom: 1em;
+    padding-left: 0;
+}
+
+.fs_response_text li {
+    margin-bottom: 0.5em;
+    line-height: 1.6;
 }
 
 .fs_response_text h1,
 .fs_response_text h2,
 .fs_response_text h3,
-.fs_response_text h4 {
+.fs_response_text h4,
+.fs_response_text h5,
+.fs_response_text h6 {
     margin-top: 1.5em;
     margin-bottom: 0.5em;
     font-weight: 600;
+    color: #1a1a1a;
 }
 
 .fs_response_text h1 {
@@ -790,6 +793,14 @@ export default {
 
 .fs_response_text h4 {
     font-size: 1.1em;
+}
+
+.fs_response_text h5 {
+    font-size: 1.05em;
+}
+
+.fs_response_text h6 {
+    font-size: 1em;
 }
 
 .fs_response_text blockquote {
