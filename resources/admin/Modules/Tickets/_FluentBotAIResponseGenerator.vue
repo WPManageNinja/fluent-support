@@ -140,12 +140,13 @@
 </template>
 
 <script>
-import { reactive, toRefs, onMounted, computed, onBeforeUnmount } from "vue";
+import { reactive, toRefs, onMounted, computed, onBeforeUnmount, nextTick, watch } from "vue";
 import { useRoute } from "vue-router";
 import { useFluentHelper, useNotify } from "@/admin/Composable/FluentFrameworkHelper";
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 import hljs from 'highlight.js';
+import 'highlight.js/styles/github.css'; // GitHub theme for syntax highlighting
 
 export default {
     name: 'FluentBotAIResponseGenerator',
@@ -159,7 +160,7 @@ export default {
 
         // Configure marked with highlight.js
         marked.setOptions({
-            breaks: true,
+            breaks: false,
             gfm: true,
             headerIds: false,
             mangle: false,
@@ -267,8 +268,13 @@ export default {
             if (!state.aiResponse) return '';
 
             try {
+                // Clean up the response by removing empty lines before sending to marked
+                const cleanedResponse = state.aiResponse
+                    // .split('\n')
+                    // .filter(line => line.trim() !== '')
+                    // .join('\n');
                 // Use marked to convert markdown to HTML
-                const html = marked.parse(state.aiResponse);
+                const html = marked.parse(cleanedResponse);
 
                 // Sanitize and return the HTML output
                 return DOMPurify.sanitize(html);
@@ -277,6 +283,14 @@ export default {
                 // Fallback to plain text with line breaks
                 return DOMPurify.sanitize(state.aiResponse.replace(/\n/g, '<br>'));
             }
+        });
+
+        // Watch for changes in formattedResponse and trigger syntax highlighting
+        watch(formattedResponse, () => {
+            nextTick(() => {
+                // Re-highlight all code blocks after DOM update
+                hljs.highlightAll();
+            });
         });
 
 
@@ -295,7 +309,8 @@ export default {
 
         const addToStream = (text) => {
             // Don't clean the text here - preserve original formatting from SSE
-            if (text) {
+            // But filter out empty or whitespace-only content before sending to marked
+            if (text && text.trim() !== '') {
                 state.aiResponse += text;
             }
         };
@@ -367,54 +382,104 @@ export default {
                             const chunk = decoder.decode(value, { stream: true });
                             buffer += chunk;
 
-                            // Process complete SSE events
-                            const events = buffer.split('\n\n');
-                            buffer = events.pop() || ''; // Keep incomplete event in buffer
+                            // Process SSE data line by line to handle malformed events
+                            const lines = buffer.split('\n');
+                            let processedLines = [];
+                            let currentDataLines = [];
+                            let currentEventType = 'message'; // Default to message
+                            let currentEventId = '';
 
-                            events.forEach(event => {
-                                if (event.trim()) {
-                                    const lines = event.split('\n');
-                                    let eventType = '';
-                                    let eventId = '';
-                                    let dataLines = [];
+                            for (let i = 0; i < lines.length; i++) {
+                                const line = lines[i];
 
-                                    lines.forEach(line => {
-                                        if (line.startsWith('event: ')) {
-                                            eventType = line.substring(7).trim();
-                                        } else if (line.startsWith('id: ')) {
-                                            eventId = line.substring(4).trim();
-                                        } else if (line.startsWith('data: ')) {
-                                            dataLines.push(line.substring(6));
+                                if (line.startsWith('event: ')) {
+                                    // Process any accumulated data before switching events
+                                    if (currentDataLines.length > 0) {
+                                        const data = currentDataLines.join('\n');
+                                        if (currentEventType === 'message' && data && data !== '<|>' && data.trim() !== '') {
+                                            state.streamBuffer += data;
+                                            addToStream(data);
+                                        } else if (currentEventType === 'conversation_id' && data) {
+                                            state.conversationId = data.trim();
+                                        } else if (currentEventType === 'end') {
+                                            state.loading = false;
+                                            state.isStreaming = false;
+                                            state.finalPrompts = trimmedPrompt;
+                                            if (state.prompt || state.aiResponse) {
+                                                state.selectedPrompt = '';
+                                                saveDraft();
+                                            }
+                                            return;
+                                        } else if (currentEventType === 'error') {
+                                            state.loading = false;
+                                            state.isStreaming = false;
+                                            state.errorMessage = 'Failed to generate response. Please try again.';
+                                            return;
                                         }
-                                    });
-
-                                    // Join data lines preserving original structure
-                                    const data = dataLines.join('\n');
-
-                                    // Only append message events and ignore control characters
-                                    if (eventType === 'message' && data && data !== '<|>') {
-                                        // Add to stream buffer and display immediately - preserve original formatting
-                                        state.streamBuffer += data;
-                                        addToStream(data);
-                                    } else if (eventType === 'conversation_id' && data) {
-                                        state.conversationId = data.trim();
-                                    } else if (eventType === 'end') {
-                                        state.loading = false;
-                                        state.isStreaming = false;
-                                        state.finalPrompts = trimmedPrompt;
-                                        if (state.prompt || state.aiResponse) {
-                                            state.selectedPrompt = '';
-                                            saveDraft();
+                                        currentDataLines = [];
+                                    }
+                                    currentEventType = line.substring(7).trim();
+                                } else if (line.startsWith('id: ')) {
+                                    currentEventId = line.substring(4).trim();
+                                } else if (line.startsWith('data: ')) {
+                                    currentDataLines.push(line.substring(6));
+                                } else if (line.trim() === '') {
+                                    // Empty line - process accumulated data
+                                    if (currentDataLines.length > 0) {
+                                        const data = currentDataLines.join('\n');
+                                        if (currentEventType === 'message' && data && data !== '<|>' && data.trim() !== '') {
+                                            state.streamBuffer += data;
+                                            addToStream(data);
+                                        } else if (currentEventType === 'conversation_id' && data) {
+                                            state.conversationId = data.trim();
+                                        } else if (currentEventType === 'end') {
+                                            state.loading = false;
+                                            state.isStreaming = false;
+                                            state.finalPrompts = trimmedPrompt;
+                                            if (state.prompt || state.aiResponse) {
+                                                state.selectedPrompt = '';
+                                                saveDraft();
+                                            }
+                                            return;
+                                        } else if (currentEventType === 'error') {
+                                            state.loading = false;
+                                            state.isStreaming = false;
+                                            state.errorMessage = 'Failed to generate response. Please try again.';
+                                            return;
                                         }
-                                        return;
-                                    } else if (eventType === 'error') {
-                                        state.loading = false;
-                                        state.isStreaming = false;
-                                        state.errorMessage = 'Failed to generate response. Please try again.';
-                                        return;
+                                        currentDataLines = [];
                                     }
                                 }
-                            });
+                                processedLines.push(line);
+                            }
+
+                            // Process any remaining data
+                            if (currentDataLines.length > 0) {
+                                const data = currentDataLines.join('\n');
+                                if (currentEventType === 'message' && data && data !== '<|>' && data.trim() !== '') {
+                                    state.streamBuffer += data;
+                                    addToStream(data);
+                                } else if (currentEventType === 'conversation_id' && data) {
+                                    state.conversationId = data.trim();
+                                } else if (currentEventType === 'end') {
+                                    state.loading = false;
+                                    state.isStreaming = false;
+                                    state.finalPrompts = trimmedPrompt;
+                                    if (state.prompt || state.aiResponse) {
+                                        state.selectedPrompt = '';
+                                        saveDraft();
+                                    }
+                                    return;
+                                } else if (currentEventType === 'error') {
+                                    state.loading = false;
+                                    state.isStreaming = false;
+                                    state.errorMessage = 'Failed to generate response. Please try again.';
+                                    return;
+                                }
+                            }
+
+                            // Keep the last incomplete line in buffer
+                            buffer = lines[lines.length - 1] || '';
 
                             return readStream();
                         });
@@ -481,9 +546,9 @@ export default {
         };
 
         const insertReply = (aiResponse) => {
-            // Create a clean version for text editor insertion
-            const cleanText = getCleanTextForEditor(aiResponse);
-            emit('insert', cleanText);
+            // Use the formatted version that preserves code blocks
+            const formattedText = getFormattedTextForEditor(aiResponse);
+            emit('insert', formattedText);
             resetData();
         };
 
@@ -619,82 +684,35 @@ export default {
     100% { opacity: 0.3; }
 }
 
-/* Add a subtle cursor effect to the response text while typing */
+/* Minimal formatting - highlight.js handles code styling */
 .fs_response_content {
     position: relative;
 }
 
 .fs_response_text {
-    white-space: pre-line; /* Preserve line breaks but collapse multiple spaces */
-    word-wrap: break-word;
     line-height: 1.6;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-.fs_response_text p {
-    margin: 0 0 1em 0;
-    white-space: pre-line; /* Preserve line breaks within paragraphs */
+/* List styling with single indent and no extra spacing */
+.fs_response_text ul {
+    margin: 0;
+    padding-left: 1.2em;
+    list-style-type: disc;
 }
 
-.fs_response_text p:last-child {
-    margin-bottom: 0;
+.fs_response_text ol {
+    margin: 0;
+    padding-left: 1.2em;
+    list-style-type: decimal;
 }
 
-.fs_response_text br {
-    line-height: 1.6;
-}
-
-.fs_response_text strong {
-    font-weight: 600;
-    color: #1a1a1a;
-}
-
-.fs_response_text em {
-    font-style: italic;
-}
-
-.fs_response_text code {
-    background-color: #f1f3f4;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-    font-size: 0.9em;
-    color: #d73a49;
-}
-
-.fs_response_text pre {
-    background-color: #f6f8fa;
-    border: 1px solid #e1e4e8;
-    border-radius: 6px;
-    padding: 16px;
-    overflow-x: auto;
-    margin: 1em 0;
-    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-    font-size: 14px;
-    line-height: 1.4;
-}
-
-.fs_response_text pre code {
-    background: none;
+.fs_response_text li {
+    margin: 0;
     padding: 0;
-    border-radius: 0;
-    color: #24292e;
-    font-family: inherit;
-    font-size: inherit;
-    white-space: pre-wrap; /* Allow line wrapping */
-    word-wrap: break-word;
-    display: block;
-    line-height: 1.5;
 }
 
-.fs_response_text code.language-php {
-    color: #d73a49;
-}
-
-.fs_response_text pre code.language-php {
-    color: #24292e;
-}
-
+/* Keep essential bullet point handling for streaming */
 .fs_response_text .bullet-point {
     margin-left: 0;
     padding-left: 0;
@@ -703,15 +721,6 @@ export default {
 .fs_response_text span.bullet-point {
     display: inline;
     margin-left: 0;
-}
-
-.fs_response_text a {
-    color: #0366d6;
-    text-decoration: none;
-}
-
-.fs_response_text a:hover {
-    text-decoration: underline;
 }
 
 .fs_response_content.typing::after {
@@ -736,94 +745,5 @@ export default {
 .fs_textarea:disabled {
     opacity: 0.6;
     cursor: not-allowed;
-}
-
-/* Additional styles for highlight.js integration */
-.hljs {
-    display: block;
-    overflow-x: auto;
-    padding: 0.5em;
-    color: #333;
-    background: #f8f8f8;
-}
-
-/* Style fixes for markdown formatting */
-.fs_response_text ul {
-    list-style-type: disc;
-    margin-left: 1.5em;
-    margin-bottom: 1em;
-    padding-left: 0;
-}
-
-.fs_response_text ol {
-    list-style-type: decimal;
-    margin-left: 1.5em;
-    margin-bottom: 1em;
-    padding-left: 0;
-}
-
-.fs_response_text li {
-    margin-bottom: 0.5em;
-    line-height: 1.6;
-}
-
-.fs_response_text h1,
-.fs_response_text h2,
-.fs_response_text h3,
-.fs_response_text h4,
-.fs_response_text h5,
-.fs_response_text h6 {
-    margin-top: 1.5em;
-    margin-bottom: 0.5em;
-    font-weight: 600;
-    color: #1a1a1a;
-}
-
-.fs_response_text h1 {
-    font-size: 1.4em;
-}
-
-.fs_response_text h2 {
-    font-size: 1.3em;
-}
-
-.fs_response_text h3 {
-    font-size: 1.2em;
-}
-
-.fs_response_text h4 {
-    font-size: 1.1em;
-}
-
-.fs_response_text h5 {
-    font-size: 1.05em;
-}
-
-.fs_response_text h6 {
-    font-size: 1em;
-}
-
-.fs_response_text blockquote {
-    padding-left: 1em;
-    border-left: 4px solid #e1e4e8;
-    color: #6a737d;
-    margin: 0 0 1em;
-}
-
-.fs_response_text table {
-    border-collapse: collapse;
-    width: 100%;
-    margin-bottom: 1em;
-}
-
-.fs_response_text table th,
-.fs_response_text table td {
-    padding: 8px;
-    border: 1px solid #e1e4e8;
-    text-align: left;
-}
-
-.fs_response_text table th {
-    background-color: #f6f8fa;
 }
 </style>
