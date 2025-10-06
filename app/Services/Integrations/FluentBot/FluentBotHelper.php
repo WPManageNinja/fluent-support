@@ -14,36 +14,17 @@ class FluentBotHelper
         'ticket_reply' => '/chat/fs-completion',
     ];
 
-    public function generateResponse($prompt, $ticket, $productId, $conversationId = null)
-    {
-        $prompt = apply_filters('fluent_support/generate_response', $prompt, $ticket);
-        $payload = [
-            'ticket_conversation' => $this->getTicketMessages($ticket),
-        ];
-
-        if ($conversationId) {
-            $payload['conversation_id'] = $conversationId;
-        }
-
-        $payload['prompt'] = $prompt;
-        $payload['stream'] = false;
-        return $this->makeAPICall($payload, $prompt, $ticket->id,'ticket_reply', $productId);
-    }
-
     public function generateStreamResponse($prompt, $ticket, $productId, $conversationId = null)
     {
         $prompt = apply_filters('fluent_support/generate_response', $prompt, $ticket);
         $payload = [
             'ticket_conversation' => $this->getTicketMessages($ticket),
+            'source' => 'fluent_support',
+            'prompt' => $prompt,
+            'stream' => true,
+            'conversation_id' => $conversationId ?? null,
         ];
-
-        if ($conversationId) {
-            $payload['conversation_id'] = $conversationId;
-        }
-
-        $payload['prompt'] = $prompt;
-        $payload['stream'] = true;
-        return $this->makeStreamAPICall($payload, $prompt, $ticket->id,'ticket_reply', $productId);
+        return $this->makeStreamAPICall($payload, $prompt, $ticket->id, 'ticket_reply', $productId);
     }
 
     public function modifyResponse($prompt, $selectedText, $ticketId)
@@ -109,7 +90,7 @@ class FluentBotHelper
         $payload['bot_id'] = $credentials['botId'];
 
         $api = new FluentBotAPI($credentials['apiKey'], $apiUrl);
-        $result = $api->makeRequest($ticketId, $payload, $prompt);
+        $result = $api->makeRequest($ticketId, $prompt, $payload);
 
         // For ticket_reply endpoint, return the full result with conversation_id
         // For other endpoints, return just the content for backward compatibility
@@ -137,7 +118,7 @@ class FluentBotHelper
         $payload['bot_id'] = $credentials['botId'];
 
         $api = new FluentBotAPI($credentials['apiKey'], $apiUrl);
-        $api->makeStreamRequest($ticketId, $payload, $prompt);
+        $api->makeStreamRequest($ticketId, $prompt, $payload);
     }
 
     private function resolveApiCredentials($productId)

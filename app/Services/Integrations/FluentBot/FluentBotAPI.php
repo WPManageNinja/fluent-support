@@ -15,7 +15,7 @@ class FluentBotAPI
         $this->apiUrl = $apiUrl;
     }
 
-    public function makeRequest(int $ticketId, array $args = [], $prompt)
+    public function makeRequest(int $ticketId, $prompt, array $args = [])
     {
         $response = $this->sendRequest($args);
 
@@ -59,7 +59,7 @@ class FluentBotAPI
         ];
     }
 
-    public function makeStreamRequest(int $ticketId, array $args = [], $prompt)
+    public function makeStreamRequest(int $ticketId, $prompt, array $args = [])
     {
         $timeout = apply_filters('fs_ai_request_timeout', 120);
 

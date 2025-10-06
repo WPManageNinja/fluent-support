@@ -396,7 +396,7 @@ export default {
                                     // Process any accumulated data before switching events
                                     if (currentDataLines.length > 0) {
                                         const data = currentDataLines.join('\n');
-                                        if (currentEventType === 'message' && data && data !== '<|>' && data.trim() !== '') {
+                                        if (currentEventType === 'message' && data && data.trim() !== '') {
                                             state.streamBuffer += data;
                                             addToStream(data);
                                         } else if (currentEventType === 'conversation_id' && data) {
@@ -427,7 +427,7 @@ export default {
                                     // Empty line - process accumulated data
                                     if (currentDataLines.length > 0) {
                                         const data = currentDataLines.join('\n');
-                                        if (currentEventType === 'message' && data && data !== '<|>' && data.trim() !== '') {
+                                        if (currentEventType === 'message' && data && data.trim() !== '') {
                                             state.streamBuffer += data;
                                             addToStream(data);
                                         } else if (currentEventType === 'conversation_id' && data) {
@@ -456,7 +456,7 @@ export default {
                             // Process any remaining data
                             if (currentDataLines.length > 0) {
                                 const data = currentDataLines.join('\n');
-                                if (currentEventType === 'message' && data && data !== '<|>' && data.trim() !== '') {
+                                if (currentEventType === 'message' && data && data.trim() !== '') {
                                     state.streamBuffer += data;
                                     addToStream(data);
                                 } else if (currentEventType === 'conversation_id' && data) {
