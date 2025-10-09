@@ -43,9 +43,7 @@ class PersonsMigrator
                 INDEX `idx_user_id` (`user_id`),
                 INDEX `idx_ip_address` (`ip_address`)
             ) $charsetCollate;";
-            require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
             $created = dbDelta($sql);
-            update_option('fs_persons_table_status', true, 'no');
             return $created;
         } else {
             static::alterTable($table);
@@ -70,17 +68,16 @@ class PersonsMigrator
         // Get existing columns
         $existing_columns = $wpdb->get_col("DESC `$table`", 0);
 
-        // Desired columns to add if missing
-        $columns = [
-            'title' => 'ALTER TABLE `' . $table . '` ADD `title` VARCHAR(192) NULL AFTER `email`',
-            'description' => 'ALTER TABLE `' . $table . '` ADD `description` MEDIUMTEXT NULL AFTER `user_id`'
-        ];
+        // @todo: We will remove this on final release
+        // This is only for beta users
+        if (!in_array('title', $existing_columns)) {
+            $query = 'ALTER TABLE `' . $table . '` ADD `title` VARCHAR(192) NULL AFTER `email`';
+            $wpdb->query($query);
+        }
 
-        // Add missing columns
-        foreach ($columns as $column_name => $sql) {
-            if (!in_array($column_name, $existing_columns)) {
-                $wpdb->query($sql);
-            }
+        if (!in_array('description', $existing_columns)) {
+            $query = 'ALTER TABLE `' . $table . '` ADD `description` MEDIUMTEXT NULL AFTER `user_id`';
+            $wpdb->query($query);
         }
     }
 
