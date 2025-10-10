@@ -18,10 +18,15 @@
         </div>
         <div class="fs_tk_filter">
             <label>{{$t('Product')}}</label>
-            <el-select clearable filterable  @change="fetchTickets()" v-model="filters.product_id"
-                       :placeholder="$t('All Products')">
-                <el-option v-for="product in appVars.support_products" :key="product.id" :value="product.id"
-                           :label="product.title"></el-option>
+            <el-select 
+                @change="fetchTickets()" 
+                v-model="filters.product_id"
+                :placeholder="$t('All Products')"
+                multiple
+                clearable
+                :popper-append-to-body=true
+                collapse-tags>
+                <el-option v-for="product in appVars.support_products" :key="product.id" :value="product.id" :label="product.title"></el-option>
             </el-select>
         </div>
         <div class="fs_tk_filter">

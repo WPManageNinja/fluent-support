@@ -235,7 +235,12 @@ class Ticket extends Model
                     $query->whereIn('status', $statusArray);
                 }
             } else if (in_array($filterKey, $supportedColumns)) {
-                $query->where($filterKey, $filterValue);
+                // Use whereIn for product_id (always expects array) and where for other columns
+                if ($filterKey === 'product_id') {
+                    $query->whereIn($filterKey, $filterValue);
+                } else {
+                    $query->where($filterKey, $filterValue);
+                }
             } else if ($filterKey == 'waiting_for_reply') {
                 if ($filterValue != 'yes') {
                     continue;
