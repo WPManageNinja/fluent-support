@@ -14,8 +14,6 @@ class AttachmentsMigrator
 
         $table = $wpdb->prefix . static::$tableName;
 
-        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-
         if ($wpdb->get_var("SHOW TABLES LIKE '$table'") != $table) {
             $sql = "CREATE TABLE $table (
                 `id` BIGINT(20) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -42,14 +40,7 @@ class AttachmentsMigrator
             $created = dbDelta($sql);
             return $created;
         } else {
-            // @todo: We will remove this on final release
-            // This is only for beta users
-            $existing_columns = $wpdb->get_col("DESC {$table}", 0);
-            if(!in_array('status', $existing_columns)) {
-                $query = "ALTER TABLE {$table} ADD `status` VARCHAR(100) NULL DEFAULT 'active' AFTER `driver`";
-                $wpdb->query($query);
-            }
-            static::addMissingIndexes($table);
+            static::alterTable($table);
         }
 
         return false;
@@ -57,6 +48,13 @@ class AttachmentsMigrator
 
     public static function alterTable($table) 
     {
+        // @todo: We will remove this on final release
+        // This is only for beta users
+        $existing_columns = $wpdb->get_col("DESC {$table}", 0);
+        if(!in_array('status', $existing_columns)) {
+            $query = "ALTER TABLE {$table} ADD `status` VARCHAR(100) NULL DEFAULT 'active' AFTER `driver`";
+            $wpdb->query($query);
+        }
         static::addMissingIndexes($table);
     }
 

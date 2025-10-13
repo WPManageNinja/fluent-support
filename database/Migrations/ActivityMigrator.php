@@ -31,7 +31,6 @@ class ActivityMigrator
                 INDEX `idx_object_type` (`object_type`),
                 INDEX `idx_created_at` (`created_at`)
             ) $charsetCollate;";
-            require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
             $created = dbDelta($sql);
             return $created;
         } else {
