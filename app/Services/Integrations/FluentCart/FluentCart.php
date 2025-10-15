@@ -269,8 +269,6 @@ class FluentCart
         return $statusMap[$orderStatus] ?? 'pending'; // Default to 'pending' if not found
     }
 
-
-
     private function renderCustomerPortalInFluentCartDashboard()
     {
         if (!function_exists('fluent_cart_api') || Helper::getBusinessSettings('enable_fc_menu') != 'yes' ) {

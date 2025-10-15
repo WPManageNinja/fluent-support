@@ -146,7 +146,6 @@
                             <span class="fct_status_indicator" :class="'fct_status_' + product.status.toLowerCase()">
                                 <span class="fct_status_dot"></span>
                                 {{ product.status }}
-                                <span class="fct_status_paid">(paid)</span>
                             </span>
                             <div class="fct_order_links">
                                 <a
