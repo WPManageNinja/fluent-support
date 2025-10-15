@@ -60,6 +60,7 @@ import {
     MuteNotification,
     FolderAdd,
     FolderChecked,
+    ShoppingBag,
 } from '@element-plus/icons-vue/dist';
 
 const icons = [
@@ -116,6 +117,7 @@ const icons = [
     MagicStick,
     FolderAdd,
     FolderChecked,
+    ShoppingBag,
 ];
 
 const app = createApp({});

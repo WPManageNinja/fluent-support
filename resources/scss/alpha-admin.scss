@@ -1433,6 +1433,23 @@ textarea {
     align-items: center;
 }
 
+.fs_order_box_card{
+    margin-top: 20px;
+}
+.fs_order_card_header, .fs_order_card_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.fs_order_card_footer {
+    margin-top: 50px;
+    border-top: 1px solid #e4e7ed;
+    padding-top: 30px;
+}
+.fs_order_link{
+    cursor: pointer;
+}
+
 .fs_email_settings_form {
     .el-form-item__label {
         width: 100%;

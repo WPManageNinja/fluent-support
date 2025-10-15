@@ -57,6 +57,7 @@ export default class FluentFramework {
                 $timeDiff: self.humanDiffTime,
                 $waitingTime: self.waitingTime,
                 convertToText: self.convertToText,
+                getCurrencySymbol: self.getCurrencySymbol,
                 $setTitle(title) {
                     document.title = title;
                 },
@@ -261,5 +262,73 @@ export default class FluentFramework {
         time1 = moment(time1);
         time2 = moment(time2);
         return time2.from(time1);
+    }
+
+    getCurrencySymbol(currencyCode) {
+        const currencySymbols = {
+            'USD': '$',
+            'EUR': '€',
+            'GBP': '£',
+            'JPY': '¥',
+            'CNY': '¥',
+            'KRW': '₩',
+            'INR': '₹',
+            'CAD': 'C$',
+            'AUD': 'A$',
+            'CHF': 'CHF',
+            'SEK': 'kr',
+            'NOK': 'kr',
+            'DKK': 'kr',
+            'PLN': 'zł',
+            'CZK': 'Kč',
+            'HUF': 'Ft',
+            'RUB': '₽',
+            'BRL': 'R$',
+            'MXN': '$',
+            'ZAR': 'R',
+            'SGD': 'S$',
+            'HKD': 'HK$',
+            'NZD': 'NZ$',
+            'THB': '฿',
+            'MYR': 'RM',
+            'PHP': '₱',
+            'IDR': 'Rp',
+            'VND': '₫',
+            'TRY': '₺',
+            'ILS': '₪',
+            'AED': 'د.إ',
+            'SAR': 'ر.س',
+            'EGP': 'ج.م',
+            'NGN': '₦',
+            'KES': 'KSh',
+            'GHS': '₵',
+            'XOF': 'CFA',
+            'XAF': 'FCFA',
+            'MAD': 'د.م.',
+            'TND': 'د.ت',
+            'DZD': 'د.ج',
+            'LYD': 'ل.د',
+            'SDG': 'ج.س.',
+            'ETB': 'Br',
+            'UGX': 'USh',
+            'TZS': 'TSh',
+            'RWF': 'RF',
+            'MWK': 'MK',
+            'ZMW': 'ZK',
+            'BWP': 'P',
+            'SZL': 'L',
+            'LSL': 'L',
+            'NAD': 'N$',
+            'MZN': 'MT',
+            'AOA': 'Kz',
+            'CVE': '$',
+            'GMD': 'D',
+            'GNF': 'FG',
+            'LRD': 'L$',
+            'SLL': 'Le',
+            'STD': 'Db'
+        };
+
+        return currencySymbols[currencyCode] || currencyCode;
     }
 }

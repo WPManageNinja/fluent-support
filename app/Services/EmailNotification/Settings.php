@@ -221,6 +221,16 @@ class Settings
                 'checkbox_label' => __('Agent Time Tracking', 'fluent-support'),
                 'inline_help' => __("If you enable this setting, the agent can specify the amount of time needed to complete a ticket.", 'fluent-support')
             ];
+
+            if (defined('FLUENTCART_VERSION')) {
+                $fields['enable_fc_menu'] = [
+                    'type'           => 'inline-checkbox',
+                    'checkbox_label' => 'Add support link to Fluent Cart account navigation',
+                    'inline_help'    => __("If you enable this setting, support link will be added to Fluent Cart account navigation.", 'fluent-support'),
+                    'true_label'     => 'yes',
+                    'false_label'    => 'no'
+                ];
+            }
         }
 
         return $fields;

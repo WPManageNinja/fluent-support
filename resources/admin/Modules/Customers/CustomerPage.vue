@@ -102,7 +102,7 @@
                                     <div class="fs_tk_card_body">
                                         <ul>
                                             <li v-for="(order,order_key) in widget.orders" :key="order_key">
-                                                <el-tooltip :content="`Purchase date: `+order.date+`, Amount: `+order.currency+order.total" placement="top" :raw-content="true">
+                                                <el-tooltip :content="`Purchase date: `+order.date+`, Amount: `+getCurrencySymbol(order.currency)+order.total" placement="top" :raw-content="true">
                                                     <a @click="getOrderDetails(order, widget.products)" class="fs_wc_order_link">#{{order.id}}</a>
                                                 </el-tooltip>
                                                 &nbsp; - <el-tag class="ml-2" :type="getType(order.status)">{{order.status}}</el-tag>
@@ -125,9 +125,9 @@
                                                             <h2>{{$t('Billing details')}}</h2>
                                                             <p v-html="orders.orderInfo.billing_address"></p>
                                                             <p><strong>{{$t('Email')}}: </strong>{{orders.orderInfo.email}}</p>
-                                                            <p><strong>{{$t('Phone')}}: </strong>{{orders.orderInfo.phone}}</p>
-                                                            <p><strong>{{$t('Payment Via')}}: </strong>{{orders.orderInfo.payment_method}}</p>
-                                                            <p><strong>{{$t('Purchase Date')}}: </strong>{{orders.orderInfo.date}}</p>
+                                                            <p v-if="orders.orderInfo.phone"><strong>{{$t('Phone')}}: </strong>{{orders.orderInfo.phone}}</p>
+                                                            <p v-if="orders.orderInfo.payment_method"><strong>{{$t('Payment Via')}}: </strong>{{orders.orderInfo.payment_method}}</p>
+                                                            <p v-if="orders.orderInfo.date"><strong>{{$t('Purchase Date')}}: </strong>{{orders.orderInfo.date}}</p>
                                                         </div>
                                                     </el-col>
                                                     <el-col :span="12">
@@ -147,7 +147,7 @@
                                                         <el-table-column prop="product_qty" :label="$t('Quantity')" width="20%"  align="center"/>
                                                         <el-table-column label="Total" width="20%" align="center">
                                                             <template #default="scope">
-                                                                <span v-html="orders.orderInfo.currency"></span><span>{{scope.row.product_gross_revenue}}</span>
+                                                                <span>{{ getDisplayCurrency(orders.orderInfo.currency) }}</span><span>{{scope.row.product_gross_revenue}}</span>
                                                             </template>
                                                         </el-table-column>
                                                     </el-table>
@@ -227,7 +227,8 @@ export default {
             translate,
             get,
             post,
-            handleError
+            handleError,
+            getCurrencySymbol
         } = useFluentHelper();
 
         const { notify } = useNotify();
@@ -344,6 +345,15 @@ export default {
             state.canOpenProfileUploadPopup = false;
         }
 
+        const getDisplayCurrency = (currency) => {
+            // If currency is already a symbol (like from WooCommerce), return as is
+            // If it's a currency code (like from FluentCart), convert to symbol
+            if (currency && currency.length <= 3 && currency.match(/^[A-Z]{3}$/)) {
+                return getCurrencySymbol(currency);
+            }
+            return currency || '';
+        };
+
         onMounted(() => {
             fetchCustomer();
         });
@@ -361,6 +371,7 @@ export default {
             handleError,
             notify,
             getOrderDetails,
+            getDisplayCurrency,
             getType,
             beforeAvatarUpload
         }
