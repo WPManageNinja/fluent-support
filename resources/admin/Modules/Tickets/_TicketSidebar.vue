@@ -136,9 +136,8 @@
                                 {{ (product.license_type && product.license_type.includes('Subscription')) ? 'Subscription' : 'Product' }}
                             </span>
                         </div>
-                        <div class="fct_product_sites" v-if="product.sites_info">
-                            Sites: <strong>{{ product.sites_info.used }}/{{ product.sites_info.total }}</strong>
-                            <span class="fct_expired_badge" v-if="product.status === 'expired'">
+                        <div class="fct_product_sites" v-if="product.status === 'expired'">
+                            <span class="fct_expired_badge">
                                 <el-icon><Timer /></el-icon>
                                 Expired
                             </span>
@@ -675,7 +674,7 @@ export default {
     font-size: 14px;
     font-weight: 600;
     margin: 0 0 4px 0;
-    color: #1a1a1a;
+    color: #556575;
     line-height: 1.3;
 }
 
@@ -696,7 +695,7 @@ export default {
 .fct_product_price {
     font-size: 14px;
     font-weight: 600;
-    color: #1a1a1a;
+    color: #556575;
 }
 
 .fct_product_type_icon {
@@ -767,6 +766,10 @@ export default {
     background-color: #dc2626;
 }
 
+.fct_status_on-hold .fct_status_dot {
+    background-color: #f59e0b;
+}
+
 .fct_status_active {
     color: #10b981;
 }
@@ -777,6 +780,10 @@ export default {
 
 .fct_status_expired {
     color: #dc2626;
+}
+
+.fct_status_on-hold {
+    color: #f59e0b;
 }
 
 .fct_status_paid {

@@ -53,7 +53,6 @@ class FluentCart
                 'currency' => $item->order->currency,
                 'formatted_price' => $item->formatted_total,
                 'status' => $this->getProductStatus($item),
-                'sites_info' => $this->getSitesInfo($licenseType),
                 'order' => [
                     'id' => $item->order->id,
                     'invoice_no' => $item->order->invoice_no,
@@ -276,26 +275,6 @@ class FluentCart
         }
     }
 
-    /**
-     * Get sites information for the license type
-     *
-     * @param string|null $licenseType
-     * @return array|null
-     */
-    private function getSitesInfo($licenseType)
-    {
-        // Only show sites info for subscriptions
-        if ($licenseType === 'Subscription') {
-            // In a real implementation, this would come from the license data
-            return [
-                'used' => 1,
-                'total' => 1
-            ];
-        }
-
-        // Don't show sites info for lifetime licenses or one-time purchases
-        return null;
-    }
 
     private function renderCustomerPortalInFluentCartDashboard()
     {
