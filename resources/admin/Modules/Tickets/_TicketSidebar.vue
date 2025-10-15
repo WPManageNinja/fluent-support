@@ -754,36 +754,36 @@ export default {
     display: inline-block;
 }
 
-.fct_status_active .fct_status_dot {
-    background-color: #10b981;
+.fct_status_processing .fct_status_dot {
+    background-color: #4CAF50; /* Green - Common for processing/ongoing */
 }
 
 .fct_status_completed .fct_status_dot {
-    background-color: #3b82f6;
+    background-color: #2196F3; /* Blue - Often used for completed/successful tasks */
 }
 
 .fct_status_expired .fct_status_dot {
-    background-color: #dc2626;
+    background-color: #F44336; /* Red - Commonly used for expired or failed states */
 }
 
 .fct_status_on-hold .fct_status_dot {
-    background-color: #f59e0b;
+    background-color: #FF9800; /* Amber/Orange - Often used for hold/waiting states */
 }
 
-.fct_status_active {
-    color: #10b981;
+.fct_status_processing {
+    color: #4CAF50; /* Green */
 }
 
 .fct_status_completed {
-    color: #3b82f6;
+    color: #2196F3; /* Blue */
 }
 
 .fct_status_expired {
-    color: #dc2626;
+    color: #F44336; /* Red */
 }
 
 .fct_status_on-hold {
-    color: #f59e0b;
+    color: #FF9800; /* Amber/Orange */
 }
 
 .fct_status_paid {

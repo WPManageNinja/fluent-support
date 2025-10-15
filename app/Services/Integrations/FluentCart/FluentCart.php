@@ -254,26 +254,21 @@ class FluentCart
     {
         $orderStatus = $item->order->status;
 
-        switch ($orderStatus) {
-            case 'completed':
-                // For subscriptions, we might want to check if it's still active
-                if ($item->payment_type === 'subscription') {
-                    // This would need additional logic to check subscription status
-                    // For now, we'll assume completed subscriptions are active
-                    return 'active';
-                }
-                return 'completed';
-            case 'processing':
-                return 'active';
-            case 'on-hold':
-                return 'on-hold';
-            case 'canceled':
-            case 'failed':
-                return 'expired';
-            default:
-                return 'pending';
+        // Return 'canceled' for multiple statuses
+        if (in_array($orderStatus, ['canceled', 'failed'])) {
+            return 'canceled';
         }
+
+        // Return default statuses
+        $statusMap = [
+            'completed' => 'completed',
+            'processing' => 'processing',
+            'on-hold' => 'on-hold'
+        ];
+
+        return $statusMap[$orderStatus] ?? 'pending'; // Default to 'pending' if not found
     }
+
 
 
     private function renderCustomerPortalInFluentCartDashboard()
