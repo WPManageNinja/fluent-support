@@ -1,7 +1,7 @@
 let mix = require('laravel-mix');
-const AutoImport = require("unplugin-auto-import/webpack").default;
+const AutoImport = require("unplugin-auto-import/webpack");
 const {ElementPlusResolver} = require("unplugin-vue-components/resolvers");
-const Components = require("unplugin-vue-components/webpack").default;
+const Components = require("unplugin-vue-components/webpack");
 var path = require('path');
 
 mix.webpackConfig({

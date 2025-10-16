@@ -141,7 +141,6 @@
 
 <script>
 import { reactive, toRefs, onMounted, computed, onBeforeUnmount, nextTick, watch } from "vue";
-import { useRoute } from "vue-router";
 import { useFluentHelper, useNotify } from "@/admin/Composable/FluentFrameworkHelper";
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
@@ -154,7 +153,6 @@ export default {
 
     setup(props, context) {
         const { post, get, translate, handleError, appVars, saveData, getData, removeData } = useFluentHelper();
-        const route = useRoute();
         const emit = context.emit;
         const { notify } = useNotify();
 
@@ -315,6 +313,31 @@ export default {
             }
         };
 
+        // Helper function to process SSE events
+        const processEventData = (eventType, data, trimmedPrompt) => {
+            if (eventType === 'message' && data && data.trim() !== '') {
+                state.streamBuffer += data;
+                addToStream(data);
+            } else if (eventType === 'conversation_id' && data) {
+                state.conversationId = data.trim();
+            } else if (eventType === 'end') {
+                state.loading = false;
+                state.isStreaming = false;
+                state.finalPrompts = trimmedPrompt;
+                if (state.prompt || state.aiResponse) {
+                    state.selectedPrompt = '';
+                    saveDraft();
+                }
+                return true; // Signal to stop processing
+            } else if (eventType === 'error') {
+                state.loading = false;
+                state.isStreaming = false;
+                state.errorMessage = 'Failed to generate response. Please try again.';
+                return true; // Signal to stop processing
+            }
+            return false; // Continue processing
+        };
+
         const generateResponse = (prompt) => {
             const trimmedPrompt = prompt.trim();
 
@@ -396,26 +419,8 @@ export default {
                                     // Process any accumulated data before switching events
                                     if (currentDataLines.length > 0) {
                                         const data = currentDataLines.join('\n');
-                                        if (currentEventType === 'message' && data && data.trim() !== '') {
-                                            state.streamBuffer += data;
-                                            addToStream(data);
-                                        } else if (currentEventType === 'conversation_id' && data) {
-                                            state.conversationId = data.trim();
-                                        } else if (currentEventType === 'end') {
-                                            state.loading = false;
-                                            state.isStreaming = false;
-                                            state.finalPrompts = trimmedPrompt;
-                                            if (state.prompt || state.aiResponse) {
-                                                state.selectedPrompt = '';
-                                                saveDraft();
-                                            }
-                                            return;
-                                        } else if (currentEventType === 'error') {
-                                            state.loading = false;
-                                            state.isStreaming = false;
-                                            state.errorMessage = 'Failed to generate response. Please try again.';
-                                            return;
-                                        }
+                                        const shouldStop = processEventData(currentEventType, data, trimmedPrompt);
+                                        if (shouldStop) return;
                                         currentDataLines = [];
                                     }
                                     currentEventType = line.substring(7).trim();
@@ -427,26 +432,8 @@ export default {
                                     // Empty line - process accumulated data
                                     if (currentDataLines.length > 0) {
                                         const data = currentDataLines.join('\n');
-                                        if (currentEventType === 'message' && data && data.trim() !== '') {
-                                            state.streamBuffer += data;
-                                            addToStream(data);
-                                        } else if (currentEventType === 'conversation_id' && data) {
-                                            state.conversationId = data.trim();
-                                        } else if (currentEventType === 'end') {
-                                            state.loading = false;
-                                            state.isStreaming = false;
-                                            state.finalPrompts = trimmedPrompt;
-                                            if (state.prompt || state.aiResponse) {
-                                                state.selectedPrompt = '';
-                                                saveDraft();
-                                            }
-                                            return;
-                                        } else if (currentEventType === 'error') {
-                                            state.loading = false;
-                                            state.isStreaming = false;
-                                            state.errorMessage = 'Failed to generate response. Please try again.';
-                                            return;
-                                        }
+                                        const shouldStop = processEventData(currentEventType, data, trimmedPrompt);
+                                        if (shouldStop) return;
                                         currentDataLines = [];
                                     }
                                 }
@@ -456,26 +443,8 @@ export default {
                             // Process any remaining data
                             if (currentDataLines.length > 0) {
                                 const data = currentDataLines.join('\n');
-                                if (currentEventType === 'message' && data && data.trim() !== '') {
-                                    state.streamBuffer += data;
-                                    addToStream(data);
-                                } else if (currentEventType === 'conversation_id' && data) {
-                                    state.conversationId = data.trim();
-                                } else if (currentEventType === 'end') {
-                                    state.loading = false;
-                                    state.isStreaming = false;
-                                    state.finalPrompts = trimmedPrompt;
-                                    if (state.prompt || state.aiResponse) {
-                                        state.selectedPrompt = '';
-                                        saveDraft();
-                                    }
-                                    return;
-                                } else if (currentEventType === 'error') {
-                                    state.loading = false;
-                                    state.isStreaming = false;
-                                    state.errorMessage = 'Failed to generate response. Please try again.';
-                                    return;
-                                }
+                                const shouldStop = processEventData(currentEventType, data, trimmedPrompt);
+                                if (shouldStop) return;
                             }
 
                             // Keep the last incomplete line in buffer
