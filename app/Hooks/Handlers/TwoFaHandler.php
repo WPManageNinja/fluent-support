@@ -97,7 +97,7 @@ class TwoFaHandler
         }
 
         $logHash = Meta::where('key', $hash)->first();
-        $logHash = maybe_unserialize($logHash->value, []);
+        $logHash = Helper::safeUnserialize($logHash->value, []);
 
         if (!$logHash) {
             wp_send_json([

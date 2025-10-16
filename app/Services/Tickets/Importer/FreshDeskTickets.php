@@ -3,6 +3,7 @@
 namespace FluentSupport\App\Services\Tickets\Importer;
 
 use FluentSupport\App\Models\Meta;
+use FluentSupport\App\Services\Helper;
 
 class FreshDeskTickets extends BaseImporter
 {
@@ -21,7 +22,7 @@ class FreshDeskTickets extends BaseImporter
     public function stats()
     {
         $metadata = Meta::where('object_type', '_fs_freshdesk_migration_info')->first();
-        $previouslyImported = maybe_unserialize($metadata->value ?? []);
+        $previouslyImported = Helper::safeUnserialize($metadata->value ?? []);
         $previouslyImported['domain'] = $metadata->key ?? '';
         return [
             'name' => esc_html('Freshdesk'),

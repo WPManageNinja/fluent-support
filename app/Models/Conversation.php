@@ -367,7 +367,7 @@ class Conversation extends Model
             ->first();
 
         if ($exist) {
-            $value = maybe_unserialize($exist->value);
+            $value = Helper::safeUnserialize($exist->value);
             if ($valueKey) {
                 if (!is_array($value)) {
                     return $default;
@@ -388,7 +388,7 @@ class Conversation extends Model
             ->first();
 
         if ($exist) {
-            $existingValue = maybe_unserialize($exist->value);
+            $existingValue = Helper::safeUnserialize($exist->value);
 
             if (!is_array($existingValue)) {
                 $existingValue = [];

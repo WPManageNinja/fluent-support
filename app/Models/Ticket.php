@@ -1123,7 +1123,7 @@ class Ticket extends Model
         foreach ($responses as $response) {
             $response->content = links_add_target(make_clickable(wpautop($response->content, false)));
             if (!empty($response->ccinfo)) {
-                $val = maybe_unserialize($response->ccinfo->value);
+                $val = Helper::safeUnserialize($response->ccinfo->value);
                 if(isset($val['cc_email']) && !empty($val['cc_email'])){
                     $response->cc_info = $val['cc_email'];
                 } else {
@@ -1248,7 +1248,7 @@ class Ticket extends Model
         ])->first();
 
         if ($draft) {
-            $draft->value = maybe_unserialize($draft->value);
+            $draft->value = Helper::safeUnserialize($draft->value);
         }
 
         return [
@@ -1611,7 +1611,7 @@ class Ticket extends Model
             ->first();
 
         if ($exist) {
-            $value = maybe_unserialize($exist->value);
+            $value = Helper::safeUnserialize($exist->value);
             if ($valueKey) {
                 if (!is_array($value)) {
                     return $default;
@@ -1632,7 +1632,7 @@ class Ticket extends Model
             ->first();
 
         if ($exist) {
-            $existingValue = maybe_unserialize($exist->value);
+            $existingValue = Helper::safeUnserialize($exist->value);
 
             if (!is_array($existingValue)) {
                 $existingValue = [];

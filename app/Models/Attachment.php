@@ -2,6 +2,8 @@
 
 namespace FluentSupport\App\Models;
 
+use FluentSupport\App\Services\Helper;
+
 class Attachment extends Model
 {
     protected $table = 'fs_attachments';
@@ -46,7 +48,7 @@ class Attachment extends Model
 
     public function getSettingsAttribute($settings)
     {
-        return \maybe_unserialize($settings);
+        return Helper::safeUnserialize($settings);
     }
 
     /**

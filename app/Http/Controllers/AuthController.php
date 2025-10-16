@@ -82,7 +82,7 @@ class AuthController extends Controller
             $logHash = Meta::where('object_type', 'fs_login_hashes',)
                 ->where('key', $verificationHash)
                 ->first();
-            $logHash = maybe_unserialize($logHash->value);
+            $logHash = Helper::safeUnserialize($logHash->value);
 
             if (!$logHash) {
                 wp_send_json([
@@ -268,7 +268,7 @@ class AuthController extends Controller
         if(!isset($reCaptchaSettingsData->value)){
             return false;
         }
-        $reCaptchaData = maybe_unserialize($reCaptchaSettingsData->value, []);
+        $reCaptchaData = Helper::safeUnserialize($reCaptchaSettingsData->value, []);
         if(!isset($reCaptchaData['is_enabled']) || !isset($reCaptchaData['formContainingReCaptcha'])){
             return false;
         }

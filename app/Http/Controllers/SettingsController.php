@@ -43,7 +43,7 @@ class SettingsController extends Controller
         $settings = Meta::where('object_type', 'integration_settings')->get();
         $integrationSettings = [];
         foreach ($settings as $index => $setting) {
-            $data = maybe_unserialize($setting->value);
+            $data = Helper::safeUnserialize($setting->value);
             if (!empty($data['status']) && $data && $data['status'] == 'yes') {
                 $integrationSettings[] = $setting->key;
             }
@@ -384,7 +384,7 @@ class SettingsController extends Controller
     {
         $chatGPTSettingsData = Meta::where('object_type', '_fs_openai_settings')->first();
         if ($chatGPTSettingsData) {
-            $settings = maybe_unserialize($chatGPTSettingsData->value);
+            $settings = Helper::safeUnserialize($chatGPTSettingsData->value);
             return $this->sendSuccess($settings);
         }
 
@@ -395,7 +395,7 @@ class SettingsController extends Controller
     {
         $reCaptchaSettingsData = Meta::where('object_type', '_fs_recaptcha_settings')->first();
         if ($reCaptchaSettingsData) {
-            $settings = maybe_unserialize($reCaptchaSettingsData->value);
+            $settings = Helper::safeUnserialize($reCaptchaSettingsData->value);
             return $this->sendSuccess($settings);
         }
 
@@ -718,7 +718,7 @@ class SettingsController extends Controller
             'key'         => '_fs_fluent_bot_config'
         ])->first();
 
-        $settings = $meta ? maybe_unserialize($meta->value) : [];
+        $settings = $meta ? Helper::safeUnserialize($meta->value) : [];
 
         $productItems = Product::all()->map(function ($product) {
             return [

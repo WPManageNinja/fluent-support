@@ -243,7 +243,7 @@ class Helper
             ->first();
 
         if ($data) {
-            $value = maybe_unserialize($data->value);
+            $value = static::safeUnserialize($data->value);
             if ($value) {
                 return $value;
             }
@@ -302,7 +302,7 @@ class Helper
             ->first();
 
         if ($data) {
-            $value = maybe_unserialize($data->value);
+            $value = static::safeUnserialize($data->value);
             if ($value) {
                 return $value;
             }
@@ -454,7 +454,7 @@ class Helper
             ->first();
 
         if ($data) {
-            $value = maybe_unserialize($data->value);
+            $value = static::safeUnserialize($data->value);
             if ($value) {
                 return $value;
             }
@@ -639,7 +639,7 @@ class Helper
         $chatGPTSettingsData = Meta::where('object_type', '_fs_openai_settings')->value('value');
 
         if ($chatGPTSettingsData) {
-            $settings = maybe_unserialize($chatGPTSettingsData);
+            $settings = static::safeUnserialize($chatGPTSettingsData);
             return !empty($settings['api_key']);
         }
 
@@ -648,7 +648,7 @@ class Helper
 
     public static function fluentBotIntegrationStatus()
     {
-        $settings = maybe_unserialize(
+        $settings = static::safeUnserialize(
             Meta::where('object_type', 'fluent_bot_settings')->value('value')
         );
 
@@ -1097,7 +1097,7 @@ class Helper
         $reCaptchaSettingsData = Meta::where('object_type', '_fs_recaptcha_settings')->first();
 
         if ($reCaptchaSettingsData) {
-            $settings = maybe_unserialize($reCaptchaSettingsData->value);
+            $settings = static::safeUnserialize($reCaptchaSettingsData->value);
             $status = Arr::get($settings, 'is_enabled', false);
             return $status == 'true' ? true : false;
         }
@@ -1431,4 +1431,18 @@ class Helper
         }
     }
 
+    /**
+     * Safely unserialize data.
+     *
+     * @param string $data The serialized data.
+     * @return mixed The unserialized data or the original data if not serialized.
+     */
+    public static function safeUnserialize($data)
+    {
+        if (is_serialized($data)) { // Don't attempt to unserialize data that wasn't serialized going in.
+            return @unserialize(trim($data), ['allowed_classes' => false]);
+        }
+
+        return $data;
+    }
 }

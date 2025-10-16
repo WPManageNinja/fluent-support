@@ -2,6 +2,7 @@
 
 namespace FluentSupport\App\Hooks\Handlers;
 use FluentSupport\App\Models\Meta;
+use FluentSupport\App\Services\Helper;
 
 
 class ReCaptchaHandler
@@ -14,7 +15,7 @@ class ReCaptchaHandler
 
         if(!$secret){
             $reCaptchaSettingsData = Meta::where('object_type', '_fs_recaptcha_settings')->first();
-            $settings = maybe_unserialize($reCaptchaSettingsData->value, []);
+            $settings = Helper::safeUnserialize($reCaptchaSettingsData->value, []);
             $recaptchaVersion = $settings["reCaptcha_version"];
             $secret = $settings['secretKey'];
         }

@@ -2,6 +2,7 @@
 
 namespace FluentSupport\App\Models;
 
+use FluentSupport\App\Services\Helper;
 use FluentSupport\Framework\Database\Orm\ScopeInterface;
 
 class Person extends Model
@@ -191,7 +192,7 @@ class Person extends Model
             ->where('key', $metaKey)
             ->first();
         if ($meta) {
-            $value = maybe_unserialize($meta->value);
+            $value = Helper::safeUnserialize($meta->value);
             if ($value) {
                 return $value;
             }

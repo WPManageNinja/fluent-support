@@ -11,6 +11,7 @@ use FluentSupport\App\Models\TagPivot;
 use FluentSupport\App\Models\Ticket;
 use FluentSupport\App\Models\TicketTag;
 use FluentSupport\App\Modules\PermissionManager;
+use FluentSupport\App\Services\Helper;
 
 class TicketHelper
 {
@@ -30,7 +31,7 @@ class TicketHelper
 
         $activities = [];
         if ($meta) {
-            $activities = maybe_unserialize($meta->value);
+            $activities = Helper::safeUnserialize($meta->value);
         }
 
         foreach ($activities as $index => $activity) {
@@ -86,7 +87,7 @@ class TicketHelper
 
         $activities = [];
         if ($meta) {
-            $activities = maybe_unserialize($meta->value);
+            $activities = Helper::safeUnserialize($meta->value);
         }
 
         if (!$activities) {
@@ -194,7 +195,7 @@ class TicketHelper
     public static function getCarbonCopyCustomerInfo($ticketId){
         $existing = Meta::where('object_type', 'beginning_cc_info')->where('object_id', $ticketId)->first();
         if($existing){
-            return maybe_unserialize($existing->value, []);
+            return Helper::safeUnserialize($existing->value, []);
         }
 
         return [];
@@ -259,7 +260,7 @@ class TicketHelper
                         ->first();
         $unserialize = [];
         if ($lists) {
-            $unserialize = maybe_unserialize($lists->value);
+            $unserialize = Helper::safeUnserialize($lists->value);
         }
 
         return $unserialize;
@@ -274,7 +275,7 @@ class TicketHelper
                                 ->first();
 
         // If record exists, unserialize the data or initialize an empty array
-        $existingData = $existingRecord ? maybe_unserialize($existingRecord->value) ?: [] : [];
+        $existingData = $existingRecord ? Helper::safeUnserialize($existingRecord->value) ?: [] : [];
 
         // Check if it's an update or new entry
         $isUpdate = isset($searchData['id']) && array_filter($existingData, function ($item) use ($searchData) {
@@ -343,7 +344,7 @@ class TicketHelper
                                 ->first();
 
         if ($existingRecord) {
-            $existingData = maybe_unserialize($existingRecord->value) ?: [];
+            $existingData = Helper::safeUnserialize($existingRecord->value) ?: [];
 
             $updatedData = array_filter($existingData, function ($item) use ($search_id) {
                 return isset($item['id']) && $item['id'] != $search_id;

@@ -2,6 +2,7 @@
 namespace FluentSupport\App\Services\Tickets\Importer;
 use FluentSupport\App\Models\Person;
 use FluentSupport\App\Models\Meta;
+use FluentSupport\App\Services\Helper;
 
 class HelpScoutTickets extends BaseImporter
 {
@@ -18,7 +19,7 @@ class HelpScoutTickets extends BaseImporter
     public function stats()
     {
         $metadata = Meta::where('object_type', '_fs_helpscout_migration_info')->first();
-        $previouslyImported = maybe_unserialize($metadata->value ?? []);
+        $previouslyImported = Helper::safeUnserialize($metadata->value ?? []);
         if (isset($metadata->key)) {
             $previouslyImported['mailbox_id'] = $metadata->key;
         }
