@@ -3,7 +3,7 @@ Contributors: techjewel, wpmanageninja, adreastrian
 Tags: wordpress support ticket, Support Ticket, support plugin, helpdesk, customer support plugin
 Requires at least: 5.6
 Tested up to: 6.8
-Stable tag: 1.9.2
+Stable tag: 1.10.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -244,6 +244,14 @@ Absolutely! Fluent Support offers a customizable support portal, allowing you to
 8. FluentSupport Dashboard
 
 == Changelog ==
+
+= 1.9.3 (Date: October 20, 2025) =
+* Added: Fluent Cart product purchase widget in the ticket sidebar.
+* Added: Fluent Cart product and order options in custom fields.
+* Added: Workflow trigger based on Fluent Cart product and order from custom fields.
+* Added: Option to integrate the customer portal into the Fluent Cart customer dashboard.
+* Added: Multi-select option for product filtering in tickets.
+* Improved: Refined plugin performance for increased speed and efficiency.
 
 = 1.9.2 (Date: August 20, 2025) =
 * Added: Product assignment to tickets in Workflow Actions.
