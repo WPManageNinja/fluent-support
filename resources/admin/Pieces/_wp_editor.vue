@@ -405,17 +405,14 @@ export default {
         insertAIResponse(content) {
             let tinyInstance = tinyMCE.get(wpActiveEditor);
 
-            const formattedContent = content
-                .replace(/\n\n/g, '</p><p>')
-                .replace(/\n/g, '<br>')
-                .replace(/ {2,}/g, match => match.replace(/ /g, '&nbsp;'));
-
-            tinyInstance.insertContent(formattedContent);
+            // Content should already be HTML at this point
+            tinyInstance.insertContent(content);
 
             this.$emit('update:modelValue', tinyInstance.getContent({ format: 'html' }));
 
             this.showChatGPTPromptBox = false;
             this.showAIResponseBox = false;
+            this.showFluentBotAIResponseBox = false;
             this.showActionBar = false;
         },
 

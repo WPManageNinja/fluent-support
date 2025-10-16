@@ -70,7 +70,7 @@
         </div>
 
         <div class="fs_response_section">
-            <div v-loading="loading" class="fs_response_container" v-if="aiResponse && !loading">
+            <div v-loading="loading && !isStreaming" class="fs_response_container" v-if="aiResponse || isStreaming">
                 <div class="fs_response_header">
                     <div class="fs_resize">
                         <el-button class="fs_resize_button" text @click="isFullSize = !isFullSize">
@@ -79,38 +79,41 @@
                     </div>
                     <div class="fs_response_actions">
                         <div class="fs_copy_text">
-                            <el-button class="fs_copy_text_button" text @click="copyText">
+                            <el-button class="fs_copy_text_button" text @click="copyText" :disabled="isStreaming">
                                 <img :src="appVars.asset_url + 'images/copyText.svg'" alt="">
                             </el-button>
                         </div>
 
                         <div class="fs_regenerate">
-                            <el-button class="fs_regenerate_button" @click="generateResponse(finalPrompts)">
+                            <el-button class="fs_regenerate_button" @click="generateResponse(finalPrompts)" :disabled="isStreaming">
                                 <img :src="appVars.asset_url + 'images/regenerate.svg'" alt="">
                             </el-button>
                         </div>
 
                         <div class="fs_response_insert_button">
-                            <el-button class="fs_insert_button" @click="insertReply(aiResponse)">
+                            <el-button class="fs_insert_button" @click="insertReply(aiResponse)" :disabled="isStreaming">
                                 {{ translate('Insert Content') }}
                             </el-button>
                         </div>
                     </div>
                 </div>
-                <div :class="['fs_response_content', { 'full-size': isFullSize }]">
-                    <div v-html="formattedResponse"></div>
+                <div :class="['fs_response_content', { 'full-size': isFullSize, 'typing': isStreaming }]">
+                    <div class="fs_response_text" v-html="formattedResponse"></div>
+                    <div v-if="isStreaming && typingQueue.length === 0" class="fs_streaming_indicator">
+                        <span>Generating</span><span class="fs_typing_dots">●●●</span>
+                    </div>
                 </div>
             </div>
-            <div class="fs_ai_response_loading" v-if="loading">
+            <div class="fs_ai_response_loading" v-if="loading && !isStreaming && !aiResponse">
                 <el-skeleton :rows="4" animated />
             </div>
         </div>
 
         <div class="fs_main_content">
             <div class="fs_prompt_wrapper">
-                <textarea v-model="prompt" rows="3" placeholder="Enter your prompt here..." class="fs_textarea" required></textarea>
+                <textarea v-model="prompt" rows="3" placeholder="Enter your prompt here..." class="fs_textarea" required :disabled="isStreaming"></textarea>
                 <div class="fs_prompt_button">
-                    <el-button class="fs_prompt_submit" @click="generateResponse(prompt)">
+                    <el-button class="fs_prompt_submit" @click="generateResponse(prompt)" :disabled="isStreaming">
                         <img :src="appVars.asset_url + 'images/aiPromptSubmitButton.svg'" alt="">
                     </el-button>
                 </div>
@@ -122,8 +125,8 @@
                     <div
                         v-for="prompt in presetPrompts"
                         :key="prompt.text"
-                        :class="['fs_prompt_option', { 'fs_prompt_option_selected': prompt === selectedPrompt }]"
-                        @click="selectPresetPrompt(prompt)"
+                        :class="['fs_prompt_option', { 'fs_prompt_option_selected': prompt === selectedPrompt, 'disabled': isStreaming }]"
+                        @click="!isStreaming && selectPresetPrompt(prompt)"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                             <circle cx="8" cy="8" r="2" :fill="isSelected(prompt) ? '#FFF' : '#717784'" />
@@ -137,9 +140,12 @@
 </template>
 
 <script>
-import { reactive, toRefs, onMounted, computed } from "vue";
-import { useRoute } from "vue-router";
+import { reactive, toRefs, onMounted, computed, onBeforeUnmount, nextTick, watch } from "vue";
 import { useFluentHelper, useNotify } from "@/admin/Composable/FluentFrameworkHelper";
+import { marked } from 'marked';
+import DOMPurify from 'dompurify';
+import hljs from 'highlight.js';
+import 'highlight.js/styles/github.css'; // GitHub theme for syntax highlighting
 
 export default {
     name: 'FluentBotAIResponseGenerator',
@@ -147,10 +153,22 @@ export default {
 
     setup(props, context) {
         const { post, get, translate, handleError, appVars, saveData, getData, removeData } = useFluentHelper();
-        const route = useRoute();
         const emit = context.emit;
         const { notify } = useNotify();
 
+        // Configure marked with highlight.js
+        marked.setOptions({
+            breaks: false,
+            gfm: true,
+            headerIds: false,
+            mangle: false,
+            highlight: (code, lang) => {
+                if (lang && hljs.getLanguage(lang)) {
+                    return hljs.highlight(code, { language: lang }).value;
+                }
+                return hljs.highlightAuto(code).value;
+            }
+        });
 
         const state = reactive({
             prompt: '',
@@ -160,24 +178,119 @@ export default {
             loading: false,
             ticketID: props.ticketId,
             selectedPrompt: '',
-            isFullSize: false,
+            isFullSize: true,
             presetPrompts: [],
             draftData: [],
             showDraft: false,
             finalPrompts: '',
             products: appVars.support_products,
-            selectedProduct: props.productID ? parseInt(props.productID) : 0
+            selectedProduct: props.productID ? parseInt(props.productID) : 0,
+            conversationId: null,
+            isStreaming: false,
+            streamBuffer: '',
+            displayedText: '',
+            typingQueue: []
         });
 
         const title = 'Generate Responses with Fluent Bot';
         const description = 'Let Fluent Bot generate ticket responses to enhance support efficiency.';
 
+        // Function to format text for editor insertion with better formatting
+        const getFormattedTextForEditor = (text) => {
+            if (!text) return '';
+
+            // Convert markdown to well-formatted plain text while preserving structure
+            return text
+                // Convert headings to bold text with proper spacing
+                .replace(/#{1,6}\s+(.+)/g, (match, heading) => `\n\n**${heading.trim()}**\n\n`)
+
+                // Preserve bold formatting
+                .replace(/\*\*([^*]+)\*\*/g, '**$1**')
+
+                // Convert italic to emphasis
+                .replace(/\*([^*]+)\*/g, '_$1_')
+
+                // Format code blocks with proper indentation
+                .replace(/```(\w*)\n?([\s\S]*?)```/g, (match, lang, code) => {
+                    const formattedCode = code.trim()
+                        .split('\n')
+                        .map(line => `    ${line}`) // Indent each line
+                        .join('\n');
+                    return `\n\n${lang ? `${lang.toUpperCase()} Code:` : 'Code:'}\n${formattedCode}\n\n`;
+                })
+
+                // Format inline code
+                .replace(/`([^`]+)`/g, '`$1`')
+
+                // Convert links to readable format
+                .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1 ($2)')
+
+                // Format bullet points
+                .replace(/^\s*[-*+]\s+/gm, '• ')
+
+                // Format numbered lists
+                .replace(/^\s*(\d+)\.\s+/gm, '$1. ')
+
+                // Clean up excessive line breaks but preserve paragraph structure
+                .replace(/\n{3,}/g, '\n\n')
+
+                // Ensure proper spacing around formatted elements
+                .replace(/(\*\*[^*]+\*\*)/g, '\n$1\n')
+                .replace(/\n{3,}/g, '\n\n')
+
+                .trim();
+        };
+
+        // Keep the old function for copy functionality (plain text)
+        const getCleanTextForEditor = (text) => {
+            if (!text) return '';
+
+            // Remove markdown syntax for plain text insertion
+            return text
+                .replace(/#+\s+/g, '') // Remove headings
+                .replace(/\*\*/g, '') // Remove bold
+                .replace(/\*/g, '') // Remove italic
+                .replace(/`{3}[\s\S]*?`{3}/g, match => {
+                    // Preserve code blocks but remove the backticks
+                    return match
+                        .replace(/^```\w*\n/, '') // Remove opening ```
+                        .replace(/```$/, ''); // Remove closing ```
+                })
+                .replace(/`([^`]+)`/g, '$1') // Remove inline code markers
+                .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1') // Convert links to text
+                .trim();
+        };
+
+        // Use marked library for markdown formatting
         const formattedResponse = computed(() => {
-            return state.aiResponse
-                .replace(/\n\n/g, '</p><p>')
-                .replace(/\n/g, '<br>')
-                .replace(/ {2,}/g, match => match.replace(/ /g, '&nbsp;'));
+            if (!state.aiResponse) return '';
+
+            try {
+                // Clean up the response by removing empty lines before sending to marked
+                const cleanedResponse = state.aiResponse
+                    // .split('\n')
+                    // .filter(line => line.trim() !== '')
+                    // .join('\n');
+                // Use marked to convert markdown to HTML
+                const html = marked.parse(cleanedResponse);
+
+                // Sanitize and return the HTML output
+                return DOMPurify.sanitize(html);
+            } catch (error) {
+                console.error('Error parsing markdown:', error);
+                // Fallback to plain text with line breaks
+                return DOMPurify.sanitize(state.aiResponse.replace(/\n/g, '<br>'));
+            }
         });
+
+        // Watch for changes in formattedResponse and trigger syntax highlighting
+        watch(formattedResponse, () => {
+            nextTick(() => {
+                // Re-highlight all code blocks after DOM update
+                hljs.highlightAll();
+            });
+        });
+
 
         const saveDraft = () => {
             const draftKey = 'createResponseDraft';
@@ -185,9 +298,44 @@ export default {
             if (draft.length >= 3) {
                 draft.shift();
             }
-            draft.push(state.aiResponse);
+            // Save the clean text version for drafts
+            const cleanText = getCleanTextForEditor(state.aiResponse);
+            draft.push(cleanText);
             saveData(draftKey, JSON.stringify(draft));
             state.draftData = draft;
+        };
+
+        const addToStream = (text) => {
+            // Don't clean the text here - preserve original formatting from SSE
+            // But filter out empty or whitespace-only content before sending to marked
+            if (text && text.trim() !== '') {
+                state.aiResponse += text;
+            }
+        };
+
+        // Helper function to process SSE events
+        const processEventData = (eventType, data, trimmedPrompt) => {
+            if (eventType === 'message' && data && data.trim() !== '') {
+                state.streamBuffer += data;
+                addToStream(data);
+            } else if (eventType === 'conversation_id' && data) {
+                state.conversationId = data.trim();
+            } else if (eventType === 'end') {
+                state.loading = false;
+                state.isStreaming = false;
+                state.finalPrompts = trimmedPrompt;
+                if (state.prompt || state.aiResponse) {
+                    state.selectedPrompt = '';
+                    saveDraft();
+                }
+                return true; // Signal to stop processing
+            } else if (eventType === 'error') {
+                state.loading = false;
+                state.isStreaming = false;
+                state.errorMessage = 'Failed to generate response. Please try again.';
+                return true; // Signal to stop processing
+            }
+            return false; // Continue processing
         };
 
         const generateResponse = (prompt) => {
@@ -200,6 +348,11 @@ export default {
 
             state.errorMessage = '';
             state.loading = true;
+            state.isStreaming = true;
+            state.aiResponse = '';
+            state.displayedText = '';
+            state.typingQueue = [];
+            state.streamBuffer = '';
 
             const requestData = {
                 content: trimmedPrompt,
@@ -209,30 +362,110 @@ export default {
                 product_id: state.selectedProduct,
             };
 
-            const isTypedPrompt = state.prompt.trim().length > 0;
-            if (isTypedPrompt && state.aiResponse) {
-                requestData.previous_response = state.aiResponse;
+            // Include conversation_id if we have one from previous interactions
+            if (state.conversationId) {
+                requestData.conversation_id = state.conversationId;
             }
 
-            post(`fluent-bot/${state.ticketID}/generate-response`, requestData)
-                .then(response => {
-                    state.aiResponse = response;
-                    state.loading = false;
-                    state.finalPrompts = trimmedPrompt;
+            // Use fetch for proper streaming
+            const baseUrl = appVars.rest.url;
+            const nonce = appVars.rest.nonce;
 
-                    if (state.prompt || state.aiResponse) {
-                        state.selectedPrompt = '';
-                        saveDraft();
+            fetch(`${baseUrl}/fluent-bot/${state.ticketID}/generate-stream-response`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-WP-Nonce': nonce
+                },
+                body: JSON.stringify(requestData)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
                     }
+
+                    const reader = response.body.getReader();
+                    const decoder = new TextDecoder();
+                    let buffer = '';
+
+                    function readStream() {
+                        return reader.read().then(({ done, value }) => {
+                            if (done) {
+                                state.loading = false;
+                                state.isStreaming = false;
+                                state.finalPrompts = trimmedPrompt;
+
+                                if (state.prompt || state.aiResponse) {
+                                    state.selectedPrompt = '';
+                                    saveDraft();
+                                }
+                                return;
+                            }
+
+                            const chunk = decoder.decode(value, { stream: true });
+                            buffer += chunk;
+
+                            // Process SSE data line by line to handle malformed events
+                            const lines = buffer.split('\n');
+                            let processedLines = [];
+                            let currentDataLines = [];
+                            let currentEventType = 'message'; // Default to message
+                            let currentEventId = '';
+
+                            for (let i = 0; i < lines.length; i++) {
+                                const line = lines[i];
+
+                                if (line.startsWith('event: ')) {
+                                    // Process any accumulated data before switching events
+                                    if (currentDataLines.length > 0) {
+                                        const data = currentDataLines.join('\n');
+                                        const shouldStop = processEventData(currentEventType, data, trimmedPrompt);
+                                        if (shouldStop) return;
+                                        currentDataLines = [];
+                                    }
+                                    currentEventType = line.substring(7).trim();
+                                } else if (line.startsWith('id: ')) {
+                                    currentEventId = line.substring(4).trim();
+                                } else if (line.startsWith('data: ')) {
+                                    currentDataLines.push(line.substring(6));
+                                } else if (line.trim() === '') {
+                                    // Empty line - process accumulated data
+                                    if (currentDataLines.length > 0) {
+                                        const data = currentDataLines.join('\n');
+                                        const shouldStop = processEventData(currentEventType, data, trimmedPrompt);
+                                        if (shouldStop) return;
+                                        currentDataLines = [];
+                                    }
+                                }
+                                processedLines.push(line);
+                            }
+
+                            // Process any remaining data
+                            if (currentDataLines.length > 0) {
+                                const data = currentDataLines.join('\n');
+                                const shouldStop = processEventData(currentEventType, data, trimmedPrompt);
+                                if (shouldStop) return;
+                            }
+
+                            // Keep the last incomplete line in buffer
+                            buffer = lines[lines.length - 1] || '';
+
+                            return readStream();
+                        });
+                    }
+
+                    return readStream();
                 })
-                .catch(errors => {
+                .catch(error => {
                     state.loading = false;
-                    handleError(errors);
+                    state.isStreaming = false;
+                    state.errorMessage = 'Failed to generate response. Please try again.';
                 });
         };
 
         const selectPresetPrompt = (preset) => {
             state.selectedPrompt = preset;
+            state.conversationId = null;
             const selectedPrompt = state.presetPrompts.find(item => item.text === preset.text);
             state.presetPrompt = `${selectedPrompt.description}`;
             state.prompt = '';
@@ -251,7 +484,9 @@ export default {
 
         const copyText = async () => {
             try {
-                await navigator.clipboard.writeText(state.aiResponse);
+                // Copy the clean text version instead of HTML
+                const cleanText = getCleanTextForEditor(state.aiResponse);
+                await navigator.clipboard.writeText(cleanText);
                 notify({
                     message: "Copied to clipboard",
                     type: "success",
@@ -270,11 +505,34 @@ export default {
             state.aiResponse = '';
             state.selectedPrompt = '';
             state.prompt = '';
+            state.conversationId = null;
+            state.isStreaming = false;
+            state.displayedText = '';
+            state.typingQueue = [];
+            state.streamBuffer = '';
+
             removeDraft();
         };
 
         const insertReply = (aiResponse) => {
-            emit('insert', aiResponse);
+            // Get the rendered HTML from the display element instead of raw markdown
+            const responseElement = document.querySelector('.fs_ai_response_content');
+            let htmlContent = '';
+
+            if (responseElement) {
+                // Get the actual rendered HTML from the display
+                htmlContent = responseElement.innerHTML;
+            } else {
+                // Fallback: convert markdown to HTML
+                try {
+                    htmlContent = marked.parse(aiResponse);
+                    htmlContent = DOMPurify.sanitize(htmlContent);
+                } catch (error) {
+                    htmlContent = aiResponse.replace(/\n/g, '<br>');
+                }
+            }
+
+            emit('insert', htmlContent);
             resetData();
         };
 
@@ -303,11 +561,19 @@ export default {
 
         const selectDraft = (draft) => {
             state.aiResponse = draft;
+            state.displayedText = draft;
+            state.typingQueue = [];
+            state.streamBuffer = draft;
         };
 
         onMounted(() => {
             fetchPresets();
             removeDraft();
+        });
+
+        // Clean up when component is destroyed
+        onBeforeUnmount(() => {
+            // No cleanup needed for direct streaming
         });
 
         return {
@@ -331,59 +597,137 @@ export default {
 };
 </script>
 
-<style >
+<style>
 .fs_product_selector {
     padding: 20px 20px 0 20px;
     display: flex;
     flex-direction: column;
     gap: 5px;
-
-    .fs_product_label {
-        color: #0E121B;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 20px;
-        letter-spacing: -0.084px;
-    }
-
-    .fs_select_field {
-        .el-select__wrapper {
-            display: flex;
-            padding: 5px 5px 5px 12px;
-            align-items: center;
-            gap: 8px;
-            align-self: stretch;
-            border-radius: 10px;
-            border: 1px solid #E1E4EA;
-            background: #FFF;
-            box-shadow: 0px 1px 2px 0px rgba(10, 13, 20, 0.03);
-        }
-
-        .el-select__wrapper.is-focused {
-            border-radius: 8px;
-            border: 1px solid #0E121B;
-            background: #FFF;
-            box-shadow: 0px 0px 0px 2px #FFF,
-            0px 0px 0px 4px rgba(153, 160, 174, 0.16);
-        }
-
-        .el-select__placeholder {
-            color: #99A0AE;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 20px;
-            letter-spacing: -0.084px;
-        }
-
-    }
 }
-.el-select-dropdown__wrap{
-    .el-select-dropdown__item.is-selected {
-        color: #525866;
-        font-weight: bold;
-    }
+
+.fs_product_selector .fs_product_label {
+    color: #0E121B;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: -0.084px;
+}
+
+.fs_product_selector .fs_select_field .el-select__wrapper {
+    display: flex;
+    padding: 5px 5px 5px 12px;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+    border-radius: 10px;
+    border: 1px solid #E1E4EA;
+    background: #FFF;
+    box-shadow: 0px 1px 2px 0px rgba(10, 13, 20, 0.03);
+}
+
+.fs_product_selector .fs_select_field .el-select__wrapper.is-focused {
+    border-radius: 8px;
+    border: 1px solid #0E121B;
+    background: #FFF;
+    box-shadow: 0px 0px 0px 2px #FFF, 0px 0px 0px 4px rgba(153, 160, 174, 0.16);
+}
+
+.fs_product_selector .fs_select_field .el-select__placeholder {
+    color: #99A0AE;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.084px;
+}
+
+.el-select-dropdown__wrap .el-select-dropdown__item.is-selected {
+    color: #525866;
+    font-weight: bold;
+}
+
+.fs_streaming_indicator {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    color: #666;
+    font-size: 14px;
+}
+
+.fs_typing_dots {
+    animation: typing 1.2s infinite;
+    font-size: 14px;
+    color: #0073aa;
+    margin-left: 5px;
+}
+
+@keyframes typing {
+    0%, 30% { opacity: 0.3; }
+    60% { opacity: 1; }
+    100% { opacity: 0.3; }
+}
+
+/* Minimal formatting - highlight.js handles code styling */
+.fs_response_content {
+    position: relative;
+}
+
+.fs_response_text {
+    line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* List styling with single indent and no extra spacing */
+.fs_response_text ul {
+    margin: 0;
+    padding-left: 1.2em;
+    list-style-type: disc;
+}
+
+.fs_response_text ol {
+    margin: 0;
+    padding-left: 1.2em;
+    list-style-type: decimal;
+}
+
+.fs_response_text li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Keep essential bullet point handling for streaming */
+.fs_response_text .bullet-point {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.fs_response_text span.bullet-point {
+    display: inline;
+    margin-left: 0;
+}
+
+.fs_response_content.typing::after {
+    content: '|';
+    animation: blink 1s infinite;
+    color: #0073aa;
+    font-weight: bold;
+    margin-left: 1px;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+.fs_prompt_option.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.fs_textarea:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 </style>
-
