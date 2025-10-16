@@ -515,9 +515,24 @@ export default {
         };
 
         const insertReply = (aiResponse) => {
-            // Use the formatted version that preserves code blocks
-            const formattedText = getFormattedTextForEditor(aiResponse);
-            emit('insert', formattedText);
+            // Get the rendered HTML from the display element instead of raw markdown
+            const responseElement = document.querySelector('.fs_ai_response_content');
+            let htmlContent = '';
+
+            if (responseElement) {
+                // Get the actual rendered HTML from the display
+                htmlContent = responseElement.innerHTML;
+            } else {
+                // Fallback: convert markdown to HTML
+                try {
+                    htmlContent = marked.parse(aiResponse);
+                    htmlContent = DOMPurify.sanitize(htmlContent);
+                } catch (error) {
+                    htmlContent = aiResponse.replace(/\n/g, '<br>');
+                }
+            }
+
+            emit('insert', htmlContent);
             resetData();
         };
 
