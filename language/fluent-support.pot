@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fluent Support\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-20 08:10+0000\n"
+"POT-Creation-Date: 2025-10-16 10:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -37,13 +37,13 @@ msgid " tickets have been deleted"
 msgstr ""
 
 #. %1$d is the number of tickets assigned, %2$s is the agent's name.
-#: app/Models/Ticket.php:1517
+#: app/Models/Ticket.php:1524
 #, php-format
 msgid "%1$d tickets have been assigned to %2$s."
 msgstr ""
 
 #. %1$d is the number of skipped tickets due to mailbox restrictions.
-#: app/Models/Ticket.php:1526
+#: app/Models/Ticket.php:1533
 #, php-format
 msgid ""
 "%1$d tickets were skipped due to mailbox restrictions or already being "
@@ -58,7 +58,7 @@ msgid ""
 msgstr ""
 
 #. %d represents the number of closed tickets.
-#: app/Models/Ticket.php:1466
+#: app/Models/Ticket.php:1473
 msgid "%d tickets have been closed."
 msgstr ""
 
@@ -70,7 +70,7 @@ msgid "%s ago"
 msgstr ""
 
 #. %s: The name of the property that was updated
-#: app/Models/Ticket.php:1360
+#: app/Models/Ticket.php:1367
 #, php-format
 msgid "%s has been updated"
 msgstr ""
@@ -553,8 +553,8 @@ msgstr ""
 msgid "All tickets has been importer successfully"
 msgstr ""
 
-#: app/Services/Tickets/Importer/FreshDeskTickets.php:80
-#: app/Services/Tickets/Importer/HelpScoutTickets.php:79
+#: app/Services/Tickets/Importer/FreshDeskTickets.php:81
+#: app/Services/Tickets/Importer/HelpScoutTickets.php:80
 msgid "All tickets have been imported successfully"
 msgstr ""
 
@@ -606,15 +606,11 @@ msgstr ""
 msgid "API Key"
 msgstr ""
 
-#: app/Services/Integrations/FluentBot/FluentBotHelper.php:120
-msgid "API Key and Bot ID are not set for this product."
-msgstr ""
-
-#: app/Services/Integrations/NotificationIntegrationBase.php:68
+#: app/Services/Integrations/NotificationIntegrationBase.php:69
 msgid "API Request Error"
 msgstr ""
 
-#: app/Services/Integrations/NotificationIntegrationBase.php:77
+#: app/Services/Integrations/NotificationIntegrationBase.php:78
 msgid "API Response Error"
 msgstr ""
 
@@ -849,6 +845,10 @@ msgstr ""
 
 #: app/Services/TransStrings.php:237
 msgid "Bot ID"
+msgstr ""
+
+#: app/Services/Integrations/FluentBot/FluentBotHelper.php:150
+msgid "Bot ID is not set for this product."
 msgstr ""
 
 #: app/Services/TransStrings.php:373
@@ -1461,7 +1461,7 @@ msgstr ""
 msgid "Discard"
 msgstr ""
 
-#: app/Models/Ticket.php:1257
+#: app/Models/Ticket.php:1264
 msgid "Discard draft successfully"
 msgstr ""
 
@@ -1495,11 +1495,11 @@ msgstr ""
 msgid "Draft"
 msgstr ""
 
-#: app/Models/Ticket.php:1212
+#: app/Models/Ticket.php:1219
 msgid "Draft has been added"
 msgstr ""
 
-#: app/Models/Ticket.php:1224
+#: app/Models/Ticket.php:1231
 msgid "Draft has been updated"
 msgstr ""
 
@@ -2068,6 +2068,12 @@ msgstr ""
 msgid ""
 "If you enable this setting, any written response will be saved as a draft if "
 "an agent accidentally closes a ticket."
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:229
+msgid ""
+"If you enable this setting, support link will be added to Fluent Cart "
+"account navigation."
 msgstr ""
 
 #: app/Services/EmailNotification/Settings.php:222
@@ -3123,6 +3129,10 @@ msgstr ""
 msgid "Purchase one here"
 msgstr ""
 
+#: app/Services/Integrations/FluentCart/FluentCart.php:74
+msgid "Purchases"
+msgstr ""
+
 #: app/Services/TransStrings.php:199
 msgid "Quantity"
 msgstr ""
@@ -3179,7 +3189,7 @@ msgstr ""
 msgid "Replied By Agent"
 msgstr ""
 
-#: app/Services/EmailNotification/Settings.php:264
+#: app/Services/EmailNotification/Settings.php:274
 msgid "Replied by Agent (To Customer)"
 msgstr ""
 
@@ -3187,7 +3197,7 @@ msgstr ""
 msgid "Replied By Customer"
 msgstr ""
 
-#: app/Services/EmailNotification/Settings.php:288
+#: app/Services/EmailNotification/Settings.php:298
 msgid "Replied by Customer (To Agent/Admin)"
 msgstr ""
 
@@ -3276,7 +3286,7 @@ msgstr ""
 msgid "Response Count"
 msgstr ""
 
-#: app/Models/Ticket.php:1182
+#: app/Models/Ticket.php:1189
 msgid "Response has been added"
 msgstr ""
 
@@ -3367,7 +3377,7 @@ msgstr ""
 msgid "Search Customers"
 msgstr ""
 
-#: app/Services/TicketHelper.php:357
+#: app/Services/TicketHelper.php:358
 msgid "Search deleted successfully."
 msgstr ""
 
@@ -3375,7 +3385,7 @@ msgstr ""
 msgid "Search Existing contact or provide email address"
 msgstr ""
 
-#: app/Services/TicketHelper.php:362
+#: app/Services/TicketHelper.php:363
 msgid "Search ID not found."
 msgstr ""
 
@@ -3539,7 +3549,7 @@ msgstr ""
 msgid "Selected response has been updated"
 msgstr ""
 
-#: app/Models/Ticket.php:1558
+#: app/Models/Ticket.php:1565
 msgid "Selected tags has been added to tickets"
 msgstr ""
 
@@ -3799,6 +3809,10 @@ msgstr ""
 msgid "Suggested Ticket"
 msgstr ""
 
+#: app/Services/Integrations/FluentCart/FluentCart.php:279
+msgid "Support"
+msgstr ""
+
 #: app/Services/TransStrings.php:535
 msgid "Support Candy"
 msgstr ""
@@ -3979,33 +3993,33 @@ msgid ""
 "your account. If you did not initiate this request, please ignore this email."
 msgstr ""
 
-#: app/Services/EmailNotification/Settings.php:289
+#: app/Services/EmailNotification/Settings.php:299
 msgid ""
 "This email will be sent to Assigned Agent or Admin when a customer reply to "
 "a ticket"
 msgstr ""
 
-#: app/Services/EmailNotification/Settings.php:297
+#: app/Services/EmailNotification/Settings.php:307
 msgid "This email will be sent to newly assigned agent"
 msgstr ""
 
-#: app/Services/EmailNotification/Settings.php:257
+#: app/Services/EmailNotification/Settings.php:267
 msgid "This email will be sent when a customer submit a support ticket"
 msgstr ""
 
-#: app/Services/EmailNotification/Settings.php:273
+#: app/Services/EmailNotification/Settings.php:283
 msgid "This email will be sent when an agent close a ticket"
 msgstr ""
 
-#: app/Services/EmailNotification/Settings.php:305
+#: app/Services/EmailNotification/Settings.php:315
 msgid "This email will be sent when an agent create a ticket for a customer"
 msgstr ""
 
-#: app/Services/EmailNotification/Settings.php:265
+#: app/Services/EmailNotification/Settings.php:275
 msgid "This email will be sent when an agent reply to a ticket"
 msgstr ""
 
-#: app/Services/EmailNotification/Settings.php:281
+#: app/Services/EmailNotification/Settings.php:291
 msgid ""
 "This email will be sent when the business when a new ticket has been "
 "submitted"
@@ -4058,7 +4072,7 @@ msgstr ""
 msgid "Thread Starter"
 msgstr ""
 
-#: app/Services/EmailNotification/Settings.php:296
+#: app/Services/EmailNotification/Settings.php:306
 msgid "Ticket Agent Change (To Agent)"
 msgstr ""
 
@@ -4076,7 +4090,7 @@ msgstr ""
 msgid "Ticket Closed By Agent"
 msgstr ""
 
-#: app/Services/EmailNotification/Settings.php:272
+#: app/Services/EmailNotification/Settings.php:282
 msgid "Ticket Closed by Agent (To Customer)"
 msgstr ""
 
@@ -4086,11 +4100,11 @@ msgstr ""
 msgid "Ticket Content"
 msgstr ""
 
-#: app/Services/EmailNotification/Settings.php:280
+#: app/Services/EmailNotification/Settings.php:290
 msgid "Ticket Created (To Admin)"
 msgstr ""
 
-#: app/Services/EmailNotification/Settings.php:256
+#: app/Services/EmailNotification/Settings.php:266
 msgid "Ticket Created (To Customer)"
 msgstr ""
 
@@ -4106,7 +4120,7 @@ msgstr ""
 msgid "Ticket created at "
 msgstr ""
 
-#: app/Services/EmailNotification/Settings.php:304
+#: app/Services/EmailNotification/Settings.php:314
 msgid "Ticket Created by Agent (To Customer)"
 msgstr ""
 
@@ -4145,7 +4159,7 @@ msgstr ""
 msgid "Ticket Form Settings"
 msgstr ""
 
-#: app/Services/CustomerPortalService.php:128 app/Models/Ticket.php:1285
+#: app/Services/CustomerPortalService.php:128 app/Models/Ticket.php:1292
 #: app/Services/Tickets/ResponseService.php:119
 #: app/Services/Tickets/TicketService.php:40
 msgid "Ticket has been closed"
@@ -4159,7 +4173,7 @@ msgstr ""
 msgid "Ticket has been deleted successfully"
 msgstr ""
 
-#: app/Services/CustomerPortalService.php:148 app/Models/Ticket.php:1305
+#: app/Services/CustomerPortalService.php:148 app/Models/Ticket.php:1312
 msgid "Ticket has been opened again"
 msgstr ""
 
@@ -4915,11 +4929,11 @@ msgstr ""
 msgid "Your registration verification code for %s"
 msgstr ""
 
-#: app/Services/TicketHelper.php:302
+#: app/Services/TicketHelper.php:303
 msgid "Your saved search has been updated successfully!"
 msgstr ""
 
-#: app/Services/TicketHelper.php:303
+#: app/Services/TicketHelper.php:304
 msgid "Your search has been saved successfully!"
 msgstr ""
 
