@@ -162,7 +162,7 @@
                 </div>
             </div>
 
-            <div class="fs_tk_card_body" v-else-if="widget_key === 'fct_license'">
+            <!-- <div class="fs_tk_card_body" v-else-if="widget_key === 'fct_license'">
                 <ul>
                     <li v-for="license in widget.licenses" :key="'license_'+license.id" class="fs_license_item_wrapper">
                         <div class="fs_license_content">
@@ -184,7 +184,7 @@
                         </div>
                     </li>
                 </ul>
-            </div>
+            </div> -->
 
             <div class="fs_tk_card_body" v-else>
                 <div v-html="widget.body_html"></div>

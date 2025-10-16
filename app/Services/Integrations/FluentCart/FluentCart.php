@@ -11,7 +11,7 @@ class FluentCart
     public function boot()
     {
         add_filter('fluent_support/customer_extra_widgets', array($this, 'getFluentCartPurchaseWidgets'), 120, 2);
-        add_filter('fluent_support/customer_extra_widgets', array($this, 'getFluentCartProLicenseWidget'), 125, 2);
+        // add_filter('fluent_support/customer_extra_widgets', array($this, 'getFluentCartProLicenseWidget'), 125, 2);
         add_action('fluent_cart/order_created', [$this, 'addCustomer'], 10, 1);
         if (!apply_filters('fluent_support/disable_fc_menu', false)) {
             $this->renderCustomerPortalInFluentCartDashboard();
@@ -78,20 +78,20 @@ class FluentCart
         return $widgets;
     }
 
-    public function getFluentCartProLicenseWidget($widgets, $customer)
-    {
-        // Add customer's product licenses if available
-        $licenses = $this->getCustomerProductLicenses($customer);
+    // public function getFluentCartProLicenseWidget($widgets, $customer)
+    // {
+    //     // Add customer's product licenses if available
+    //     $licenses = $this->getCustomerProductLicenses($customer);
 
-        if ($licenses) {
-            $widgets['fct_license'] = [
-                'header' => __('Fluent Cart Product Licenses', 'fluent-support'),
-                'licenses' => $licenses
-            ];
-        }
+    //     if ($licenses) {
+    //         $widgets['fct_license'] = [
+    //             'header' => __('Fluent Cart Product Licenses', 'fluent-support'),
+    //             'licenses' => $licenses
+    //         ];
+    //     }
 
-        return $widgets;
-    }
+    //     return $widgets;
+    // }
 
     public function addCustomer($param)
     {
