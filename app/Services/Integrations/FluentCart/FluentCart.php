@@ -71,7 +71,7 @@ class FluentCart
         });
 
         $widgets['fct_purchases'] = [
-            'title'  => __('Purchases', 'fluent-support'),
+            'title'  => __('Fluent Cart Purchases', 'fluent-support'),
             'products' => $formattedProducts,
         ];
 
