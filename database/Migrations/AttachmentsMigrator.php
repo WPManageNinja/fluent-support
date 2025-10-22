@@ -48,6 +48,8 @@ class AttachmentsMigrator
 
     public static function alterTable($table) 
     {
+        global $wpdb;
+        
         // @todo: We will remove this on final release
         // This is only for beta users
         $existing_columns = $wpdb->get_col("DESC {$table}", 0);
