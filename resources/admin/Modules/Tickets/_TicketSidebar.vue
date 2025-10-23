@@ -124,6 +124,35 @@
             </div>
 
             <div class="fs_tk_card_body" v-else-if="widget_key === 'fct_purchases'">
+                <div v-if="widget.summary" class="fc_summary_stats">
+                    <ul class="fc_full_listed">
+                        <li>
+                            <span class="fc_list_sub">Lifetime Value:</span>
+                            <span class="fc_list_value">
+                                <a
+                                    :href="`${origin}/wp-admin/admin.php?page=fluent-cart#/customers/${widget.fluent_cart_customer_id}/view`"
+                                    target="_blank"
+                                    class="fc_list_value fc_ltv_link"
+                                >
+                                    ${{ widget.summary.lifetime_value }}
+                                </a>
+                            </span>
+                        </li>
+                        <li>
+                            <span class="fc_list_sub">Purchases:</span>
+                            <span class="fc_list_value">{{ widget.summary.total_purchases }}</span>
+                        </li>
+                        <li v-if="widget.summary.first_purchase">
+                            <span class="fc_list_sub">First Purchased:</span>
+                            <span class="fc_list_value">{{ widget.summary.first_purchase }}</span>
+                        </li>
+                        <li v-if="widget.summary.last_purchase">
+                            <span class="fc_list_sub">Last Purchased:</span>
+                            <span class="fc_list_value">{{ widget.summary.last_purchase }}</span>
+                        </li>
+                    </ul>
+                </div>
+
                 <div v-for="(product, product_key) in widget.products" :key="product_key" class="fct_product_item">
                     <div class="fct_product_content">
                         <el-tooltip
@@ -816,6 +845,28 @@ export default {
     color: #1d4ed8;
     background-color: #f0f9ff;
     text-decoration: underline;
+}
+
+ul.fc_full_listed {
+    border-radius: 4px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.fc_full_listed li {
+    border-bottom: 1px solid #ebeef4;
+    display: block;
+    margin: 0;
+    padding: 5px 0;
+}
+
+ul.fc_full_listed>li span.fc_list_sub {
+    font-weight: 500;
+}
+
+ul.fc_full_listed>li span.fc_list_value {
+    float: right;
 }
 </style>
 
