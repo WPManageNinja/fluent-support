@@ -99,11 +99,11 @@ class FluentCart
             'products' => $formattedProducts,
             'fluent_cart_customer_id' => $fluentCartCustomer->id,
             'summary' => [
-                'lifetime_value' => number_format($totalLifetimeValue, 2),
-                'currency' => $formattedProducts[0]['currency'] ?? 'USD',
-                'total_purchases' => $totalPurchases,
-                'first_purchase' => $firstPurchaseDate ? date('F j, Y', strtotime($firstPurchaseDate)) : null,
-                'last_purchase' => $lastPurchaseDate ? date('F j, Y', strtotime($lastPurchaseDate)) : null,
+                'lifetime_value' => \FluentCart\App\Helpers\Helper::toDecimal($fluentCartCustomer->ltv),
+                'currency' => Arr::get($formattedProducts, '0.currency', \FluentCart\Api\CurrencySettings::get('currency')),
+                'total_purchases' => $fluentCartCustomer->purchase_count,
+                'first_purchase' => $fluentCartCustomer->first_purchase_date ? date('F j, Y', strtotime($fluentCartCustomer->first_purchase_date)) : null,
+                'last_purchase' => $fluentCartCustomer->last_purchase_date ? date('F j, Y', strtotime($fluentCartCustomer->last_purchase_date)) : null,
             ]
         ];
 

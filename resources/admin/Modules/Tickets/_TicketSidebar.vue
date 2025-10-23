@@ -124,31 +124,31 @@
             </div>
 
             <div class="fs_tk_card_body" v-else-if="widget_key === 'fct_purchases'">
-                <div v-if="widget.summary" class="fc_summary_stats">
-                    <ul class="fc_full_listed">
+                <div v-if="widget.summary" class="fs_summary_stats">
+                    <ul class="fs_full_listed">
                         <li>
-                            <span class="fc_list_sub">Lifetime Value:</span>
-                            <span class="fc_list_value">
+                            <span class="fs_list_sub">Lifetime Value:</span>
+                            <span class="fs_list_value">
                                 <a
                                     :href="`${origin}/wp-admin/admin.php?page=fluent-cart#/customers/${widget.fluent_cart_customer_id}/view`"
                                     target="_blank"
-                                    class="fc_list_value fc_ltv_link"
+                                    class="fs_list_value fs_ltv_link"
+                                    v-html="widget.summary.lifetime_value"
                                 >
-                                    ${{ widget.summary.lifetime_value }}
                                 </a>
                             </span>
                         </li>
                         <li>
-                            <span class="fc_list_sub">Purchases:</span>
-                            <span class="fc_list_value">{{ widget.summary.total_purchases }}</span>
+                            <span class="fs_list_sub">Purchases:</span>
+                            <span class="fs_list_value">{{ widget.summary.total_purchases }}</span>
                         </li>
                         <li v-if="widget.summary.first_purchase">
-                            <span class="fc_list_sub">First Purchased:</span>
-                            <span class="fc_list_value">{{ widget.summary.first_purchase }}</span>
+                            <span class="fs_list_sub">First Purchased:</span>
+                            <span class="fs_list_value">{{ widget.summary.first_purchase }}</span>
                         </li>
                         <li v-if="widget.summary.last_purchase">
-                            <span class="fc_list_sub">Last Purchased:</span>
-                            <span class="fc_list_value">{{ widget.summary.last_purchase }}</span>
+                            <span class="fs_list_sub">Last Purchased:</span>
+                            <span class="fs_list_value">{{ widget.summary.last_purchase }}</span>
                         </li>
                     </ul>
                 </div>
@@ -847,26 +847,38 @@ export default {
     text-decoration: underline;
 }
 
-ul.fc_full_listed {
+ul.fs_full_listed {
     border-radius: 4px;
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-ul.fc_full_listed li {
+ul.fs_full_listed li {
     border-bottom: 1px solid #ebeef4;
     display: block;
     margin: 0;
     padding: 5px 0;
 }
 
-ul.fc_full_listed>li span.fc_list_sub {
+ul.fs_full_listed>li span.fs_list_sub {
     font-weight: 500;
 }
 
-ul.fc_full_listed>li span.fc_list_value {
+ul.fs_full_listed>li span.fs_list_value {
     float: right;
+}
+
+.fs_ltv_link {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.fs_ltv_link:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
 }
 </style>
 
