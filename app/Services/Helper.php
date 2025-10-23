@@ -790,6 +790,13 @@ class Helper
                 'description'    => __('The most popular e-commerce platform for WordPress', 'fluent-support'),
                 'doc_url'  => 'https://fluentsupport.com/docs/woocommerce-integration/',
             ],
+            'fluent-cart'     => [
+                'title'          => __('Fluent Cart', 'fluent-support'),
+                'logo'           => FLUENT_SUPPORT_PLUGIN_URL . 'assets/images/icons/integrations/fluent-cart.webp',
+                'is_integrated'  => defined('FLUENTCART_VERSION'),
+                'description'    => __('A New Era of eCommerce with WordPress', 'fluent-support'),
+                'doc_url'       => 'https://fluentsupport.com/docs/fluentcart-integration/',
+            ],
             'lifter-lms'     => [
                 'title'          => __('LifterLMS', 'fluent-support'),
                 'logo'           => FLUENT_SUPPORT_PLUGIN_URL . 'assets/images/icons/integrations/lifter-lms.png',
