@@ -70,24 +70,6 @@ class FluentCart
             return strtotime($b['order']['date']) - strtotime($a['order']['date']);
         });
 
-        // Calculate summary statistics
-        $totalLifetimeValue = 0;
-        $totalPurchases = count($formattedProducts);
-        $firstPurchaseDate = null;
-        $lastPurchaseDate = null;
-
-        foreach ($formattedProducts as $product) {
-            $totalLifetimeValue += floatval($product['order']['total']);
-
-            $purchaseDate = $product['order']['date'];
-            if (!$firstPurchaseDate || strtotime($purchaseDate) < strtotime($firstPurchaseDate)) {
-                $firstPurchaseDate = $purchaseDate;
-            }
-            if (!$lastPurchaseDate || strtotime($purchaseDate) > strtotime($lastPurchaseDate)) {
-                $lastPurchaseDate = $purchaseDate;
-            }
-        }
-
         // Get FluentCart customer ID
         $fluentCartCustomer = \FluentCart\App\Models\Customer::where('user_id', $wpUserId)->first();
         if (!$fluentCartCustomer) {
