@@ -245,7 +245,7 @@ Absolutely! Fluent Support offers a customizable support portal, allowing you to
 
 == Changelog ==
 
-= 1.10.0 (Date: October 20, 2025) =
+= 1.10.0 (Date: October 23, 2025) =
 * Added: Fluent Cart product purchase widget in the ticket sidebar.
 * Added: Fluent Cart product and order options in custom fields.
 * Added: Workflow trigger based on Fluent Cart product and order from custom fields.

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fluent Support\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-16 10:47+0000\n"
+"POT-Creation-Date: 2025-10-23 11:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -154,28 +154,32 @@ msgstr ""
 msgid "A"
 msgstr ""
 
-#: app/Services/Helper.php:923
+#: app/Services/Helper.php:930
 msgid ""
 "A cloud storage service by Google for storing, syncing, and sharing files."
 msgstr ""
 
-#: app/Services/Helper.php:930
+#: app/Services/Helper.php:937
 msgid ""
 "A cloud-based file storage and sharing service that allows users to store "
 "files online and sync them across devices."
 msgstr ""
 
-#: app/Services/Helper.php:951
+#: app/Services/Helper.php:797
+msgid "A New Era of eCommerce with WordPress"
+msgstr ""
+
+#: app/Services/Helper.php:958
 msgid ""
 "A project management tool designed to streamline workflows and collaboration "
 "through customizable, kanban-style boards."
 msgstr ""
 
-#: app/Services/Helper.php:846
+#: app/Services/Helper.php:853
 msgid "A robust form plugin suitable for any business"
 msgstr ""
 
-#: app/Services/Helper.php:944
+#: app/Services/Helper.php:951
 msgid ""
 "A security service by Google designed to protect websites from bots and "
 "abuse by using challenges to distinguish between human and automated access."
@@ -186,7 +190,7 @@ msgstr ""
 msgid "A verification code has been sent to %s. Please provide the code below:"
 msgstr ""
 
-#: app/Services/Helper.php:937
+#: app/Services/Helper.php:944
 msgid ""
 "A WordPress plugin that enables the creation and management of membership "
 "sites, including content access control and subscription billing."
@@ -479,7 +483,7 @@ msgstr ""
 msgid "Agents Reports"
 msgstr ""
 
-#: app/Services/Helper.php:1157
+#: app/Services/Helper.php:1164
 msgid "AI Activity settings has been updated"
 msgstr ""
 
@@ -562,7 +566,7 @@ msgstr ""
 msgid "All Workflows"
 msgstr ""
 
-#: app/Services/Helper.php:902
+#: app/Services/Helper.php:909
 msgid "All-in-one payment gateway designed for WordPress"
 msgstr ""
 
@@ -761,7 +765,7 @@ msgstr ""
 msgid "Authorization Code"
 msgstr ""
 
-#: app/Services/TransStrings.php:226 app/Services/Helper.php:1013
+#: app/Services/TransStrings.php:226 app/Services/Helper.php:1020
 msgid "Auto Close Settings"
 msgstr ""
 
@@ -823,7 +827,7 @@ msgstr ""
 msgid "Basic Info"
 msgstr ""
 
-#: app/Services/Helper.php:885
+#: app/Services/Helper.php:892
 msgid "BetterDocs"
 msgstr ""
 
@@ -859,7 +863,7 @@ msgstr ""
 msgid "Browse Files"
 msgstr ""
 
-#: app/Services/Helper.php:850
+#: app/Services/Helper.php:857
 msgid "BuddyBoss"
 msgstr ""
 
@@ -867,7 +871,7 @@ msgstr ""
 msgid "Bug Report"
 msgstr ""
 
-#: app/Services/Helper.php:839
+#: app/Services/Helper.php:846
 msgid ""
 "Build and manage vibrant online communities with integrated LMS features "
 "directly within WordPress."
@@ -881,19 +885,19 @@ msgstr ""
 msgid "Business Boxes Reports"
 msgstr ""
 
-#: app/Services/Helper.php:895
+#: app/Services/Helper.php:902
 msgid "Business communication platform designed for privacy"
 msgstr ""
 
-#: app/Services/Helper.php:825
+#: app/Services/Helper.php:832
 msgid "Business communication platform designed for security"
 msgstr ""
 
-#: app/Services/Helper.php:860
+#: app/Services/Helper.php:867
 msgid "Business communication platform designed for tech"
 msgstr ""
 
-#: app/Services/Helper.php:804
+#: app/Services/Helper.php:811
 msgid "Business communication platform designed to scale"
 msgstr ""
 
@@ -1158,8 +1162,8 @@ msgstr ""
 msgid "Country"
 msgstr ""
 
-#: app/Services/Helper.php:797 app/Services/Helper.php:818
-#: app/Services/Helper.php:916
+#: app/Services/Helper.php:804 app/Services/Helper.php:825
+#: app/Services/Helper.php:923
 msgid "Course and e-learning platform built for WordPress"
 msgstr ""
 
@@ -1289,7 +1293,7 @@ msgstr ""
 msgid "Custom Field Slug"
 msgstr ""
 
-#: app/Services/TransStrings.php:440 app/Services/Helper.php:978
+#: app/Services/TransStrings.php:440 app/Services/Helper.php:985
 msgid "Custom Fields"
 msgstr ""
 
@@ -1469,7 +1473,7 @@ msgstr ""
 msgid "Disconnect"
 msgstr ""
 
-#: app/Services/Helper.php:857
+#: app/Services/Helper.php:864
 msgid "Discord"
 msgstr ""
 
@@ -1511,11 +1515,11 @@ msgstr ""
 msgid "Draft response has been successfully approved."
 msgstr ""
 
-#: app/Services/Helper.php:927
+#: app/Services/Helper.php:934
 msgid "Dropbox"
 msgstr ""
 
-#: app/Services/Helper.php:871
+#: app/Services/Helper.php:878
 msgid "Easy Digital Downloads"
 msgstr ""
 
@@ -1754,7 +1758,7 @@ msgstr ""
 msgid "File upload failed"
 msgstr ""
 
-#: app/Services/Helper.php:1008
+#: app/Services/Helper.php:1015
 msgid "File Upload Integrations"
 msgstr ""
 
@@ -1804,11 +1808,19 @@ msgstr ""
 msgid "Fluent Bot Integration"
 msgstr ""
 
-#: app/Services/Helper.php:836
-msgid "Fluent Community"
+#: app/Services/Helper.php:794
+msgid "Fluent Cart"
+msgstr ""
+
+#: app/Services/Integrations/FluentCart/FluentCart.php:74
+msgid "Fluent Cart Purchases"
 msgstr ""
 
 #: app/Services/Helper.php:843
+msgid "Fluent Community"
+msgstr ""
+
+#: app/Services/Helper.php:850
 msgid "Fluent FORMS"
 msgstr ""
 
@@ -1874,11 +1886,11 @@ msgstr ""
 msgid "Fluent Support Tickets Exporter"
 msgstr ""
 
-#: app/Services/Helper.php:948
+#: app/Services/Helper.php:955
 msgid "FluentBoards"
 msgstr ""
 
-#: app/Services/Helper.php:829
+#: app/Services/Helper.php:836
 msgid "FluentCRM"
 msgstr ""
 
@@ -1890,7 +1902,7 @@ msgstr ""
 msgid "FluentCRM contact tags has been updated"
 msgstr ""
 
-#: app/Services/Helper.php:993
+#: app/Services/Helper.php:1000
 msgid "FluentCRM Integration"
 msgstr ""
 
@@ -1973,7 +1985,7 @@ msgstr ""
 msgid "Global Email Settings"
 msgstr ""
 
-#: app/Services/TransStrings.php:43 app/Services/Helper.php:963
+#: app/Services/TransStrings.php:43 app/Services/Helper.php:970
 #: app/Hooks/Handlers/Menu.php:187
 msgid "Global Settings"
 msgstr ""
@@ -1994,11 +2006,11 @@ msgstr ""
 msgid "Good Job"
 msgstr ""
 
-#: app/Services/Helper.php:920
+#: app/Services/Helper.php:927
 msgid "Google Drive"
 msgstr ""
 
-#: app/Services/Helper.php:941
+#: app/Services/Helper.php:948
 msgid "Google reCAPTCHA"
 msgstr ""
 
@@ -2193,7 +2205,7 @@ msgstr ""
 msgid "Includes In"
 msgstr ""
 
-#: app/Services/TransStrings.php:576 app/Services/Helper.php:998
+#: app/Services/TransStrings.php:576 app/Services/Helper.php:1005
 msgid "Incoming Webhook"
 msgstr ""
 
@@ -2231,7 +2243,7 @@ msgstr ""
 msgid "Integration Settings"
 msgstr ""
 
-#: app/Services/TransStrings.php:376 app/Services/Helper.php:1028
+#: app/Services/TransStrings.php:376 app/Services/Helper.php:1035
 msgid "Integration Statuses"
 msgstr ""
 
@@ -2372,11 +2384,11 @@ msgstr ""
 msgid "Last Week"
 msgstr ""
 
-#: app/Services/Helper.php:906
+#: app/Services/Helper.php:913
 msgid "LearnDash"
 msgstr ""
 
-#: app/Services/Helper.php:913
+#: app/Services/Helper.php:920
 msgid "LearnPress"
 msgstr ""
 
@@ -2388,11 +2400,11 @@ msgstr ""
 msgid "Let ChatGPT generate ticket responses to enhance support efficiency."
 msgstr ""
 
-#: app/Services/TransStrings.php:445 app/Services/Helper.php:1041
+#: app/Services/TransStrings.php:445 app/Services/Helper.php:1048
 msgid "License Management"
 msgstr ""
 
-#: app/Services/Helper.php:794
+#: app/Services/Helper.php:801
 msgid "LifterLMS"
 msgstr ""
 
@@ -2556,7 +2568,7 @@ msgstr ""
 msgid "medium"
 msgstr ""
 
-#: app/Services/Helper.php:934
+#: app/Services/Helper.php:941
 msgid "MemberPress"
 msgstr ""
 
@@ -2692,7 +2704,7 @@ msgstr ""
 msgid "Note"
 msgstr ""
 
-#: app/Services/TransStrings.php:268 app/Services/Helper.php:1003
+#: app/Services/TransStrings.php:268 app/Services/Helper.php:1010
 msgid "Notification Integrations"
 msgstr ""
 
@@ -2744,7 +2756,7 @@ msgstr ""
 msgid "OpenAI ChatGPT Integration"
 msgstr ""
 
-#: app/Services/Helper.php:1033
+#: app/Services/Helper.php:1040
 msgid "OpenAI Integration"
 msgstr ""
 
@@ -2792,7 +2804,7 @@ msgstr ""
 msgid "Page ID"
 msgstr ""
 
-#: app/Services/Helper.php:808
+#: app/Services/Helper.php:815
 msgid "Paid Memberships Pro"
 msgstr ""
 
@@ -2817,7 +2829,7 @@ msgstr ""
 msgid "Paste the authorization code here once you get it."
 msgstr ""
 
-#: app/Services/Helper.php:899
+#: app/Services/Helper.php:906
 msgid "Paymattic"
 msgstr ""
 
@@ -3021,8 +3033,8 @@ msgstr ""
 msgid "Portal Page"
 msgstr ""
 
-#: app/Services/Helper.php:853 app/Services/Helper.php:867
-#: app/Services/Helper.php:881
+#: app/Services/Helper.php:860 app/Services/Helper.php:874
+#: app/Services/Helper.php:888
 msgid "Powerful platform for any member-focused business"
 msgstr ""
 
@@ -3101,7 +3113,7 @@ msgstr ""
 msgid "Product-Specific Bots"
 msgstr ""
 
-#: app/Services/TransStrings.php:259 app/Services/Helper.php:983
+#: app/Services/TransStrings.php:259 app/Services/Helper.php:990
 msgid "Products"
 msgstr ""
 
@@ -3129,10 +3141,6 @@ msgstr ""
 msgid "Purchase one here"
 msgstr ""
 
-#: app/Services/Integrations/FluentCart/FluentCart.php:74
-msgid "Purchases"
-msgstr ""
-
 #: app/Services/TransStrings.php:199
 msgid "Quantity"
 msgstr ""
@@ -3149,7 +3157,7 @@ msgstr ""
 msgid "Read the email piping documentation"
 msgstr ""
 
-#: app/Services/TransStrings.php:44 app/Services/Helper.php:1023
+#: app/Services/TransStrings.php:44 app/Services/Helper.php:1030
 msgid "Recaptcha"
 msgstr ""
 
@@ -3308,7 +3316,7 @@ msgstr ""
 msgid "Responses"
 msgstr ""
 
-#: app/Services/Helper.php:878
+#: app/Services/Helper.php:885
 msgid "Restrict Content pro"
 msgstr ""
 
@@ -3553,7 +3561,7 @@ msgstr ""
 msgid "Selected tags has been added to tickets"
 msgstr ""
 
-#: app/Services/Helper.php:832
+#: app/Services/Helper.php:839
 msgid "Self-hosted email and marketing automation for WordPress"
 msgstr ""
 
@@ -3656,7 +3664,7 @@ msgstr ""
 msgid "Signup Form"
 msgstr ""
 
-#: app/Services/Helper.php:801 app/Hooks/Handlers/Menu.php:314
+#: app/Services/Helper.php:808 app/Hooks/Handlers/Menu.php:314
 msgid "Slack"
 msgstr ""
 
@@ -3837,7 +3845,7 @@ msgstr ""
 msgid "Support Portal Page (For Customers)"
 msgstr ""
 
-#: app/Services/TransStrings.php:267 app/Services/Helper.php:988
+#: app/Services/TransStrings.php:267 app/Services/Helper.php:995
 #: app/Hooks/Handlers/CustomerPortalHandler.php:245
 msgid "Support Staff"
 msgstr ""
@@ -3908,7 +3916,7 @@ msgstr ""
 msgid "Task successfully added to Fluent Boards"
 msgstr ""
 
-#: app/Services/Helper.php:822 app/Hooks/Handlers/Menu.php:307
+#: app/Services/Helper.php:829 app/Hooks/Handlers/Menu.php:307
 msgid "Telegram"
 msgstr ""
 
@@ -3947,7 +3955,7 @@ msgid ""
 "Dropbox/Google Drive and paste the link in the response"
 msgstr ""
 
-#: app/Services/Helper.php:909
+#: app/Services/Helper.php:916
 msgid "The leading course platform built for WordPress"
 msgstr ""
 
@@ -3959,7 +3967,7 @@ msgstr ""
 msgid "The OpenAI ChatGPT API can be used to generate and enhance responses."
 msgstr ""
 
-#: app/Services/Helper.php:888
+#: app/Services/Helper.php:895
 msgid "The standard plugin for knowledge base and documentation"
 msgstr ""
 
@@ -3967,7 +3975,7 @@ msgstr ""
 msgid "the status will be active"
 msgstr ""
 
-#: app/Services/Helper.php:811
+#: app/Services/Helper.php:818
 msgid "The ultimate platform for any member-focused business"
 msgstr ""
 
@@ -3975,7 +3983,7 @@ msgstr ""
 msgid "The Ultimate Support Plugin For Your WordPress."
 msgstr ""
 
-#: app/Services/Helper.php:874
+#: app/Services/Helper.php:881
 msgid "The ultimate WordPress platform for digital products"
 msgstr ""
 
@@ -4145,7 +4153,7 @@ msgstr ""
 msgid "Ticket Email Settings"
 msgstr ""
 
-#: app/Services/TransStrings.php:284 app/Services/Helper.php:973
+#: app/Services/TransStrings.php:284 app/Services/Helper.php:980
 msgid "Ticket Form Config"
 msgstr ""
 
@@ -4187,7 +4195,7 @@ msgstr ""
 msgid "Ticket ID"
 msgstr ""
 
-#: app/Services/Helper.php:1018
+#: app/Services/Helper.php:1025
 msgid "Ticket Importer"
 msgstr ""
 
@@ -4241,7 +4249,7 @@ msgstr ""
 msgid "Ticket Summary"
 msgstr ""
 
-#: app/Services/TransStrings.php:286 app/Services/Helper.php:968
+#: app/Services/TransStrings.php:286 app/Services/Helper.php:975
 #: app/Hooks/Handlers/PrivacyHandler.php:91
 msgid "Ticket Tags"
 msgstr ""
@@ -4374,7 +4382,7 @@ msgstr ""
 msgid "Trigger Type"
 msgstr ""
 
-#: app/Services/Helper.php:815
+#: app/Services/Helper.php:822
 msgid "Tutor LMS"
 msgstr ""
 
@@ -4647,7 +4655,7 @@ msgstr ""
 msgid "What's this support ticket about?"
 msgstr ""
 
-#: app/Services/Helper.php:892
+#: app/Services/Helper.php:899
 msgid "WhatsApp"
 msgstr ""
 
@@ -4669,7 +4677,7 @@ msgid ""
 "agent."
 msgstr ""
 
-#: app/Services/Helper.php:864
+#: app/Services/Helper.php:871
 msgid "WishList Member"
 msgstr ""
 
