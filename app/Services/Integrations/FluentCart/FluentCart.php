@@ -10,7 +10,7 @@ class FluentCart
 {
     public function boot()
     {
-        add_filter('fluent_support/customer_extra_widgets', array($this, 'getFluentCartPurchaseWidgets'), 120, 2);
+//        add_filter('fluent_support/customer_extra_widgets', array($this, 'getFluentCartPurchaseWidgets'), 120, 2);
         // add_filter('fluent_support/customer_extra_widgets', array($this, 'getFluentCartProLicenseWidget'), 125, 2);
         add_action('fluent_cart/order_created', [$this, 'addCustomer'], 10, 1);
         if (!apply_filters('fluent_support/disable_fc_menu', false)) {
