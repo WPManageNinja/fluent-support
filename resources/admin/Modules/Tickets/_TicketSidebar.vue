@@ -126,7 +126,12 @@
             <div class="fs_tk_card_body" v-else-if="widget_key === 'fct_purchases'">
                 <div v-for="(product, product_key) in widget.products" :key="product_key" class="fct_product_item">
                     <div class="fct_product_content">
-                        <h3 class="fct_product_title">{{ product.product_name }}</h3>
+                        <el-tooltip
+                            :content="`Purchased on: ${dateTimeFormat(product.order.date, 'MMM DD, YYYY')}`"
+                            placement="top"
+                        >
+                            <h3 class="fct_product_title">{{ product.product_name }}</h3>
+                        </el-tooltip>
                         <div class="fct_license_type" v-if="product.license_type && product.license_type !== 'Subscription'">{{ product.license_type }}</div>
                         <div class="fct_product_price_row">
                             <span class="fct_product_price" v-html="product.formatted_price"></span>
