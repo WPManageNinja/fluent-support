@@ -376,7 +376,7 @@ class EmailNotificationHandler
         return $app->view->make('emails.styles');
     }
 
-    protected function parseEmailBody($emailBody, $data)
+    public function parseEmailBody($emailBody, $data)
     {
         $data['email_body'] = apply_filters('fluent_support/parse_smartcode_data', $emailBody, $data);
 

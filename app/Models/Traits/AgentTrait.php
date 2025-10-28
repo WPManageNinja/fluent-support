@@ -182,6 +182,12 @@ trait AgentTrait
             $data['ticket_to_watch'] = TicketHelper::getTicketsToWatch();
         }
 
+        //If the request come with watching_tickets
+        if (in_array('watching_tickets', $with)) {
+            //Get watching tickets (with notifications)
+            $data['watching_tickets'] = TicketHelper::getWatchingTickets($agentId);
+        }
+
         //If the request come with overall_stats
         if (in_array('overall_stats', $with)) {
             //Get overall status

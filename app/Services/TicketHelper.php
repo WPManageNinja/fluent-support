@@ -180,6 +180,24 @@ class TicketHelper
         return $tickets;
     }
 
+    // This method will return all watching tickets (with notifications) of logged in agent
+    public static function getWatchingTickets($agentId)
+    {
+        $restrictedBusinessBoxes = PermissionManager::currentUserRestrictedBusinessBoxes();
+
+        $tickets = Ticket::with('customer')
+            ->whereNotIn('mailbox_id', $restrictedBusinessBoxes)
+            ->join('fs_tag_pivot', 'fs_tag_pivot.source_id', '=', 'fs_tickets.id')
+            ->where('fs_tag_pivot.source_type', '=', 'ticket_watcher_notification')
+            ->where('fs_tag_pivot.tag_id', '=', $agentId)
+            ->select(['fs_tickets.*'])
+            ->orderBy('fs_tickets.updated_at', 'DESC')
+            ->limit(5)
+            ->get();
+
+        return $tickets;
+    }
+
     // This method will return all ticket watcher inside a ticket
     public static function getWatchers($watchers)
     {
@@ -267,7 +285,7 @@ class TicketHelper
     }
 
     public static function saveSearchLabel($agent_id, $searchData, $filterType) {
-        
+
         $agent_id = get_current_user_id();
         $existingRecord = Meta::where('object_id', $agent_id)
                                 ->where('object_type', 'search_meta')
@@ -299,8 +317,8 @@ class TicketHelper
             ]);
         }
 
-        $message = $isUpdate 
-        ? __('Your saved search has been updated successfully!', 'fluent-support') 
+        $message = $isUpdate
+        ? __('Your saved search has been updated successfully!', 'fluent-support')
         : __('Your search has been saved successfully!', 'fluent-support');
 
         return [

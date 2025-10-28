@@ -39,6 +39,7 @@ return array(
     'FluentSupport\\App\\Hooks\\Handlers\\ReCaptchaHandler' => $baseDir . '/app/Hooks/Handlers/ReCaptchaHandler.php',
     'FluentSupport\\App\\Hooks\\Handlers\\ShortcodeHandler' => $baseDir . '/app/Hooks/Handlers/ShortcodeHandler.php',
     'FluentSupport\\App\\Hooks\\Handlers\\TwoFaHandler' => $baseDir . '/app/Hooks/Handlers/TwoFaHandler.php',
+    'FluentSupport\\App\\Hooks\\Handlers\\WatcherNotificationHandler' => $baseDir . '/app/Hooks/Handlers/WatcherNotificationHandler.php',
     'FluentSupport\\App\\Http\\Controllers\\AIActivityLoggerController' => $baseDir . '/app/Http/Controllers/AIActivityLoggerController.php',
     'FluentSupport\\App\\Http\\Controllers\\ActivityLoggerController' => $baseDir . '/app/Http/Controllers/ActivityLoggerController.php',
     'FluentSupport\\App\\Http\\Controllers\\AgentController' => $baseDir . '/app/Http/Controllers/AgentController.php',

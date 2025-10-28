@@ -158,6 +158,15 @@
                                             </svg>
                                             {{ translate('Add Bookmark') }}
                                         </el-dropdown-item>
+
+                                        <el-dropdown-item @click="toggleWatch()" v-loading="watching_loading" v-if="!currentAgentHasReplied">
+                                            <el-icon>
+                                                <View v-if="!is_watching" />
+                                                <Hide v-if="is_watching" />
+                                            </el-icon>
+                                            {{ is_watching ? translate('Unwatch Ticket') : translate('Watch Ticket') }}
+                                        </el-dropdown-item>
+
                                         <el-dropdown-item  @click='(close_ticket_silently="yes") && closeTicket()'>
                                             <el-icon>
                                                 <MuteNotification/>
@@ -762,7 +771,9 @@ export default {
             apiKey: '',
             openAIIntegration: !!appVars.open_ai_integration,
             fluentBotIntegration: !!appVars.fluent_bot_integration,
-            deleteTicketPermission: false
+            deleteTicketPermission: false,
+            is_watching: false,
+            watching_loading: false
         });
 
         watch(() => route.params.ticket_id, (ticketId) => {
@@ -814,6 +825,8 @@ export default {
                     });
                 }
 
+                // Check if current user is watching this ticket
+                checkWatchStatus();
 
             }).catch(error => {
                 state.loading = false;
@@ -1209,7 +1222,7 @@ export default {
 
         const addWatchers = () => {
             state.saving = true;
-            post(`tickets/${state.ticket.id}/add_watchers`, {
+            post(`tickets/${state.ticket.id}/sync-watchers`, {
                 watchers: state.watcherIds
             })
                 .then(response => {
@@ -1227,6 +1240,58 @@ export default {
                 .always(() => {
                     state.saving = false;
                 });
+        }
+
+        const checkWatchStatus = () => {
+            get(`tickets/${state.ticket.id}/watch/status`)
+                .then(response => {
+                    state.is_watching = response.is_watching || false;
+                })
+                .catch(() => {
+                    state.is_watching = false;
+                });
+        }
+
+        const toggleWatch = () => {
+            state.watching_loading = true;
+
+            if (state.is_watching) {
+                // Unwatch
+                del(`tickets/${state.ticket.id}/watch/${appVars.me.id}`)
+                    .then(response => {
+                        state.is_watching = false;
+                        notify({
+                            message: translate('You are no longer watching this ticket'),
+                            type: "success",
+                            position: "bottom-right",
+                        });
+                    })
+                    .catch((errors) => {
+                        handleError(errors);
+                    })
+                    .always(() => {
+                        state.watching_loading = false;
+                    });
+            } else {
+                // Watch
+                post(`tickets/${state.ticket.id}/watch`, {
+                    watchers: [appVars.me.id]
+                })
+                    .then(response => {
+                        state.is_watching = true;
+                        notify({
+                            message: translate('You are now watching this ticket'),
+                            type: "success",
+                            position: "bottom-right",
+                        });
+                    })
+                    .catch((errors) => {
+                        handleError(errors);
+                    })
+                    .always(() => {
+                        state.watching_loading = false;
+                    });
+            }
         }
 
         const splitToNewTicket = () => {
@@ -1350,6 +1415,21 @@ export default {
             }
         };
 
+        // Check if current agent has replied to this ticket
+        const currentAgentHasReplied = computed(() => {
+            if (!state.conversations || !state.conversations.length || !appVars.me) {
+                return false;
+            }
+
+            // Check if current agent has any response in conversations
+            return state.conversations.some(conversation => {
+                return conversation.person &&
+                       conversation.person.person_type === 'agent' &&
+                       conversation.person.id === appVars.me.id &&
+                       conversation.conversation_type === 'response';
+            });
+        });
+
         const handleKeydown = (event) => {
             const { metaKey, altKey, code } = event;
 
@@ -1449,6 +1529,8 @@ export default {
             santizeContent,
             syncCustomData,
             addWatchers,
+            checkWatchStatus,
+            toggleWatch,
             splitToNewTicket,
             fetchDraft,
             discardDraft,
@@ -1465,7 +1547,8 @@ export default {
             getTicketSummary,
             getCustomerSentiment,
             closeAIResponse,
-            setRef
+            setRef,
+            currentAgentHasReplied
         }
     }
 }

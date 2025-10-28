@@ -203,6 +203,7 @@ import draggable from "vuedraggable";
 import TicketStatistics from "./TicketStatistics.vue";
 import SuggestedTicket from "./SuggestedTicket.vue";
 import MentionedTicket from "./MentionedTicket.vue";
+import WatchingTickets from "./WatchingTickets.vue";
 import TicketsByProduct from "./TicketsByProduct";
 import AgentPerformance from './AgentPerformance.vue';
 import { computed, watch, onMounted, reactive, toRefs } from "vue";
@@ -216,6 +217,7 @@ export default {
         TicketStatistics,
         SuggestedTicket,
         MentionedTicket,
+        WatchingTickets,
         TicketsByProduct,
         AgentPerformance
     },
@@ -239,6 +241,7 @@ export default {
             dashboard_notice: "",
             total_data: {
                 MentionedTicket: {},
+                WatchingTickets: [],
                 TicketStatistics: {
                     stats: {},
                     individual_stat: {},
@@ -259,6 +262,13 @@ export default {
                         show: true,
                         heading: translate("Your Bookmarked Tickets"),
                         active_names: "mentionedTicket",
+                    },
+                    {
+                        id: 6,
+                        component: "WatchingTickets",
+                        show: true,
+                        heading: translate("Watching Tickets"),
+                        active_names: "watchingTickets",
                     },
                     {
                         id: 2,
@@ -398,6 +408,7 @@ export default {
                 "overall_stats",
                 "individual_stat",
                 "ticket_to_watch",
+                "watching_tickets", //with notifications
                 "tickets_by_products",
             ];
             if (appVars.me.permissions.includes("fst_agent_today_performance")) {
@@ -410,6 +421,7 @@ export default {
                 .then((response) => {
                     state.dashboard_notice = response.dashboard_notice;
                     state.total_data.MentionedTicket = response.ticket_to_watch;
+                    state.total_data.WatchingTickets = response.watching_tickets || [];
                     state.total_data.SuggestedTicket.suggested_tickets =
                         response.suggested_tickets;
                     state.total_data.SuggestedTicket.overall_stats =

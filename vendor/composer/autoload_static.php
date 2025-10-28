@@ -71,6 +71,7 @@ class ComposerStaticInitcef8a62a26e2e43e6d3efc5a3d6e4d83
         'FluentSupport\\App\\Hooks\\Handlers\\ReCaptchaHandler' => __DIR__ . '/../..' . '/app/Hooks/Handlers/ReCaptchaHandler.php',
         'FluentSupport\\App\\Hooks\\Handlers\\ShortcodeHandler' => __DIR__ . '/../..' . '/app/Hooks/Handlers/ShortcodeHandler.php',
         'FluentSupport\\App\\Hooks\\Handlers\\TwoFaHandler' => __DIR__ . '/../..' . '/app/Hooks/Handlers/TwoFaHandler.php',
+        'FluentSupport\\App\\Hooks\\Handlers\\WatcherNotificationHandler' => __DIR__ . '/../..' . '/app/Hooks/Handlers/WatcherNotificationHandler.php',
         'FluentSupport\\App\\Http\\Controllers\\AIActivityLoggerController' => __DIR__ . '/../..' . '/app/Http/Controllers/AIActivityLoggerController.php',
         'FluentSupport\\App\\Http\\Controllers\\ActivityLoggerController' => __DIR__ . '/../..' . '/app/Http/Controllers/ActivityLoggerController.php',
         'FluentSupport\\App\\Http\\Controllers\\AgentController' => __DIR__ . '/../..' . '/app/Http/Controllers/AgentController.php',

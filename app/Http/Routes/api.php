@@ -62,6 +62,11 @@ $router->prefix('tickets')->withPolicy('AgentTicketPolicy')->group(function ($ro
     $router->post('/{ticket_id}/tags', 'TicketController@addTag')->int('ticket_id');
     $router->delete('/{ticket_id}/tags/{tag_id}', 'TicketController@detachTag')->int('ticket_id')->int('tag_id');
 
+    // New watcher notification routes (different from Pro bookmark routes)
+    $router->post('/{ticket_id}/watch', 'TicketController@addWatchers')->int('ticket_id');
+    $router->delete('/{ticket_id}/watch/{agent_id}', 'TicketController@removeWatcher')->int('ticket_id')->int('agent_id');
+    $router->get('/{ticket_id}/watch/status', 'TicketController@checkWatchStatus')->int('ticket_id');
+
     $router->post('/{ticket_id}/close', 'TicketController@closeTicket')->int('ticket_id');
     $router->delete('/{ticket_id}/delete', 'TicketController@deleteTicket')->int('ticket_id');
     $router->post('/{ticket_id}/re-open', 'TicketController@reOpenTicket')->int('ticket_id');

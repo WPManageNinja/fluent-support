@@ -81,6 +81,36 @@
                         </el-button>
                     </el-popover>
                 </li>
+                <li :title="translate('Watch Tickets')">
+                    <el-popover
+                        placement="bottom"
+                        :width="400"
+                        trigger="click"
+                    >
+                        <template #reference>
+                            <el-icon @click="togglePop()"> <View /> </el-icon>
+                        </template>
+                        <p style="margin: 0 0 1em 0;">{{translate('Watch selected tickets to get notifications?')}}</p>
+                        <el-button style="margin-top: 0;" size="small" type="primary"
+                                   @click="watchTickets()">{{translate('Watch Selected Tickets')}}
+                        </el-button>
+                    </el-popover>
+                </li>
+                <li :title="translate('Unwatch Tickets')">
+                    <el-popover
+                        placement="bottom"
+                        :width="400"
+                        trigger="click"
+                    >
+                        <template #reference>
+                            <el-icon @click="togglePop()"> <Hide /> </el-icon>
+                        </template>
+                        <p style="margin: 0 0 1em 0;">{{translate('Stop watching selected tickets?')}}</p>
+                        <el-button style="margin-top: 0;" size="small" type="default"
+                                   @click="unwatchTickets()">{{translate('Unwatch Selected Tickets')}}
+                        </el-button>
+                    </el-popover>
+                </li>
                 <li :title="translate('Delete Tickets')">
                     <el-popover
                         placement="bottom"
@@ -213,6 +243,18 @@ export default {
             });
         };
 
+        const watchTickets = () => {
+            doBulkActions({
+                bulk_action: 'watch_tickets'
+            });
+        };
+
+        const unwatchTickets = () => {
+            doBulkActions({
+                bulk_action: 'unwatch_tickets'
+            });
+        };
+
         const togglePop = (pop) => {
             if (pop && state[pop]) {
                     state[pop] = false;
@@ -233,6 +275,8 @@ export default {
             assignTags,
             closeTickets,
             deleteTickets,
+            watchTickets,
+            unwatchTickets,
             togglePop,
             translate,
         }

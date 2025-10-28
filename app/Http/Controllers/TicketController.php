@@ -419,6 +419,65 @@ class TicketController extends Controller
     }
 
     /**
+     * addWatchers method will add watchers to a ticket
+     * @param Request $request
+     * @param $ticket_id
+     * @return array
+     */
+    public function addWatchers(Request $request, $ticket_id)
+    {
+
+
+        Ticket::findOrFail($ticket_id); // Verify ticket exists
+        $watchers = $request->get('watchers', []);
+
+        foreach ($watchers as $agentId) {
+            Ticket::addWatcher($ticket_id, $agentId);
+        }
+
+        return [
+            'message' => __('Watchers have been added to this ticketx', 'fluent-support'),
+            'watchers' => Ticket::getWatchersWithDetails($ticket_id)
+        ];
+    }
+
+
+    /**
+     * removeWatcher method will remove a watcher from a ticket
+     * @param $ticket_id
+     * @param $agent_id
+     * @return array
+     */
+    public function removeWatcher($ticket_id, $agent_id)
+    {
+        Ticket::findOrFail($ticket_id); // Verify ticket exists
+        Ticket::removeWatcher($ticket_id, $agent_id);
+
+        return [
+            'message' => __('Watcher has been removed from this ticket', 'fluent-support'),
+            'watchers' => Ticket::getWatchersWithDetails($ticket_id)
+        ];
+    }
+
+    /**
+     * checkWatchStatus method will check if current user is watching a ticket
+     * @param $ticket_id
+     * @return array
+     */
+    public function checkWatchStatus($ticket_id)
+    {
+        Ticket::findOrFail($ticket_id); // Verify ticket exists
+        $agent = Helper::getAgentByUserId();
+        if (!$agent) {
+            return ['is_watching' => false];
+        }
+
+        return [
+            'is_watching' => Ticket::isWatching($ticket_id, $agent->id)
+        ];
+    }
+
+    /**
      * changeTicketCustomer method will update customer in a ticket
      * This method will get ticket id and customer id as parameter, it will replace existing customer id with new
      * @param Request $request

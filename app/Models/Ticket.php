@@ -612,9 +612,7 @@ class Ticket extends Model
 
     public function watchers()
     {
-        $class = __NAMESPACE__ . '\TagPivot';
-
-        return $this->hasMany($class, 'source_id', 'id')
+        return $this->hasMany(TagPivot::class, 'source_id', 'id')
             ->where('source_type', 'ticket_watcher')
             ->select(['tag_id']);
     }
@@ -870,6 +868,104 @@ class Ticket extends Model
             }
         }
         return $result;
+    }
+
+    /**
+     * Add a watcher to the ticket
+     * @param int $ticketId The ticket ID
+     * @param int $agentId The agent ID to add as watcher
+     * @return bool
+     */
+    public static function addWatcher($ticketId, $agentId)
+    {
+        // Check if already watching
+        $exists = TagPivot::where('tag_id', $agentId)
+            ->where('source_id', $ticketId)
+            ->where('source_type', 'ticket_watcher_notification')
+            ->exists();
+
+        if ($exists) {
+            return false;
+        }
+
+        TagPivot::create([
+            'tag_id' => $agentId,
+            'source_id' => $ticketId,
+            'source_type' => 'ticket_watcher_notification'
+        ]);
+
+        /*
+         * Action when watcher is added to ticket
+         *
+         * @since v1.9.3
+         * @param integer $agentId
+         * @param integer $ticketId
+         */
+        do_action('fluent_support/watcher_added_to_ticket', $agentId, $ticketId);
+
+        return true;
+    }
+
+    /**
+     * Remove a watcher from the ticket
+     * @param int $ticketId The ticket ID
+     * @param int $agentId The agent ID to remove as watcher
+     * @return bool
+     */
+    public static function removeWatcher($ticketId, $agentId)
+    {
+        $deleted = TagPivot::where('tag_id', $agentId)
+            ->where('source_id', $ticketId)
+            ->where('source_type', 'ticket_watcher_notification')
+            ->delete();
+
+        if ($deleted) {
+            /*
+             * Action when watcher is removed from ticket
+             *
+             * @since v1.9.3
+             * @param integer $agentId
+             * @param integer $ticketId
+             */
+            do_action('fluent_support/watcher_removed_from_ticket', $agentId, $ticketId);
+        }
+
+        return (bool) $deleted;
+    }
+
+    /**
+     * Check if an agent is watching this ticket
+     * @param int $ticketId The ticket ID
+     * @param int $agentId The agent ID to check
+     * @return bool
+     */
+    public static function isWatching($ticketId, $agentId)
+    {
+        return TagPivot::where('tag_id', $agentId)
+            ->where('source_id', $ticketId)
+            ->where('source_type', 'ticket_watcher_notification')
+            ->exists();
+    }
+
+    /**
+     * Get all watchers for this ticket with agent details
+     * @param int $ticketId The ticket ID
+     * @return \FluentSupport\Framework\Database\Orm\Collection
+     */
+    public static function getWatchersWithDetails($ticketId)
+    {
+        $watcherIds = TagPivot::where('source_id', $ticketId)
+            ->where('source_type', 'ticket_watcher_notification')
+            ->pluck('tag_id')
+            ->toArray();
+
+        if (empty($watcherIds)) {
+            return new \FluentSupport\Framework\Database\Orm\Collection([]);
+        }
+
+        return Agent::whereIn('id', $watcherIds)
+            ->select(['id', 'first_name', 'last_name', 'email'])
+            ->get();
     }
 
     /**
@@ -1449,6 +1545,10 @@ class Ticket extends Model
             return $this->bulkAssignAgent($query);
         } else if ($action == 'assign_tags') {
             return $this->bulkAssignTag($query->get());
+        } else if ($action == 'watch_tickets') {
+            return $this->bulkWatchTickets($query->get(), $agent);
+        } else if ($action == 'unwatch_tickets') {
+            return $this->bulkUnwatchTickets($query->get(), $agent);
         } else {
             throw new \Exception('Sorry no action found as available');
         }
@@ -1563,6 +1663,46 @@ class Ticket extends Model
 
         return [
             'message' => __('Selected tags has been added to tickets', 'fluent-support')
+        ];
+    }
+
+    /**
+     * Bulk watch tickets
+     * @param object $tickets
+     * @param object $agent
+     * @return array
+     */
+    public function bulkWatchTickets($tickets, $agent)
+    {
+        $tickets->each(function ($ticket) use ($agent) {
+            Ticket::addWatcher($ticket->id, $agent->id);
+        });
+
+        return [
+            'message' => sprintf(
+                __('%d tickets are now being watched.', 'fluent-support'),
+                count($tickets)
+            )
+        ];
+    }
+
+    /**
+     * Bulk unwatch tickets
+     * @param object $tickets
+     * @param object $agent
+     * @return array
+     */
+    public function bulkUnwatchTickets($tickets, $agent)
+    {
+        $tickets->each(function ($ticket) use ($agent) {
+            Ticket::removeWatcher($ticket->id, $agent->id);
+        });
+
+        return [
+            'message' => sprintf(
+                __('%d tickets are no longer being watched.', 'fluent-support'),
+                count($tickets)
+            )
         ];
     }
 
