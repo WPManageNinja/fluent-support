@@ -35,7 +35,10 @@ class UploaderController extends Controller
         $ticketId = $this->resolveTicketId($request);
         $person = $this->resolvePerson($ticketId, $request);
 
-        $this->checkPermissionToUploadFile($person);
+        $permissionResponse = $this->checkPermissionToUploadFile($person);
+        if ($permissionResponse) {
+            return $permissionResponse;
+        }
 
         try {
             $uploadedFiles = UploadService::handleTempFileUpload($request->files());
@@ -76,8 +79,13 @@ class UploaderController extends Controller
 
     private function resolveTicketId($request)
     {
-        $ticketId = $request->getSafe('ticket_id', 'intval');
-        return $ticketId == 'undefined' ? null : $ticketId;
+        $ticketId = $request->get('ticket_id');
+        if ($ticketId === 'undefined' || $ticketId === null || $ticketId === '') {
+            return null;
+        }
+
+        $ticketId = intval($ticketId);
+        return $ticketId > 0 ? $ticketId : null;
     }
 
     private function resolvePerson($ticketId, Request $request)
@@ -183,7 +191,7 @@ class UploaderController extends Controller
 
     private function isValidImageType($image)
     {
-        $imageType = $image['image']->getClientOriginalExtension();
+        $imageType = strtolower($image['image']->getClientOriginalExtension());
         $supportedTypes = ['gif', 'ief', 'jpeg', 'webp', 'pjpeg', 'ktx', 'png'];
 
         if (! in_array($imageType, $supportedTypes)) {
