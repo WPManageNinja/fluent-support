@@ -119,7 +119,9 @@ $router->prefix('settings')->withPolicy('AdminSettingsPolicy')->group(function (
     $router->get('/integration-statuses', 'SettingsController@integrationStatuses');
 
     $router->get('/fluentcrm-settings', 'SettingsController@getFluentCRMSettings');
+    // Backward-compatible typo route.
     $router->post('/intsall-fluentcrm', 'SettingsController@installFluentCRM');
+    $router->post('/install-fluentcrm', 'SettingsController@installFluentCRM');
 
     // Upload Settings
     $router->get('/remote-upload-settings', 'SettingsController@getRemoteUploadSettings');
@@ -258,4 +260,3 @@ $router->prefix('ticket_importer')->withPolicy('AdminSettingsPolicy')->group(fun
 
 $router->post('ticket_image_upload', 'UploaderController@uploadImage')
     ->withPolicy('AgentTicketPolicy');
-
