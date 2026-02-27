@@ -28,6 +28,8 @@ app.use(ElLoading);
 
 app.config.globalProperties.$notify = ElNotification;
 app.config.globalProperties.$confirm = ElMessageBox.confirm;
+app.config.globalProperties.$prompt = ElMessageBox.prompt;
+// Backward compatibility for legacy references.
 app.config.globalProperties.$promt = ElMessageBox.prompt;
 app.config.globalProperties.$messageBox = ElMessageBox;
 
