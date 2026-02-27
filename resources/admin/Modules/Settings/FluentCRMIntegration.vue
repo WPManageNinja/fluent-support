@@ -131,7 +131,7 @@ export default {
         },
         installFluentCRM() {
             this.installing = true;
-            this.$post('settings/intsall-fluentcrm')
+            this.$post('settings/install-fluentcrm')
                 .then(response => {
                     this.$notify({
                         type: 'success',
