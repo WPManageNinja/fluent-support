@@ -165,7 +165,10 @@ class UploaderController extends Controller
     {
         $images = $request->files();
         $ticketId = $this->resolveTicketId($request);
-        $this->isValidImageType($images);
+        $imageTypeError = $this->isValidImageType($images);
+        if ($imageTypeError) {
+            return $imageTypeError;
+        }
 
         try {
             $uploadedFiles = UploadService::handleUploadToLocal($ticketId, $images);
@@ -191,5 +194,7 @@ class UploaderController extends Controller
                 'message' => 'Invalid image file.',
             ]);
         }
+
+        return null;
     }
 }
