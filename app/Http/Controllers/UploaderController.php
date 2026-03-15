@@ -35,7 +35,10 @@ class UploaderController extends Controller
         $ticketId = $this->resolveTicketId($request);
         $person = $this->resolvePerson($ticketId, $request);
 
-        $this->checkPermissionToUploadFile($person);
+        $permissionError = $this->checkPermissionToUploadFile($person);
+        if ($permissionError) {
+            return $permissionError;
+        }
 
         try {
             $uploadedFiles = UploadService::handleTempFileUpload($request->files());
@@ -118,6 +121,8 @@ class UploaderController extends Controller
                 ]);
             }
         }
+
+        return null;
     }
 
     private function createAttachmentRecords($uploadedFiles, $ticketId, $person, $imageType)
