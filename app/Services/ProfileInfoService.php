@@ -65,7 +65,7 @@ class ProfileInfoService
     public function me( $settings, $withPortalSettings )
     {
         if ( $withPortalSettings ) {
-            $this->portalSettings(  $settings );
+            $settings = $this->portalSettings($settings);
         }
 
         return $settings;
