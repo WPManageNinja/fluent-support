@@ -442,9 +442,7 @@ class SettingsController extends Controller
 
         $url = add_query_arg($data, 'https://wpmanageninja.com/');
 
-        wp_remote_post($url, [
-            'sslverify' => false
-        ]);
+        wp_remote_post($url);
     }
 
     /**
