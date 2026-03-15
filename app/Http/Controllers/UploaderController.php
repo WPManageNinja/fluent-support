@@ -76,8 +76,12 @@ class UploaderController extends Controller
 
     private function resolveTicketId($request)
     {
-        $ticketId = $request->getSafe('ticket_id', 'intval');
-        return $ticketId == 'undefined' ? null : $ticketId;
+        $rawTicketId = $request->getSafe('ticket_id', 'sanitize_text_field');
+        if ($rawTicketId === 'undefined' || $rawTicketId === '') {
+            return null;
+        }
+
+        return intval($rawTicketId);
     }
 
     private function resolvePerson($ticketId, Request $request)
