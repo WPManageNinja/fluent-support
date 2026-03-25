@@ -272,7 +272,8 @@ class SettingsController extends Controller
 
     public function saveReCaptchaSettings(Request $request)
     {
-        $data = $request->getSafe('reCaptcha', 'sanitize_text_field');
+        $data = wp_unslash($request->get('reCaptcha', null));
+        $data = is_array($data) ? map_deep($data, 'sanitize_text_field') : $data;
 
         if ('clear-reCaptcha-settings' == $data) {
             if (Meta::where('object_type', '_fs_recaptcha_settings')->delete()) {
@@ -286,12 +287,18 @@ class SettingsController extends Controller
             ]);
         }
 
+        if (!is_array($data)) {
+            return $this->sendError([
+                'message' => __('Invalid reCAPTCHA settings payload.', 'fluent-support'),
+            ]);
+        }
+
         $reCaptchaData = [
-            'reCaptcha_version'       => sanitize_text_field($data['reCaptchaVersion']),
-            'siteKey'                 => sanitize_text_field($data['siteKey']),
-            'secretKey'               => sanitize_text_field($data['secretKey']),
-            'formContainingReCaptcha' => array_map('sanitize_text_field', $data['formContainingReCaptcha']),
-            'is_enabled'              => sanitize_text_field($data['reCaptchaEnabled'], 'no'),
+            'reCaptcha_version'       => sanitize_text_field($data['reCaptchaVersion'] ?? ''),
+            'siteKey'                 => sanitize_text_field($data['siteKey'] ?? ''),
+            'secretKey'               => sanitize_text_field($data['secretKey'] ?? ''),
+            'formContainingReCaptcha' => array_map('sanitize_text_field', (array) ($data['formContainingReCaptcha'] ?? [])),
+            'is_enabled'              => sanitize_text_field($data['reCaptchaEnabled'] ?? 'no'),
         ];
 
         $previousValue = Meta::where('object_type', '_fs_recaptcha_settings')->first();
@@ -302,7 +309,11 @@ class SettingsController extends Controller
             ]);
         }
 
-        $verifyReCaptcha = ReCaptchaHandler::validateRecaptcha($data['captchaResponse'], $data['secretKey'], $data['reCaptchaVersion']);
+        $verifyReCaptcha = ReCaptchaHandler::validateRecaptcha(
+            sanitize_text_field($data['captchaResponse'] ?? ''),
+            sanitize_text_field($data['secretKey'] ?? ''),
+            sanitize_text_field($data['reCaptchaVersion'] ?? '')
+        );
 
         if (!$verifyReCaptcha) {
             return $this->sendError([
