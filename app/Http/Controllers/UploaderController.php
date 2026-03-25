@@ -35,7 +35,9 @@ class UploaderController extends Controller
         $ticketId = $this->resolveTicketId($request);
         $person = $this->resolvePerson($ticketId, $request);
 
-        $this->checkPermissionToUploadFile($person);
+        if ($permissionError = $this->checkPermissionToUploadFile($person)) {
+            return $permissionError;
+        }
 
         try {
             $uploadedFiles = UploadService::handleTempFileUpload($request->files());
