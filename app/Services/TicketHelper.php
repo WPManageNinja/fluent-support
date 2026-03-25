@@ -200,10 +200,38 @@ class TicketHelper
     // This method will return all ticket watcher inside a ticket
     public static function getWatchers($watchers)
     {
+        $watcherIds = [];
+
+        foreach ($watchers as $watcher) {
+            $watcherId = absint($watcher->tag_id);
+
+            if ($watcherId) {
+                $watcherIds[$watcherId] = $watcherId;
+            }
+        }
+
+        if (!$watcherIds) {
+            return [];
+        }
+
+        $agents = Agent::whereIn('id', array_values($watcherIds))
+            ->select(['id', 'first_name', 'last_name'])
+            ->get();
+
+        $agentsById = [];
+
+        foreach ($agents as $agent) {
+            $agentsById[$agent->id] = $agent;
+        }
+
         $watcherAgents = [];
 
         foreach ($watchers as $watcher) {
-            $watcherAgents[] = Agent::where('id', absint($watcher->tag_id))->select(['id', 'first_name', 'last_name'])->first();
+            $watcherId = absint($watcher->tag_id);
+
+            if (isset($agentsById[$watcherId])) {
+                $watcherAgents[] = $agentsById[$watcherId];
+            }
         }
 
         return $watcherAgents;
