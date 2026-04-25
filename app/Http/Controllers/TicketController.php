@@ -310,7 +310,22 @@ class TicketController extends Controller
 
             //Format response content
             foreach ($ticket->responses as $response) {
-                $response->content = links_add_target(make_clickable(wpautop($response->content, false)));
+                $responseContent = apply_filters(
+                    'fluent_support/response_content_before_render',
+                    $response->content,
+                    $response,
+                    $ticket
+                );
+
+                $responseContent = links_add_target(make_clickable(wpautop($responseContent, false)));
+
+                $response->content = apply_filters(
+                    'fluent_support/response_content_after_render',
+                    $responseContent,
+                    $response,
+                    $ticket
+                );
+
                 if (!empty($response->ccinfo)) {
                     $val = Helper::safeUnserialize($response->ccinfo->value);
                     if (isset($val['cc_email']) && !empty($val['cc_email'])) {
@@ -323,7 +338,19 @@ class TicketController extends Controller
                 }
             }
 
-            $ticket->content = links_add_target(make_clickable(wpautop($ticket->content, false)));
+            $ticketContent = apply_filters(
+                'fluent_support/ticket_content_before_render',
+                $ticket->content,
+                $ticket
+            );
+
+            $ticketContent = links_add_target(make_clickable(wpautop($ticketContent, false)));
+
+            $ticket->content = apply_filters(
+                'fluent_support/ticket_content_after_render',
+                $ticketContent,
+                $ticket
+            );
 
             //Get last activity by agent
             $ticket->live_activity = TicketHelper::getActivity($ticket->id, $agent->id);
