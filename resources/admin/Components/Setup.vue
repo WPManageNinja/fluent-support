@@ -71,7 +71,7 @@
                                     <!-- Shortcode Information -->
                                     <div class="fs_shortcode_info">
                                         <span class="fs_shortcode_text">{{ $t('Use Shortcode') }}</span>
-                                        <code class="fs_shortcode_badge">[Fluent_support_portal]</code>
+                                        <code class="fs_shortcode_badge">[fluent_support_portal]</code>
                                         <span class="fs_shortcode_text">in the selected page</span>
                                     </div>
                                 </el-form-item>
