@@ -16,7 +16,6 @@ class Maintenance
             'body'      => [
                 'payload' => $this->getData()
             ],
-            'sslverify' => false,
             'cookies'   => []
         ]);
 
