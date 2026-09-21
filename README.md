@@ -33,24 +33,6 @@ npm run rtl
 ```
 Generates `-rtl.css` variants from all built CSS files.
 
-### Build for release
-```bash
-sh build.sh --node-build --rtl_css --with_pro
-```
-
-### Publish to the public repo
-```bash
-npm -C dev run public:status              # what's pending in either direction
-npm -C dev run public:import              # bring in merged public PRs (if any)
-npm -C dev run public:up                  # publish develop to the public repo
-npm -C dev run public:release -- v2.4.1   # tag + GitHub release
-```
-Publishes a snapshot of `develop` (minus everything in `dev/mirror/mirrorignore`) to
-`WPManageNinja/fluent-support` without force-pushing, keeping contributor commits
-intact. Full guide: `dev/mirror/README.md`.
-
-The list of files included in the plugin zip is managed in `dev/whitelist.sh`.
-
 ## Build Architecture
 
 The frontend uses **Vite** with two separate build configs:
