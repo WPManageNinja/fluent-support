@@ -1,0 +1,432 @@
+/* The status wrapper carries the license state as a class (fs_license_valid,
+   fs_license_expired, ...) so a state can be styled without touching the markup.
+   It is deliberately layout-neutral: the card below lays itself out. */
+.fs_license_manager{
+    .fs_license_valid,
+    .fs_license_expired,
+    .fs_license_disabled,
+    .fs_license_unregistered{
+        text-align: left;
+    }
+}
+.fs_license_form_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+    width: 100%;
+    text-align: left;
+    box-sizing: border-box;
+    background: var(--fs-bg-primary, #FFFFFF);
+}
+
+.fs_license_form_content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.fs_license_form_header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.fs_license_form_title {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.27px;
+    color: var(--fs-text-primary, #0E121B);
+    margin: 0;
+}
+
+.fs_license_form_description {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.084px;
+    color: var(--fs-text-primary, #0E121B);
+    margin: 0;
+}
+
+.fs_license_input_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    .el-input-group__append .el-button{
+        margin: 0;
+    }
+}
+
+/* Element Plus draws an input group as two independently bordered boxes - the
+   field carries a border-radius while the append button carries its own inset
+   box-shadow "borders" - and rounding only the field leaves its corner cut
+   against the square parts around it. Put the single border and radius on the
+   group instead and clip the children to it, so there is nothing left to
+   mismatch. */
+.fs_license_input {
+    width: 100%;
+    border: 1px solid var(--fs-border-default, #E1E4EA);
+    border-radius: var(--fs-radius-md-lg, 10px);
+    overflow: hidden;
+
+    .el-input__wrapper {
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 0;
+        background-color: var(--fs-bg-primary, #FFFFFF);
+
+        &:hover,
+        &.is-focus {
+            box-shadow: none;
+        }
+    }
+
+    .el-input__inner {
+        padding: 10px 12px;
+
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: -0.084px;
+        color: var(--fs-text-primary, #0E121B);
+
+        &::placeholder {
+            color: var(--fs-text-muted, #99A0AE);
+        }
+    }
+
+    .el-input-group__append {
+        background-color: var(--fs-bg-subtle, #F5F7FA);
+        // Element Plus draws this box's borders with inset shadows; the group
+        // owns the outer edges now, so only the divider is left to draw.
+        border: none;
+        border-left: 1px solid var(--fs-border-default, #E1E4EA);
+        border-radius: 0;
+        padding: 0;
+        box-shadow: none;
+    }
+
+    &.fs_license_input_error {
+        border-color: var(--fs-text-red, #FB3748);
+    }
+}
+
+.fs_license_verify_btn {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    color: var(--fs-text-secondary, #525866);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: -0.084px;
+    height: auto;
+
+    svg,
+    span:first-child {
+        margin-right: 4px;
+    }
+
+    span{
+        color: var(--fs-text-secondary, #525866);
+    }
+
+    .el-icon {
+        font-size: 20px;
+        width: 20px;
+        height: 20px;
+    }
+
+    &:hover {
+        background-color: transparent;
+        color: var(--fs-text-secondary, #525866);
+    }
+}
+
+.fs_license_error_message {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    color: var(--fs-text-red, #FB3748);
+    margin: 0;
+}
+
+.fs_license_hint_text {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    color: var(--fs-text-secondary, #525866);
+    margin: 0;
+}
+
+.fs_license_purchase_text {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.084px;
+    color: var(--fs-text-primary, #0E121B);
+    margin: 0;
+}
+
+.fs_license_purchase_link {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: -0.084px;
+    color: var(--fs-text-info, #335CFF);
+    text-decoration: underline;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+    &:hover {
+        color: var(--fs-text-info, #335CFF);
+    }
+}
+
+/* ─── LICENSE STATUS CARD ──────────────────
+   Rendered when the site actually holds a license (valid / expired / disabled).
+   Every field is optional on the API side, so each block here has to look right
+   on its own — an older Fluent Support Pro sends only a subset of them.
+*/
+.fs_license_alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    border-radius: var(--fs-radius-md-lg, 10px);
+    border: 1px solid var(--fs-border-default, #E1E4EA);
+    background: var(--fs-bg-subtle, #F5F7FA);
+
+    .fs_license_alert_body {
+        flex: 1;
+
+        strong {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 20px;
+            letter-spacing: -0.084px;
+            color: var(--fs-text-primary, #0E121B);
+        }
+
+        p {
+            margin: 4px 0 0;
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 18px;
+            color: var(--fs-text-secondary, #525866);
+        }
+    }
+
+    .fs_license_alert_btn {
+        flex-shrink: 0;
+        padding: 6px 12px;
+        border-radius: var(--fs-radius-md, 8px);
+        border: 1px solid var(--fs-border-default, #E1E4EA);
+        background: var(--fs-bg-primary, #FFFFFF);
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 18px;
+        color: var(--fs-text-primary, #0E121B);
+        text-decoration: none;
+        white-space: nowrap;
+
+        &:hover {
+            background: var(--fs-bg-subtle, #F5F7FA);
+            color: var(--fs-text-primary, #0E121B);
+        }
+    }
+
+    &.is_warning {
+        border-color: var(--fs-status-pending-bg, #FEF3C7);
+        background: var(--fs-status-waiting-bg, #FEF3C7);
+    }
+
+    &.is_danger {
+        border-color: var(--fs-state-information-light, #FFEBEC);
+        background: var(--fs-state-information-light, #FFEBEC);
+    }
+}
+
+/* Each pill pairs a background token with the text token that is redefined
+   alongside it in _dark_mode.scss. Pairing a light background with a "-dark"
+   text token instead (state-stable-dark, state-warning-dark, state-error-dark)
+   looks right in light mode and disappears in dark, because only the
+   background half of that pair gets a dark-mode value. */
+.fs_license_pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 10px;
+    border-radius: var(--fs-radius-full, 999px);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    white-space: nowrap;
+    background: var(--fs-state-faded-light, #F2F5F8);
+    color: var(--fs-badge-faded-text, #222530);
+
+    &.is_success {
+        background: var(--fs-badge-success-bg, #AFEBD2);
+        color: var(--fs-badge-success-text, #072722);
+    }
+
+    &.is_warning {
+        background: var(--fs-status-waiting-bg, #FEF3C7);
+        color: var(--fs-status-waiting-color, #92400E);
+    }
+
+    &.is_danger {
+        background: var(--fs-state-information-light, #FFEBEC);
+        color: var(--fs-state-information-dark, #FB3748);
+    }
+
+    &.is_neutral {
+        background: var(--fs-state-faded-light, #F2F5F8);
+        color: var(--fs-badge-faded-text, #222530);
+    }
+}
+
+.fs_license_card {
+    border: 1px solid var(--fs-border-default, #E1E4EA);
+    border-radius: var(--fs-radius-lg, 12px);
+    background: var(--fs-bg-primary, #FFFFFF);
+    overflow: hidden;
+
+    .fs_license_card_head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 16px 20px;
+        border-bottom: 1px solid var(--fs-border-default, #E1E4EA);
+
+        h3 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 22px;
+            letter-spacing: -0.176px;
+            color: var(--fs-text-primary, #0E121B);
+        }
+
+        p {
+            margin: 2px 0 0;
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 18px;
+            color: var(--fs-text-secondary, #525866);
+        }
+    }
+
+    .fs_license_meta {
+        margin: 0;
+        padding: 4px 20px;
+        list-style: none;
+
+        li {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--fs-border-default, #E1E4EA);
+
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+
+        .fs_meta_label {
+            flex-shrink: 0;
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 18px;
+            color: var(--fs-text-secondary, #525866);
+        }
+
+        .fs_meta_value {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            text-align: right;
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 18px;
+            color: var(--fs-text-primary, #0E121B);
+            word-break: break-word;
+
+            small {
+                font-size: 12px;
+                font-weight: 400;
+                color: var(--fs-text-muted, #99A0AE);
+            }
+        }
+    }
+
+    .fs_license_card_footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 14px 20px;
+        border-top: 1px solid var(--fs-border-default, #E1E4EA);
+        background: var(--fs-bg-subtle, #F5F7FA);
+    }
+
+    .fs_license_checked {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 16px;
+        color: var(--fs-text-secondary, #525866);
+
+        a {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--fs-text-info, #335CFF);
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .fs_license_card_actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        a.el-button {
+            text-decoration: none;
+        }
+    }
+}
+
+.fs_license_card + .fs_license_form_wrapper,
+.fs_license_card + .fs_license_switch {
+    margin-top: 20px;
+}
+
+.fs_license_switch {
+    margin: 20px 0 0;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18px;
+    color: var(--fs-text-secondary, #525866);
+}
+

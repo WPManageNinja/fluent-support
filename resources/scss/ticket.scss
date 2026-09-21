@@ -1,0 +1,1169 @@
+.fs_ticket_item {
+    display: flex;
+    padding: 16px 20px;
+    flex-direction: column;
+    border-bottom: 1px solid var(--fs-border-default, #E1E4EA);
+    background: var(--fs-bg-primary, #FFF);
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+.fs_ticket_item:hover {
+    background: var(--bg-soft-50, #F8F9FA);
+}
+
+.fs_ticket_item:last-child {
+    border-bottom: none;
+}
+
+// Main container with left-right layout
+.fs_ticket_main_content {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+    width: 100%;
+    min-width: 0;
+
+    // Mobile: Prevent wrapping and allow horizontal scroll
+    @media all and (max-width: 767px) {
+        flex-wrap: nowrap;
+        min-width: 600px; // Ensure content doesn't get too cramped
+    }
+}
+
+// LEFT SECTION: Checkbox, Title, Author, Description
+.fs_ticket_left_section {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    .el-checkbox {
+        height: 20px;
+    }
+}
+
+.fs_ticket_title_row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    align-items: center;
+}
+
+.fs_status_dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.fs_status_dot_new {
+    background-color: var(--state-information-base, #335CFF);
+    box-shadow: 0 0 0 4px var(--state-information-pale, #EBF0FF);
+    margin: 4px;
+}
+
+.fs_ticket_title_group {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    min-width: 0;
+}
+
+.fs_tickets_list .fs_ticket_title {
+    overflow: hidden;
+    color: var(--fs-text-primary, #0E121B);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: -0.084px;
+    margin: 0;
+    word-wrap: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    flex: 0 1 auto;
+    min-width: 0;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+        box-shadow: unset;
+        border: none;
+    }
+}
+
+.fs_ticket_title:hover {
+    color: var(--fs-text-primary, #0E121B);
+}
+
+.fs_ticket_author {
+    color: var(--fs-subtle-btn-text, #525866);
+    font-size: 12px;
+    font-weight: 400;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+// Source icon: el-icon wrapper + tooltip trigger constrained to remove extra spacing
+.fs_ticket_title_row .el-tooltip__trigger {
+    display: inline-flex;
+    line-height: 0;
+    vertical-align: middle;
+    color: var(--fs-text-gray, #4B5563);
+}
+
+.fs_ticket_title_row .fs_ticket_source.el-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    line-height: 0;
+    vertical-align: middle;
+    margin: 0;
+    width: auto;
+    height: auto;
+
+    img {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
+        display: block;
+        object-fit: contain;
+    }
+
+    .fs_ticket_source_text {
+        color: var(--fs-subtle-btn-text, #525866);
+        font-size: 11px;
+        font-weight: 400;
+        white-space: nowrap;
+        line-height: 1;
+    }
+}
+
+.fs_priority_badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    border: 1px solid var(--stroke-soft-200, #E1E4EA);
+    background: var(--bg-white-0, #FFF);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.fs_priority_badge img {
+    width: 14px;
+    height: 14px;
+}
+
+.fs_ticket_number {
+    color: var(--fs-subtle-btn-text, #525866);
+    font-size: 12px;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.fs_ticket_description {
+    min-width: 0;
+    width: 80%;
+    overflow: hidden;
+    max-height: 20px;
+    flex-shrink: 0;
+}
+
+.fs_tk_preview_text {
+    overflow: hidden;
+    color: var(--fs-text-secondary, #525866);
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.084px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    max-height: 20px;
+    white-space: normal;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+// RIGHT SECTION: Tags, Meta Info, Status Group
+.fs_ticket_right_section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    flex-shrink: 0;
+}
+
+// Tags in right section
+.fs_ticket_right_section .fs_tags {
+    flex-shrink: 0;
+    margin: 0;
+    white-space: nowrap;
+}
+
+// Meta info (response count, mailbox, etc)
+.fs_ticket_meta_info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--fs-text-gray, #4B5563);
+    font-size: 12px;
+    font-weight: 400;
+    height: 25px;
+}
+
+.fs_ticket_conversation_count {
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+    color: var(--fs-subtle-btn-text, #525866);
+    font-size: 12px;
+    font-weight: 400;
+    white-space: nowrap;
+    line-height: .8;
+
+    img {
+        width: 14px;
+        height: 14px;
+        display: block;
+        flex-shrink: 0;
+    }
+}
+
+.fs_ticket_product {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--fs-text-gray, #4B5563);
+    font-size: 12px;
+    font-weight: 400;
+    white-space: nowrap;
+
+    img {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
+    }
+}
+
+.fs_ticket_mailbox {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--fs-text-gray, #4B5563);
+    font-size: 12px;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.fs_ticket_manage {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--fs-text-gray, #4B5563);
+    font-size: 12px;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.fs_ticket_meta_info img {
+    width: 16px;
+    height: 16px;
+}
+
+// Status group (avatar, status badge, priority, waiting time)
+.fs_ticket_status_group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.fs_ticket_agent_badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--fs-text-secondary, #525866);
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.fs_agent_avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.fs_client_priority_badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--fs-text-secondary, #525866);
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+// Priority dot indicators
+.fs_priority_dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    flex-shrink: 0;
+
+    &.fs_priority_dot_normal {
+        background-color: var(--fs-priority-normal, #22D3BB);
+    }
+
+    &.fs_priority_dot_medium {
+        background-color: var(--fs-priority-medium, #F6B51E);
+    }
+
+    &.fs_priority_dot_critical {
+        background-color: var(--fs-priority-critical, #FB3748);
+    }
+}
+
+.fs_ticket_waiting_time {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--fs-text-secondary, #525866);
+    font-size: 12px;
+    font-weight: 400;
+    white-space: nowrap;
+
+    img {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+.fs_status_badge {
+    display: flex;
+    padding: 2px 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    border-radius: var(--fs-radius-6, 6px);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+}
+
+.fs_status_waiting {
+    background: var(--fs-status-waiting-bg, #FFF7ED);
+    color: var(--fs-status-waiting-color, #C2410C);
+}
+
+.fs_status_new {
+    background: var(--fs-state-information-light, #DBEAFE);
+    color: var(--fs-state-information-dark, #1E40AF);
+}
+
+.fs_status_active {
+    background: var(--fs-state-success-light, #DCFCE7);
+    color: var(--fs-state-success-dark, #166534);
+}
+
+.fs_status_closed {
+    background: var(--fs-state-faded-light, #F3F4F6);
+    color: var(--fs-state-faded-dark, #1F2937);
+}
+
+.fs_status_open {
+    background: var(--success-100, #DCFCE7);
+    color: var(--success-800, #166534);
+}
+
+.fs_ticket_title_group{
+    .fs_inline_avatars.avatars_small{
+        display: flex;
+        align-items: center;
+        img{
+            width: 15.764px;
+            height: 15.764px;
+        }
+    }
+}
+
+.fs_inline_avatars {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.fs_inline_avatars.avatars_small span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: -4px;
+}
+
+.fs_inline_avatars.avatars_small img {
+    display: block;
+    width: 15.764px;
+    height: 15.764px;
+    border-radius: var(--radius-full, 999px);
+    border: 1.576px solid var(--stroke-white-0, #FFF);
+    background: var(--neutral-slate-200, #E1E4EA);
+    object-fit: cover;
+    margin-left: -4px;
+    position: relative;
+    z-index: 1;
+}
+
+.fs_inline_avatars.avatars_small img:first-child {
+    margin-left: 0;
+}
+
+.fs_inline_avatars.avatars_small img:hover {
+    z-index: 2;
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+}
+
+.fs_live_activity_count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin-left: -4px;
+    border-radius: var(--radius-full, 999px);
+    border: 1.576px solid var(--stroke-white-0, #FFF);
+    background: var(--neutral-slate-200, #E1E4EA);
+    color: var(--fs-text-secondary, #525866);
+    font-size: 9px;
+    font-weight: 600;
+    z-index: 1;
+}
+
+.fs_live_activity_popover_content {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.fs_live_activity_popover_content img {
+    width: 15.764px;
+    height: 15.764px;
+    border-radius: var(--radius-full, 999px);
+    border: 1.576px solid var(--stroke-white-0, #FFF);
+    background: var(--neutral-slate-200, #E1E4EA);
+    object-fit: cover;
+}
+
+.fs_bulk_action_modal {
+    .el-dialog__body {
+        padding: 25px;
+    }
+
+    .fs_bulk_action_create_response {
+        .fs_create_response {
+            border: none;
+            padding: 0;
+        }
+
+        .fs_actions_row {
+            display: flex;
+        }
+    }
+}
+
+.fs_search_bar_section {
+    padding-top: 20px;
+    width: 100%;
+
+    .fs_search_bar_container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 8px;
+
+        .fs_table_search_input {
+            flex: 1;
+            max-width: 100%;
+        }
+
+        .fs_search_clear_btn {
+            flex-shrink: 0;
+            padding: 8px;
+            min-width: auto;
+
+            .el-icon {
+                font-size: 16px;
+            }
+        }
+    }
+
+    .fs_search_help_text {
+        color: var(--fs-text-secondary, #525866);
+        font-size: 12px;
+        margin-top: 8px;
+
+        .fs_search_help_link {
+            color: var(--fs-link-color, #1890ff);
+            text-decoration: underline;
+            margin-left: 4px;
+
+            &:hover {
+                color: var(--fs-link-hover-color, #40a9ff);
+            }
+        }
+    }
+}
+
+.fs_active_filters_section {
+    display: flex;
+    padding: 10px 20px;
+    align-items: flex-start;
+    gap: 12px;
+    align-self: stretch;
+    border-bottom: 1px solid var(--fs-border-default, #E1E4EA);
+    background: var(--fs-bg-primary, #FFFFFF);
+
+    .fs_active_filters_container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        width: 90%;
+
+        .fs_filter_tag {
+            display: flex;
+            align-items: center;
+            border-radius: var(--fs-radius-md, 8px);
+            border: 1px solid var(--fs-border-default, #E1E4EA);
+            background: var(--fs-bg-primary, #FFFFFF);
+            overflow: hidden;
+
+            &.fs_filter_tag_with_select {
+                min-width: 300px;
+            }
+
+            .fs_filter_icon_name {
+                display: flex;
+                padding: 0 12px;
+                justify-content: center;
+                align-items: center;
+                align-self: stretch;
+                gap: 6px;
+                border-right: 1px solid var(--fs-border-default, #E1E4EA);
+                background: var(--fs-subtle-btn-bg, #F9FAFB);
+                font-size: 14px;
+                color: var(--fs-text-primary, #0E121B);
+
+                .fs_filter_icon {
+                    width: 16px;
+                    height: 16px;
+                    color: var(--fs-text-secondary, #525866);
+                }
+            }
+
+            .fs_filter_value {
+                display: flex;
+                padding: 6px 12px;
+                justify-content: center;
+                align-items: center;
+                align-self: stretch;
+                gap: 6px;
+                border-right: 1px solid var(--fs-border-default, #E1E4EA);
+                background: var(--fs-bg-primary, #FFFFFF);
+                color: var(--fs-text-secondary, #525866);
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 20px;
+                letter-spacing: -0.084px;
+
+                span {
+                    background: var(--fs-primary-tags-bg, #E1E4EA);
+                    border-radius: 4px;
+                    padding: 2px 8px;
+                    color: var(--fs-text-secondary, #525866);
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 400;
+                }
+            }
+
+            .fs_filter_close {
+                display: flex;
+                padding: 6px;
+                justify-content: center;
+                align-items: center;
+                gap: 6px;
+                background: var(--fs-subtle-btn-bg, #F9FAFB);
+                cursor: pointer;
+                transition: all 0.2s ease;
+
+                &:hover {
+                    background: var(--fs-bg-subtle, #F5F7FA);
+                }
+
+                svg {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+    }
+
+    .fs_filter_actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 10%;
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 425px) {
+    .fs_active_filters_section{
+        flex-direction: column;
+    }
+    .fs_active_filters_section .fs_filter_actions {
+        width: unset;
+    }
+}
+
+.fs_reset_filter_btn {
+    span {
+        color: var(--fs-text-secondary, #525866);
+        border: none;
+        font-size: 14px;
+        cursor: pointer;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 20px;
+        text-decoration-line: underline;
+
+        &:hover {
+            color: var(--fs-text-primary, #0E121B);
+        }
+    }
+}
+
+.fs_save_filter_btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.fs_product_filter_select {
+    width: 100%;
+    min-width: 200px;
+
+    .el-select__wrapper {
+        border: none;
+        box-shadow: none;
+        background: transparent;
+        padding: 0;
+    }
+
+    .el-select__selection {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+    .el-select__placeholder {
+        color: var(--fs-text-secondary, #525866);
+    }
+}
+
+// Inline description (hidden by default, shown in compact mode)
+.fs_ticket_inline_description {
+    display: none;
+}
+
+// Compact Layout Styles (Gmail-style condensed view)
+.fs_tickets_list{
+    &.fs_tickets_list_compact {
+        .fs_ticket_item {
+            padding: 8px 20px !important;
+            &:hover {
+                background: var(--fs-bg-subtle, #F5F7FA);
+            }
+        }
+
+        .fs_ticket_main_content {
+            flex-direction: row;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .fs_ticket_left_section {
+            flex-direction: row;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+
+            .el-checkbox {
+                flex-shrink: 0;
+            }
+        }
+
+        .fs_ticket_title_row {
+            flex: 1;
+            min-width: 0;
+            flex-wrap: nowrap;
+            overflow: hidden;
+        }
+
+        .fs_ticket_title_group {
+            min-width: 0;
+            display: flex;
+            align-items: baseline;
+            gap: 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .fs_ticket_title {
+            font-size: 14px;
+            line-height: 18px;
+            flex-shrink: 0;
+            max-width: none;
+        }
+
+        // Inline description visible in compact mode
+        .fs_ticket_inline_description {
+            display: inline;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            min-width: 0;
+            flex: 1;
+
+            .fs_inline_separator {
+                color: var(--fs-text-muted, #99A0AE);
+                margin: 0 6px;
+                flex-shrink: 0;
+            }
+
+            .fs_inline_desc_text {
+                color: var(--fs-text-secondary, #525866);
+                font-size: 12px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+
+        .fs_ticket_author {
+            font-size: 12px;
+            flex-shrink: 0;
+            margin-left: 8px;
+        }
+
+        // Hide the regular description block in compact mode
+        .fs_ticket_description {
+            display: none;
+        }
+
+        .fs_ticket_right_section {
+            flex-direction: row;
+            align-items: center;
+            gap: 16px;
+            flex-shrink: 0;
+        }
+
+        .fs_ticket_meta_info {
+            gap: 12px;
+            height: auto;
+        }
+
+        .fs_ticket_status_group {
+            gap: 8px;
+        }
+
+        .fs_agent_avatar {
+            width: 18px;
+            height: 18px;
+        }
+
+        .fs_status_badge {
+            padding: 1px 6px;
+            font-size: 12px;
+            line-height: 14px;
+        }
+
+        .fs_client_priority_badge {
+            font-size: 12px;
+            gap: 5px;
+        }
+
+        .fs_ticket_waiting_time {
+            font-size: 12px;
+
+            img {
+                width: 12px;
+                height: 12px;
+            }
+        }
+
+        .fs_ticket_conversation_count,
+        .fs_ticket_product,
+        .fs_ticket_mailbox {
+            font-size: 12px;
+        }
+
+        // Tags in compact mode
+        .fs_tags {
+            .el-tag {
+                height: 20px;
+                font-size: 12px;
+                padding: 0 6px;
+            }
+        }
+
+        .fs_status_dot {
+            width: 6px;
+            height: 6px;
+        }
+
+        .fs_status_dot_new {
+            box-shadow: 0 0 0 3px var(--fs-dot-warning-glow, #FFF1EB);
+            margin: 3px;
+        }
+    }
+}
+
+// ─── Grid / Table View ─────────────────────────────────────────────────────
+
+.fs_tickets_grid_view {
+    width: 100%;
+}
+
+.fs_grid_scroll_wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.fs_grid_table {
+    display: flex;
+    flex-direction: column;
+    min-width: 700px;
+    width: 100%;
+}
+
+.fs_grid_header_row,
+.fs_grid_row {
+    display: grid;
+    grid-template-columns: var(--fs-grid-cols);
+}
+
+// Header
+.fs_grid_header_row {
+    background: var(--fs-bg-subtle, #F9FAFB);
+    border-bottom: 1px solid var(--fs-border-default, #E1E4EA);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.fs_grid_th {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 12px;
+    color: var(--fs-text-secondary, #525866);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: -0.078px;
+    white-space: nowrap;
+    overflow: hidden;
+
+    svg path { fill: var(--fs-text-secondary, #525866); }
+}
+
+// Data rows
+.fs_grid_row {
+    background: var(--fs-bg-primary, #FFFFFF);
+    border-bottom: 1px solid var(--fs-border-default, #E1E4EA);
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+
+    &:last-child { border-bottom: none; }
+    &:hover { background: var(--fs-bg-subtle, #F8F9FA); }
+}
+
+.fs_grid_row_selected {
+    background: var(--fs-bg-soft, #F0F4FF) !important;
+}
+
+.fs_grid_td {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    overflow: hidden;
+}
+
+// Checkbox column
+.fs_grid_th_checkbox,
+.fs_grid_td_checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 0;
+}
+
+// Title column — sizing handled by grid track minmax(380px,1fr)
+.fs_grid_th_title,
+.fs_grid_td_title {
+    padding-left: 12px;
+    overflow: hidden;
+}
+
+// Column-specific padding only — widths come from the grid template
+.fs_grid_th_tags,    .fs_grid_td_tags    { padding-right: 20px; }
+.fs_grid_th_status,  .fs_grid_td_status  { padding-right: 20px; }
+.fs_grid_th_mailbox, .fs_grid_td_mailbox { padding-right: 20px; }
+
+// Title cell internals
+.fs_grid_td_title {
+    gap: 12px;
+    align-items: flex-start;
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+.fs_grid_avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--fs-bg-soft, #E1E4EA);
+}
+
+.fs_grid_avatar_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.fs_grid_avatar_initials {
+    color: var(--fs-text-secondary, #525866);
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.fs_grid_title_content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+    flex: 1;
+}
+
+.fs_grid_title_row {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    flex-wrap: nowrap;
+    min-width: 0;
+    align-items: center;
+}
+
+.fs_grid_title_text {
+    color: var(--fs-text-primary, #0A0A0A);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: -0.078px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
+    flex-shrink: 1;
+    min-width: 0;
+
+    &:hover { color: var(--fs-text-primary, #0A0A0A); text-decoration: underline; }
+}
+
+.fs_grid_author {
+    color: var(--fs-text-secondary, #525866);
+    font-size: 11px;
+    font-weight: 400;
+    white-space: nowrap;
+    flex-shrink: 0;
+
+    em {
+        font-style: italic;
+    }
+}
+
+.fs_grid_description {
+    color: var(--fs-text-muted, #717182);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+// Common cell text styles
+.fs_grid_cell_text {
+    color: var(--fs-text-primary, #0E121B);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.fs_grid_cell_muted {
+    color: var(--fs-text-muted, #99A0AE);
+    font-size: 13px;
+}
+
+.fs_grid_response_count {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--fs-text-secondary, #525866);
+    font-size: 12px;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.fs_grid_td_date {
+    align-items: flex-start !important;
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+.fs_grid_date_stack {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.fs_grid_date {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--fs-text-secondary, #525866);
+    font-size: 12px;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.fs_grid_date_muted {
+    color: var(--fs-text-muted, #99A0AE);
+}
+
+// Tags inside grid cells — prevent height expansion and overflow
+.fs_grid_td_tags {
+    overflow: hidden;
+    min-width: 0;
+
+    .fs_tags.fs_ticket_tags_mode {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow: hidden;
+        min-width: 0;
+        max-width: 100%;
+        align-items: center;
+    }
+
+    .fs_tag_item {
+        min-width: 0;
+        max-width: 100%;
+        overflow: hidden;
+        flex-shrink: 1;
+
+        .fs_tag_text {
+            max-width: 70px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+}
+
+// Status badge in grid - slightly tighter
+.fs_grid_td_status .fs_status_badge {
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+// Source icon wrapper — shared between list and grid
+.fs_ticket_source_wrap {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.fs_ticket_source_img {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+}
+
+// Fallback badge when source has no specific icon — shows first letter
+.fs_source_initial_badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    background: var(--fs-bg-soft, #E1E4EA);
+    color: var(--fs-text-secondary, #525866);
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 1;
+    text-transform: uppercase;
+    flex-shrink: 0;
+}
+
+// Source icon inline in title row (grid)
+.fs_grid_source_icon {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.fs_grid_source_img {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+    display: block;
+}

@@ -1,0 +1,161 @@
+// Global input field styles
+.el-input {
+    input[type="text"],
+    input[type="password"],
+    input[type="date"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    input[type="email"],
+    input[type="month"],
+    input[type="number"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="time"],
+    input[type="url"],
+    input[type="week"] {
+        padding: 0;
+        background: none;
+        box-shadow: none;
+        border: none;
+    }
+
+    &.fs_table_search_input {
+        width: 240px;
+    }
+
+    input::placeholder {
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px; /* 142.857% */
+        letter-spacing: -0.084px;
+    }
+
+    .el-input__prefix-inner>:last-child {
+        margin-right: 6px;
+    }
+
+    .el-input__wrapper {
+        border-radius: var(--fs-radius-md, 8px);
+        border: 1px solid var(--fs-stroke-soft, #E1E4EA);
+        background: var(--fs-bg-primary, #FFF);
+        /* regular-shadow/x-small */
+        box-shadow: 0px 1px 2px 0px var(--fs-shadow-light, rgba(10, 13, 20, 0.03));
+    }
+
+    .el-input__wrapper.is-focus {
+        border-radius: var(--fs-radius-md, 8px);
+        border: 1px solid var(--fs-stroke-strong, #0E121B);
+        background: var(--fs-bg-primary, #FFF);
+        /* components/buttons/important-focus */
+        box-shadow: 0px 0px 0px 2px var(--fs-bg-primary, #FFF), 0px 0px 0px 4px var(--fs-shadow-soft, rgba(153, 160, 174, 0.16));
+    }
+}
+
+// Global select field styles
+.el-select {
+    .el-select__wrapper {
+        display: flex;
+        padding: 5px 5px 5px 12px;
+        align-items: center;
+        gap: 8px;
+        min-height: 36px;
+        align-self: stretch;
+        border-radius: var(--fs-radius-md-lg, 10px);
+        border: 1px solid var(--fs-stroke-soft, #E1E4EA);
+        background: var(--fs-bg-primary, #FFF);
+        box-shadow: 0px 1px 2px 0px var(--fs-shadow-light, rgba(10, 13, 20, 0.03));
+    }
+
+    .el-select__wrapper.is-focused {
+        border-radius: var(--fs-radius-md, 8px);
+        border: 1px solid var(--fs-stroke-strong, #0E121B);
+        background: var(--fs-bg-primary, #FFF);
+        box-shadow:
+            0px 0px 0px 2px var(--fs-bg-primary, #FFF),
+            0px 0px 0px 4px var(--fs-shadow-soft, rgba(153, 160, 174, 0.16));
+    }
+
+    .el-select__placeholder {
+        color: var(--fs-text-muted, #99A0AE);
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: -0.084px;
+    }
+}
+
+// Global textarea field styles
+.el-textarea {
+    .el-textarea__inner {
+        border-radius: var(--fs-radius-md, 8px);
+        border: 1px solid var(--fs-stroke-soft, #E1E4EA);
+        background: var(--fs-bg-primary, #FFF);
+        /* regular-shadow/x-small */
+        box-shadow: 0px 1px 2px 0px var(--fs-shadow-light, rgba(10, 13, 20, 0.03));
+    }
+
+    .el-textarea__inner.is-focus {
+        border-radius: var(--fs-radius-md, 8px);
+        border: 1px solid var(--fs-stroke-strong, #0E121B);
+        background: var(--fs-bg-primary, #FFF);
+        /* components/buttons/important-focus */
+        box-shadow: 0px 0px 0px 2px var(--fs-bg-primary, #FFF), 0px 0px 0px 4px var(--fs-shadow-soft, rgba(153, 160, 174, 0.16));
+    }
+}
+
+// Global form item styles
+.el-form-item {
+    .el-form-item__label {
+        color: var(--fs-text-primary, #0E121B);
+        margin-bottom: 4px;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 20px;
+        letter-spacing: -0.084px;
+    }
+}
+
+// Global checkbox styles
+.el-checkbox {
+    &.is-checked {
+        .el-checkbox__label {
+            color: var(--fs-text-primary, #0E121B);
+        }
+
+        .el-checkbox__inner {
+            background-color: var(--fs-bg-muted, #2B303B);
+            border-color: var(--fs-bg-muted, #2B303B);
+        }
+    }
+
+    .el-checkbox__input.is-indeterminate .el-checkbox__inner {
+        background-color: var(--fs-bg-muted, #2B303B);
+        border-color: var(--fs-bg-muted, #2B303B);
+    }
+}
+
+// Global form styles
+.el-form {
+    padding-right: 1px;
+}
+
+// Dialog specific form label styles
+.el-dialog__body .el-form-item__label {
+    font-weight: bold;
+}
+
+// Global dropdown menu styles
+.el-dropdown-menu {
+    &.fs_table_more_actions_dropdown_menu {
+        background-color: var(--fs-bg-muted, #2B303B);
+    }
+
+    .el-dropdown-menu__item:not(.is-disabled):focus,
+    .el-dropdown-menu__item:not(.is-disabled):hover {
+        background-color: var(--fs-bg-subtle, #F5F7FA);
+        color: var(--fs-text-primary, #0E121B);
+    }
+}

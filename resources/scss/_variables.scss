@@ -1,0 +1,155 @@
+/* ─── SASS VARIABLES ─────────────────────── */
+$slug: 'fframe_';
+$bodyBg: #f1f2f5;
+
+/* ─── CSS CUSTOM PROPERTIES ──────────────── */
+:root {
+    /* ─── TEXT COLORS ─────────────────────── */
+    --fs-text-primary: #0E121B;
+    --fs-text-secondary: #525866;
+    --fs-text-white: #FFFFFF;
+    --fs-text-muted: #99A0AE;
+    --fs-text-red: #FB3748;
+    --fs-text-info: #335CFF;
+    --fs-text-green: #15BE7C;
+    --fs-text-gray: #4B5563;
+
+    /* ─── BUTTON HOVER COLORS ─────────────── */
+    --fs-btn-hover-bg: #F2F5F8;
+    --fs-btn-stroke-hover-bg: rgba(251, 55, 72, 0.05);
+
+    /* ─── BACKGROUND COLORS ───────────────── */
+    --fs-global-component-bg: #F3F5FA;
+    --fs-bg-primary: #FFFFFF;
+    --fs-bg-upgrade-to-pro: #089360;
+    --fs-bg-subtle: #F5F7FA;
+    --fs-bg-strong: #0E121B;
+    --fs-bg-muted: #2B303B;
+    --fs-bg-internal-note: #FFFAEB;
+    --fs-bg-warning: #FFF9F3;
+
+    /* ─── BUTTONS / ACTIONS ───────────────── */
+    --fs-btn-primary-bg: #0E121B;
+    --fs-btn-disabled: #CACFD8;
+    --fs-subtle-btn-bg: #F9FAFB;
+    --fs-subtle-btn-text: #525866;
+
+    /* ─── BORDER COLORS ───────────────────── */
+    --fs-border-default: #E1E4EA;
+    --fs-btn-border-black: #0E121B;
+    --fs-btn-border-red: #FB3748;
+
+    /* ─── BORDER COLORS ───────────────────── */
+    --fs-plain-button-text: #525866;
+
+
+    /* ─── TABLE ───────────────────────────── */
+    --fs-table-header-bg: #F9FAFB;
+    --fs-table-hover-bg: #F9FAFB;
+
+    /* ─── STROKES ─────────────────────────── */
+    --fs-stroke-soft: #E1E4EA;
+    --fs-stroke-strong: #0E121B;
+
+    /* ─── STATE COLORS ─────────────────────── */
+    --fs-state-stable-dark: #0B463E;
+    --fs-state-warning-dark: #682F12;
+    --fs-state-error-dark: #681219;
+    --fs-state-information-light: #FFEBEC;
+    --fs-state-information-dark: #FB3748;
+    --fs-state-success-light: #E0FAEC;
+    --fs-state-success-dark: #1FC16B;
+    --fs-state-feature-light: #EFEBFF;
+    --fs-state-feature-dark: #351A75;
+    --fs-state-faded-light: #F2F5F8;
+    --fs-state-faded-dark: #717784;
+    --fs-state-faded-lighter: #F2F5F8;
+    --fs-badge-faded-text: #222530;
+    --fs-state-away-light: #FFECC0;
+    --fs-state-away-lighter: #FFFAEB;
+    --fs-state-away-dark: #624C18;
+
+    /* ─── RADIUS ──────────────────────────── */
+    --fs-radius-sm: 4px;
+    --fs-radius-md: 8px;
+    --fs-radius-md-lg: 10px;
+    --fs-radius-lg: 12px;
+    --fs-radius-xl: 16px;
+    --fs-radius-6: 6px;
+    --fs-radius-full: 999px;
+
+    /* ─── GRAY COLORS ──────────────────────── */
+    --fs-gray-600: #6b7280;
+
+    /* ─── STATUS COLORS ─────────────────────── */
+    --fs-status-active: #23A682;
+    --fs-status-active-bg: #EEFBF6;
+    --fs-status-active-dot: #059669;
+    --fs-status-inactive: #525866;
+    --fs-status-inactive-bg: #F2F5F8;
+    --fs-status-pending: #D97706;
+    --fs-status-pending-bg: #FEF3C7;
+    --fs-status-pending-dot: #D97706;
+    --fs-status-blocked: #525866;
+    --fs-status-blocked-bg: #FFFFFF;
+    --fs-status-blocked-border: #E1E4EA;
+    --fs-status-waiting-bg: #fef3c7;
+    --fs-status-waiting-color: #92400e;
+    --fs-dot-warning: #FF8447;
+    --fs-dot-warning-glow: #FFF1EB;
+
+    /* ─── SHADOWS ─────────────────────────── */
+    --fs-shadow-soft: rgba(153, 160, 174, 0.16);
+    --fs-shadow-light: rgba(10, 13, 20, 0.03);
+    --fs-shadow-toggle: 0 6px 10px 0 rgba(14, 18, 27, 0.06), 0 2px 4px 0 rgba(14, 18, 27, 0.03);
+
+    /* ─── STATUS BADGES ───────────────────── */
+    --fs-status-active-bg: #E8F5E8;
+    --fs-status-active-text: #072722;
+    --fs-status-info-bg: #E1E4EA;
+    --fs-status-info-text: #1976D2;
+
+   // ─── TAGS COLORS ───────────────────── //
+   --fs-primary-tags-bg: #E1E4EA;
+
+    /* ─── STAT ICON BACKGROUNDS ────────────── */
+    --fs-stat-icon-bg: #f2f5f8;
+    --fs-stat-icon-color: #525866;
+    --fs-stat-icon-danger-bg: #ffebec;
+    --fs-stat-icon-danger-color: #FB3748;
+    --fs-stat-icon-warning-bg: #fff1eb;
+    --fs-stat-icon-warning-color: #FF8447;
+    --fs-stat-icon-info-bg: #ebf1ff;
+    --fs-stat-icon-info-color: #335CFF;
+
+    /* ─── CHART COLORS ─────────────────────── */
+    --fs-chart-primary: #0cbe7e;
+    --fs-chart-secondary: #47c2ff;
+    --fs-chart-tertiary: #22d3bb;
+    --fs-chart-quaternary: #7D52F4;
+    --fs-chart-quinary: #FF8447;
+    --fs-chart-warning: #FA7319;
+    --fs-chart-info: #335CFF;
+    --fs-chart-success: #1FC16B;
+
+    /* ─── BADGE COLORS ─────────────────────── */
+    --fs-badge-success-bg: #afebd2;
+    --fs-badge-success-text: #072722;
+
+    /* ─── Info tooltip ─────────────────────────── */
+    --fs-tooltip-bg: #CACFD8;
+
+    /* ─── ELEMENT UI OVERRIDES ────────────── */
+    --el-border-radius-base: 20px;
+
+    /* ─── FALLBACK TEXT COLOR ─────────────── */
+    color: var(--fs-text-primary, #0E121B);
+
+    /* ─── WARNING COLORS ──────────────────── */
+    --fs-warning-bg: rgba(250, 115, 25, 1);
+    --fs-warning-text: #FFFFFF;
+
+
+    --fs-text-link: #089360;
+    --fs-bg-neutral: var(--fs-subtle-btn-bg);
+}

@@ -1,0 +1,200 @@
+.page{
+
+    .fs_dialog button,
+    .fst_front .fframe_body button{
+        &:hover,
+        &:focus,
+        &:active {
+            box-shadow: unset;
+        }
+    }
+    .fs_dialog{
+        .el-dialog__headerbtn:hover{
+            background: transparent;
+        }
+    }
+    .fs_status_tabs .fs_segmented_control {
+        gap: 0;
+    }
+    .fst_front .fframe_body {
+        margin-left: 0px;
+        background: var(--fs-bg-subtle,#F5F7FA);
+    }
+    .fs_tickets_view .fs_tk_inner_body {
+        max-height: fit-content;
+    }
+
+    .fs_tk_inner_sidebar{
+        min-height: 100vh;
+        height: auto;
+    }
+    @media (max-width: 1024px) {
+        .fs_tk_inner_sidebar{
+            min-height: auto;
+            height: auto;
+        }
+    }
+    .fframe_body .fs_settings_view {
+        height: auto;
+    }
+    .fframe_body .fs_settings_view .fs_inner_sidebar {
+        min-height: 100vh;
+        height: auto;
+    }
+    .fs_main_navbar .fs_nav_item.current .fs_nav_link{
+        background: var(--fs-bg-subtle, #F5F7FA);
+        color: var(--fs-text-primary, #0E121B);
+    }
+    .fs_box_wrapper{
+        .fs_dashboard_wrapper{
+            padding-top: 20px;
+        }
+    }
+    .fs_main_navbar {
+        position: initial;
+        width: 100%;
+    }
+    #wpcontent, .fframe_app {
+        background-color: none;
+        padding-bottom: 0px;
+    }
+    .fs_tickets_view{
+        position: initial;
+        margin-right: 0;
+        margin-left: -20px;
+    }
+    @media (max-width: 1024px) {
+        .fs_tickets_view {
+            margin-left: 0;
+        }
+    }
+    .fs_combined_top_bar{
+        position: relative;
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+    .fs_main_navbar .fs_nav_item{
+        list-style-type: none;
+    }
+    .fs_reports_wrapper{
+        position: inherit;
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+    .fs_reports_layout{
+        height: auto;
+        padding-top: 0;
+    }
+    .fs_inside_activity_menu_tab_header{
+        position: inherit;
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+    .fs_component_dashboard{
+        padding-top: 0;
+    }
+    .fs_tickets_view_wrapper{
+        margin-left: 0;
+        width: 100%;
+    }
+    .fframe_body{
+        padding-top: 0;
+    }
+    .fframe_body .fs_settings_view {
+        position: inherit;
+        // margin-left: 20px;
+    }
+    .fframe_body .fs_settings_view .fs_settings_wrapper {
+        padding-left: 0;
+    }
+    .fframe_body .fs_settings_view .fs_inner_sidebar {
+        margin-left: -20px;
+    }
+    .fframe_body .fs_settings_view .fs_inner_body {
+        margin-right: -20px;
+        max-height: initial;
+    }
+    .fs_tk_inner_sidebar.has-view-route {
+        padding-top: 0px;
+    }
+    .fs_tickets_tiny_nav {
+        margin-top: 0;
+    }
+    .fs_view_ticket {
+        margin-top: 20px;
+    }
+    .fst_front input[type=text]{
+        border-style: none;
+    }
+    .fs_pagination_wrapper p {
+        margin-bottom: 0px;
+        align-items: center;
+        display: flex;
+    }
+    .fs_pagination_right ul{
+        margin: 0;
+    }
+    .fs_inside_menu_tab_header {
+        height: auto;
+        min-height: 100vh;
+    }
+    .fs_nav_tab:hover {
+        background: var(--fs-bg-weak-50, #F5F7FA);
+        box-shadow: none;
+        color: var(--fs-text-secondary, #525866);
+    }
+    .fst_front input[type=email]{
+        border-style: none;
+    }
+    .fs_nav_tab_active {
+        background: var(--fs-bg-weak-50, #F5F7FA);
+        color: var(--fs-text-primary, #0E121B);
+    }
+    .fs_tk_inner_sidebar .fs_sidebar_header .fs_tickets_collapse_btn {
+        margin-left: 0;
+    }
+    .fs_filter_actions .fs_reset_filter_btn {
+        padding: 0;
+    }
+    @media (min-width: 1025px) {
+        .fs_tk_inner_sidebar .fs_sidebar_header {
+            padding: 0;
+        }
+    }
+    img {
+        max-width: fit-content;
+    }
+    @media (max-width: 1024px) {
+        .fs_reports_wrapper .fs_box_wrapper {
+            padding-top: 0;
+        }
+    }
+    @media (max-width: 768px) {
+        .fframe_body .fs_settings_view .fs_inner_body .fs_box_body {
+            margin-top: 20px !important;
+        }
+    }
+    @media (max-width: 768px) {
+        .fframe_body .fs_settings_view .fs_inner_body .fs_box_header {
+            position: initial;
+        }
+    }
+    @media (max-width: 1024px) {
+        .fframe_body:has(.fs_settings_view) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .fframe_body .fs_settings_view .fs_inner_sidebar {
+            margin-left: 0;
+        }
+        .fframe_body .fs_settings_view .fs_inner_body {
+            margin-right: 0;
+        }
+    }
+    .fs_inside_menu_tab_header + .fs_box_wrapper,
+    .fframe_body .fs_settings_view .fs_inner_body,
+    .fs_tickets_view .fs_tk_inner_body{
+        overscroll-behavior: initial;
+        overflow-y: auto;
+    }
+}

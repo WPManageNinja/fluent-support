@@ -1,0 +1,463 @@
+@media all and (max-width: 1024px) {
+
+    .wp-responsive-open #wpbody-content .fs_main_navbar{
+        width: initial;
+    }
+    .fs_all_tickets .fs_box_header{
+        padding: 15px 15px;
+    }
+    .fs_box_head{
+        flex-wrap: wrap;
+        .fs_status_tabs {
+            margin-right: 10px;
+            .fs_segmented_control{
+                padding: 5px;
+                .fs_segment_button{
+                    padding: 4px 10px;
+                }
+            }
+        }
+    }
+    .fs_status_tabs_wrapper {
+        display: grid !important;
+        justify-content: center !important;
+        .fs_status_tabs{
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+    }
+
+    .fs_tickets_view_wrapper{
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .fs_ticket_nav{
+        max-height: initial;
+    }
+
+    .fframe_body {
+        .fs_combined_top_bar{
+            position: initial;
+            .fs_top_bar_left{
+                display: none;
+                visibility: hidden;
+            }
+        }
+        .fs_tk_inner_sidebar{
+            width: 100%;
+            position: initial !important;
+            height: initial;
+            margin-top: 20px;
+            min-height: initial;
+            .fs_sidebar_items ul{
+                display: flex;
+                flex-wrap: wrap;
+            }
+        }
+        .fs_tickets_tiny_nav{
+            width: initial;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .fs_tickets_view {
+            display: block;
+            margin: 0 10px;
+            position: static;
+            .fs_tk_inner_body{
+                max-height: initial;
+                overscroll-behavior: initial;
+            }
+        }
+
+        .inner_sidebar {
+            width: 100%;
+
+            ul {
+                li {
+                    display: inline-block;
+                    margin-bottom: 10px;
+                    padding-right: 15px;
+                }
+            }
+        }
+
+        .inner_body {
+            width: 100%;
+        }
+    }
+
+    .wp_vue_editor_wrapper{
+        padding-top: 30px;
+        .fs_action_buttons{
+            top: 0;
+            left: 0;
+            display: flex;
+            width: 100%;
+            gap: 10px !important;
+        }
+    }
+
+}
+
+@media all and (max-width: 768px) {
+    .fframe_body {
+        .el-checkbox{
+            white-space: initial !important;
+        }
+        .fs_all_tickets .fs_box_head .fs_filter_controls{
+            margin-left: initial;
+            margin-top: 10px;
+        }
+        .fs_view_ticket {
+            display: block;
+        }
+        .fs_tickets_view_wrapper{
+            margin-left: 0;
+            width: 100%;
+        }
+
+        .fs_tk_inner_sidebar{
+            position: initial;
+            height: initial;
+            min-height: initial;
+        }
+        .fs_ticket_nav{
+            max-height: initial;
+        }
+        .fs_settings_wrapper{
+            padding-left: 0 !important;
+        }
+        .fs_tickets_view {
+            position: static;
+            .fs_ticket_sidebar {
+                margin-top: 80px;
+                width: 100%;
+            }
+            .fs_tk_inner_body{
+                max-height: initial;
+            }
+
+            .fs_ticket_body {
+                width: 100%;
+
+                .fs_thread_wrap {
+                    margin: 0;
+                    padding: 20px 10px;
+                }
+
+                .fs_thread_body {
+                    width: 100%;
+                }
+            }
+        }
+        .fs_top_bar_right{
+            gap: 10px;
+            padding: 8px 10px;
+        }
+        .fs_top_bar_actions .fs_action_buttons{
+            padding: 8px 10px;
+            flex-wrap: wrap;
+            gap: 10px !important;
+            .fs_more_action,
+            .el-button+.el-button{
+                margin-left: 5px;
+            }
+            .fs_workflow_pop{
+                margin: 0 5px;
+            }
+        }
+        .el-button--small {
+            min-height: 27px;
+            font-size: 11px;
+            border-radius: 3px;
+            padding: 5px 10px;
+        }
+
+        .fs_ticket_body {
+            .fs_th_header .fs_tk_subject h2 {
+                font-size: 16px;
+                line-height: 21px;
+                font-weight: 500;
+                display: inline;
+            }
+
+            .fs_business_name {
+                display: none;
+            }
+
+            .fs_thread .fs_avatar {
+                position: absolute;
+                margin: 19px 0px 0px 10px;
+                width: 28px;
+                height: 28px;
+                background: transparent;
+
+                img {
+                    border-radius: 50%;
+                    max-width: 24px;
+                    max-height: 24px;
+                }
+            }
+
+            .fs_thread_head {
+                padding-left: 32px;
+
+                .fs_thread_title {
+                    font-size: 15px;
+                }
+            }
+
+            .fs_create_response {
+                .fs_row {
+                    display: flex;
+                    flex-direction: column-reverse;
+                    flex-wrap: nowrap;
+
+                    .fs_half {
+                        width: 100%;
+                    }
+                }
+
+                .el-button--large {
+                    padding: 10px 10px;
+                    min-height: auto;
+                }
+            }
+        }
+
+    }
+    .fs_pagination_wrapper{
+        overflow: scroll;
+    }
+
+    .wp_vue_editor_wrapper{
+        padding-top: 0;
+        .fs_action_buttons{
+            position: initial;
+            margin-bottom: 10px;
+        }
+    }
+}
+@media all and (max-width: 768px) {
+    .fframe_body{
+        .fs_top_bar_left{
+            width: 100%;
+        }
+        .fs_combined_top_bar{
+            flex-direction: column;
+            .fs_top_bar_right{
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+        .fs_top_bar_actions .fs_action_buttons{
+            padding: 8px 0;
+            justify-content: center;
+        }
+        .fs_action_buttons{
+            position: initial;
+        }
+    }
+
+    .fs_box_wrapper .fs_box_header .fs_box_head{
+        flex-wrap: wrap;
+        overflow: scroll;
+    }
+    .fframe_body{
+        .fs_all_tickets {
+            .fs_tickets_list {
+                overflow-x: auto;
+                overflow-y: visible;
+                -webkit-overflow-scrolling: touch;
+                width: 100%;
+
+                .fs_ticket_item {
+                    min-width: 650px;
+                    flex-shrink: 0;
+
+                    .fs_ticket_main_content {
+                        flex-wrap: nowrap;
+                    }
+
+                    .fs_ticket_footer {
+                        align-items: flex-start;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        gap: 10px;
+                        .fs_ticket_meta{
+                            gap: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .dashboard {
+        .el-row {
+            flex-wrap: wrap;
+            > * {
+                flex-basis: 100%;
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+
+        .fs_box_board {
+            .el-collapse-item__header {
+                height: auto;
+                line-height: 1.5;
+            }
+        }
+    }
+
+    .fs-el-drawer{
+        width: 60% !important;
+        padding-top: 12px;
+    }
+    .fs_head_section {
+        h1 {
+            font-size: 20px;
+        }
+        .fs_button_group {
+            float: none;
+            display: flex;
+            align-items: center;
+        }
+    }
+    .fs_filter_dropdown.el-tooltip,
+    .fs_popover.el-tooltip{
+        width: 250px !important;
+    }
+    .fs_filter_dropdown {
+        height: auto !important;
+        max-height: 60vh !important;
+    }
+}
+
+@media all and (max-width: 768px) {
+    .fs_filter_dropdown {
+        height: auto !important;
+        max-height: 55vh !important;
+    }
+}
+
+@media all and (max-width: 480px) {
+    .fs_filter_dropdown {
+        height: auto !important;
+        max-height: 50vh !important;
+    }
+}
+
+@media all and (max-width: 425px) {
+    .fs_status_tabs_wrapper {
+        display: flex !important;
+        justify-content: space-between !important;
+    }
+}
+
+@media all and (max-width: 480px) {
+    .fs_dashboard_wrapper {
+        .fs_head_section {
+            flex-direction: column;
+        }
+    }
+}
+
+@media all and (max-width: 600px)
+{
+    .el-drawer.rtl.open.fs_dashboard_settings{
+        width:80%!important;
+    }
+    
+    .el-drawer.rtl.open.fs_wc_order_details{
+        width:100%!important;
+    }
+}
+
+// Mobile responsive for fs_table_header with horizontal scroll
+@media all and (max-width: 767px) {
+    .fs_table_header {
+        overflow-x: auto;
+        overflow-y: visible;
+        -webkit-overflow-scrolling: touch;
+        width: 100%;
+        padding: 12px 20px;
+        gap: 10px;
+
+        .fs_box_actions {
+            min-width: max-content;
+            flex-wrap: nowrap;
+            width: max-content;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .fs_table_search_field {
+            flex-shrink: 0;
+            min-width: 200px;
+        }
+    }
+
+    .fs_table_container {
+        overflow-x: auto;
+        overflow-y: visible;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+@media all and (max-width: 480px) {
+    .fframe_body{
+        .fs_pagination_wrapper {
+            display: grid;
+            .fs_pagination_left {
+                align-items: flex-start;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 10px;
+            }
+        }
+    }
+}
+
+// Mobile responsive for fs-el-drawer
+@media all and (max-width: 767px) {
+    .fs-el-drawer {
+        .el-drawer {
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+        
+        .el-drawer__body {
+            padding: 16px !important;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            max-height: calc(100vh - 80px);
+
+            .fs_label_search_drawer {
+                .fs-table-items {
+                    padding: 0 !important;
+                }
+            }
+        }
+        
+        .el-drawer__footer {
+            padding: 12px 16px !important;
+            border-top: 1px solid var(--fs-border-default, #E1E4EA);
+            background: var(--fs-bg-primary, #FFF);
+            position: sticky;
+            bottom: 0;
+            z-index: 10;
+            
+            .fs_text_right {
+                display: flex;
+                justify-content: flex-end;
+                width: 100%;
+            }
+        }
+    }
+}
+

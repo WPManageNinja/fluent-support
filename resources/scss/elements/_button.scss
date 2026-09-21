@@ -1,0 +1,17 @@
+/* Action Buttons */
+.fs_action_buttons {
+    display: flex;
+    align-items: center;
+    gap: 0 !important;
+    .fs_more_action{
+        margin-left: 10px;
+    }
+}
+.el-button.fs_outline_btn.fs_action_btn_with_text {
+    padding: 6px 12px;
+    gap: 4px;
+}
+
+.fs_close_ticket_btn {
+    margin-left: 10px;
+}

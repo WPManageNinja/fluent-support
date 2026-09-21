@@ -1,0 +1,180 @@
+/* WooCommerce Order Details Drawer - Figma Design */
+.fs_wc_order_details {
+    background: transparent;
+    box-shadow: unset;
+
+    .el-drawer__body {
+        padding: 0 !important;
+        background: var(--fs-bg-primary, #FFFFFF);
+    }
+
+    .el-card.is-always-shadow {
+        box-shadow: unset;
+        border-radius: 0;
+        border: none;
+    }
+
+    /* Card Header */
+    .el-card__header {
+        padding: 24px;
+        border-bottom: 1px solid var(--fs-border-default, #E1E4EA);
+        background: var(--fs-bg-primary, #FFFFFF);
+    }
+
+    .fs_order_card_header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        h3 {
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 28px;
+            letter-spacing: -0.2px;
+            color: var(--fs-text-primary, #0E121B);
+            margin: 0;
+            padding: 0;
+        }
+        .el-tag {
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 16px;
+            padding: 4px 12px;
+            border-radius: 6px;
+            border: none;
+        }
+    }
+
+    /* Card Body */
+    .el-card__body {
+        padding: 24px;
+        background: var(--fs-bg-primary, #FFFFFF);
+    }
+
+    .fs_wc_card-body {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    /* Address Sections */
+    .fs_wc-order-preview-address {
+        h2 {
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 20px;
+            letter-spacing: -0.084px;
+            color: var(--fs-text-primary, #0E121B);
+            margin: 0 0 12px 0;
+            padding: 0;
+        }
+
+        p {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            color: var(--fs-text-secondary, #525866);
+            margin: 0 0 8px 0;
+            strong {
+                font-weight: 500;
+                color: var(--fs-text-primary, #0E121B);
+            }
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    /* Table Styling */
+    .el-table {
+        border-radius: 8px;
+        border: 1px solid var(--fs-border-default, #E1E4EA);
+        margin-top: 24px;
+
+        // Remove default Element Plus borders
+        &::before,
+        &::after {
+            display: none;
+        }
+
+        .el-table__inner-wrapper::before {
+            display: none;
+        }
+
+        // Header styling
+        .el-table__header-wrapper {
+            th.el-table__cell {
+                background: var(--fs-bg-subtle, #F5F7FA) !important;
+                font-weight: 600;
+                font-size: 12px;
+                line-height: 16px;
+                color: var(--fs-text-primary, #0E121B) !important;
+                padding: 12px 16px !important;
+                border-bottom: 1px solid var(--fs-border-default, #E1E4EA) !important;
+                border-right: none !important;
+                .cell {
+                    font-weight: 600;
+                    color: var(--fs-text-primary, #0E121B);
+                }
+            }
+        }
+
+        // Body styling
+        .el-table__body-wrapper {
+            td.el-table__cell {
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 20px;
+                color: var(--fs-text-secondary, #525866) !important;
+                padding: 12px 16px !important;
+                border-bottom: 1px solid var(--fs-border-default, #E1E4EA) !important;
+                border-right: none !important;
+            }
+
+            tr:last-child td.el-table__cell {
+                border-bottom: none !important;
+            }
+
+            tr:hover > td.el-table__cell {
+                background: var(--fs-bg-subtle, #F5F7FA) !important;
+            }
+            .el-scrollbar__view{
+                width: 100% !important;
+            }
+        }
+
+        // Cell content styling
+        .cell {
+            white-space: normal !important;
+            word-wrap: break-word !important;
+            word-break: normal !important;
+            overflow: visible !important;
+            text-overflow: clip !important;
+            line-height: 20px !important;
+            padding: 0 !important;
+        }
+
+        // Remove column borders
+        .el-table__cell {
+            border-right: none !important;
+        }
+
+        // Fix table layout
+        .el-table__body,
+        .el-table__header {
+            width: 100% !important;
+        }
+    }
+
+    /* Card Footer */
+    .fs_order_card_footer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 12px;
+        padding: 16px 24px;
+        border-top: 1px solid var(--fs-border-default, #E1E4EA);
+        background: var(--fs-bg-primary, #FFFFFF);
+    }
+}
+

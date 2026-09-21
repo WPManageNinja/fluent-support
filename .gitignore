@@ -1,0 +1,16 @@
+.idea
+node_modules
+svn/*
+dist/
+!assets/index.php
+.DS_Store
+assets
+svn.php
+svn
+.phpunit.result.cache
+mix-manifest.json
+package-lock.json
+builds
+fluent-support-user-docs
+dev-works/pr-description.md
+dev/vendor/

@@ -1,0 +1,139 @@
+.fs_tickets_view_wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-left: -20px;
+}
+
+/* Combined Top Bar */
+.fs_combined_top_bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--fs-bg-primary, #FFFFFF);
+    border-bottom: 1px solid var(--fs-border-default, #E1E4EA);
+    z-index: 10;
+    position: fixed;
+    width: -webkit-fill-available;
+}
+
+/* Left Section: Filtered Tickets */
+.fs_top_bar_left {
+    width: 240px;
+    border-right: 1px solid var(--fs-border-default, #E1E4EA);
+}
+
+.fs_filtered_tickets_section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: space-between;
+    padding: 12px 20px;
+}
+
+.fs_filtered_tickets_title {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.176px;
+    color: var(--fs-text-primary, #0E121B);
+    margin: 0;
+    white-space: nowrap;
+}
+
+.el-button.fs_tickets_collapse_btn {
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+
+    &.collapsed img {
+        transform: rotate(180deg);
+    }
+
+    &:hover {
+        color: var(--fs-bg-subtle, #F5F7FA) !important;
+        background-color: transparent !important;
+    }
+}
+
+/* Right Section: Breadcrumbs & Actions */
+.fs_top_bar_right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 12px 24px;
+    flex: 1 auto;
+}
+
+.fs_breadcrumbs_group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.fs_breadcrumb_item {
+    display: flex;
+    align-items: center;
+}
+
+.fs_breadcrumb_link {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: -0.084px;
+    color: var(--fs-text-secondary, #525866);
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: var(--fs-text-primary, #0E121B);
+    }
+}
+
+.fs_breadcrumb_current {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: -0.084px;
+    color: var(--fs-text-secondary, #525866);
+}
+
+.fs_breadcrumb_separator {
+    display: flex;
+    align-items: center;
+    color: var(--fs-btn-disabled, #CACFD8);
+    font-size: 20px;
+}
+
+/* Action Buttons Container */
+.fs_top_bar_actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    .fs_action_buttons{
+        padding: 12px 24px;
+        .fs_workflow_pop {
+            margin-left: 10px;
+        }
+    }
+}
+
+/* Main Content Area */
+.fs_tickets_view {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    gap: 20px;
+    height: 100%;
+    &.sidebar-collapsed {
+        .fs_tickets_collapse_btn .el-icon {
+            transform: rotate(180deg);
+        }
+    }
+}
+
+.fs_tk_inner_body {
+    flex: 1;
+    overflow-y: auto;
+}

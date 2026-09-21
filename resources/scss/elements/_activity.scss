@@ -1,0 +1,83 @@
+@media screen and (max-width: 1024px) {
+    .fs_activity_logger_component .fs_inside_menu_component_header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        
+        .fs_component_head {
+            display: inline;
+            width: auto;
+        }
+        
+        .fs_box_actions {
+            display: inline;
+            width: auto;
+        }
+    }
+}
+.fs_no_activities{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+    padding: 60px 20px;
+    p{
+        color: var(--fs-text-secondary, #525866);
+        font-size: 16px;
+        font-weight: 500;
+        margin: 0;
+    }
+}
+
+// Activity Disabled Banner
+.fs_activity_disabled_banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: #FFF4E6;
+    border-radius: 8px;
+    margin-top: 24px;
+    
+    .fs_banner_icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        width: 20px;
+        height: 20px;
+        
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+    
+    .fs_banner_text {
+        color: var(--fs-subtle-btn-text, #525866);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.5;
+        flex: 1;
+    }
+    
+    @media screen and (max-width: 768px) {
+        padding: 10px 14px;
+        gap: 10px;
+        
+        .fs_banner_icon {
+            width: 18px;
+            height: 18px;
+            
+            svg {
+                width: 18px;
+                height: 18px;
+            }
+        }
+        
+        .fs_banner_text {
+            font-size: 13px;
+        }
+    }
+}

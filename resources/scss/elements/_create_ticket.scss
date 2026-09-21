@@ -1,0 +1,295 @@
+.fs_global_form_builder form {
+    .el-form-item {
+        .el-form-item__content{
+            .el-form-item__error{
+                margin-top: 5px;
+            }
+        }
+    }
+}
+.fs_modal_overlay .fs_modal_container{
+    overflow: initial;
+}
+/* ─── CREATE TICKET FORM STYLES ─────────────────────── */
+.el-dialog.fs_tk_dialog {
+    .el-dialog__header{
+        display: none;
+    }
+    .el-dialog__body{
+        padding: 0;
+    }
+}
+
+.fs_create_ticket_form {
+    .el-checkbox {
+        &__inner {
+            &:hover {
+                border-color: initial;
+            }
+        }
+        &__label {
+            color: var(--fs-text-primary, #0E121B);
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 20px;
+            letter-spacing: -0.084px;
+        }
+
+        &.is-checked {
+            .el-checkbox__label {
+                color: var(--fs-text-primary, #0E121B);
+            }
+
+            .el-checkbox__inner {
+                background-color: var(--fs-bg-strong, #0E121B);
+                border-color: var(--fs-bg-strong, #0E121B);
+            }
+        }
+
+        &.is-indeterminate {
+            .el-checkbox__label {
+                color: var(--fs-text-primary, #0E121B);
+            }
+
+            .el-checkbox__inner {
+                background-color: var(--fs-bg-strong, #0E121B);
+                border-color: var(--fs-bg-strong, #0E121B);
+            }
+        }
+    }
+    form .fs_step_content:not(.fs_step_content_ticket_form){
+        .el-form-item .el-input .el-input__wrapper{
+            padding-right: 0;
+            .el-input__suffix{
+                border: none;
+                background: var(--fs-bg-subtle, #F5F7FA);
+                border-radius: 0 8px 8px 0;
+                .el-button--primary{
+                    color: var(--fs-text-primary, #0E121B);
+                    font-size: 12px;
+                    margin-left: 0;
+                    padding: 0 6px;
+                    &.is-disabled{
+                        color: var(--fs-text-secondary, #525866);
+                    }
+                }
+            }
+            &.is-focus{
+                .el-input__suffix{
+                    border-radius: 0 8px 8px 0;
+                }
+            }
+        }
+    }
+
+
+    &.fs_global_form_builder{
+        gap: 0;
+    }
+    /* Header */
+    .fs_ticket_header {
+        padding: 16px 16px 16px 20px;
+        border-bottom: 1px solid var(--fs-stroke-soft, #E1E4EA);
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+        border-radius: 20px 20px 0 0;
+        margin-bottom: 0;
+        .fs_ticket_header_text {
+            flex: 1;
+            .fs_ticket_title {
+                color: var(--fs-text-primary, #0E121B);
+                font-size: 16px;
+                font-weight: 500;
+                line-height: 24px;
+                margin: 0 0 4px 0;
+            }
+
+            .fs_ticket_subtitle {
+                color: var(--fs-text-secondary, #525866);
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 16px;
+                margin: 0;
+            }
+        }
+    }
+
+    /* Customer Selector */
+    .fs_customer_selector {
+        padding: 16px;
+        background: var(--fs-bg-subtle, #F5F7FA);
+        border-radius: 12px;
+        border: 1px solid var(--fs-border-default, #E1E4EA);
+
+        h3 {
+            color: var(--fs-text-primary, #0E121B);
+            font-size: 14px;
+            font-weight: 500;
+            margin: 0 0 12px 0;
+        }
+    }
+
+    .fs_contact_results {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        border: none;
+        li {
+            margin-bottom: 8px;
+            background: var(--fs-bg-primary, #FFFFFF);
+            border: 1px solid var(--fs-border-default, #E1E4EA);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--fs-text-secondary, #525866);
+            font-size: 14px;
+
+            &:hover {
+                background: var(--fs-bg-subtle, #F5F7FA);
+                border-color: var(--fs-text-primary, #0E121B);
+                color: var(--fs-text-primary, #0E121B);
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    /* Create Contact Link */
+    .fs_create_contact_link {
+        .el-checkbox__label {
+            color: var(--fs-text-secondary, #525866);
+            font-size: 14px;
+        }
+
+        .fs_link_text {
+            color: var(--fs-text-primary, #0E121B);
+            font-weight: 500;
+            text-decoration: underline;
+        }
+    }
+
+    .fs_tk_create_customer{
+        display: flex;
+        flex-direction: column;
+    }
+    .fs_dialog_body{
+        padding: 0 20px 0 20px;
+    }
+    .el-form {
+        padding-bottom: 0;
+    }
+    .fs_step_content {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        .fs_create_contact_link{
+            margin-bottom: 20px;
+        }
+        .el-form-item,
+        .fs_attachments_form,
+        .fs_contact_details_card{
+            margin-bottom: 20px;
+        }
+
+        .fs_attachment_header{
+            padding-top: 0;
+        }
+        .fs_attachment_header h4,
+        .el-form-item__label{
+            color: var(--fs-text-primary, #0E121B);
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 20px;
+            margin-bottom: 4px;
+        }
+    }
+    /* Contact Details Card */
+    .fs_contact_details_card {
+        background: var(--fs-bg-subtle, #F5F7FA);
+        padding: 16px;
+        border-radius: 12px;
+        .fs_card_label {
+            color: var(--fs-text-primary, #0E121B);
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 20px;
+            margin: 0 0 12px 0;
+        }
+        .fs_contact_info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .fs_contact_info_item {
+            color: var(--fs-text-secondary, #525866);
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 20px;
+            margin: 0;
+            .fs_info_label {
+                font-weight: 400;
+            }
+        }
+    }
+
+    /* Custom Footer */
+    .fs_dialog_footer {
+        background: var(--fs-bg-primary, #FFFFFF);
+        border-top: 1px solid var(--fs-border-default, #E1E4EA);
+        border-radius: 0 0 20px 20px;
+        padding: 16px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+    }
+    /* Progress Indicator */
+    .fs_progress_indicator {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        .fs_progress_bar {
+            width: 100px;
+            height: 6px;
+            background: var(--fs-border-default, #E1E4EA);
+            border-radius: 999px;
+            overflow: hidden;
+
+            .fs_progress_fill {
+                height: 100%;
+                background: var(--fs-text-primary, #0E121B);
+                border-radius: 999px;
+                transition: width 0.3s ease;
+            }
+        }
+
+        .fs_progress_text {
+            color: var(--fs-text-secondary, #525866);
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 16px;
+            margin: 0;
+            white-space: nowrap;
+        }
+    }
+    .fs_dialog_actions {
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media (max-width: 425px) {
+    .fs_create_ticket_form{
+        .fs_progress_indicator {
+            display: none;
+        }
+        .fs_dialog_footer {
+            justify-content: end;
+        }
+    }
+}

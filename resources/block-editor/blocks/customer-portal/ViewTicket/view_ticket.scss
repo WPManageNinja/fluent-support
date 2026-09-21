@@ -1,0 +1,379 @@
+$primary-color: #1e1e1e;
+$border-color: #dfe1e6;
+$light-border: #e0e0e0;
+$input-border: rgba(225, 228, 234, 1);
+$focus-color: #007cba;
+$error-color: #d63638;
+$bg-light: #f9f9f9;
+$bg-toolbar: rgba(245, 247, 250, 1);
+$text-secondary: #6b7280;
+$hover-bg: #f7f7f7;
+$tab-bg: #eee;
+
+.fs_block_back_nav {
+    display: flex;
+    align-items: center;
+}
+
+.fs_block_back_button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    color: #0e121b;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 0;
+
+    span {
+        margin-left: 6px;
+        text-decoration: none;
+    }
+
+    &:hover span {
+        text-decoration: none;
+    }
+}
+
+.fs_block_editor_view_ticket {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 16px;
+    border: 1px solid rgba(225, 228, 234, 1);
+
+
+    .fs_block_editor_view_ticket_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(225, 228, 234, 1);
+
+        .fs_block_ticket_title {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .fs_block_ticket_status {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 500;
+
+            &.active {
+                background-color: rgba(33, 186, 83, 0.1);
+                color: #21ba53;
+            }
+        }
+    }
+
+    .fs_block_ticket_actions {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-bottom: 20px;
+        border-bottom: 1px solid rgba(225, 228, 234, 1);
+        padding-bottom: 20px;
+
+        .fs_block_refresh_button,
+        .fs_block_close_ticket_button {
+            padding: 8px 12px;
+            border: 1px solid rgba(225, 228, 234, 1);
+            background-color: rgba(255, 255, 255, 1);
+            font-size: 13px;
+            margin-left: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            border-radius: 8px;
+
+            &:hover {
+                background-color: #f0f0f1;
+            }
+
+            .dashicons {
+                margin-right: 5px;
+                font-size: 16px;
+                width: 16px;
+                height: 16px;
+                line-height: 1;
+                vertical-align: middle;
+            }
+
+        }
+    }
+
+    .fs_block_ticket_privacy_notice {
+        background-color: rgba(235, 241, 255, 1);
+        border-radius: 8px;
+        padding: 10px 15px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        .fs_block_privacy_icon {
+            background-color: #3e7bf1;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-style: italic;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .fs_block_privacy_text {
+            margin: 0;
+            font-size: 14px;
+            color: #2c3338;
+        }
+
+        .fs_block_close_notice_button {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            border: none;
+            background: none;
+            font-size: 18px;
+            cursor: pointer;
+            color: #2c3338;
+            padding: 0;
+        }
+    }
+
+    .fs_block_ticket_details {
+        &_container {
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        &_tabs {
+            padding: 8px 8px 0;
+            margin-bottom: 5px;
+
+            .fs_block_tabs_wrapper {
+                display: inline-flex;
+                border-radius: 8px !important;
+                overflow: hidden;
+                float: right;
+                padding: 4px;
+                border: 1px solid rgba(225, 228, 234, 1);
+
+                .fs_block_tab_button {
+                    padding: 4px 16px;
+                    background: none;
+                    border: none;
+                    font-size: 13px;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+
+                    &.active {
+                        background-color: rgba(245, 247, 250, 1);
+                        font-weight: 500;
+                    }
+
+                    &:hover:not(.active) {
+                        background-color: #e5e5e5;
+                    }
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+        }
+
+        &_editor {
+            border: 1px solid $border-color;
+            border-radius: 8px;
+
+            .fs_block_editor_toolbar {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 2px;
+                padding: 8px;
+                background-color: $bg-toolbar;
+                border-bottom: 1px solid $border-color;
+                border-top-left-radius: 8px;
+                border-top-right-radius: 8px;
+            }
+        }
+    }
+
+    .fs_block_attachment_section {
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+        .fs_block_attachment_header {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .fs_block_browse_file_button {
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            border: 1px solid rgba(225, 228, 234, 1);
+            background-color: rgba(255, 255, 255, 1);
+            border-radius: 8px;
+            font-size: 13px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #f0f0f1;
+            }
+
+            .dashicons {
+                margin-right: 5px;
+            }
+        }
+
+        .fs_block_attachment_info {
+            color: #646970;
+            font-size: 12px;
+            margin-top: 8px;
+        }
+    }
+
+    .fs_block_reply_actions {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
+
+        .fs_block_reply_button {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-left: 10px;
+            border: none;
+            background-color: rgba(14, 18, 27, 1);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+
+            .dashicons {
+                margin-left: 5px;
+            }
+
+            &:hover {
+                opacity: 0.9;
+            }
+        }
+
+        .fs_block_reply_and_close_link {
+            color: rgba(82, 88, 102, 1);
+            text-decoration: underline;
+            font-size: 16px;
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .fs_block_reply_and_close_link:hover {
+            color: #005177;
+        }
+
+
+    }
+
+    .fs_block_conversation_container {
+        margin-top: 30px;
+        padding-top: 20px;
+
+        .fs_block_conversation_message {
+            display: flex;
+            border-top: 1px solid #dcdcde;
+            padding: 20px 0 20px 0;
+
+            .fs_block_message_avatar {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                overflow: hidden;
+                margin-right: 15px;
+                flex-shrink: 0;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .fs_block_message_content {
+                flex: 1;
+
+                .fs_block_message_header {
+                    margin-bottom: 5px;
+
+                    .fs_block_message_author {
+                        display: flex;
+                        align-items: center;
+
+                        .fs_block_author_name {
+                            font-weight: 600;
+                            font-size: 14px;
+                            margin-right: 8px;
+                        }
+
+                        .fs_block_author_role {
+                            background: #E1E4EA;
+                            padding: 2px 8px;
+                            font-weight: 500;
+                            font-size: 12px;
+                            line-height: 16px;
+                            border-radius: 30px;
+                        }
+
+                        .fs_block_author_info {
+                            font-size: 14px;
+                            color: #50575e;
+                        }
+                    }
+                }
+
+                .fs_block_message_text {
+                    font-size: 14px;
+                    color: #2c3338;
+                    line-height: 1.5;
+
+                    p {
+                        margin: 0 0 10px;
+
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+
+                .fs_block_message_footer {
+                    margin-top: 8px;
+
+                    .fs_block_message_timestamp {
+                        font-size: 12px;
+                        color: #646970;
+                    }
+                }
+            }
+        }
+    }
+}

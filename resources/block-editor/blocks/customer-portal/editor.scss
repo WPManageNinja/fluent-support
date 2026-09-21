@@ -1,0 +1,25 @@
+.fs_block_inspector_widget {
+    width: 100%;
+    margin-bottom: 20px;
+    h3 {
+        margin-bottom: 5px;
+    }
+    select {
+        border-radius: 8px;
+        padding: 3px 16px;
+        width: 100%;
+    }
+}
+
+.fs_panel_color_settings {
+    .block-editor-tools-panel-color-gradient-settings__item:nth-child(1 of .block-editor-tools-panel-color-gradient-settings__item) {
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+
+    .block-editor-tools-panel-color-gradient-settings__item:nth-last-child(1 of .block-editor-tools-panel-color-gradient-settings__item){
+        border-top:1px solid #ddd;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+}

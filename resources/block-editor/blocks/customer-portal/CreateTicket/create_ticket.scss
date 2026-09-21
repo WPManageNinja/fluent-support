@@ -1,0 +1,363 @@
+$primary-color: #1e1e1e;
+$border-color: #dfe1e6;
+$light-border: #e0e0e0;
+$input-border: rgba(225, 228, 234, 1);
+$focus-color: #007cba;
+$error-color: #d63638;
+$bg-light: #f9f9f9;
+$bg-toolbar: rgba(245, 247, 250, 1);
+$text-secondary: #6b7280;
+$hover-bg: #f7f7f7;
+$tab-bg: #eee;
+
+.fs_block_back_nav {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.fs_block_back_button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    color: #0e121b;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 0;
+
+    span {
+        margin-left: 6px;
+        text-decoration: none;
+    }
+
+    &:hover span {
+        text-decoration: none;
+    }
+}
+
+.fs_block_create_ticket {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        padding: 0;
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+
+    &_header {
+        padding: 20px 24px;
+        border-bottom: 1px solid $light-border;
+    }
+
+    &_submit_button {
+        padding: 10px 20px;
+        background-color: $primary-color;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+            background-color: #2c2c2c;
+        }
+    }
+}
+
+.fs_block_form {
+    border-radius: 10px;
+    &_title {
+        font-size: 18px;
+        font-weight: 600;
+        color: $primary-color;
+        margin: 0;
+    }
+
+    &_container {
+        padding: 20px 24px;
+        .fs_block_form_group {
+            margin-bottom: 10px;
+        }
+        .fs_block_form_input {
+            width: 100%;
+            padding: 5px 5px 5px 12px;
+            border: 1px solid $input-border;
+            border-radius: 10px;
+            font-size: 14px;
+            color: $primary-color;
+            background-color: #fff;
+            box-sizing: border-box;
+            transition: border-color 0.2s ease;
+
+            &:focus {
+                border-color: $focus-color;
+                outline: none;
+            }
+
+            &::placeholder {
+                color: #a0a5aa;
+            }
+
+            &.fs_block_input_error {
+                border-color: $error-color;
+            }
+
+        }
+        .fs_block_form_dropdown {
+            max-width: 100%;
+            width: 100%;
+            padding: 5px 5px 5px 12px;
+            border: 1px solid $border-color;
+            border-radius: 10px;
+            font-size: 14px;
+            color: $primary-color;
+            background-color: #fff;
+            appearance: none;
+            cursor: pointer;
+        }
+
+    &_group {
+        margin-bottom: 24px;
+    }
+
+    &_label {
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        color: $primary-color;
+        margin-bottom: 8px;
+    }
+
+
+
+        &:focus {
+            outline: none;
+            border-color: $focus-color;
+        }
+    }
+
+    &_actions {
+        margin-top: 32px;
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+.fs_block_ticket_details {
+    &_container {
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    &_tabs {
+        padding: 8px 8px 0;
+        margin-bottom: 5px;
+
+        .fs_block_tabs_wrapper {
+            display: inline-flex;
+            border-radius: 8px !important;
+            overflow: hidden;
+            float: right;
+            padding: 4px;
+            border: 1px solid rgba(225, 228, 234, 1);
+
+            .fs_block_tab_button {
+                padding: 4px 16px;
+                background: none;
+                border: none;
+                font-size: 13px;
+                cursor: pointer;
+                transition: all 0.2s ease;
+
+                &.active {
+                    background-color: rgba(245, 247, 250, 1);
+                    font-weight: 500;
+                }
+
+                &:hover:not(.active) {
+                    background-color: #e5e5e5;
+                }
+
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+    }
+
+    &_editor {
+        border: 1px solid $border-color;
+        border-radius: 10px;
+
+        .fs_block_editor_toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px;
+            padding: 8px;
+            background-color: $bg-toolbar;
+            border-bottom: 1px solid $border-color;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+    }
+}
+
+.fs_block_paragraph_dropdown {
+    border: none;
+    margin-right: 4px;
+}
+
+.fs_block_toolbar_button {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #f0f0f0;
+        border-color: $border-color;
+    }
+
+    .dashicons {
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
+    }
+}
+
+.fs_block_editor_textarea {
+    width: 100%;
+    min-height: 180px;
+    padding: 16px;
+    border: none;
+    resize: vertical;
+    font-size: 14px;
+    line-height: 1.5;
+    color: $primary-color;
+    border-radius: 10px;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+/* File upload */
+.fs_block_file_upload {
+    &_area {
+        border: 1px dashed $border-color;
+        border-radius: 8px;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: $bg-light;
+    }
+
+    &_content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+.fs_block_upload {
+    &_icon {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $text-secondary;
+        margin-bottom: 12px;
+    }
+
+    &_text_container {
+        margin-bottom: 16px;
+    }
+
+    &_main_text {
+        font-size: 14px;
+        font-weight: 500;
+        color: $primary-color;
+        margin: 0 0 4px;
+    }
+
+    &_subtext {
+        font-size: 12px;
+        color: $text-secondary;
+        margin: 0;
+    }
+}
+
+.fs_block_browse_file_button {
+    padding: 8px 16px;
+    background-color: #fff;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    color: $primary-color;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    &:hover {
+        background-color: $hover-bg;
+    }
+}
+
+.fs_block_dropdown_container {
+    position: relative;
+}
+
+.fs_block_dropdown_arrow {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid $text-secondary;
+    pointer-events: none;
+}
+
+.fs_block_error {
+    &_message {
+        display: flex;
+        align-items: center;
+        margin-top: 8px;
+        font-size: 12px;
+        color: $error-color;
+    }
+
+    &_icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background-color: $error-color;
+        color: #fff;
+        margin-right: 6px;
+        font-weight: bold;
+        font-size: 10px;
+    }
+}

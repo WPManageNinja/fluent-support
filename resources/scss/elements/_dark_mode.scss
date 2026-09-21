@@ -1,0 +1,1287 @@
+/**
+ * Fluent Support Dark Mode
+ * Overrides CSS variables and components when body.fs-dark-mode.
+ */
+body.fs-dark-mode {
+
+    // ═══════════════════════════════════════════
+    // A. CSS VARIABLE OVERRIDES
+    // ═══════════════════════════════════════════
+
+    // ─── TEXT COLORS ─────────────────────── //
+    --fs-text-primary: #E5E7EB;
+    --fs-text-black: #000000;
+    --fs-text-secondary: #99A0AE;
+    --fs-text-muted: #9CA3AF;
+    --fs-text-gray: #9CA3AF;
+    --fs-text-link: #34D399;
+
+    // ─── BUTTON HOVER COLORS ─────────────── //
+    --fs-btn-hover-bg: #2B303B;
+    --fs-btn-stroke-hover-bg: rgba(251, 55, 72, 0.12);
+
+    // ─── BACKGROUND COLORS ───────────────── //
+    --fs-global-component-bg: #05070B;
+    --fs-bg-primary: #0E121B;
+    --fs-bg-subtle: #222530;
+    --fs-bg-strong: #181B25;
+    --fs-bg-muted: #2B303B;
+    --fs-bg-internal-note: #1F2937;
+    --fs-bg-warning: #1F2937;
+
+    // ─── BUTTONS / ACTIONS ───────────────── //
+    --fs-btn-primary-bg: #05070b;
+    --fs-btn-disabled: #4B5563;
+    --fs-subtle-btn-bg: #1F2937;
+    --fs-subtle-btn-text: #99A0AE;
+
+    // ─── BORDER COLORS ───────────────────── //
+    --fs-border-default: #2B303B;
+    --fs-stroke-soft: #2B303B;
+    --fs-stroke-strong: #E5E7EB;
+    --fs-btn-border-black: #E5E7EB;
+
+    // ─── TABLE ───────────────────────────── //
+    --fs-table-header-bg: #141721;
+    --fs-table-hover-bg: #1F2937;
+
+    // ─── STATUS COLORS ───────────────────── //
+    --fs-status-active-bg: #064E3B;
+    --fs-status-active-text: #6EE7B7;
+    --fs-status-inactive-bg: #1F2937;
+    --fs-status-pending-bg: #78350F;
+    --fs-status-blocked-bg: #181B25;
+    --fs-status-blocked-border: #2B303B;
+    --fs-status-info-bg: #1E3A5F;
+    --fs-status-info-text: #93C5FD;
+    --fs-status-waiting-bg: rgba(217, 119, 6, 0.15);
+    --fs-status-waiting-color: #FBBF24;
+
+    // ─── TAGS COLORS ───────────────────── //
+    --fs-primary-tags-bg: #2B303B;
+
+    // ─── STATE COLORS ─────────────────────── //
+    --fs-state-faded-light: rgba(153, 160, 174, 0.16);
+    --fs-state-faded-lighter: rgba(153, 160, 174, 0.16);
+    --fs-state-success-light: rgba(31, 193, 107, 0.10);
+    --fs-state-information-light: rgba(251, 55, 72, 0.15);
+    --fs-state-feature-light: rgba(139, 92, 246, 0.15);
+    --fs-state-feature-dark: #A78BFA;
+    --fs-badge-faded-text: #E5E7EB;
+
+    // ─── PLAIN BUTTON TEXT ───────────────── //
+    --fs-plain-button-text: #99A0AE;
+
+    // ─── TOOLTIP ─────────────────────────── //
+    --fs-tooltip-bg: #374151;
+
+    // ─── SHADOWS ─────────────────────────── //
+    --fs-shadow-soft: rgba(0, 0, 0, 0.3);
+    --fs-shadow-light: rgba(0, 0, 0, 0.2);
+    --fs-shadow-toggle: 0 6px 10px 0 rgba(0, 0, 0, 0.25), 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+
+    // ─── STAT ICON BACKGROUNDS ────────────── //
+    --fs-stat-icon-bg: #1F2937;
+    --fs-stat-icon-color: #99A0AE;
+    --fs-stat-icon-danger-bg: rgba(251, 55, 72, 0.15);
+    --fs-stat-icon-danger-color: #FB3748;
+    --fs-stat-icon-warning-bg: rgba(255, 132, 71, 0.15);
+    --fs-stat-icon-warning-color: #FF8447;
+    --fs-stat-icon-info-bg: rgba(51, 92, 255, 0.15);
+    --fs-stat-icon-info-color: #335CFF;
+
+    // ─── DOT / GLOW ─────────────────────── //
+    --fs-dot-warning-glow: rgba(255, 132, 71, 0.15);
+
+    // ─── BADGE COLORS ─────────────────────── //
+    --fs-badge-success-bg: rgba(31, 193, 107, 0.2);
+    --fs-badge-success-text: #6EE7B7;
+
+    // ─── WARNING COLORS ──────────────────── //
+    --fs-warning-bg: rgba(250, 115, 25, 0.8);
+
+    // ─── ELEMENT PLUS DESIGN TOKENS ──────── //
+    --el-text-color-primary: var(--fs-text-primary);
+    --el-text-color-regular: var(--fs-text-primary);
+    --el-text-color-secondary: var(--fs-text-secondary);
+    --el-text-color-placeholder: var(--fs-text-muted);
+    --el-text-color-disabled: var(--fs-btn-disabled);
+    --el-border-color: var(--fs-border-default);
+    --el-border-color-light: var(--fs-stroke-soft);
+    --el-border-color-lighter: var(--fs-stroke-soft);
+    --el-fill-color-blank: var(--fs-bg-subtle);
+    --el-fill-color: var(--fs-bg-subtle);
+    --el-fill-color-light: var(--fs-bg-muted);
+    --el-bg-color: var(--fs-bg-primary);
+    --el-bg-color-page: var(--fs-global-component-bg);
+    --el-bg-color-overlay: var(--fs-bg-primary);
+
+
+    // ═══════════════════════════════════════════
+    // B. LAYOUT / GLOBAL SCOPING
+    // ═══════════════════════════════════════════
+
+    // Scoped to Fluent Support admin (WordPress admin body) — same canvas as light mode
+    &.toplevel_page_fluent-support,
+    &.toplevel_page_fluent-support #wpwrap,
+    &.toplevel_page_fluent-support #wpcontent,
+    &.toplevel_page_fluent-support #wpbody,
+    &.toplevel_page_fluent-support #wpbody-content,
+    &.toplevel_page_fluent-support #alpha_app,
+    &.toplevel_page_fluent-support .fframe_app {
+        background-color: var(--fs-global-component-bg, #05070B);
+    }
+
+    .el-input__wrapper {
+        border-radius: var(--fs-radius-md, 8px);
+        border: 1px solid var(--fs-stroke-soft, #E1E4EA);
+        background: var(--fs-bg-primary, #FFF);
+        /* regular-shadow/x-small */
+        box-shadow: 0px 1px 2px 0px var(--fs-shadow-light, rgba(10, 13, 20, 0.03));
+
+        input {
+            background: none;
+            box-shadow: none;
+            border: none;
+            color: var(--fs-text-primary, #0E121B);
+        }
+    }
+
+    .el-textarea {
+        .el-textarea__inner {
+            background: var(--fs-bg-primary, #0E121B);
+            color: var(--fs-text-primary, #E5E7EB);
+            border-color: var(--fs-stroke-soft, #2B303B);
+        }
+    }
+
+    .el-input-group__append,
+    .el-input-group__prepend {
+        background-color: var(--fs-bg-subtle, #222530);
+        border-color: var(--fs-border-default, #2B303B);
+        color: var(--fs-text-primary, #E5E7EB);
+
+        .el-button {
+            color: var(--fs-text-primary, #E5E7EB);
+        }
+    }
+
+    .el-tabs {
+        .el-tabs__nav-wrap::after {
+            background-color: var(--fs-border-default, #2B303B);
+        }
+
+        .el-tabs__item {
+            color: var(--fs-text-secondary, #99A0AE);
+
+            &.is-active {
+                color: var(--fs-text-primary, #E5E7EB);
+            }
+
+            &:hover {
+                color: var(--fs-text-primary, #E5E7EB);
+            }
+        }
+
+        .el-tabs__active-bar {
+            background-color: var(--fs-text-primary, #E5E7EB);
+        }
+    }
+
+    .fs_mcp_connected_badge {
+        background: rgba(31, 193, 107, 0.15);
+        color: #6EE7B7;
+        border-color: rgba(31, 193, 107, 0.3);
+
+        &::before {
+            background: #17b26a;
+        }
+    }
+
+    // ═══════════════════════════════════════════
+    // C. COLOR MODE TOGGLE
+    // ═══════════════════════════════════════════
+
+    .fs_color_mode {
+        .show_on_dark {
+            transform: scale(1);
+        }
+        .show_on_light {
+            transform: scale(0);
+        }
+    }
+
+    .fs_customer_sentiment_status{
+        .fs_sentiment_text{
+            color: var(--fs-text-primary, #E5E7EB);
+        }
+    }
+
+    .fs_color_mode_core {
+        color: var(--fs-text-secondary, #99A0AE);
+        border-color: var(--fs-border-default, #2B303B);
+    }
+
+
+    // ═══════════════════════════════════════════
+    // D. NAVBAR
+    // ═══════════════════════════════════════════
+
+    .fs_main_navbar {
+        background: var(--fs-bg-primary, #0E121B);
+        border-bottom-color: var(--fs-stroke-soft, #2B303B);
+    }
+
+    .fs_nav_item {
+        .fs_nav_link,
+        .fs_nav_right_item {
+            color: var(--fs-text-secondary, #99A0AE);
+            &:hover {
+                background: var(--fs-bg-subtle, #222530);
+                color: var(--fs-text-primary, #E5E7EB);
+            }
+        }
+        &.fs_active .fs_nav_link,
+        &.current .fs_nav_link,
+        &.fs_active .fs_nav_right_item,
+        &.current .fs_nav_right_item {
+            background: var(--fs-bg-subtle, #222530);
+            color: var(--fs-text-primary, #E5E7EB);
+        }
+        &.fs_has_dropdown {
+            .fs_dropdown_trigger {
+                color: var(--fs-text-secondary, #99A0AE);
+                &:hover {
+                    background: var(--fs-bg-subtle, #222530);
+                    color: var(--fs-text-primary, #E5E7EB);
+                }
+            }
+            .fs_dropdown_menu {
+                background: var(--fs-bg-primary, #0E121B);
+                border-color: var(--fs-border-default, #2B303B);
+            }
+            .fs_dropdown_link {
+                color: var(--fs-text-secondary, #99A0AE);
+                &:hover {
+                    background: var(--fs-bg-subtle, #222530);
+                    color: var(--fs-text-primary, #E5E7EB);
+                }
+            }
+        }
+    }
+
+    .fs_date_range_picker,
+    .fs_date_range_picker.el-input__wrapper {
+        background-color: transparent !important;
+        box-shadow: none !important;
+    }
+
+    .el-select-dropdown {
+        background-color: var(--fs-bg-primary, #0E121B);
+        border-color: var(--fs-border-default, #2B303B);
+
+        .el-select-group__title {
+            color: var(--fs-text-secondary, #9CA3AF);
+        }
+
+        .el-select-dropdown__item {
+            color: var(--fs-text-primary, #E5E7EB);
+
+            &.is-hovering {
+                background-color: var(--fs-bg-subtle, #222530);
+            }
+
+            &.is-selected {
+                color: var(--fs-text-primary, #E5E7EB);
+            }
+        }
+    }
+
+    // --- Table ---
+    .el-table {
+        --el-table-bg-color: var(--fs-bg-primary, #0E121B);
+        --el-table-tr-bg-color: var(--fs-bg-primary, #0E121B);
+        --el-table-header-bg-color: var(--fs-table-header-bg, #141721);
+        --el-table-row-hover-bg-color: var(--fs-table-hover-bg, #1F2937);
+        --el-table-border-color: var(--fs-border-default, #2B303B);
+        color: var(--fs-text-primary, #E5E7EB);
+    }
+
+    // --- Native HTML table (.fs_table) ---
+    .fs_table {
+        background-color: var(--fs-bg-primary, #0E121B);
+        border-color: var(--fs-border-default, #2B303B);
+
+        thead th {
+            background-color: var(--fs-table-header-bg, #141721);
+            color: var(--fs-text-secondary, #99A0AE);
+        }
+
+        tbody th,
+        td {
+            background-color: var(--fs-bg-primary, #0E121B);
+            color: var(--fs-text-primary, #E5E7EB);
+            border-bottom-color: var(--fs-border-default, #2B303B);
+        }
+    }
+
+    .fs_custom_fields_wrapper {
+        .fs_field_label {
+            color: var(--fs-text-primary, #E5E7EB);
+        }
+
+        .fs_field_slug,
+        .fs_field_type {
+            color: var(--fs-text-muted, #9CA3AF);
+        }
+    }
+
+    .fs-table-action-cell {
+        .fs_action_button_wrapper {
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .fs_action_button.el-button,
+        .fs_action_button_wrapper > a {
+            width: 40px;
+            height: 40px;
+            padding: 0 !important;
+            border-radius: 12px;
+            background: transparent !important;
+            border-color: transparent !important;
+            color: var(--fs-text-muted, #9CA3AF) !important;
+            box-shadow: none !important;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            text-decoration: none;
+
+            &:hover,
+            &:focus,
+            &:active {
+                background: var(--fs-bg-strong, #181B25) !important;
+                border-color: var(--fs-bg-strong, #181B25) !important;
+                color: var(--fs-text-primary, #E5E7EB) !important;
+            }
+        }
+    }
+
+    // --- Dialog ---
+    .el-dialog {
+        --el-dialog-bg-color: var(--fs-bg-primary, #0E121B);
+        border-color: var(--fs-border-default, #2B303B);
+    }
+
+    // --- Message Box ---
+
+    .fs_warn_alert {
+        .fs_warn_content,
+        .fs_warn_content b {
+            color: var(--fs-text-black, #000000);
+        }
+    }
+    .el-message-box {
+        background-color: var(--fs-bg-primary, #0E121B);
+        border-color: var(--fs-border-default, #2B303B);
+
+        .el-message-box__title {
+            color: var(--fs-text-primary, #E5E7EB);
+        }
+
+        .el-message-box__message {
+            color: var(--fs-text-secondary, #99A0AE);
+        }
+
+        .el-message-box__close {
+            color: var(--fs-text-muted, #9CA3AF);
+        }
+    }
+
+    // --- Drawer ---
+    .el-drawer {
+        background-color: var(--fs-bg-primary, #0E121B);
+    }
+
+    // --- Dropdown ---
+    .el-dropdown-menu {
+        background-color: var(--fs-bg-primary, #0E121B);
+        border-color: var(--fs-border-default, #2B303B);
+    }
+
+    // --- Popover / Popper ---
+    .el-popper {
+        &.is-light,
+        &.is-dark {
+            background: var(--fs-bg-primary, #0E121B);
+            border-color: var(--fs-border-default, #2B303B);
+            color: var(--fs-text-primary, #E5E7EB);
+
+            > .el-popper__arrow::before {
+                background: var(--fs-bg-primary, #0E121B);
+                border-color: var(--fs-border-default, #2B303B);
+            }
+        }
+    }
+
+    .el-popover {
+        background: var(--fs-bg-primary, #0E121B) !important;
+        border-color: var(--fs-border-default, #2B303B) !important;
+    }
+
+    // --- Loading ---
+    .el-loading-mask {
+        background-color: rgba(5, 7, 11, 0.8);
+    }
+
+    // --- Tags ---
+    .el-tag {
+        --el-tag-bg-color: var(--fs-bg-subtle, #222530);
+        --el-tag-border-color: var(--fs-border-default, #2B303B);
+        --el-tag-text-color: var(--fs-text-secondary, #99A0AE);
+    }
+
+    // --- Breadcrumb ---
+    .el-breadcrumb__separator {
+        color: var(--fs-text-muted, #9CA3AF);
+    }
+
+    // --- Checkbox ---
+    .fframe_body .el-checkbox.is-checked .el-checkbox__inner {
+        background-color: var(--fs-bg-primary, #0E121B);
+        border-color: var(--fs-stroke-strong, #E5E7EB);
+    }
+
+    // --- Radio ---
+    .el-radio {
+        .el-radio__inner {
+            background-color: transparent;
+            border-color: var(--fs-border-default, #2B303B);
+        }
+
+        .el-radio__label {
+            color: var(--fs-text-primary, #E5E7EB);
+        }
+
+        .el-radio__input.is-checked {
+            .el-radio__inner {
+                background-color: var(--fs-text-primary, #E5E7EB) !important;
+                border-color: var(--fs-stroke-strong, #E5E7EB) !important;
+
+                &::after {
+                    background-color: var(--fs-bg-primary, #0E121B);
+                }
+            }
+
+            + .el-radio__label {
+                color: var(--fs-text-primary, #E5E7EB) !important;
+            }
+        }
+    }
+
+    // --- Switch (consolidated, no duplicates) ---
+    .el-switch {
+        .el-switch__core {
+            border: unset;
+            background-color: var(--fs-bg-muted, #2B303B);
+
+            .el-switch__action {
+                background-color: var(--fs-text-primary, #E5E7EB);
+            }
+        }
+
+        &:not(.is-checked) .el-switch__core {
+            background-color: var(--fs-bg-muted, #2B303B);
+        }
+
+        &.is-checked .el-switch__core {
+            background-color: var(--fs-text-primary, #E5E7EB) !important;
+            border-color: var(--fs-text-primary, #E5E7EB) !important;
+
+            .el-switch__action {
+                background-color: var(--fs-bg-muted, #2B303B);
+            }
+        }
+    }
+
+    // --- Date Picker ---
+    .el-date-table td.end-date .el-date-table-cell__text,
+    .el-date-table td.start-date .el-date-table-cell__text {
+        background: var(--fs-text-primary, #E5E7EB) !important;
+        color: var(--fs-bg-primary, #0E121B) !important;
+    }
+
+    .el-date-range-picker__header .el-picker-panel__icon-btn.arrow-left::before,
+    .el-date-range-picker__header .el-picker-panel__icon-btn.d-arrow-left::before,
+    .el-date-range-picker__header .el-picker-panel__icon-btn.arrow-right::before,
+    .el-date-range-picker__header .el-picker-panel__icon-btn.d-arrow-right::before {
+        filter: invert(1);
+    }
+
+    .el-date-table td.disabled .el-date-table-cell__text {
+        color: #a6a1a163 !important;
+    }
+
+    .el-date-table td.disabled .el-date-table-cell {
+        background-color: #41485230;
+    }
+
+    .el-date-range-picker__content.is-left,
+    .el-date-table th {
+        border-color: var(--fs-border-default, #2B303B);
+    }
+
+    .el-date-range-picker__header-label {
+        color: var(--fs-text-secondary, #99A0AE);
+    }
+
+    .el-date-table td.in-range .el-date-table-cell {
+        background: var(--fs-bg-subtle, #222530) !important;
+        color: var(--fs-text-primary, #E5E7EB) !important;
+    }
+
+    // --- Pagination ---
+    .el-pagination .el-pager .number,
+    .el-pagination .el-pager .more,
+    .el-pagination button {
+        background-color: var(--fs-bg-primary, #0E121B) !important;
+        border-color: var(--fs-border-default, #2B303B) !important;
+        color: var(--fs-text-secondary, #99A0AE) !important;
+    }
+
+    .el-pagination .el-pager .number.is-active {
+        border-color: var(--fs-stroke-strong, #E5E7EB) !important;
+        color: var(--fs-text-primary, #E5E7EB) !important;
+    }
+
+    .el-button.fs_filled_btn:hover {
+        color: var(--fs-text-white, #FFF);
+    }
+
+    // --- Scrollbar ---
+    .fs-scrollbar,
+    .el-scrollbar__wrap {
+        &::-webkit-scrollbar {
+            background: var(--fs-bg-subtle, #222530);
+        }
+        &::-webkit-scrollbar-thumb {
+            background: var(--fs-border-default, #2B303B);
+            border-radius: 4px;
+        }
+    }
+
+
+    // ═══════════════════════════════════════════
+    // F. SETTINGS / PANELS
+    // ═══════════════════════════════════════════
+
+    .fs_settings_view,
+    .fs_inner_sidebar,
+    .fs_settings_wrapper {
+        background-color: var(--fs-bg-primary, #0E121B);
+    }
+
+    .fs_settings_view .fs_inner_sidebar {
+        border-right-color: var(--fs-border-default, #2B303B);
+    }
+
+    // Inline help code blocks
+    .fc_inline_help code {
+        background: var(--fs-bg-subtle, #222530);
+        color: var(--fs-text-primary, #E5E7EB);
+        border-color: var(--fs-border-default, #2B303B);
+    }
+
+
+    // ═══════════════════════════════════════════
+    // G. REPORTS
+    // ═══════════════════════════════════════════
+
+    .fs_reports_wrapper,
+    .fs_inner_body,
+    .fs_summary_settings {
+        background-color: var(--fs-global-component-bg, #05070B);
+    }
+
+    // --- Activity heatmap levels ---
+    .fs_wid_level_0 {
+        background: #1E222A;
+    }
+
+    .fs_wid_level_1 {
+        background: #0e4429;
+    }
+
+    .fs_wid_level_2 {
+        background: #006d32;
+    }
+
+    .fs_wid_level_3 {
+        background: #26a641;
+    }
+
+    .fs_wid_level_4 {
+        background: #39d353;
+    }
+
+    .fs_wid_level_5 {
+        background: #4ae96b;
+    }
+
+
+    // ═══════════════════════════════════════════
+    // H. CARDS / STAT BOXES
+    // ═══════════════════════════════════════════
+
+    .fs_stat_box,
+    .el-card {
+        --el-card-bg-color: var(--fs-bg-primary, #0E121B);
+        border-color: var(--fs-border-default, #2B303B);
+        background-color: var(--fs-bg-primary, #0E121B);
+    }
+
+    // ═══════════════════════════════════════════
+    // I. TICKET VIEW DARK MODE
+    // ═══════════════════════════════════════════
+
+    // --- Status badges ---
+    .fs_status_waiting {
+        background: var(--fs-status-waiting-bg, rgba(217, 119, 6, 0.15));
+
+        .fs_status_dot {
+            background: var(--fs-status-waiting-color, #FBBF24);
+        }
+
+        .fs_status_text {
+            color: var(--fs-status-waiting-color, #FBBF24);
+        }
+    }
+
+    .fs_status_closed {
+        background: rgba(153, 160, 174, 0.16);
+
+        .fs_status_dot {
+            background: var(--fs-text-muted, #9CA3AF);
+        }
+
+        .fs_status_text {
+            color: var(--fs-text-muted, #9CA3AF);
+        }
+    }
+
+    // --- Internal note label ---
+    .fs_label_note {
+        color: #FBBF24;
+    }
+
+    // --- Badge colors ---
+    .fs_badge_thread_starter {
+        background: #065F46;
+        color: #6EE7B7;
+    }
+
+    // --- More button hover ---
+    .fs_more_btn:hover {
+        background: var(--fs-bg-subtle, #222530) !important;
+    }
+
+    // --- Additional info / custom data card ---
+    .fs_additional_info {
+        background: var(--fs-table-header-bg, #141721);
+
+        .fs_custom_data_card {
+            border-color: var(--fs-border-default, #2B303B);
+            background: var(--fs-bg-primary, #0E121B);
+        }
+    }
+
+    // --- Active agents floating panel ---
+    .fs_active_agents {
+        background: var(--fs-bg-primary, #0E121B);
+        border-color: var(--fs-border-default, #2B303B);
+        box-shadow: 0 16px 32px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    // --- Pre/code blocks inside ticket body ---
+    .fs_message_body {
+        pre,
+        code {
+            background: var(--fs-bg-subtle, #222530);
+            color: var(--fs-text-primary, #E5E7EB);
+            border-color: var(--fs-border-default, #2B303B);
+        }
+    }
+
+
+    // ═══════════════════════════════════════════
+    // J. TICKETS LIST DARK MODE
+    // ═══════════════════════════════════════════
+
+    // --- Legacy badges ---
+    .fs_badge {
+        background: #4B5563;
+        color: #E5E7EB;
+
+        &.fs_badge_new {
+            background: rgba(251, 55, 72, 0.15);
+            color: #FB3748;
+        }
+
+        &.fs_badge_active {
+            background: rgba(31, 193, 107, 0.15);
+            color: #6EE7B7;
+        }
+    }
+
+    // --- Thread count ---
+    .fs_thread_count {
+        background: var(--fs-bg-subtle, #222530);
+        border-color: var(--fs-border-default, #2B303B);
+        color: var(--fs-text-muted, #9CA3AF);
+    }
+
+    // --- Custom data wrap (legacy) ---
+    .custom_data_wrap,
+    .fs_custom_data_wrap {
+        background: var(--fs-bg-subtle, #222530);
+        border-color: var(--fs-border-default, #2B303B);
+        color: var(--fs-text-primary, #E5E7EB);
+    }
+
+    // --- Legacy thread colors ---
+    .fs_thread_title {
+        color: var(--fs-text-secondary, #99A0AE);
+    }
+
+    .fs_thread_body {
+        color: var(--fs-text-primary, #E5E7EB);
+    }
+
+    .fs_thread_actions {
+        color: var(--fs-text-muted, #9CA3AF);
+    }
+
+
+    // ═══════════════════════════════════════════
+    // K. DASHBOARD DARK MODE
+    // ═══════════════════════════════════════════
+
+    // --- Legacy dash cards ---
+    .fs_dash_card {
+        background: var(--fs-bg-primary, #0E121B);
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.2);
+        color: var(--fs-text-primary, #E5E7EB);
+
+        .dash_card_title {
+            border-bottom-color: var(--fs-border-default, #2B303B);
+        }
+    }
+
+    // --- Highlight span ---
+    span.fs_highlight {
+        background: rgba(255, 243, 181, 0.15);
+        color: #FBBF24;
+    }
+
+    // --- Collapse / draggable hover states ---
+    .fs_trigger_view .fs_actions_board {
+        .el-collapse-item__header {
+            background: var(--fs-bg-primary, #0E121B);
+            border-bottom-color: var(--fs-border-default, #2B303B);
+
+            &:hover {
+                background-color: var(--fs-bg-subtle, #222530);
+            }
+
+            &.is-active {
+                border-radius: 8px 8px 0 0;
+            }
+        }
+    }
+
+
+    // ═══════════════════════════════════════════
+    // L. WORKFLOWS DARK MODE
+    // ═══════════════════════════════════════════
+
+    // --- Workflow trigger box ---
+    .fs_workflow_trigger_box {
+        background: var(--fs-bg-primary, #0E121B);
+    }
+
+    // --- Workflow edit wrapper ---
+    .fs_workflow_edit_wrap {
+        .fs_box_edit_header {
+            background: var(--fs-bg-primary, #0E121B);
+            border-bottom-color: var(--fs-border-default, #2B303B);
+        }
+
+        .fs_box_body {
+            background: var(--fs-bg-primary, #0E121B);
+        }
+    }
+
+    // --- Trigger editor ---
+    .fs_trigger_editor {
+        background: var(--fs-bg-subtle, #222530);
+
+        h3 {
+            color: var(--fs-text-primary, #E5E7EB);
+        }
+    }
+
+    // --- Conditional group ---
+    .fs_conditional_group {
+        background: var(--fs-bg-subtle, #222530);
+    }
+
+    .fs_conditional_group + .fs_conditional_group::before {
+        background: var(--fs-border-default, #2B303B);
+    }
+
+    .fs_conditional_group + .fs_conditional_group::after {
+        color: var(--fs-text-muted, #9CA3AF);
+    }
+
+    .fs_cond_and {
+        &::before {
+            background: var(--fs-border-default, #2B303B);
+        }
+
+        em {
+            background: var(--fs-bg-primary, #0E121B);
+            color: var(--fs-text-muted, #9CA3AF);
+        }
+    }
+
+    // --- Or button wrapper ---
+    .fs_group_footer .fs_or_btn_wrapper {
+        border-color: var(--fs-border-default, #2B303B);
+        background: var(--fs-bg-primary, #0E121B);
+    }
+
+    // --- Delete condition button ---
+    .fs_cond_block.fs_cond_action .fs_delete_condition_btn {
+        border-color: var(--fs-border-default, #2B303B);
+        background: var(--fs-bg-primary, #0E121B);
+    }
+
+    // --- All triggers list ---
+    .fs_all_triggers {
+        border-color: var(--fs-border-default, #2B303B);
+    }
+
+    // --- Workflow list items hover ---
+    ul.fs_workflows_list li:hover {
+        background: var(--fs-bg-subtle, #222530);
+    }
+
+    // --- Workflow items list ---
+    ul.fs_workflow_items {
+        border-color: var(--fs-border-default, #2B303B);
+        background: var(--fs-bg-primary, #0E121B);
+
+        li {
+            border-bottom-color: var(--fs-border-default, #2B303B);
+            color: var(--fs-text-secondary, #99A0AE);
+
+            span {
+                background: #4B5563;
+            }
+        }
+    }
+
+    // --- Add AND button ---
+    .fs_add_more_and_btn .fs_add_and_button {
+        border-color: var(--fs-border-default, #2B303B);
+        background: var(--fs-bg-primary, #0E121B);
+        color: var(--fs-text-primary, #E5E7EB);
+
+        .fs_add_and_text {
+            color: var(--fs-text-primary, #E5E7EB);
+        }
+
+        &:hover {
+            background: var(--fs-bg-subtle, #222530) !important;
+            border-color: var(--fs-border-default, #2B303B) !important;
+            color: var(--fs-text-primary, #E5E7EB) !important;
+        }
+    }
+
+    // --- Button/action icons ---
+    .el-button svg path[fill="#0E121B"],
+    .fs_button svg path[fill="#0E121B"],
+    [role="button"] svg path[fill="#0E121B"] {
+        fill: currentColor;
+    }
+
+    // --- Advanced filter and ticket preview text ---
+    .fs_rich_filter_item .fs_action_filter_field,
+    .fs_tickets_list .fs_tk_preview_text {
+        color: var(--fs-text-muted, #9CA3AF);
+    }
+
+    // --- Horizontal line separator ---
+    .fs_horizontal_line {
+        background: var(--fs-border-default, #2B303B);
+    }
+
+    // --- Save action button ---
+    .fs_save_action_btn {
+        background-color: var(--fs-text-primary, #E5E7EB) !important;
+        border-color: var(--fs-text-primary, #E5E7EB) !important;
+        color: var(--fs-bg-primary, #0E121B) !important;
+    }
+
+    .fs_save_action_btn:hover {
+        background-color: #D1D5DB !important;
+        border-color: #D1D5DB !important;
+    }
+
+    // --- Workflow type info ---
+    .fs_workflow_type_info {
+        border-color: var(--fs-border-default, #2B303B);
+        background-color: var(--fs-bg-subtle, #222530);
+    }
+
+    // --- Box header ---
+    .fs_box_wrapper .fs_box_header {
+        border-bottom-color: var(--fs-border-default, #2B303B);
+        background: var(--fs-bg-primary, #0E121B);
+    }
+
+    // --- Trigger sub label ---
+    span.fs_trigger_sub {
+        color: var(--fs-text-muted, #9CA3AF);
+    }
+
+    .fs_msg_customer {
+        background: var(--fs-bg-primary, #0E121B);
+    }
+    .fs_msg_agent {
+        background: var(--fs-table-header-bg, #141721);
+    }
+
+    // ═══════════════════════════════════════════
+    // M. WP EDITOR (TinyMCE)
+    // ═══════════════════════════════════════════
+
+    .wp-editor-wrap {
+        .wp-editor-container, .wp-editor {
+            border-color: var(--fs-border-default, #2B303B);
+            background: var(--fs-bg-subtle, #222530);
+        }
+
+        .mce-panel {
+            background: var(--fs-bg-subtle, #222530) !important;
+            border-color: var(--fs-border-default, #2B303B) !important;
+        }
+
+        .mce-toolbar-grp {
+            background: var(--fs-bg-subtle, #222530) !important;
+            border-bottom-color: var(--fs-border-default, #2B303B) !important;
+        }
+
+        .mce-container-body.mce-stack-layout {
+            background: var(--fs-bg-subtle, #222530);
+        }
+
+        .mce-btn {
+            i.mce-ico {
+                color: var(--fs-text-secondary, #99A0AE) !important;
+            }
+
+            &:hover {
+                background-color: var(--fs-bg-muted, #2B303B) !important;
+            }
+
+            &.mce-active {
+                background-color: var(--fs-bg-muted, #2B303B) !important;
+
+                i.mce-ico {
+                    color: var(--fs-text-primary, #E5E7EB) !important;
+                }
+            }
+        }
+
+        .mce-btn-group .mce-btn.mce-listbox {
+            border-color: var(--fs-border-default, #2B303B) !important;
+            background-color: var(--fs-bg-primary, #0E121B) !important;
+
+            .mce-txt {
+                color: var(--fs-text-secondary, #99A0AE);
+            }
+        }
+
+        .wp-editor-tabs {
+            border-color: var(--fs-border-default, #2B303B);
+            background-color: var(--fs-bg-subtle, #222530);
+
+            .wp-switch-editor {
+                color: var(--fs-text-secondary, #99A0AE);
+            }
+
+            .wp-switch-editor[aria-pressed="true"] {
+                color: var(--fs-text-primary, #E5E7EB);
+                background-color: var(--fs-bg-primary, #0E121B);
+                box-shadow: none;
+            }
+        }
+
+        .quicktags-toolbar {
+            background: var(--fs-bg-subtle, #222530);
+
+            .button {
+                color: var(--fs-text-secondary, #99A0AE);
+            }
+        }
+
+        .wp-media-buttons .insert-media {
+            background: var(--fs-bg-primary, #0E121B);
+            border-color: var(--fs-border-default, #2B303B);
+            color: var(--fs-text-secondary, #99A0AE);
+        }
+
+        .mce-statusbar {
+            background: var(--fs-bg-subtle, #222530);
+
+            .mce-path-item {
+                color: var(--fs-text-muted, #9CA3AF);
+            }
+        }
+    }
+
+    // --- TinyMCE floating panels (appended to body, outside .wp-editor-wrap) ---
+    .mce-floatpanel,
+    .mce-menu {
+        background: var(--fs-bg-primary, #0E121B) !important;
+        border-color: var(--fs-border-default, #2B303B) !important;
+    }
+
+    .mce-menu-item {
+        color: var(--fs-text-primary, #E5E7EB) !important;
+
+        &:hover,
+        &:focus,
+        &.mce-selected {
+            background: var(--fs-bg-subtle, #222530) !important;
+            color: var(--fs-text-primary, #E5E7EB) !important;
+        }
+
+        .mce-text,
+        .mce-menu-item-label {
+            color: inherit !important;
+        }
+    }
+
+    // ═══════════════════════════════════════════
+    // N. GENERIC ICON CONTRAST (DROPDOWNS/CARDS)
+    // ═══════════════════════════════════════════
+
+    // Generic dark-mode icon system for all Element Plus dropdown items.
+    .el-dropdown-menu__item {
+        color: var(--fs-text-secondary, #99A0AE);
+
+        .el-icon,
+        svg {
+            color: currentColor;
+        }
+
+        img {
+            filter: brightness(0) invert(0.78);
+        }
+
+        &:hover,
+        &:focus,
+        &.is-active {
+            color: var(--fs-text-primary, #E5E7EB);
+
+            img {
+                filter: brightness(0) invert(0.95);
+            }
+        }
+    }
+
+    // Keep third-party logos readable in dark cards.
+    .fs_storage_icon_wrapper {
+        background: #F3F4F6;
+        border-color: #D1D5DB;
+    }
+
+
+    // ═══════════════════════════════════════════
+    // O. MAILBOX MENU ICONS
+    // ═══════════════════════════════════════════
+
+    .fs_menu_container .fs_menu_item {
+        img {
+            filter: brightness(0) invert(0.7);
+        }
+        &.active img {
+            filter: brightness(0) invert(0.9);
+        }
+    }
+
+
+    // ═══════════════════════════════════════════
+    // P. SKELETON / LOADER
+    // ═══════════════════════════════════════════
+
+    .fs_skeleton,
+    .fs_skeleton_wrap,
+    .fs_component_skeleton,
+    .fs_widget_skeleton,
+    .fs_skeleton_loader,
+    .fs_notifications_loading,
+    .fs_loading_skeleton,
+    .fs_sidebar_skeleton {
+        .el-skeleton__item {
+            background: linear-gradient(90deg, #0d121b 25%, #171c24 50%, #0d121b 75%);
+            background-size: 400% 100%;
+        }
+
+        .el-skeleton.is-animated .el-skeleton__item {
+            animation: fs-skeleton-loading 1.4s ease infinite;
+        }
+    }
+
+    // Global skeleton item override
+    .el-skeleton__item {
+        background: linear-gradient(90deg, #0d121b 25%, #171c24 50%, #0d121b 75%);
+        background-size: 400% 100%;
+    }
+
+    .el-skeleton.is-animated .el-skeleton__item {
+        animation: fs-skeleton-loading 1.4s ease infinite;
+    }
+
+    .fs_widget_skeleton {
+        background: var(--fs-bg-muted, #2B303B);
+    }
+
+    .el-skeleton {
+        background: var(--fs-bg-primary, #0E121B) !important;
+    }
+
+
+    // ═══════════════════════════════════════════
+    // Q. AI RESPONSE GENERATOR (popover)
+    // ═══════════════════════════════════════════
+
+    .fs_ai_header_section {
+        background-color: var(--fs-bg-primary, #0E121B);
+        border-bottom-color: var(--fs-border-default, #2B303B);
+    }
+
+    .fs_icon_container {
+        background-color: var(--fs-bg-subtle, #222530);
+        border-color: var(--fs-border-default, #2B303B);
+    }
+
+    .fs_header_text {
+        color: var(--fs-text-primary, #E5E7EB);
+    }
+
+    .fs_textarea {
+        background-color: var(--fs-bg-subtle, #222530);
+        color: var(--fs-text-primary, #E5E7EB);
+        border-color: var(--fs-border-default, #2B303B);
+
+        &::placeholder {
+            color: var(--fs-text-muted, #9CA3AF);
+        }
+    }
+
+    .fs_prompt_button .fs_prompt_submit {
+        background: var(--fs-bg-subtle, #222530);
+        border-color: var(--fs-border-default, #2B303B);
+    }
+
+    .fs_prompt_button .fs_prompt_submit:hover {
+        background: var(--fs-btn-hover-bg, #2B303B);
+    }
+
+    .fs_prompt_option {
+        border-color: var(--fs-border-default, #2B303B);
+        color: var(--fs-text-secondary, #99A0AE);
+    }
+
+    .fs_prompt_option:hover {
+        background-color: var(--fs-bg-subtle, #222530);
+        color: var(--fs-text-primary, #E5E7EB);
+    }
+
+    .fs_prompt_option_selected,
+    .fs_prompt_option_selected:hover {
+        background-color: var(--fs-bg-muted, #2B303B);
+        color: var(--fs-text-primary, #E5E7EB);
+    }
+
+    .fs_response_container {
+        background-color: var(--fs-bg-subtle, #222530);
+        border-color: var(--fs-border-default, #2B303B);
+    }
+
+    .fs_response_content,
+    .fs_response_content p {
+        color: var(--fs-text-primary, #E5E7EB);
+    }
+
+    .fs_response_insert_button .fs_insert_button {
+        background-color: var(--fs-text-primary, #E5E7EB);
+        color: var(--fs-bg-primary, #0E121B);
+    }
+
+    .fs_response_insert_button .fs_insert_button:hover {
+        background-color: #D1D5DB;
+        color: var(--fs-bg-primary, #0E121B);
+    }
+
+    .fs_ai_response_loading {
+        border-color: var(--fs-border-default, #2B303B);
+    }
+
+    .fs_draft_widget h3 {
+        color: var(--fs-text-primary, #E5E7EB);
+    }
+
+    .fs_draft_item {
+        background: var(--fs-bg-subtle, #222530);
+        border-color: var(--fs-border-default, #2B303B);
+
+        &:hover {
+            border-color: #335CFF;
+            background: rgba(71, 108, 255, 0.16);
+        }
+    }
+
+    .fs_draft .fs_draft_button {
+        background: var(--fs-bg-muted, #2B303B);
+        color: var(--fs-text-primary, #E5E7EB);
+
+        &:focus {
+            background: var(--fs-bg-muted, #2B303B);
+            color: var(--fs-text-primary, #E5E7EB);
+        }
+
+        &:hover {
+            background: var(--fs-bg-strong, #181B25);
+            color: var(--fs-text-primary, #E5E7EB);
+        }
+    }
+
+}
+
+// Skeleton loading animation keyframes
+@keyframes fs-skeleton-loading {
+    0% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+}

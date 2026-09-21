@@ -1,0 +1,1 @@
+../../../fluent-support-pro/tests/integration/91-pro-customer-merge.php

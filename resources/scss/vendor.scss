@@ -1,0 +1,280 @@
+@use "~element-plus/theme-chalk/el-var.css";
+@use "~element-plus/theme-chalk/el-loading.css";
+@use "~element-plus/theme-chalk/el-icon.css";
+@use "~element-plus/theme-chalk/el-notification.css";
+@use "~element-plus/theme-chalk/src/message-box.scss";
+@use "~element-plus/theme-chalk/src/popconfirm.scss";
+// customize element ui css here
+
+:root {
+    /* Text Colors */
+    --fs-primary-text-color: #0E121B;
+}
+.el {
+    &-select {
+        width: 100%;
+
+        input {
+            background: transparent;
+        }
+
+        &-multiple {
+            input {
+                height: 40px !important;
+            }
+        }
+    }
+
+    &-dialog {
+        margin-top: 38px !important;
+
+        &__body {
+            padding: 15px 20px 15px 20px;
+        }
+    }
+
+    &-form-item {
+        &__label {
+            padding: initial !important;
+        }
+    }
+
+    &-tag + &-tag {
+        margin-left: 10px;
+    }
+
+    &-tag {
+        &--white {
+            background: white;
+            color: black;
+            border-color: white;
+
+            .el-tag__close {
+                color: #909399;
+
+                &:hover {
+                    background-color: #909399;
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    &-popover {
+        padding: 10px;
+        text-align: left;
+
+        .action-buttons {
+            margin: 0;
+            text-align: center;
+        }
+    }
+
+    &-button {
+        &--mini {
+            padding: 4px;
+        }
+    }
+
+    &-fluid {
+        width: 100% !important;
+    }
+}
+
+.ninja-erp-app {
+    table {
+        margin: auto;
+    }
+
+    .el-table.el-table--fit {
+        border: 1px solid #ebeef5;
+    }
+}
+
+.el-dropdown-menu {
+    padding: 0 15px;
+    list-style: none;
+
+    li {
+        margin-bottom: 10px;
+    }
+}
+
+.el-overlay {
+
+    @media all and (max-width: 1000px) {
+        .el-dialog {
+            min-width: 90%;
+        }
+    }
+}
+.el-tree {
+    .el-tree-node__content {
+        display: flex;
+        align-items: center;
+        min-height: 32px;
+        
+        .custom-tree-node {
+            flex: 1;
+            min-width: 0;
+            word-wrap: break-word;
+            word-break: normal;
+            overflow-wrap: break-word;
+            white-space: normal;
+            line-height: 1.5;
+            
+            span {
+                display: inline-block;
+                width: 100%;
+                word-wrap: break-word;
+                word-break: normal;
+                overflow-wrap: break-word;
+                white-space: normal;
+                line-height: 1.5;
+            }
+        }
+    }
+
+    @media (max-width: 480px) {
+        .el-tree-node__content {
+            height: auto;
+            align-items: flex-start;
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+    }
+}
+
+.el-date-editor .el-range-separator {
+    width: auto;
+}
+
+.el-popconfirm__action {
+    text-align: center;
+}
+
+.el-popconfirm__icon {
+    display: none;
+}
+
+.el-popconfirm__main {
+    margin-left: 0;
+}
+
+.el-button {
+    .el-loading-mask {
+        background: transparent;
+    }
+    &.el-button--success {
+        --el-button-text-color: var(--el-color-white);
+        --el-button-bg-color: #0cbe7e;
+        --el-button-border-color: #0cbe7e;
+        --el-button-hover-bg-color: #49c89f;
+        --el-button-hover-border-color: #49c89f;
+        --el-button-active-bg-color: #49c89f;
+        --el-button-active-border-color: #49c89f;
+    }
+}
+
+.el-table .fs_status_inactive {
+    background-color: var(--fs-status-inactive-bg);
+}
+
+@media (min-width: 1100px) {
+    .fc_essential_modal {
+        &.el-dialog {
+            top: 30%;
+            min-width: 600px !important;
+            border-radius: 0;
+            .fs_dialog_footer {
+                background: transparent;
+                text-align: right;
+                display: block;
+                padding-bottom: 20px;
+            }
+            .el-dialog__header {
+                background: transparent;
+                padding-left: 20px;
+                border: none;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+        }
+    }
+}
+
+.el-form-item--default .el-form-item__content {
+    display: flow-root;
+}
+
+.el-input {
+    .el-input__inner {
+        border: none;
+        &:focus{
+            border-color: unset;
+            box-shadow: unset;
+            outline: none;
+        }
+    }
+}
+
+p.fc_inline_help {
+    color: var(--fs-text-secondary, #525866);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+}
+.el-cascader-node.in-active-path{
+    color: var(--fs-primary-text-color, #0E121B) !important;
+    font-weight: bold !important;
+}
+.fs_tooltip{
+    z-index: 9999 !important;
+}
+
+.fs_preset_tooltip {
+    max-width: 280px !important;
+}
+
+.fs_context_tooltip {
+    max-width: 280px !important;
+
+    .el-tooltip__content {
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal;
+        line-height: 1.5;
+        word-break: break-word;
+    }
+}
+.el-radio__input .el-radio__inner {
+    border: 2px solid #dcdfe6;
+}
+.el-radio__input.is-checked .el-radio__inner:after {
+    height: 6.4px;
+    width: 6.4px;
+    border: 4px;
+}
+.el-radio__inner:hover {
+    border-color: var(--fs-primary-text-color, #0E121B) !important;
+}
+.fs_dialog{
+    .el-input__wrapper {
+        height: 36px;
+        padding: 0px 11px;
+        input[type="text"], input[type="email"] {
+            min-height: 0;
+        }
+    }
+    .el-select__selection {
+        min-height: 27px;
+    }
+}
+.el-input__inner{
+    min-height: 32px;
+}
+

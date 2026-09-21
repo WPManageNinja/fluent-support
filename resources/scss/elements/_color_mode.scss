@@ -1,0 +1,107 @@
+/**
+ * Dark/Light/System mode toggle dropdown (navbar).
+ * Base styles; dark overrides in _dark_mode.scss.
+ */
+.fs_color_mode {
+    display: inline-flex;
+    align-items: center;
+}
+
+.fs_color_mode_core {
+    padding: 6px 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.fs_color_mode_action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+}
+
+.fs_nav_item.fs_item_color_mode {
+    display: flex;
+    align-items: center;
+}
+
+#fs_color_mode_mount {
+    display: flex;
+    align-items: center;
+}
+
+// Theme dropdown menu
+.el-dropdown__popper.fs_theme_dropdown {
+    min-width: 160px;
+    border-radius: 8px;
+    padding: 1px;
+    // box-shadow: 0px -4px 16px -12px rgba(14, 18, 27, 0.1), 0px 16px 32px 0px rgba(14, 18, 27, 0.1);
+
+    .el-dropdown-menu {
+        padding: 8px;
+        border-radius: 8px;
+    }
+
+    .el-scrollbar__wrap {
+        overflow: hidden !important;
+    }
+
+    .el-dropdown-menu__item {
+        display: flex;
+        align-items: center;
+        position: relative;
+        gap: 8px;
+        font-size: 14px;
+        color: var(--fs-text-secondary, #525866);
+        padding: 8px;
+        margin-bottom: 0;
+        border-radius: 6px;
+
+        svg {
+            flex-shrink: 0;
+            width: 16px;
+            height: 16px;
+        }
+
+        .el-icon {
+            margin-right: 0;
+        }
+
+        &:hover {
+            background-color: var(--fs-bg-subtle, #F5F7FA);
+            color: var(--fs-text-primary, #0E121B);
+        }
+
+        &:not(.is-disabled):focus {
+            background-color: var(--fs-bg-subtle, #F5F7FA);
+            color: var(--fs-text-primary, #0E121B);
+        }
+
+        &.is-active {
+            color: var(--fs-text-primary, #0E121B);
+            font-weight: 500;
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                right: 10px;
+                width: 16px;
+                height: 14px;
+                transform: translateY(-50%) scale(0.8);
+                background-repeat: no-repeat;
+                background-position: center;
+                background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13" fill="none"><path d="M1 8.5C1 8.5 2.5 8.5 4.5 12C4.5 12 10.0588 2.83333 15 1" stroke="%23758195" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+            }
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .el-popper__arrow {
+        display: none;
+    }
+}

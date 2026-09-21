@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+#
+# Lab control CLI — every lab operation goes through here.
+#
+#   tests/bin/lab setup    # build/refresh the disposable lab (idempotent)
+#   tests/bin/lab reset    # destroy the lab and its data volumes
+#   tests/bin/lab status   # container status
+#   tests/bin/lab wp ...   # run WP-CLI inside the lab
+#   tests/bin/lab logs     # tail WordPress logs
+
+set -euo pipefail
+
+TESTS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+case "${1:-}" in
+  setup)  exec bash "$TESTS_DIR/lab/scripts/setup.sh" ;;
+  reset)  exec bash "$TESTS_DIR/lab/scripts/reset.sh" ;;
+  status)
+    # shellcheck source=../lab/scripts/lib.sh
+    source "$TESTS_DIR/lab/scripts/lib.sh"
+    compose ps
+    ;;
+  wp)
+    shift
+    # shellcheck source=../lab/scripts/lib.sh
+    source "$TESTS_DIR/lab/scripts/lib.sh"
+    wp_cli "$@"
+    ;;
+  logs)
+    # shellcheck source=../lab/scripts/lib.sh
+    source "$TESTS_DIR/lab/scripts/lib.sh"
+    compose logs --tail=100 --follow wordpress
+    ;;
+  *)
+    echo "Usage: tests/bin/lab {setup|reset|status|wp <args>|logs}" >&2
+    exit 2
+    ;;
+esac

@@ -1,0 +1,90 @@
+/*rtl:ignore*/
+html[dir='rtl']{
+    /* css are converted to rtl so write in reverse */
+    .fframe_body {
+        padding-right: 0;
+    }
+    .page{
+        .fframe_body {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    }
+    .fs_tickets_view{
+        margin-right: 0;
+    }
+    .fs_main_navbar{
+        left: 160px;
+        @media all and (max-width: 768px) {
+            left: 0;
+        }
+    }
+    .el-drawer.rtl{
+        left: 160px;
+    }
+    @media all and (max-width: 1024px) {
+        .el-drawer.rtl{
+            left: 0;
+        }
+    }
+    .fs_top_bar_right{
+        flex: initial;
+    }
+    .fs_top_bar_actions .fs_action_buttons{
+        position: initial;
+    }
+    .toplevel_page_fluent-support #alpha_app {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .fs_table_header .fs_box_actions{
+        justify-content: space-between;
+    }
+    .fs_table_header .fs_box_actions > *:not(:first-child){
+        margin-left: initial;
+    }
+
+    .fframe_body .fs_settings_view .fs_settings_wrapper{
+        padding-left: 160px;
+        padding-right: 0;
+    }
+
+    .page .fframe_body .fs_settings_view .fs_settings_wrapper{
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .fframe_body .el-checkbox.is-checked .el-checkbox__inner{
+        margin-left: 5px;
+    }
+    .fframe_body .el-checkbox__label{
+        margin-right: 5px;
+    }
+    .el-dialog.fs_dialog .el-dialog__footer .fs_dialog_footer{
+        gap: 10px;
+    }
+    .el-dialog__headerbtn{
+        left: auto;
+        right: 0;
+    }
+    .el-dropdown-menu__item i {
+        margin-left: 5px;
+    }
+    .fs_action_buttons{
+        position: initial;
+    }
+    .fs_summary_settings .fs_transfer_wrapper .fs_agent_transfer .el-transfer-panel{
+        width: initial;
+    }
+    .el-transfer-panel .el-transfer-panel__header .el-checkbox .el-checkbox__label span{
+        left: 15px;
+    }
+    .el-transfer-panel .el-transfer-panel__header .el-checkbox:last-of-type {
+        margin-left: 0;
+    }
+    .el-transfer-panel__item.el-checkbox {
+        margin-left: 30px;
+    }
+    .fs_tk_filter .el-switch{
+        gap: 5px;
+    }
+}

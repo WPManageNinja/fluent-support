@@ -1,0 +1,7796 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Fluent Support\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-29 13:36+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.7.2; wp-6.8.1\n"
+"X-Domain: fluent-support"
+
+#: app/Services/Integrations/FluentCrm/FluentCRMWidgets.php:51
+msgid " ago"
+msgstr ""
+
+#: app/Services/Tickets/TicketService.php:91
+msgid " assign this ticket to self"
+msgstr ""
+
+#: app/Services/Tickets/TicketService.php:90
+msgid " assigned "
+msgstr ""
+
+#: app/Services/Tickets/TicketService.php:90
+msgid " in this ticket"
+msgstr ""
+
+#: app/Services/Tickets/TicketService.php:210
+#: app/Http/Controllers/TicketController.php:396
+msgid " initialized this ticket"
+msgstr ""
+
+#: app/Modules/MCP/Tools/TicketTools.php:63
+msgid " — page %d of %d"
+msgstr ""
+
+#: app/Models/Traits/CustomerTrait.php:376
+#, php-format
+msgid "%1$d customers deleted successfully"
+msgstr ""
+
+#. %1$d is tickets assigned, %2$d is tickets skipped.
+#: app/Http/Controllers/TicketController.php:1130
+#, php-format
+msgid "%1$d tickets assigned via agent group. %2$d skipped."
+msgstr ""
+
+#. %1$d is the number of tickets assigned, %2$s is the agent's name.
+#: app/Http/Controllers/TicketController.php:1073
+#, php-format
+msgid "%1$d tickets have been assigned to %2$s."
+msgstr ""
+
+#. %1$d is the number of skipped tickets due to mailbox restrictions.
+#: app/Http/Controllers/TicketController.php:1081
+#, php-format
+msgid ""
+"%1$d tickets were skipped due to mailbox restrictions or already being "
+"assigned."
+msgstr ""
+
+#: app/Services/Notifications/NotificationFormatter.php:154
+#, php-format
+msgid "%1$s assigned a ticket"
+msgstr ""
+
+#: app/Services/Notifications/NotificationFormatter.php:153
+#, php-format
+msgid "%1$s assigned a ticket in %2$s"
+msgstr ""
+
+#. %1$s is date, %2$s is start time, %3$s is end time, %4$s is timezone.
+#: app/Services/Integrations/FluentBooking/BookingAvailabilityHelper.php:460
+#, php-format
+msgid "%1$s at %2$s - %3$s (%4$s)"
+msgstr ""
+
+#: app/Services/Notifications/NotificationFormatter.php:169
+#, php-format
+msgid "%1$s closed a ticket"
+msgstr ""
+
+#: app/Services/Notifications/NotificationFormatter.php:168
+#, php-format
+msgid "%1$s closed a ticket in %2$s"
+msgstr ""
+
+#: app/Services/Notifications/NotificationFormatter.php:144
+#: app/Modules/MCP/Tools/ManagementTools.php:705
+#, php-format
+msgid "%1$s mentioned you"
+msgstr ""
+
+#: app/Modules/MCP/Tools/ManagementTools.php:704
+#, php-format
+msgid "%1$s mentioned you in \"%2$s\""
+msgstr ""
+
+#: app/Services/Notifications/NotificationFormatter.php:143
+#, php-format
+msgid "%1$s mentioned you in %2$s"
+msgstr ""
+
+#: app/Services/Notifications/NotificationFormatter.php:159
+#, php-format
+msgid "%1$s reassigned a ticket"
+msgstr ""
+
+#: app/Services/Notifications/NotificationFormatter.php:158
+#, php-format
+msgid "%1$s reassigned a ticket in %2$s"
+msgstr ""
+
+#: app/Services/Notifications/NotificationFormatter.php:174
+#, php-format
+msgid "%1$s reopened a ticket"
+msgstr ""
+
+#: app/Services/Notifications/NotificationFormatter.php:173
+#, php-format
+msgid "%1$s reopened a ticket in %2$s"
+msgstr ""
+
+#: app/Services/Notifications/NotificationFormatter.php:149
+#: app/Services/Notifications/NotificationFormatter.php:164
+#, php-format
+msgid "%1$s replied to a ticket"
+msgstr ""
+
+#: app/Services/Notifications/NotificationFormatter.php:148
+#: app/Services/Notifications/NotificationFormatter.php:163
+#, php-format
+msgid "%1$s replied to a ticket in %2$s"
+msgstr ""
+
+#: app/Services/Notifications/NotificationFormatter.php:179
+#, php-format
+msgid "%1$s triggered automation"
+msgstr ""
+
+#: app/Services/Notifications/NotificationFormatter.php:178
+#, php-format
+msgid "%1$s triggered automation in %2$s"
+msgstr ""
+
+#: app/Services/Notifications/NotificationFormatter.php:184
+#, php-format
+msgid "%1$s updated a ticket"
+msgstr ""
+
+#: app/Services/Notifications/NotificationFormatter.php:183
+#, php-format
+msgid "%1$s updated a ticket in %2$s"
+msgstr ""
+
+#. %1$s is opening paragraph tag, %2$s is closing paragraph tag
+#: app/Services/EmailNotification/Settings.php:110
+#, php-format
+msgid ""
+"%1$sPlease login or create an account to access the Customer Support "
+"Portal%2$s [fluent_support_auth]"
+msgstr ""
+
+#. %d is meeting duration in minutes.
+#: app/Services/Integrations/FluentBooking/BookingAvailabilityHelper.php:574
+msgid "%d min"
+msgstr ""
+
+#. %d represents the number of closed tickets.
+#: app/Http/Controllers/TicketController.php:1019
+msgid "%d tickets have been closed."
+msgstr ""
+
+#. %d is the number of tickets that were deleted
+#: app/Http/Controllers/TicketController.php:1034
+msgid "%d tickets have been deleted"
+msgstr ""
+
+#. %s is the time duration (e.g., "2 hours", "3 days")
+#: app/Services/CustomerPortalService.php:47
+#: app/Services/CustomerPortalService.php:347
+#: app/Services/CustomerPortalService.php:519
+#: app/Http/Controllers/CustomerPortalController.php:101
+#, php-format
+msgid "%s ago"
+msgstr ""
+
+#. %s: The name of the property that was updated
+#: app/Http/Controllers/TicketController.php:919
+#, php-format
+msgid "%s has been updated"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:31
+msgid "(Maximum visibility)"
+msgstr ""
+
+#: app/Services/Helper.php:630
+msgid "(no title)"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:32
+msgid "(Standard spacing)"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:33
+msgid "(Table columns)"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:34
+msgid "+ Add Product Bot"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:35
+msgid "+ Add Prompt Option"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:36
+msgid ". Please copy this code and paste it in the"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:37
+msgid ""
+". You can set your actions and run the workflow actions from ticket page."
+msgstr ""
+
+#. %1$s is the URL to WordPress cookies documentation, %2$s is the URL to WordPress support forums
+#: app/Http/Controllers/AuthController.php:362
+#, php-format
+msgid ""
+"<strong>ERROR</strong>: Cookies are blocked due to unexpected output. For "
+"help, please see <a href=\"%1$s\">this documentation</a> or try the <a "
+"href=\"%2$s\">support forums</a>."
+msgstr ""
+
+#: app/Http/Controllers/AuthController.php:487
+msgid "<strong>Error</strong>: Invalid username or email"
+msgstr ""
+
+#: app/Http/Controllers/AuthController.php:249
+#: app/Http/Controllers/AuthController.php:299
+msgid ""
+"<strong>Error</strong>: Invalid username, email address or incorrect "
+"password."
+msgstr ""
+
+#: app/Http/Controllers/AuthController.php:480
+msgid ""
+"<strong>Error</strong>: There is no account with that username or email "
+"address."
+msgstr ""
+
+#: app/Services/Helper.php:1106
+msgid ""
+"A cloud storage service by Google for storing, syncing, and sharing files."
+msgstr ""
+
+#: app/Services/Helper.php:1113
+msgid ""
+"A cloud-based file storage and sharing service that allows users to store "
+"files online and sync them across devices."
+msgstr ""
+
+#: app/Services/Helper.php:973
+msgid "A New Era of eCommerce with WordPress"
+msgstr ""
+
+#: app/Services/Helper.php:1134
+msgid ""
+"A project management tool designed to streamline workflows and collaboration "
+"through customizable, kanban-style boards."
+msgstr ""
+
+#: app/Services/Helper.php:1029
+msgid "A robust form plugin suitable for any business"
+msgstr ""
+
+#: app/Services/Helper.php:1127
+msgid ""
+"A security service by Google designed to protect websites from bots and "
+"abuse by using challenges to distinguish between human and automated access."
+msgstr ""
+
+#: app/Modules/MCP/Tools/TicketTools.php:248
+msgid "A valid customer_email is required"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:188
+msgid "A valid email is required to create a ticket"
+msgstr ""
+
+#: app/Http/Controllers/AgentGroupController.php:129
+msgid "A valid fallback group is required"
+msgstr ""
+
+#. %s is the email address
+#: app/Hooks/Handlers/EmailVerificationHandler.php:74
+#, php-format
+msgid "A verification code has been sent to %s. Please provide the code below:"
+msgstr ""
+
+#: app/Services/Helper.php:1120
+msgid ""
+"A WordPress plugin that enables the creation and management of membership "
+"sites, including content access control and subscription billing."
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:251
+msgid "Accepted File Types"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:42
+msgid "Access Code"
+msgstr ""
+
+#: app/Modules/PermissionManager.php:485
+msgid "Access Private Data (Customers, Agents)"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:43
+msgid "Access Token"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:342
+msgid ""
+"Act on multiple tickets at once — close, assign, or tag in bulk. More "
+"efficient than calling individual tools in a loop. Returns per-ticket "
+"results showing what succeeded/failed. Maximum 50 ticket IDs per call; split "
+"larger sets into multiple requests."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:44
+#: app/Services/EmailNotification/Settings.php:456
+#: app/Hooks/Handlers/AdminBarHandler.php:91
+msgid "Action"
+msgstr ""
+
+#: app/Modules/MCP/Tools/ManagementTools.php:546
+#, php-format
+msgid "action must be one of: %s"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:45
+msgid "Action Title"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:46
+msgid "Actions"
+msgstr ""
+
+#: app/Hooks/Handlers/EmailVerificationHandler.php:60
+#: app/Hooks/Handlers/TwoFaHandler.php:171
+msgid "Activate your account"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:47 app/Services/Helper.php:122
+#: app/Models/Traits/CustomerTrait.php:90
+msgid "Active"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:48
+msgid "Active Agents"
+msgstr ""
+
+#: app/Modules/StatModule.php:73 app/Modules/StatModule.php:116
+#: app/Services/Tickets/TicketStats.php:25
+#: app/Http/Controllers/ReportingController.php:442
+msgid "Active Tickets"
+msgstr ""
+
+#: app/Hooks/Handlers/Menu.php:93 app/Hooks/Handlers/Menu.php:94
+#: app/Hooks/Handlers/Menu.php:181
+msgid "Activities"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:49
+msgid "Activity Log Settings"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:50
+msgid "Activity Logs are currently disabled"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:51
+msgid "Activity Reports"
+msgstr ""
+
+#: app/Models/Traits/ActivityTrait.php:73
+msgid "Activity settings have been updated"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:52
+msgid "Activity Trends by Time of Day"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:53
+msgid "Add"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:77
+msgid "Add a bot in FluentBot settings before chatting."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:78
+msgid ""
+"Add a general bot or a product-specific bot in FluentBot settings before "
+"chatting."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:79
+msgid "Add a message to include with the booking link (optional)"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:75
+msgid "Add a New Business Inbox"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:76
+msgid "Add a New Workflow"
+msgstr ""
+
+#: app/Services/Integrations/FluentCrm/CreateTicketAction.php:51
+#: app/Services/Integrations/FluentCrm/CreateTicketAction.php:75
+msgid "Add a support ticket for contact"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:196
+msgid ""
+"Add an internal note to a ticket. Requires ticket_id and content. Internal "
+"notes are only visible to agents, not to the customer."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:54
+msgid "Add Another Action"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:55
+#: app/Services/TranslationStrings.php:1106
+msgid "Add Attachment"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:56
+msgid "Add Bookmark"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:57
+msgid "Add Business Inbox"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1084
+msgid ""
+"Add custom fields to your tickets and collect extra data from ticket open "
+"form."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:58
+msgid "Add Customer"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:59
+msgid "Add Draft Reply"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:60
+msgid "Add Group"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:61
+#: app/Modules/MCP/AbilitiesRegistrar.php:195
+msgid "Add Internal Note"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:62
+msgid "Add Log"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:63
+msgid "Add More"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:64
+msgid "Add New"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:65
+msgid "Add New Business Box"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:66
+msgid "Add New Custom Field"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:80
+msgid "Add new customer"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:67
+msgid "Add New Field"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:81
+msgid "Add new properties"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:68
+msgid "Add New Support Staff"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:224
+msgid ""
+"Add or remove tags on a ticket. Use get-support-context to look up tag IDs. "
+"For tagging multiple tickets at once, use bulk-action with action=tag "
+"instead."
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:223
+msgid "Add or Remove Ticket Tags"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:69
+msgid "Add Product"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:70
+msgid "Add Tags"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1070
+msgid ""
+"Add Tags and segment your tickets by tags filter then you can also do bulk "
+"actions"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:71
+msgid "Add Task to Fluent Boards"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:82
+msgid "Add team members to handle support tickets"
+msgstr ""
+
+#: app/Http/Controllers/McpSettingsController.php:168
+msgid ""
+"Add this to your Claude Desktop config (Settings → Developer → Edit Config), "
+"fill in your username + application password, then restart Claude Desktop."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:72
+msgid "Add Ticket"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:73
+msgid "Add Ticket Tag"
+msgstr ""
+
+#: app/Http/Controllers/McpSettingsController.php:183
+msgid ""
+"Add to Cursor's mcp.json, replacing the placeholder with base64 of "
+"\"username:application-password\"."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:83
+msgid "Add to FluentBot"
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:231
+msgid "Add to FluentCRM list (optional)"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:84
+msgid "Add to home"
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:242
+msgid "Add to Tags"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:74
+msgid "Add Watcher"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:85
+msgid "Added"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:86
+msgid "Added Internal Info"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:87
+msgid "Added Note"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:88
+msgid "Additional Details"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:89
+msgid "Additional Info"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1107
+msgid "Additional info"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:90
+msgid "Address"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1007
+msgid "address available"
+msgstr ""
+
+#: app/Models/Customer.php:52 app/Models/Traits/CustomerTrait.php:108
+#: app/Models/Traits/CustomerTrait.php:110
+#: app/Hooks/Handlers/AuthHandler.php:395
+#: app/Hooks/Handlers/AuthHandler.php:397
+msgid "Address Line 1"
+msgstr ""
+
+#: app/Models/Customer.php:53 app/Models/Traits/CustomerTrait.php:115
+#: app/Models/Traits/CustomerTrait.php:117
+#: app/Hooks/Handlers/AuthHandler.php:402
+#: app/Hooks/Handlers/AuthHandler.php:404
+msgid "Address Line 2"
+msgstr ""
+
+#: app/Hooks/Handlers/PrivacyHandler.php:232
+msgid "Address Line One"
+msgstr ""
+
+#: app/Hooks/Handlers/PrivacyHandler.php:236
+msgid "Address Line Two"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:91
+msgid "Admin Email Address"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:92
+msgid "Admin Label (Optional)"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:93
+msgid "Admin Priority"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:94
+msgid "Advanced filter"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1010
+msgid "afternoon"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:95
+msgid "Agent"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:96
+msgid "Agent Email"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:380
+msgid "Agent Feedback Rating"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:97 app/Services/Helper.php:834
+msgid "Agent First Name"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:98 app/Services/Helper.php:836
+msgid "Agent Full Name"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:99
+msgid "Agent Group"
+msgstr ""
+
+#: app/Http/Controllers/AgentGroupController.php:84
+msgid "Agent group has been created"
+msgstr ""
+
+#: app/Http/Controllers/AgentGroupController.php:172
+msgid "Agent group has been deleted and agents have been reassigned"
+msgstr ""
+
+#: app/Http/Controllers/AgentGroupController.php:116
+msgid "Agent group has been updated"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:100
+msgid "Agent Group Statistics"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:101
+msgid "Agent Group Summary"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:102
+msgid "Agent Groups Reports"
+msgstr ""
+
+#: app/Services/MailerInbox/MailBoxService.php:261
+#: app/Http/Controllers/TicketController.php:892
+msgid "Agent is restricted for this mailbox ticket"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1012
+msgid "Agent Job Title( ex: Developer, Support Staff )"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:103 app/Services/Helper.php:835
+msgid "Agent Last Name"
+msgstr ""
+
+#: app/Modules/MCP/Tools/ManagementTools.php:297
+#: app/Modules/MCP/Tools/ManagementTools.php:560
+msgid "Agent not found"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:104
+msgid "Agent Only Field"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:588
+msgid "Agent Outreach Ticket (To Customer)"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:105
+msgid "Agent Performance (Today)"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:106
+msgid "Agent Priority"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:107
+msgid "Agent Response"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:108
+msgid "Agent Response Stats"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:109
+msgid "Agent Signature"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:389
+msgid "Agent Time Tracking"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:110
+msgid "Agent Title"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:1091
+msgid "agent_group_id param is required"
+msgstr ""
+
+#: app/Modules/MCP/Tools/ManagementTools.php:556
+msgid "agent_id is required for the assign action"
+msgstr ""
+
+#: app/Modules/MCP/Tools/TicketTools.php:527
+msgid "agent_id must be a positive integer"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:1040
+msgid "agent_id param is required"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:111
+msgid "Agents"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:112
+msgid "Agents Report Summary"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:113
+msgid "Agents Reports"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:114
+msgid "Agents Statistics"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:115
+msgid ""
+"Agents will receive notifications when they are mentioned in replies or "
+"internal notes. This cannot be disabled from these settings."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:38
+msgid "AI Activities"
+msgstr ""
+
+#: app/Services/Helper.php:1368
+msgid "AI Activity settings have been updated"
+msgstr ""
+
+#: app/Modules/MCP/MCPInit.php:127
+msgid "AI agent tools for helpdesk ticket management."
+msgstr ""
+
+#: app/Services/Integrations/AI/AIProviderFactory.php:46
+msgid "AI features are disabled."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:605 app/Services/Helper.php:1223
+msgid "AI Integration"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:39
+msgid "AI Intelligence"
+msgstr ""
+
+#: app/Services/Helper.php:1227
+msgid "AI Model Setup"
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:425
+msgid "AI provider settings have been successfully disconnected."
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:402
+msgid "AI settings have been successfully saved."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:116
+#: app/Services/TranslationStrings.php:1108
+#: app/Services/Notifications/NotificationCategory.php:25
+#: app/Hooks/Handlers/Menu.php:429
+msgid "All"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:117
+msgid "All Agent"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:118
+msgid "All Agent Groups"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:127
+msgid "All agents in this group will be moved to the selected fallback group."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:119
+msgid "All Business Box"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:120
+msgid "All Customers"
+msgstr ""
+
+#: app/Services/Tickets/Importer/JSHelpdeskTickets.php:247
+msgid ""
+"All JS Helpdesk tickets and associated data have been deleted. You may now "
+"deactivate JS Helpdesk Plugin and start using Fluent Support"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:128
+msgid "All or Custom"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:121
+msgid "All Product"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:122
+#: app/Services/TranslationStrings.php:1109
+msgid "All Products"
+msgstr ""
+
+#: app/Services/Tickets/Importer/SupportCandyTickets.php:312
+msgid ""
+"All Support Candy Tickets and associated data have been deleted. You may now "
+"deactivate Support Candy Plugin and start using Fluent Support"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:123
+msgid "All Support Staff"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:129
+msgid ""
+"All the forwarded emails to this address will be synced with your tickets. "
+"Below is your mask email address"
+msgstr ""
+
+#: app/Services/MailerInbox/MailBoxService.php:128
+msgid "All ticket moves to the selected Business"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:130
+msgid "All ticket replies sent as context"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:124
+#: app/Services/TranslationStrings.php:1110
+msgid "All Tickets"
+msgstr ""
+
+#: app/Services/Tickets/Importer/AwesomeSupportTickets.php:252
+msgid "All tickets have been deleted successfully"
+msgstr ""
+
+#: app/Services/Tickets/Importer/AwesomeSupportTickets.php:71
+#: app/Services/Tickets/Importer/JSHelpdeskTickets.php:55
+#: app/Services/Tickets/Importer/ZendeskTickets.php:148
+#: app/Services/Tickets/Importer/SupportCandyTickets.php:69
+#: app/Services/Tickets/Importer/FreshDeskTickets.php:81
+#: app/Services/Tickets/Importer/HelpScoutTickets.php:80
+msgid "All tickets have been imported successfully"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:125
+msgid "All Widgets"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:126
+msgid "All Workflows"
+msgstr ""
+
+#: app/Services/Helper.php:1085
+msgid "All-in-one payment gateway designed for WordPress"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:131
+msgid ""
+"Allow Fluent Support to collect non-sensitive data and usage information."
+msgstr ""
+
+#: app/Services/Notifications/NotificationSettings.php:120
+msgid "Allow Self Notifications"
+msgstr ""
+
+#: app/Hooks/Handlers/AuthHandler.php:159
+msgid "Already have an account?"
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:407
+#, php-format
+msgid "An error occurred while saving the settings: %s"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:132
+msgid ""
+"An incomplete migration exists. Would you like to resume from the previous "
+"one?"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:415
+msgid "An unexpected error occurred. Please try again or contact support."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:40
+msgid "AND"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1014
+msgid "and"
+msgstr ""
+
+#: app/Http/Controllers/McpSettingsController.php:208
+msgid ""
+"Any MCP client that speaks Streamable HTTP can connect using this URL and a "
+"Basic auth header."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:41
+msgid "API Key"
+msgstr ""
+
+#: app/Services/Integrations/NotificationIntegrationBase.php:69
+msgid "API Request Error"
+msgstr ""
+
+#: app/Services/Integrations/NotificationIntegrationBase.php:78
+msgid "API Response Error"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:133
+msgid "App ID"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:134
+msgid "App Secret"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:135
+#: app/Services/TranslationStrings.php:1111
+msgid "Apply"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:136
+msgid "Apply / Remove Lists on FluentCRM Profile"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:137
+msgid "Apply / Remove Tags on FluentCRM Profile"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:138
+msgid "Apply Cc"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:139
+msgid "Apply Filter"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:140
+msgid "Apply Tags"
+msgstr ""
+
+#: app/Services/Helper.php:1141
+msgid "Appointment and booking management plugin for WordPress"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:141
+msgid "Approve"
+msgstr ""
+
+#: app/Modules/PermissionManager.php:469
+msgid "Approve Draft Reply"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1015
+msgid "are waiting for reply with"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1030
+msgid "Are you sure to delete this Action?"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1011
+msgid "Are you sure to delete this agent? All associated data will be deleted"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:144
+msgid ""
+"Are you sure to delete this customer? It will delete all associated data "
+"with this customer"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1064
+msgid "Are you sure to delete this product?"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1077
+msgid "Are you sure to delete this tag?"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1068
+msgid "Are you sure to delete this template?"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:143
+msgid "Are you sure to delete this Ticket?"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:145
+msgid "Are you sure to delete this?"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:146
+msgid "Are you sure to delete this? All associate data will be deleted"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:147
+msgid ""
+"Are you sure to regenerate the webhook url? If you regenerate the url you "
+"have to change all your used webhook"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1091
+msgid "Are you sure to remove this bookmark?"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1074
+msgid "Are you sure want to set this business box for webhook?"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:148
+msgid "Are you sure you want to discard this draft response?"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:149
+msgid "Are you sure you want to merge these tickets?"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1023
+msgid "Are you sure, you want to close selected tickets?"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1031
+msgid "Are you sure, you want to delete selected tickets?"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:142
+msgid "Are You Sure? You can not undo this action."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:150
+#: app/Services/TranslationStrings.php:1112
+msgid "Ascending"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:151
+msgid "Ask AI"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:152
+msgid "Ask FluentBot"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:210
+msgid ""
+"Assign a ticket to an agent. Use get-support-context to look up agent IDs. "
+"For assigning multiple tickets at once, use bulk-action with action=assign "
+"instead."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:153
+msgid "Assign Agent"
+msgstr ""
+
+#: app/Modules/PermissionManager.php:464
+msgid "Assign Agents"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:209
+msgid "Assign Ticket to Agent"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:154
+msgid "Assign via Group"
+msgstr ""
+
+#: app/Services/Notifications/NotificationEventMap.php:62
+msgid "assigned a ticket"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:155
+msgid "Assigned Agent"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:156
+msgid "Assigned Agent First Name"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:157
+msgid "Assigned Agent Full Name"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:158
+msgid "Assigned Agent:"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:159
+msgid "Assigned Permissions"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:160
+msgid "AssignedAgent Last Name"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:161
+msgid "Assigner First Name"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:162
+msgid "Assigner Full Name"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:163
+msgid "Assigner Last Name"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1058
+msgid "At this moment you don't have any bookmarked tickets."
+msgstr ""
+
+#: app/Services/Tickets/Importer/ZendeskTickets.php:291
+msgid "Authentication failed. Please check your Zendesk credentials."
+msgstr ""
+
+#: app/Modules/MCP/Support/PermissionGate.php:50
+msgid "Authentication required to access the Fluent Support MCP server."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:164
+msgid "Author Name"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:165
+msgid "Authorization Code"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:166 app/Services/Helper.php:1203
+msgid "Auto Close Settings"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:167
+msgid ""
+"Auto Close tickets based on active days or based on tags or waiting time."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:168
+msgid "Automate your tickets by applying manual or automated tasks"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:169
+msgid "Automatic"
+msgstr ""
+
+#: app/Http/Controllers/McpSettingsController.php:93
+msgid ""
+"Automatic install needs a Fluent Pro plugin active. Install FluentHub "
+"manually, then reload this page to connect Fluent Support with AI agents."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:171
+msgid "Automatically delete activity logs after days"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:170
+msgid "Automatically delete AI activity logs after days"
+msgstr ""
+
+#: app/Services/Notifications/NotificationCategory.php:37
+msgid "Automation Triggers"
+msgstr ""
+
+#: app/Hooks/Handlers/InternalNotificationHandler.php:295
+#, php-format
+msgid "Automation workflow \"%s\" was triggered"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:172
+msgid "Available Shortcodes"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:173
+msgid "Available times"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:174
+msgid ""
+"Available times are based off a sample of this event type’s upcoming "
+"availability. You can further customize times offered below"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1016
+msgid "average"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:175
+msgid "Average Response"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:176 app/Services/Helper.php:842
+msgid "Average Waiting"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:177
+msgid "Avg. Waiting Time"
+msgstr ""
+
+#: app/Services/Tickets/TicketStats.php:49
+msgid "Awaiting Replies"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:178
+msgid "Awesome Support"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:179
+msgid "Back"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1113
+msgid "Back to All Tickets"
+msgstr ""
+
+#: app/Services/Helper.php:1068
+msgid "BetterDocs"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1017
+msgid "billing"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:180
+msgid "Billing Details"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:181
+msgid "Billing details"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:182
+#: app/Models/Traits/CustomerTrait.php:91
+msgid "Blocked"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1018
+msgid ""
+"Bookmarking tickets is a pro feature. Please upgrade to Fluent Support Pro "
+"to use this feature"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:183
+msgid "Bot Configuration"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:184
+msgid "Bot ID"
+msgstr ""
+
+#: app/Services/Integrations/FluentBot/FluentBotHelper.php:371
+msgid "Bot ID is not set for this product."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:185
+msgid "Bot ID is required"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:186
+msgid "Browse File"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1114
+msgid "Browse Files"
+msgstr ""
+
+#: app/Services/Helper.php:1033
+msgid "BuddyBoss"
+msgstr ""
+
+#: app/Services/Tickets/CustomFieldsService.php:17
+msgid "Bug Report"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:187
+msgid "Build a better Fluent Support"
+msgstr ""
+
+#: app/Services/Helper.php:1022
+msgid ""
+"Build and manage vibrant online communities with integrated LMS features "
+"directly within WordPress."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:188
+msgid "Bulk Action"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:341
+msgid "Bulk Ticket Action"
+msgstr ""
+
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:107
+msgid "Business"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:189
+msgid "Business Box Reports"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:190
+msgid "Business Box Statistics"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:191
+msgid "Business Box Summary"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:192
+msgid "Business Boxes Reports"
+msgstr ""
+
+#: app/Services/Helper.php:1078
+msgid "Business communication platform designed for privacy"
+msgstr ""
+
+#: app/Services/Helper.php:1008
+msgid "Business communication platform designed for security"
+msgstr ""
+
+#: app/Services/Helper.php:1043
+msgid "Business communication platform designed for tech"
+msgstr ""
+
+#: app/Services/Helper.php:987
+msgid "Business communication platform designed to scale"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:193
+msgid "Business Email"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:194
+msgid "Business Inbox"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:195
+msgid "Business Inbox Access Restriction"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:196 app/Hooks/Handlers/Menu.php:104
+#: app/Hooks/Handlers/Menu.php:105 app/Hooks/Handlers/Menu.php:173
+msgid "Business Inboxes"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:197
+msgid "Business Name"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:198
+msgid "Business name"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1019
+msgid "button to get the authorization code."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1020
+#: app/Services/TranslationStrings.php:1156
+msgid "by"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:199
+msgid "By Agents"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:200
+msgid "By Customers"
+msgstr ""
+
+#: app/Services/Notifications/NotificationSettings.php:121
+msgid ""
+"By default, agents are not notified for their own actions. Enable this only "
+"if agents should receive notifications when they are already the normal "
+"recipient for an action they performed themselves."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:201
+msgid "By Tickets"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:203
+msgid "Call a Meeting"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:204
+msgid "Cancel"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1022
+msgid "cancel"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:205
+msgid "Cancel Notes"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:206
+msgid "Cancel Reply"
+msgstr ""
+
+#: app/Modules/MCP/Tools/TicketTools.php:508
+msgid "Cannot change the status of a closed ticket via update-ticket."
+msgstr ""
+
+#: app/Modules/MCP/Tools/ResponseTools.php:96
+msgid "Cannot reply to a closed ticket. Reopen it first, then reply."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:207
+msgid "Cc"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:208
+msgid "Change Customer"
+msgstr ""
+
+#: app/Http/Controllers/FluentBotController.php:341
+msgid "Chat ID already set for this ticket"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:209
+msgid "Check all"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:212
+msgid ""
+"Choose a meeting type, review available times, then insert selected booking "
+"links into your reply."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:210
+msgid "Choose Mailbox"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:211
+msgid "Choose OpenAI model"
+msgstr ""
+
+#: app/Models/Customer.php:54 app/Models/Traits/CustomerTrait.php:122
+#: app/Models/Traits/CustomerTrait.php:124
+#: app/Hooks/Handlers/AuthHandler.php:409
+#: app/Hooks/Handlers/AuthHandler.php:411
+#: app/Hooks/Handlers/PrivacyHandler.php:240
+msgid "City"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:213
+msgid "Clear"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:214
+msgid "Clear All Attachments"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:216
+msgid "Clear chat"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:215
+msgid "Clear Settings"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:218
+msgid "Click here"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:217
+msgid "Click Here to Renew your License"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1115
+msgid "Click Here to Write a reply"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:219
+msgid "Click on the"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:220
+msgid "Click to Edit Subject"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:221
+msgid "Client Priority"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:222
+msgid "Close"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:106
+msgid ""
+"Close a ticket. Optionally send a final customer-visible reply and/or an "
+"internal note in the same call. This is the simplest way to close — use it "
+"instead of reply-to-ticket when closing is the primary intent."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:226
+msgid "Close panel"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:223
+msgid "Close Selected Tickets"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:224
+#: app/Services/TranslationStrings.php:1116
+#: app/Modules/MCP/AbilitiesRegistrar.php:105
+msgid "Close Ticket"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:225
+msgid "Close Ticket Silently"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:227
+#: app/Services/TranslationStrings.php:1117 app/Services/Helper.php:123
+#: app/Services/Helper.php:840
+msgid "Closed"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1024
+msgid "closed"
+msgstr ""
+
+#: app/Services/Notifications/NotificationEventMap.php:74
+msgid "closed a ticket"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:229
+msgid "Closed by Agent"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:230
+msgid "Closed by Customer"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:228
+msgid "Closed Ticket"
+msgstr ""
+
+#: app/Modules/StatModule.php:77 app/Modules/StatModule.php:120
+#: app/Modules/StatModule.php:164 app/Services/Tickets/TicketStats.php:43
+#: app/Http/Controllers/ReportingController.php:443
+msgid "Closed Tickets"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:231
+msgid "Compact"
+msgstr ""
+
+#: app/Hooks/Handlers/EmailVerificationHandler.php:86
+msgid "Complete Signup"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1118
+msgid "Completed"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1025
+msgid "completed"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:232
+msgid "Condition Match Type"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:233
+msgid "Condition Value"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:234
+msgid "Conditional Field"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:235
+msgid "Conditions"
+msgstr ""
+
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:52
+msgid "Configuration required!"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:239
+msgid "Configure a bot in FluentBot settings to start chatting"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:240
+msgid "Configure email notifications and responses"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:236
+msgid "Configure FreshDesk Import"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:237
+msgid "Configure Help Scout Import"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:241
+msgid "Configure specialized bots trained for specific products"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:242
+msgid "Configure these settings to get the most out of FluentSupport"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:238
+msgid "Configure Zendesk Import"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:243
+msgid "Confirm"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1026
+msgid "confirm"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:244
+msgid "Confirm Delete"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:245
+msgid "Confirm Delete This Business"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:246
+msgid "Congrats! Your Support Portal"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:247
+msgid "Connect"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:248
+msgid ""
+"Connect your email address with Fluent Support Email parser, so when your "
+"customers send an email or reply from email it will be synced with your "
+"support portal"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:249
+msgid "Connected"
+msgstr ""
+
+#: app/Services/FluentCRMServices.php:144
+msgid "Contact could not be found"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:250
+msgid "Contact Details"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:251
+msgid "Contacts List"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:252
+msgid "Contacts Tag"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:253
+msgid "Contains"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:254
+msgid "Content"
+msgstr ""
+
+#: app/Http/Controllers/CustomerPortalController.php:124
+msgid "Content is required"
+msgstr ""
+
+#: app/Modules/MCP/Tools/ResponseTools.php:147
+msgid "content is required"
+msgstr ""
+
+#: app/Modules/MCP/Tools/ResponseTools.php:81
+msgid "content or saved_reply_id is required"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1119
+msgid "Conversation"
+msgstr ""
+
+#: app/Hooks/Handlers/PrivacyHandler.php:161
+msgid "Conversation Attachments"
+msgstr ""
+
+#: app/Hooks/Handlers/PrivacyHandler.php:157
+msgid "Conversation Content"
+msgstr ""
+
+#: app/Hooks/Handlers/PrivacyHandler.php:165
+msgid "Conversation Created At"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:255
+msgid "Conversation created at"
+msgstr ""
+
+#: app/Hooks/Handlers/PrivacyHandler.php:149
+msgid "Conversation ID"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:256
+msgid "Copied to clipboard"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:257
+#: app/Services/EmailNotification/Settings.php:443
+msgid "Copy"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:445
+msgid "Copy this URL and add it to your FluentCommunity menu."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:258
+msgid "Copy to Clipboard"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:259
+msgid "Copy to clipboard requires HTTPS"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:260
+msgid "Could not copy to clipboard"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:261
+msgid "Could not find a contact?"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:262
+msgid "Could not load FluentBooking meetings."
+msgstr ""
+
+#: app/Hooks/Handlers/AdminBarHandler.php:90
+msgid "Count"
+msgstr ""
+
+#: app/Models/Customer.php:57 app/Models/Traits/CustomerTrait.php:143
+#: app/Models/Traits/CustomerTrait.php:144
+#: app/Hooks/Handlers/AuthHandler.php:430
+#: app/Hooks/Handlers/PrivacyHandler.php:252
+msgid "Country"
+msgstr ""
+
+#: app/Services/Helper.php:980 app/Services/Helper.php:1001
+#: app/Services/Helper.php:1099
+msgid "Course and e-learning platform built for WordPress"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:263
+msgid "Create"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:275
+msgid "Create a new one."
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:68
+msgid ""
+"Create a new support ticket on behalf of a customer. Requires title, content,"
+" and customer_email. Automatically creates the customer if the email is new. "
+"By default the ticket is logged on the customer's behalf (\"created by "
+"agent\") — the customer gets a notification that a ticket was opened for "
+"them. Set agent_initiated=true only when the agent is proactively reaching "
+"out to start a conversation (e.g. billing follow-up, onboarding, account "
+"review); then the content is sent to the customer as the agent's first reply "
+"instead. Use get-support-context first to get valid product_id, mailbox_id, "
+"and agent_id values."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:276
+msgid "Create a page automatically with the shortcode"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:274
+msgid "Create a Ticket"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:264
+msgid "Create Agent Group"
+msgstr ""
+
+#: app/Hooks/Handlers/AuthHandler.php:80
+msgid "Create an account"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:265
+msgid "Create Customer"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1075
+msgid ""
+"Create Multiple Shared inbox and connect your email inbox with Fluent Support"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:266
+msgid "Create New"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:267
+msgid "Create New Reply"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:268
+msgid "Create New Supported Product"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:269
+msgid "Create New Ticket Tag"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:270
+msgid "Create New User in WordPress"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1027
+msgid "Create reply templates and quickly send responses to the tickets."
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:67
+#: app/Services/Integrations/FluentCrm/CreateTicketAction.php:50
+#: app/Services/Integrations/FluentCrm/CreateTicketAction.php:74
+msgid "Create Support Ticket"
+msgstr ""
+
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:38
+msgid "Create Support Ticket From Your Form Submission in FluentSupport"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:271
+msgid "Create Task"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:272
+#: app/Services/TranslationStrings.php:1155
+#: app/Services/TranslationStrings.php:1158
+msgid "Create Ticket"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:273
+msgid "Create Workflow"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:277
+#: app/Hooks/Handlers/PrivacyHandler.php:256
+msgid "Created At"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1120
+msgid "Created at"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:278
+msgid "Created By"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:279
+msgid "Created On"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1159
+msgid "created this ticket on your behalf"
+msgstr ""
+
+#: app/Services/Helper.php:63 app/Services/Helper.php:77
+msgid "Critical"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:202
+msgid "CRM"
+msgstr ""
+
+#: app/Services/Helper.php:195
+msgid "CSV"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:280
+msgid "Current Overall"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:281
+msgid "Current Support Workload"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:283
+msgid "Currently no migration is available for this site"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:282
+msgid "Currently Responded"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:284
+msgid "Custom Field Admin Label"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:285
+msgid "Custom Field Public Label"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:286
+msgid "Custom Field Slug"
+msgstr ""
+
+#: app/Services/Helper.php:1168
+msgid "Custom Fields"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:305
+msgid "Custom Registration Form Field"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:287
+msgid "Custom Ticket Fields"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:288
+msgid "Customer"
+msgstr ""
+
+#: app/Http/Controllers/CustomerController.php:266
+msgid "Customer avatar reset to gravatar default"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:209
+msgid "Customer could not be created"
+msgstr ""
+
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:170
+msgid "Customer Data"
+msgstr ""
+
+#: app/Models/Traits/CustomerTrait.php:332
+msgid "Customer Deleted Successfully"
+msgstr ""
+
+#. %1$d: number of customers deleted
+#: app/Models/Traits/CustomerTrait.php:375
+msgid "Customer deleted successfully"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:289
+msgid "Customer Email"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:290
+msgid "Customer Email:"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:291
+msgid "Customer First Name"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:292
+msgid "Customer First name"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:293
+msgid "Customer Full Name"
+msgstr ""
+
+#: app/Http/Controllers/CustomerController.php:117
+msgid "Customer has been added"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:1536
+#: app/Http/Controllers/CustomerController.php:182
+msgid "Customer has been updated"
+msgstr ""
+
+#: app/Hooks/Handlers/PrivacyHandler.php:204
+msgid "Customer ID"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:294
+msgid "Customer Informations"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:295
+msgid "Customer Last Name"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:296
+msgid "Customer Last name"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:297
+msgid "Customer Management"
+msgstr ""
+
+#: app/Services/CustomerPortalService.php:249
+msgid "Customer not found"
+msgstr ""
+
+#: app/Modules/MCP/Tools/CustomerTools.php:110
+msgid "Customer not found. Provide customer_id, email, or name."
+msgstr ""
+
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:195
+msgid "Customer Other Fields"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:200
+msgid "Customer Portal"
+msgstr ""
+
+#: app/Hooks/Handlers/CustomerPortalHandler.php:44
+msgid ""
+"Customer Portal is only accessible by Customers. Looks like you are a "
+"support staff"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:298
+msgid "Customer Priority"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:299
+msgid "Customer Response"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:300
+msgid "Customer Sentiment"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:301
+msgid "Customer Support Plugin for WordPress"
+msgstr ""
+
+#: app/Models/Customer.php:51
+msgid "Customer Title"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:302 app/Hooks/Handlers/Menu.php:82
+#: app/Hooks/Handlers/Menu.php:83 app/Hooks/Handlers/Menu.php:189
+msgid "Customers"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:303
+msgid "Customers deleted successfully"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:304
+msgid "Customize the quick prompt options shown in the FluentBot chat panel"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:305
+msgid "Customize your support portal preferences"
+msgstr ""
+
+#: app/Hooks/Handlers/Menu.php:52 app/Hooks/Handlers/Menu.php:53
+#: app/Hooks/Handlers/Menu.php:153
+msgid "Dashboard"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:307
+#: app/Services/TranslationStrings.php:1121
+msgid "Date"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:308
+msgid "Days"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:309
+#: app/Services/TranslationStrings.php:1122
+msgid "Default"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:403
+msgid "Default Portal Page"
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:211
+msgid "Default status for new contacts"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:310
+msgid "Delete"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:311
+msgid "Delete Action"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:312
+msgid "Delete Agent Group"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:271
+msgid "Delete all attachments on ticket close"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:317
+msgid "Delete custom field"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:313
+msgid "Delete Imported Tickets"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:314
+msgid "Delete Response"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:318
+msgid "Delete row"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:315
+msgid "Delete Section"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:316
+#: app/Modules/MCP/AbilitiesRegistrar.php:152
+msgid "Delete Ticket"
+msgstr ""
+
+#: app/Modules/PermissionManager.php:465
+msgid "Delete Tickets & Individual Responses"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:319
+msgid "Deleting..."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:320
+#: app/Services/TranslationStrings.php:1123
+msgid "Descending"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:321
+msgid "Describe this log entry"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:322
+msgid "Description"
+msgstr ""
+
+#: app/Services/Tickets/CustomFieldsService.php:34
+#: app/Services/Tickets/CustomFieldsService.php:37
+msgid "Details about the issue"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:323
+msgid "Direct paste is not enabled for this editor."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:324
+msgid "Disable Activity Logs"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:245
+msgid "Disable Public Ticket interaction"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:325
+msgid "Disabled"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:326
+msgid "Discard"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:327
+msgid "Discard Cc"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:802
+msgid "Discard draft successfully"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:328
+msgid "Disconnect"
+msgstr ""
+
+#: app/Services/Helper.php:1040
+msgid "Discord"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:329
+msgid "Disliked"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:330 app/Services/Helper.php:848
+msgid "Dislikes"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:331
+msgid "Display Settings"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:332
+msgid "Displayed time zone"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:333
+msgid "Do you want to delete all imported tickets and its data?"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:334
+msgid "Done"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:335
+msgid "Draft"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:337
+msgid "Draft created at"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:720
+msgid "Draft has been added"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:707
+msgid "Draft has been updated"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:786
+msgid "Draft not found"
+msgstr ""
+
+#: app/Modules/PermissionManager.php:468
+msgid "Draft Reply"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:306
+msgid "DRAFT RESPONSE"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:336
+msgid "Draft Response"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:338
+msgid "Draft response discarded successfully"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:1397
+msgid "Draft response has been successfully approved."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:339
+msgid "Draft updated at"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:340
+msgid "Drag and Drop Action"
+msgstr ""
+
+#: app/Services/Helper.php:1110
+msgid "Dropbox"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:341
+msgid "Duplicate"
+msgstr ""
+
+#: app/Services/Helper.php:1054
+msgid "Easy Digital Downloads"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:342
+msgid "Edit"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:343
+msgid "Edit Group"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:344
+msgid "Edit Product"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:345
+msgid "Edit Reply"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:346
+msgid "Edit Response"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:347
+msgid "Edit Staff"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:348
+msgid "Edit Tag"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1032
+msgid "eg: Awesome Business Inc"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:349
+#: app/Models/Traits/CustomerTrait.php:65
+#: app/Models/Traits/CustomerTrait.php:67
+#: app/Hooks/Handlers/PrivacyHandler.php:216
+msgid "Email"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:350
+#: app/Hooks/Handlers/AuthHandler.php:364
+#: app/Hooks/Handlers/AuthHandler.php:451
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:178
+msgid "Email Address"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:356
+msgid "Email address for bi-monthly newsletter"
+msgstr ""
+
+#: app/Http/Controllers/CustomerController.php:190
+msgid "Email address has been assigned to other customer"
+msgstr ""
+
+#: app/Http/Controllers/AuthController.php:207
+msgid "Email and Password is required"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:351
+msgid "Email Body"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:352
+msgid "Email Footer For Customers"
+msgstr ""
+
+#: app/Http/Requests/AgentCreateRequest.php:20
+msgid "Email is required"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1035
+msgid "Email Marketing Automation, Newsletter and CRM Plugin for WordPress"
+msgstr ""
+
+#: app/Http/Controllers/AuthController.php:256
+#: app/Http/Controllers/AuthController.php:369
+msgid "Email or Password is not valid. Please try again"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:353
+msgid "Email Piping"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:354
+msgid "Email Settings"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:355
+msgid "Email Subject"
+msgstr ""
+
+#: app/Services/Notifications/NotificationSettings.php:65
+msgid "Enable Assignment Notifications"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:357
+msgid "Enable Auto Closing Inactive Tickets"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:358
+msgid "Enable Conditional Logics"
+msgstr ""
+
+#: app/Services/Notifications/NotificationSettings.php:76
+msgid "Enable Customer Reply Notifications"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:299
+msgid "Enable Draft Mode"
+msgstr ""
+
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:126
+msgid "Enable Dynamic Product Selection"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:369
+msgid "Enable Fluent Booking Integration"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:279
+msgid "Enable Fluent Summary In Admin Bar"
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:207
+msgid "Enable FluentCRM Integration"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:360
+msgid "Enable general bot"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:287
+#: app/Services/Notifications/NotificationSettings.php:58
+msgid "Enable Internal Notifications"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:321
+msgid "Enable Keyboard Shortcuts"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:359
+msgid "Enable Mention Notification"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:330
+msgid "Enable Minimum Ticket Number"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:361
+msgid "Enable reCAPTCHA"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:362
+msgid "Enable reCAPTCHA for enhanced security"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:363
+msgid "Enable signature for this agent"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:290
+#: app/Services/Notifications/NotificationSettings.php:59
+msgid ""
+"Enable the in-app notification bell, unread counts, and notification event "
+"storage for agents."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1037
+msgid "Enable This Email Notification"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:331
+msgid ""
+"Enable this to start public ticket numbers from a custom minimum number."
+msgstr ""
+
+#: app/Services/Notifications/NotificationSettings.php:98
+msgid "Enable Ticket Status Notifications"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:313
+msgid "Enable Two-Factor Authentication"
+msgstr ""
+
+#: app/Services/Notifications/NotificationSettings.php:87
+msgid "Enable Workflow Notifications"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:364
+msgid "Enabled"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:365
+msgid "End"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:366
+msgid "End date"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:367
+msgid "Enter Bot ID (Required)"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:368
+msgid "Enter General Bot ID (Required)"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:369
+msgid "Enter workflow title to search"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:370
+msgid "Enter your prompt here..."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:371
+msgid "Enter your query to create a support request."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:372
+msgid "Enter your reCAPTCHA secret key"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:373
+msgid "Enter your reCAPTCHA site key"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:374
+msgid "Equal"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:375
+msgid "Error"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1038
+msgid "estimated"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1039
+msgid "evening"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:376
+msgid "Ex: +123456789"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:377
+msgid "Example"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:378
+msgid "Expired"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:379
+msgid "Export"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:380
+msgid "Export Agents Summary"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1124
+msgid "Failed"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:381
+msgid "Failed to copy link"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:382
+msgid "Failed to copy shortcode"
+msgstr ""
+
+#: app/Modules/MCP/Tools/ResponseTools.php:168
+msgid "Failed to create internal note"
+msgstr ""
+
+#: app/Modules/MCP/Tools/ResponseTools.php:114
+msgid "Failed to create response"
+msgstr ""
+
+#: app/Http/Controllers/FluentBoardsController.php:83
+msgid "Failed to create task."
+msgstr ""
+
+#. %1$d: customer ID, %2$s: error message
+#: app/Models/Traits/CustomerTrait.php:368
+#, php-format
+msgid "Failed to delete customer ID %1$d: %2$s"
+msgstr ""
+
+#: app/Services/Integrations/FluentBot/FluentBotHelper.php:320
+msgid "Failed to delete feedback."
+msgstr ""
+
+#: app/Services/Integrations/FluentBot/FluentBotHelper.php:241
+msgid "Failed to fetch chat messages."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:383
+msgid "Failed to load chat history. Please try again."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:384
+msgid "Failed to load older messages. Please try again."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:385
+msgid "Failed to remove feedback. Please try again."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:386
+msgid "Failed to save chat session. Your messages may not persist on reload."
+msgstr ""
+
+#: app/Services/Integrations/FluentBot/FluentBotHelper.php:282
+msgid "Failed to save feedback."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:387
+msgid "Failed to save feedback. Please try again."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:388
+msgid "Fallback Agent ID"
+msgstr ""
+
+#: app/Services/MailerInbox/MailBoxService.php:42
+msgid "Fallback Box cannot be the same as MailBox ID"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:389
+msgid "Fallback Business"
+msgstr ""
+
+#: app/Services/Tickets/CustomFieldsService.php:18
+msgid "Feature Request"
+msgstr ""
+
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:100
+msgid "Feed Name"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:390
+msgid "Field"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:391
+msgid "Field Key"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:392
+msgid "Field Placeholder"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:393
+msgid "Field Type"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:394
+msgid "Field Value Options"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1042
+msgid "field."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:395
+msgid "Fields order updated successfully"
+msgstr ""
+
+#: app/Http/Controllers/UploaderController.php:225
+msgid "File content does not match the image type."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:397
+msgid "File failed to upload"
+msgstr ""
+
+#: app/Hooks/Handlers/ExternalPages.php:245
+msgid "File not found or access denied"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:396
+msgid "File Storage Settings"
+msgstr ""
+
+#: app/Services/Includes/UploadService.php:41
+msgid "File upload failed"
+msgstr ""
+
+#: app/Services/Helper.php:1198
+msgid "File Upload Integrations"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1043
+msgid "files"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1013
+#: app/Services/TranslationStrings.php:1154
+msgid ""
+"Files with a size less than 2MB. Supported Types: images, text, pdf, zip"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:398
+msgid "Fillable Fields"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:399
+msgid "Filter"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1057
+msgid ""
+"Filter and select specific ticket and move these to another mailbox easily"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:400
+msgid "Filter by ticket title"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:401
+msgid "Filter ticket"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:402
+msgid "Filtered Tickets"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:403
+msgid "Finish"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:404
+#: app/Models/Traits/CustomerTrait.php:51
+#: app/Models/Traits/CustomerTrait.php:53
+#: app/Hooks/Handlers/PrivacyHandler.php:208
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:184
+msgid "First Name"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:406
+#: app/Hooks/Handlers/AuthHandler.php:344
+#: app/Hooks/Handlers/AuthHandler.php:346
+msgid "First name"
+msgstr ""
+
+#: app/Http/Requests/AgentCreateRequest.php:21
+msgid "First name is required"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:405
+msgid "First Purchased"
+msgstr ""
+
+#: app/Http/Controllers/FluentBoardsController.php:15
+#: app/Http/Controllers/FluentBoardsController.php:37
+#: app/Http/Controllers/FluentBoardsController.php:61
+msgid "Fluent Boards plugin is not installed or activated."
+msgstr ""
+
+#: app/Services/Helper.php:1026
+msgid "Fluent Forms"
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:579
+msgid "Fluent Forms could not be installed"
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:552
+#: app/Http/Controllers/SettingsController.php:574
+msgid "Fluent Forms plugin has been installed and activated successfully"
+msgstr ""
+
+#. Name of the plugin
+#: app/Modules/MCP/MCPInit.php:73 app/Modules/MCP/MCPInit.php:155
+#: app/Hooks/Handlers/Menu.php:41 app/Hooks/Handlers/Menu.php:42
+#: app/Services/Integrations/FluentCrm/FluentCRMWidgets.php:25
+#: app/Services/Integrations/FluentCrm/CreateTicketAction.php:49
+msgid "Fluent Support"
+msgstr ""
+
+#: app/Hooks/Handlers/PrivacyHandler.php:145
+msgid "Fluent Support Conversations"
+msgstr ""
+
+#: app/Hooks/Handlers/PrivacyHandler.php:26
+msgid "Fluent Support Conversations Exporter"
+msgstr ""
+
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:262
+msgid "Fluent Support Custom Field"
+msgstr ""
+
+#: app/Hooks/Handlers/PrivacyHandler.php:200
+msgid "Fluent Support Customer"
+msgstr ""
+
+#: app/Hooks/Handlers/PrivacyHandler.php:31
+msgid "Fluent Support Customer Exporter"
+msgstr ""
+
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:197
+msgid "Fluent Support Field"
+msgstr ""
+
+#: app/Modules/MCP/Support/PermissionGate.php:39
+msgid "Fluent Support MCP is disabled. Enable it in Settings → MCP."
+msgstr ""
+
+#: app/Modules/MCP/MCPInit.php:224
+msgid ""
+"Fluent Support MCP is enabled but no MCP adapter was found. Install "
+"FluentHub (recommended) or the MCP Adapter plugin on WordPress 6.9+."
+msgstr ""
+
+#: app/Modules/MCP/MCPInit.php:126
+msgid "Fluent Support MCP Server"
+msgstr ""
+
+#: app/Hooks/Handlers/PrivacyHandler.php:41
+msgid "Fluent Support Personal Data Eraser"
+msgstr ""
+
+#: app/Hooks/Handlers/AdminBarHandler.php:75
+msgid "Fluent Support Stats"
+msgstr ""
+
+#: app/Hooks/Handlers/PrivacyHandler.php:67
+msgid "Fluent Support Tickets"
+msgstr ""
+
+#: app/Hooks/Handlers/PrivacyHandler.php:21
+msgid "Fluent Support Tickets Exporter"
+msgstr ""
+
+#: app/Services/Helper.php:1131
+msgid "FluentBoards"
+msgstr ""
+
+#: app/Services/Helper.php:1138
+msgid "FluentBooking"
+msgstr ""
+
+#: app/Services/Integrations/FluentBooking/FluentBookingService.php:43
+#: app/Services/Integrations/FluentBooking/FluentBookingService.php:98
+#: app/Services/Integrations/FluentBooking/FluentBookingService.php:150
+msgid "FluentBooking is not installed or active."
+msgstr ""
+
+#: app/Services/Integrations/FluentBooking/FluentBookingService.php:202
+msgid ""
+"FluentBooking is not installed or the ticket customer has no email address."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:408
+msgid "FluentBot assistant panel"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:407
+msgid "FluentBot Integration"
+msgstr ""
+
+#: app/Services/Helper.php:970
+msgid "FluentCart"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:410
+msgid "FluentCart Account Navigation"
+msgstr ""
+
+#: app/Services/Integrations/FluentCart/FluentCart.php:83
+msgid "FluentCart Purchases"
+msgstr ""
+
+#: app/Services/Helper.php:1019
+msgid "FluentCommunity"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:424
+msgid "FluentCommunity Portal"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:440
+msgid "FluentCommunity Portal URL"
+msgstr ""
+
+#: app/Services/Helper.php:1012
+msgid "FluentCRM"
+msgstr ""
+
+#: app/Services/FluentCRMServices.php:58
+msgid "FluentCRM contact lists has been updated"
+msgstr ""
+
+#: app/Services/FluentCRMServices.php:32
+msgid "FluentCRM contact tags has been updated"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:409 app/Services/Helper.php:1183
+msgid "FluentCRM Integration"
+msgstr ""
+
+#: app/Services/FluentCRMServices.php:134
+msgid "FluentCRM is not installed or enabled"
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:515
+#: app/Http/Controllers/SettingsController.php:537
+msgid "FluentCRM plugin has been installed and activated successfully"
+msgstr ""
+
+#: app/Http/Controllers/McpSettingsController.php:107
+msgid "FluentHub installed and activated. The MCP endpoint is ready."
+msgstr ""
+
+#: app/Http/Controllers/McpSettingsController.php:108
+msgid ""
+"FluentHub was installed. Please reload this page to finish connecting the "
+"MCP endpoint."
+msgstr ""
+
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:54
+msgid ""
+"FluentSupport is not configured yet! Please configure your FluentSupport api "
+"first"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:410
+msgid ""
+"For the confirmation email from your email service provider, please check "
+"the latest ticket. A new ticket should be created with confirmation code."
+msgstr ""
+
+#: app/Hooks/Handlers/AuthHandler.php:86
+msgid "Forgot your password?"
+msgstr ""
+
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:174
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:198
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:263
+msgid "Form Field"
+msgstr ""
+
+#: app/Modules/MCP/Tools/CustomerTools.php:84
+msgid "Found %d customer"
+msgid_plural "Found %d customers"
+msgstr[0] ""
+msgstr[1] ""
+
+#: app/Modules/MCP/Tools/CustomerTools.php:83
+#, php-format
+msgid "Found %d customer matching '%s'"
+msgid_plural "Found %d customers matching '%s'"
+msgstr[0] ""
+msgstr[1] ""
+
+#: app/Modules/MCP/Tools/ManagementTools.php:726
+msgid "Found %d mention"
+msgid_plural "Found %d mentions"
+msgstr[0] ""
+msgstr[1] ""
+
+#: app/Modules/MCP/Tools/ResponseTools.php:39
+msgid "Found %d saved reply"
+msgid_plural "Found %d saved replies"
+msgstr[0] ""
+msgstr[1] ""
+
+#: app/Modules/MCP/Tools/TicketTools.php:62
+msgid "Found %d ticket"
+msgid_plural "Found %d tickets"
+msgstr[0] ""
+msgstr[1] ""
+
+#: app/Modules/MCP/Tools/CustomerTools.php:152
+#, php-format
+msgid "Found %d ticket for %s"
+msgid_plural "Found %d tickets for %s"
+msgstr[0] ""
+msgstr[1] ""
+
+#: app/Modules/MCP/Tools/ManagementTools.php:782
+msgid "Found %d workflow"
+msgid_plural "Found %d workflows"
+msgstr[0] ""
+msgstr[1] ""
+
+#: app/Services/TranslationStrings.php:411
+msgid "Freshdesk Domain"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:412
+msgid "From"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:413
+msgid "From Email Address"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:414
+msgid "General Bot"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:415
+msgid "General Bot (No specific product selected)"
+msgstr ""
+
+#: app/Services/Integrations/FluentBot/FluentBotHelper.php:366
+msgid ""
+"General bot is disabled and no product-specific bot is configured for this "
+"product."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:416
+msgid "Generating"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:239
+msgid ""
+"Get a customer's tickets by email, name, or ID — no need to search for the "
+"customer first. Email is the most reliable. Best tool when someone asks "
+"\"show me tickets from [customer]\"."
+msgstr ""
+
+#: app/Hooks/Handlers/Menu.php:407
+msgid ""
+"Get activity notification to Slack Channel and keep your support team super "
+"engaged"
+msgstr ""
+
+#: app/Hooks/Handlers/Menu.php:400
+msgid ""
+"Get activity notification to Telegram Messenger and reply directly from "
+"Telegram inbox"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:309
+msgid "Get Agent Mentions"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:417
+msgid "Get Authorized"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:238
+msgid "Get Customer Tickets"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:52
+msgid ""
+"Get full ticket details with conversation thread, customer history "
+"(total/open tickets, first seen), previous tickets, custom fields, purchase "
+"history (WooCommerce/FluentCart), and CRM data (FluentCRM tags/lists). The "
+"thread is paginated: 50 responses per page, most recent first. Check "
+"responses_meta.has_more and increment response_page to fetch older messages. "
+"Customer name and email are included for all agents with fst_view_tickets — "
+"agents need customer context to work their queue."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1044
+msgid "Get Overall reports of all the support agents and their performance"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:282
+msgid ""
+"Get performance analytics: first-response times, resolution times, waiting "
+"durations, per-agent performance (open tickets, closed count, avg "
+"response/resolution time), and volume trends. Use for reporting and team "
+"performance reviews. Returns human-readable durations like \"2h 30m\". For "
+"basic ticket counts, use get-support-context instead."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:418
+msgid "Get Piping Email Details"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:256
+msgid "Get Support Context"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:281
+msgid "Get Support Insights"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:167
+msgid ""
+"Get the activity timeline for a ticket — who did what and when. Shows ticket "
+"creation, responses, status changes, agent assignments, and closures. Use to "
+"understand ticket history without reading the full conversation."
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:166
+msgid "Get Ticket Activity Log"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:51
+msgid "Get Ticket Details"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:310
+msgid ""
+"Get tickets where you have been @mentioned in internal notes or replies. "
+"Returns mention notifications with the ticket context, who mentioned you, "
+"and a content preview. Filter by read/unread status or scope to a specific "
+"ticket. Requires internal notifications to be enabled in settings."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:419
+msgid "Global Email Settings"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:420 app/Services/Helper.php:1153
+#: app/Hooks/Handlers/Menu.php:224
+msgid "Global Settings"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:421
+msgid "Go Back"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:422
+msgid "Go back to"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:423
+msgid "Go to Dashboard"
+msgstr ""
+
+#: app/Hooks/Handlers/CustomerPortalHandler.php:49
+msgid "Go to Support Admin Page"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:424
+msgid "Good"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:425
+msgid "Good Job"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:426 app/Services/Helper.php:1103
+msgid "Google Drive"
+msgstr ""
+
+#: app/Services/Helper.php:1124
+msgid "Google reCAPTCHA"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:427
+msgid "Great!"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:428
+msgid "Greater Than"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:429
+msgid "Greeting Message"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:430
+msgid "Grid View"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:431
+msgid "Group"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:432
+msgid "Group Description"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:433
+msgid "Group Title"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:434
+msgid "Groups"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1045
+msgid "has been deprecated. Switched to"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:437
+msgid "Have a new license Key?"
+msgstr ""
+
+#. %s is the user's first name
+#. %s is the user's display name
+#: app/Hooks/Handlers/EmailVerificationHandler.php:49
+#: app/Hooks/Handlers/TwoFaHandler.php:159
+#, php-format
+msgid "Hello %s,"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:438
+msgid "Help us to make FluentSupport better"
+msgstr ""
+
+#: app/Modules/MCP/MCPInit.php:74
+msgid "Helpdesk ticket management abilities for Fluent Support."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:439
+msgid "Helpful"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:440
+msgid "Here Are A Few Tickets You May Want To Take A Look At"
+msgstr ""
+
+#. %s is the user's first name
+#: app/Http/Controllers/AuthController.php:538
+#, php-format
+msgid "Hi %s,"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:441
+msgid "Hide Badge in Tickets"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:442
+msgid "Hide Bulk Action"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:435
+msgid "HOURLY RESPONSE DISTRIBUTION"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:436
+msgid "HOURLY TICKET DISTRIBUTION"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:443
+msgid "Hours"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://fluentsupport.com"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://wpmanageninja.com"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:444
+msgid "I agree with the Fluent Support email parsing"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:445
+msgid "I have done it"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:446
+msgid "ID"
+msgstr ""
+
+#: app/Http/Controllers/AuthController.php:543
+msgid ""
+"If you did not request to reset your password, please ignore this email."
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:272
+msgid ""
+"If you enable this feature, all attachments associated with a ticket will be "
+"deleted when the ticket is closed."
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:300
+msgid ""
+"If you enable this setting, any written response will be saved as a draft if "
+"an agent accidentally closes a ticket."
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:390
+msgid ""
+"If you enable this setting, the agent can specify the amount of time needed "
+"to complete a ticket."
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:314
+msgid ""
+"If you enable this setting, users will be required to submit a second form "
+"of authentication, such as a code sent to their email, to login."
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:381
+msgid ""
+"If you enable this setting, users will have the option to provide feedback "
+"on an agent's response."
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:246
+msgid ""
+"If you enable this then only logged in user can reply the tickets. Otherwise,"
+" url will be signed and intended user can reply without logging in"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:370
+msgid ""
+"If you enable this, agents can create booking links and view meeting details "
+"inside tickets."
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:322
+msgid ""
+"If you enable this, agents can use keyboard shortcuts for faster actions."
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:280
+msgid ""
+"If you enable this, logged in user can see the ticket summary from top nav "
+"bar."
+msgstr ""
+
+#: app/Models/Traits/CustomerTrait.php:102
+msgid ""
+"If you select the <b>Blocked</b> status, this customer will not be able to "
+"submit a ticket or any response."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1167
+msgid "If you still have related issues. Please reopen this ticket and reply"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:447
+msgid ""
+"If you want to connect with your own email parser please use this following "
+"URL to send payload data"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:448
+msgid "If you want to migrate tickets from other ticketing system like"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:449
+msgid "Image successfully uploaded."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:451
+msgid "Import from other Support Tickets Plugins"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:450
+msgid "Import Tickets"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:452
+msgid "Importing..."
+msgstr ""
+
+#: app/Http/Controllers/McpSettingsController.php:194
+msgid ""
+"In Codex, add a custom MCP server with Streamable HTTP transport and the "
+"Authorization header above."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1046
+msgid "in one click."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1047
+msgid ""
+"in your HelpScout Redirection URL. This is required as you have to authorize "
+"your app before start importing."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:453
+msgid "Inbox"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:454
+msgid "Inbox Color"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:455
+msgid "Inbox Name"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:456
+msgid "Inbox Settings"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1040
+msgid "Include Agents in Summary"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:457
+msgid "Include archived tickets"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:458
+msgid "Includes In"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:459 app/Services/Helper.php:1188
+msgid "Incoming Webhook"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:460
+msgid "Incoming Webhook URL"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:461
+msgid "Initiated by agent"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:462
+msgid "Insert"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:463
+msgid "Insert Booking Link"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:464
+msgid "Insert Content"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:465
+msgid "Insert to editor"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:466
+msgid "Insert with Times"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1049
+msgid "Install & Activate FluentCRM (it's free)"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:467
+msgid "Install Fluent Forms Plugin for custom Ticket Forms."
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:286
+msgid "Installation has been completed"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1050
+msgid ""
+"Integrate your support customers with FluentCRM to segment, automate your "
+"email marketing."
+msgstr ""
+
+#: app/Services/Tickets/CustomFieldsService.php:19
+msgid "Integration Issues"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:468
+msgid "Integration Settings"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:469 app/Services/Helper.php:1218
+msgid "Integration Statuses"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:470 app/Services/Helper.php:838
+#: app/Modules/StatModule.php:85
+msgid "Interactions"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:471
+msgid "Internal Note"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:472
+msgid "Internal Notifications"
+msgstr ""
+
+#: app/Modules/MCP/Tools/ManagementTools.php:677
+msgid "Internal notifications are not enabled."
+msgstr ""
+
+#: app/Modules/MCP/Tools/ManagementTools.php:649
+msgid ""
+"Internal notifications are not enabled. Enable them in Fluent Support "
+"Settings > Notifications."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:473
+msgid "Internal Ticket ID"
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:372
+msgid "Invalid AI provider selected."
+msgstr ""
+
+#: app/Services/Integrations/AI/AIProviderFactory.php:30
+msgid "Invalid AI provider."
+msgstr ""
+
+#: app/Http/Controllers/FluentBotController.php:319
+msgid "Invalid chat_id format"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:1527
+msgid "Invalid customer selected."
+msgstr ""
+
+#: app/Modules/MCP/Tools/TicketTools.php:108
+#, php-format
+msgid "Invalid date format for '%s'"
+msgstr ""
+
+#: app/Http/Controllers/FluentBotController.php:508
+msgid "Invalid feedback_id"
+msgstr ""
+
+#: app/Http/Controllers/WidgetsController.php:19
+msgid "Invalid filter name"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:1665
+msgid "Invalid filter type."
+msgstr ""
+
+#: app/Http/Controllers/CustomerPortalController.php:163
+msgid "Invalid form data submitted"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:474
+msgid "Invalid ID"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:475
+msgid "Invalid image"
+msgstr ""
+
+#: app/Http/Controllers/UploaderController.php:216
+msgid "Invalid image file type."
+msgstr ""
+
+#: app/Http/Controllers/FluentBotController.php:478
+msgid "Invalid message_id"
+msgstr ""
+
+#: app/Services/Integrations/FluentBot/FluentBotAPI.php:30
+msgid "Invalid or empty response from API"
+msgstr ""
+
+#: app/Http/Controllers/FluentBotController.php:482
+msgid "Invalid reaction"
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:309
+msgid "Invalid reCAPTCHA data."
+msgstr ""
+
+#: app/Http/Controllers/ChatMessageParserController.php:31
+#: app/Http/Controllers/ChatMessageParserController.php:61
+msgid "Invalid request signature."
+msgstr ""
+
+#: app/Services/MailerInbox/MailBoxService.php:240
+msgid "Invalid request submitted. Please select a ticket first"
+msgstr ""
+
+#: app/Modules/MCP/Tools/TicketTools.php:503
+#, php-format
+msgid "Invalid status '%s'"
+msgstr ""
+
+#: app/Hooks/Handlers/ExternalPages.php:219
+msgid "Invalid Support Portal URL"
+msgstr ""
+
+#: app/Http/Controllers/WidgetsController.php:38
+msgid "Invalid ticket ID"
+msgstr ""
+
+#: app/Http/Controllers/AuthController.php:462
+msgid "Invalid username or email"
+msgstr ""
+
+#: app/Services/Tickets/CustomFieldsService.php:25
+#: app/Services/Tickets/CustomFieldsService.php:28
+msgid "Invoice Number"
+msgstr ""
+
+#: app/Hooks/Handlers/PrivacyHandler.php:224
+msgid "IP Address"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1036
+msgid ""
+"is a Self Hosted Email Marketing Automation Plugin for WordPress. Manage "
+"your leads and customers, email campaigns, automated email sequencing, "
+"learner and affiliate management, and monitor user activities and many more "
+"in one place; without ever having to leave your WordPress dashboard!"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:476
+msgid "Is after"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:477
+msgid "Is before"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:478
+msgid "Is between"
+msgstr ""
+
+#: app/Models/Traits/CustomerTrait.php:73
+#: app/Models/Traits/CustomerTrait.php:75
+msgid "Job Title"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:479
+msgid "Join Meeting"
+msgstr ""
+
+#: app/Services/Helper.php:224
+msgid "JSON"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:480
+msgid "Keep Messages"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:495
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:481
+msgid "Label"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:482
+msgid "Last 30 days"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:483
+msgid "Last 7 days"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:484
+msgid "Last 90 days"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:485
+msgid "Last Activity"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:486
+msgid "Last Agent Response"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:487
+msgid "Last Customer Response"
+msgstr ""
+
+#: app/Hooks/Handlers/PrivacyHandler.php:228
+msgid "Last IP Address"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:490
+msgid "Last migration:"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:488
+#: app/Models/Traits/CustomerTrait.php:58
+#: app/Models/Traits/CustomerTrait.php:60
+#: app/Hooks/Handlers/AuthHandler.php:350
+#: app/Hooks/Handlers/PrivacyHandler.php:212
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:188
+msgid "Last Name"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:491
+#: app/Hooks/Handlers/AuthHandler.php:352
+msgid "Last name"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:489
+msgid "Last Purchased"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:492
+msgid "Layout Type"
+msgstr ""
+
+#: app/Services/Helper.php:1089
+msgid "LearnDash"
+msgstr ""
+
+#: app/Services/Helper.php:1096
+msgid "LearnPress"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:493
+msgid "Less"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:494
+msgid "Less than"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:495
+msgid "License Key"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:497
+msgid "License key"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:496 app/Services/Helper.php:1240
+msgid "License Management"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:498
+msgid "Lifetime Value"
+msgstr ""
+
+#: app/Services/Helper.php:977
+msgid "LifterLMS"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:499
+msgid "Liked"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:500 app/Services/Helper.php:847
+msgid "Likes"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:501
+msgid "Limit reached"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:24
+msgid ""
+"List and filter support tickets. Returns ticket summaries with content "
+"preview, customer, agent, product, and tags inline — no need to call get-"
+"ticket for each. For triage: use sort_by=waiting_since, order=ASC, "
+"waiting_for_reply=true. For a specific customer's tickets, prefer get-"
+"customer-tickets instead. Customer name and email are included for all "
+"agents with fst_view_tickets — agents need customer context to work their "
+"queue."
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:326
+msgid ""
+"List automation workflows — see what automatic actions are configured (auto-"
+"assign, auto-tag, auto-reply, etc.) and their triggers. Helps you understand "
+"what the system handles automatically so you don't duplicate work. Paginated;"
+" use page/per_page to navigate. Requires Fluent Support Pro."
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:267
+msgid "List Saved Replies"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:23
+msgid "List Support Tickets"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:325
+msgid "List Workflows"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:268
+msgid ""
+"List your saved/canned replies. Only returns replies you created. Optionally "
+"filter by search text or product_id. Use the returned ID with reply-to-"
+"ticket's saved_reply_id param."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:502
+msgid "Load older messages"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:503
+msgid "Loading available dates..."
+msgstr ""
+
+#: app/Hooks/Handlers/CustomerPortalHandler.php:78
+msgid "Loading Customer Portal. Please wait..."
+msgstr ""
+
+#: app/Services/Integrations/FluentCommunity/PortalRenderer.php:89
+msgid "Loading Support Portal. Please wait..."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:504
+msgid "Loading..."
+msgstr ""
+
+#: app/Http/Controllers/McpSettingsController.php:155
+msgid ""
+"Local dev mode is on, so NODE_TLS_REJECT_UNAUTHORIZED is included — the npx "
+"proxy needs it to talk to self-signed SSL."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1125
+msgid "Log Out"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1051
+msgid "logged"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:505
+msgid "Logged at:"
+msgstr ""
+
+#: app/Hooks/Handlers/AuthHandler.php:161
+msgid "Login"
+msgstr ""
+
+#: app/Hooks/Handlers/TwoFaHandler.php:197
+msgid "Login Code"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:506
+msgid "Login Form"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1029
+msgid "Looks like you have caught up everything for now"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:507
+msgid "Looks like your license has been expired"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:496
+msgid "macOS"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:508
+msgid "MailBox"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:509
+msgid "Mailbox"
+msgstr ""
+
+#: app/Http/Controllers/MailBoxController.php:56
+msgid "Mailbox has been created successfully"
+msgstr ""
+
+#: app/Http/Controllers/MailBoxController.php:81
+msgid "Mailbox has been saved"
+msgstr ""
+
+#: app/Services/MailerInbox/MailBoxService.php:208
+msgid "MailBox ID must be provided"
+msgstr ""
+
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:159
+msgid "Make sure form field values match with Fluent Support priorities"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:510
+msgid "Manage"
+msgstr ""
+
+#: app/Modules/PermissionManager.php:463
+msgid "Manage Others Tickets"
+msgstr ""
+
+#: app/Modules/PermissionManager.php:484
+msgid "Manage Overall Settings"
+msgstr ""
+
+#: app/Modules/PermissionManager.php:461
+msgid "Manage Own Tickets"
+msgstr ""
+
+#: app/Modules/PermissionManager.php:478
+msgid "Manage Saved Replies"
+msgstr ""
+
+#: app/Modules/PermissionManager.php:462
+msgid "Manage Unassigned Tickets"
+msgstr ""
+
+#: app/Modules/PermissionManager.php:476
+msgid "Manage Workflows"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:511
+msgid "Manual"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:512
+msgid "Manual Trigger"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1052
+msgid "manual workflow"
+msgstr ""
+
+#: app/Hooks/Handlers/InternalNotificationHandler.php:292
+#, php-format
+msgid "Manual workflow \"%s\" was run"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:513
+msgid "Mark all as read"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:514
+msgid "Mark read"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:516
+msgid "Match all conditions"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:517
+msgid "Match any conditions"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:515
+msgid "Match Value"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:258
+msgid "Max File Size (in MegaByte)"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1053
+msgid "max wait time"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:518 app/Services/Helper.php:843
+msgid "Max Waiting"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:519
+msgid "Max-time: --"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:264
+msgid "Maximum File Upload"
+msgstr ""
+
+#: app/Http/Controllers/McpSettingsController.php:73
+msgid "MCP disabled. The endpoint will reject requests until re-enabled."
+msgstr ""
+
+#: app/Http/Controllers/McpSettingsController.php:72
+msgid ""
+"MCP enabled. AI agents with a valid application password can now reach the "
+"Fluent Support tools."
+msgstr ""
+
+#: app/Services/Helper.php:1231
+msgid "MCP for AI Agents"
+msgstr ""
+
+#: app/Services/Helper.php:62 app/Services/Helper.php:76
+msgid "Medium"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:520
+#: app/Services/Integrations/FluentBooking/FluentBookingService.php:268
+msgid "Meeting"
+msgstr ""
+
+#: app/Services/Integrations/FluentBooking/FluentBookingService.php:272
+msgid "Meeting scheduled via FluentBooking"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:521
+msgid "Meeting Type"
+msgstr ""
+
+#: app/Services/Helper.php:1117
+msgid "MemberPress"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:522
+msgid "Members"
+msgstr ""
+
+#: app/Services/Notifications/NotificationEventMap.php:54
+msgid "mentioned you"
+msgstr ""
+
+#: app/Services/Notifications/NotificationCategory.php:29
+msgid "Mentions"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:523
+msgid "Merge"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:181
+msgid ""
+"Merge duplicate tickets into one. All conversations and attachments from the "
+"merged tickets are moved into the target ticket. The merged tickets are "
+"deleted. Requires Fluent Support Pro."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:524
+msgid "Merge Ticket"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:525
+#: app/Modules/PermissionManager.php:466
+#: app/Modules/MCP/AbilitiesRegistrar.php:180
+msgid "Merge Tickets"
+msgstr ""
+
+#: app/Modules/MCP/Tools/TicketTools.php:645
+msgid "Merge tickets requires Fluent Support Pro"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:526
+msgid "Message"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:236
+msgid "Message for non logged in users"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:527
+msgid "Migrate tickets from"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:528
+msgid "Migrating..."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1054
+msgid "min"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:337
+msgid "Minimum Ticket Number"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:529
+msgid "Minutes"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:530
+msgid "Missing required fields."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:531
+msgid "Model"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:532
+msgid "Model Updated"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:533 app/Hooks/Handlers/Menu.php:215
+msgid "More"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1055
+msgid "more"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:534
+msgid "More Action"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:535
+msgid "More Actions"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1056
+msgid "morning"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:536
+msgid "Move"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:538
+msgid "Move agents to"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:539
+msgid "Move all tickets to new Business Box"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:537
+msgid "Move Tickets"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:540
+msgid "My Performance"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:541
+msgid "My Statistics"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:542
+msgid "Name"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:543
+msgid "Name:"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:544
+msgid "Need Help?"
+msgstr ""
+
+#: app/Services/Helper.php:121
+msgid "New"
+msgstr ""
+
+#: app/Services/MailerInbox/MailBoxService.php:236
+msgid "New Box cannot be the same as MailBox ID"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:545
+msgid "New Option"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:546 app/Modules/StatModule.php:69
+#: app/Modules/StatModule.php:112 app/Modules/StatModule.php:160
+#: app/Services/Tickets/TicketStats.php:31
+#: app/Http/Controllers/ReportingController.php:441
+msgid "New Tickets"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:547
+msgid "Next"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:548
+msgid "Next 14 days"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:549
+msgid "Next 3 days"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:550
+msgid "Next Meeting"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:551
+msgid "Next Step"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:340
+msgid "Next Ticket Number: %d"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:552
+msgid "Next week"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:553
+msgid "No"
+msgstr ""
+
+#: app/Http/Controllers/FluentBotController.php:487
+#: app/Http/Controllers/FluentBotController.php:513
+msgid "No active chat for this ticket"
+msgstr ""
+
+#: app/Services/Helper.php:1383
+msgid "No activity settings found"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:562
+msgid "No additional data found"
+msgstr ""
+
+#: app/Modules/MCP/Tools/TicketTools.php:24
+#: app/Modules/MCP/Tools/TicketTools.php:134
+#: app/Modules/MCP/Tools/TicketTools.php:236
+#: app/Modules/MCP/Tools/TicketTools.php:356
+#: app/Modules/MCP/Tools/TicketTools.php:413
+#: app/Modules/MCP/Tools/TicketTools.php:443
+#: app/Modules/MCP/Tools/TicketTools.php:562
+#: app/Modules/MCP/Tools/TicketTools.php:592
+#: app/Modules/MCP/Tools/TicketTools.php:641
+#: app/Modules/MCP/Tools/ManagementTools.php:29
+#: app/Modules/MCP/Tools/ManagementTools.php:276
+#: app/Modules/MCP/Tools/ManagementTools.php:324
+#: app/Modules/MCP/Tools/ManagementTools.php:530
+#: app/Modules/MCP/Tools/ManagementTools.php:644
+#: app/Modules/MCP/Tools/CustomerTools.php:16
+#: app/Modules/MCP/Tools/ResponseTools.php:17
+#: app/Modules/MCP/Tools/ResponseTools.php:56
+#: app/Modules/MCP/Tools/ResponseTools.php:137
+msgid "No agent found for current user"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:563
+msgid "No agent found, Please select or make sure you have agents to export"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:554
+msgid "No Agent Groups Found"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:564
+msgid "No agent performance data available"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:1098
+msgid "No agents found in this group"
+msgstr ""
+
+#: app/Services/Integrations/AI/AIProviderFactory.php:52
+msgid "No AI provider configured."
+msgstr ""
+
+#: app/Services/Integrations/FluentBot/FluentBotAPI.php:48
+msgid "No AI response found in the API response."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:565
+msgid "No available tags found"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:566
+msgid "No available times found for the selected dates."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:567
+msgid "No available times found for this range."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:568
+msgid "No bot for this product"
+msgstr ""
+
+#: app/Models/Traits/CustomerTrait.php:346
+msgid "No customers selected for deletion"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:569
+msgid "No customers selected for deletion."
+msgstr ""
+
+#: app/Models/Traits/CustomerTrait.php:378
+msgid "No customers were deleted"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:555
+msgid "No Data Found"
+msgstr ""
+
+#: app/Services/Integrations/FluentBooking/FluentBookingService.php:241
+msgid "No FluentBooking meetings found for this customer."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:556
+msgid "No FluentBot configured"
+msgstr ""
+
+#: app/Http/Controllers/UploaderController.php:205
+msgid "No image file provided."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:570
+msgid "No logging yet!"
+msgstr ""
+
+#: app/Services/Integrations/FluentBooking/FluentBookingService.php:239
+msgid "No meeting booked yet from these links."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:571
+msgid "No prior replies on this ticket yet — nothing to pick as context"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:572
+msgid "No product data available"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:557
+msgid "No Products Found"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:573
+msgid ""
+"No public FluentBooking event types found. Please enable calendar sharing or "
+"publish an event type."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:558
+msgid "No Results Found"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:574
+msgid "No saved replies found."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:559
+msgid "No Support Staff Found"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:560
+msgid "No Tags Found"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:561
+msgid "No Thanks"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:575
+msgid "No ticket replies sent as context"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:576
+#: app/Services/TranslationStrings.php:1126
+msgid "No tickets found"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:577
+msgid "No unread notifications found"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:578
+msgid "No workflows selected for deletion."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:579
+msgid "None"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:580
+#: app/Services/TranslationStrings.php:1127 app/Services/Helper.php:61
+#: app/Services/Helper.php:75
+msgid "Normal"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:581
+msgid "Not Contains"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:585
+msgid "Not contains"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:586
+msgid "Not editable"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:582
+msgid "Not Equal"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:587
+msgid "Not helpful"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:583
+msgid "Not Includes In"
+msgstr ""
+
+#: app/Hooks/Handlers/AuthHandler.php:78
+msgid "Not registered?"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:584
+msgid "Not Responded Yet"
+msgstr ""
+
+#: app/Models/Traits/CustomerTrait.php:80
+#: app/Models/Traits/CustomerTrait.php:82
+msgid "Note"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:588
+msgid "Notes"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:589
+msgid "Nothing to copy"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:291
+msgid "Notification data older than 15 days will be removed automatically."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:590 app/Services/Helper.php:1193
+msgid "Notification Integrations"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:591
+msgid "Notification Settings"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:592
+msgid "Notifications"
+msgstr ""
+
+#: app/Services/Notifications/NotificationSettings.php:109
+msgid "Notify Assigned Agent When Another Agent Replies"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:593
+msgid "Number of tickets"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1059
+#: app/Services/TranslationStrings.php:1163
+msgid "of"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:595
+msgid "Offer Availability"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:596
+msgid "Offline Payment"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:338
+msgid ""
+"Once a ticket is created, you cannot lower this value below the current "
+"highest ticket number. Set this carefully — raising it is easy, but lowering "
+"it below an existing ticket number is not allowed."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:597
+msgid "Once you activate the auto-forward for"
+msgstr ""
+
+#. %s is a comma-separated list of allowed file types (e.g., "jpg, png, pdf")
+#: app/Http/Controllers/UploaderController.php:69
+#, php-format
+msgid "Only %s files are allowed."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:598
+msgid "Only FluentBooking available dates can be selected"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1153
+msgid "Only you and official support agents can view this conversation"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1128 app/Hooks/Handlers/Menu.php:428
+msgid "Open"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:603
+msgid "Open exact booking in FluentBooking"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:599
+msgid "Open FluentBooking"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:600
+msgid "Open FluentBot settings"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:604
+msgid "Open the reply editor first to insert FluentBot content."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:601
+msgid "Open Ticket in New Tab"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:602 app/Services/Helper.php:839
+#: app/Http/Controllers/ReportingController.php:445
+msgid "Open Tickets"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:606
+msgid "Operator"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:607
+msgid "Option Value"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:355
+msgid "Optional prefix for newly created public ticket numbers."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:608
+msgid "Optional: tell us what was wrong..."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:594
+msgid "OR"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1060
+msgid "or"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1061
+msgid "or contact support for assistance."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:609
+msgid "Order"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:610
+msgid "Other"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1062
+msgid "out of"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:611
+msgid "Overall"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:612
+msgid "Overall Activities"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:613
+msgid "Overall Ticket Stats"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:614
+msgid "Overview"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:615
+#: app/Services/TranslationStrings.php:1129
+msgid "Page"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1164
+msgid "page"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:616
+msgid "Page ID"
+msgstr ""
+
+#: app/Services/Helper.php:991
+msgid "Paid Memberships Pro"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:617
+#: app/Hooks/Handlers/AuthHandler.php:371
+#: app/Hooks/Handlers/AuthHandler.php:373
+msgid "Password"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:618
+msgid "Password (Leave blank for auto generated)"
+msgstr ""
+
+#: app/Http/Controllers/AuthController.php:500
+msgid "Password reset is not allowed for this user"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:619
+msgid "Past Meetings"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:620
+msgid "Paste the authorization code here once you get it."
+msgstr ""
+
+#: app/Services/Helper.php:1082
+msgid "Paymattic"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:621
+msgid "Payment Via"
+msgstr ""
+
+#: app/Services/Helper.php:206
+msgid "PDF/Docs"
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:219
+msgid "Pending"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:622
+msgid "People Watching"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:153
+msgid ""
+"Permanently delete a support ticket and all its responses, attachments, and "
+"metadata. This action cannot be undone."
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:883
+msgid "Permission denied to assign agent"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:623
+msgid "Permissions"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:624
+msgid "Personal Reports"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:625
+msgid "Phone"
+msgstr ""
+
+#: app/Services/Helper.php:183
+msgid "Photos"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:626
+msgid "Pick a configured product from the dropdown before sending."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:627
+msgid "Pick a configured product from the dropdown to start chatting"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:628
+msgid "Pick a day"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:629
+msgid "Placeholder"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:634
+msgid "Please add at least one group member."
+msgstr ""
+
+#: app/Http/Controllers/AuthController.php:560
+msgid "Please check your email for the reset link"
+msgstr ""
+
+#: app/Hooks/Handlers/TwoFaHandler.php:190
+msgid ""
+"Please check your email inbox and enter the two-factor verification code "
+"below:"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:635
+msgid "Please configure"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:636
+msgid "Please contact with"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:637
+msgid "Please copy and paste this url:"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1162
+msgid "Please do not share any private information."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:638
+msgid "Please enable auto-forwarding your emails from"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:639
+msgid "Please enter email"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:640
+msgid "Please enter your license key."
+msgstr ""
+
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:151
+msgid "Please input your file upload or image upload field shortcode here"
+msgstr ""
+
+#: app/Services/Tickets/CustomFieldsService.php:13
+msgid "Please let us know about this support type"
+msgstr ""
+
+#: app/Services/Tickets/CustomFieldsService.php:35
+msgid "Please let us know more details about this issue"
+msgstr ""
+
+#: app/Services/Tickets/CustomFieldsService.php:26
+msgid "Please let us know your invoice number"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1034
+msgid "Please make sure your website can send emails from this email address"
+msgstr ""
+
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:171
+msgid ""
+"Please Map Your Customer Data for this form. If your customer already logged "
+"in you can leave this"
+msgstr ""
+
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:260
+msgid "Please Map Your Ticket Custom Field Data for this form."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:642
+msgid "Please provide a license key"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:631
+msgid "Please Provide a license key of FluentSupport"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:643
+msgid "Please provide a valid email address."
+msgstr ""
+
+#: app/Hooks/Handlers/TwoFaHandler.php:95
+msgid "Please provide a valid login code"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:644
+msgid "Please provide a valid name or filter criteria."
+msgstr ""
+
+#: app/Http/Controllers/AuthController.php:88
+#: app/Http/Controllers/AuthController.php:96
+#: app/Http/Controllers/AuthController.php:116
+msgid ""
+"Please provide a valid verification code that was sent to your email address"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1161
+msgid "Please provide details about your problem"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:630
+msgid "Please Provide Fallback Agent ID"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:645
+msgid "Please provide fallback box"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:632
+msgid "Please Provide label"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:237
+msgid ""
+"Please provide message for not logged in users. You can place login "
+"shortcode too. Use shortcode <code>[fluent_support_login]</code> to show "
+"built-in login form. For the user registration use this shortcode <code>"
+"[fluent_support_signup]</code> and for both form please use <code>"
+"[fluent_support_auth]</code>"
+msgstr ""
+
+#: app/Http/Controllers/CustomerController.php:280
+msgid "Please provide search string"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1008
+msgid ""
+"Please provide the email address where admin will get email if enabled in "
+"email settings"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:225
+msgid ""
+"Please provide the page id where you want to show the tickets for your "
+"customers. Use shortcode <code>[fluent_support_portal]</code> in that page"
+msgstr ""
+
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:165
+msgid ""
+"Please provide the ticket provider info. If user is logged in then it will "
+"use that info. For Public users you can set your customer info"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:646
+msgid "Please provide valid field option values"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:641
+msgid "Please provide You want to move all or custom selected tickets?"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:647
+msgid "Please select"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:633
+msgid "Please Select a contact"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:648
+msgid "Please select a fallback business box"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:599
+#: app/Http/Controllers/TicketController.php:630
+msgid "Please select a FluentBooking event type."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:649
+msgid "Please select a mailbox"
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:133
+msgid "Please select a page or enable create page"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:650
+msgid "Please select an agent first"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:651
+msgid "Please select an agent group first"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:652
+msgid "Please select an option"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:653
+msgid "Please select at least one FluentCRM Tag"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:654
+msgid "Please select tag first"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1072
+msgid "Please select the business in where you want to move the tickets"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1071
+msgid ""
+"Please select the fallback business in where the existing tickets will be "
+"transferred"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:655
+msgid "Please select ticket first"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:656
+msgid "Please setup your support portal first"
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:341
+msgid "Please verify reCAPTCHA before saving."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:657
+msgid ""
+"Please wait for all attachments to finish uploading before creating the "
+"ticket."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:658
+msgid ""
+"Please wait for all attachments to finish uploading before submitting the "
+"reply."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:659
+msgid ""
+"Please wait for the attachment to finish uploading before creating the "
+"ticket."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:660
+msgid ""
+"Please wait for the attachment to finish uploading before submitting the "
+"reply."
+msgstr ""
+
+#: app/Services/Helper.php:1036 app/Services/Helper.php:1050
+#: app/Services/Helper.php:1064
+msgid "Powerful platform for any member-focused business"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:661
+msgid "Preferred Product"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:662
+msgid "Press enter to save"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:663
+msgid "Preview"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:664
+msgid "Preview help"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:665
+msgid "Previous Conversations"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:666
+msgid "Priority"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1165
+msgid "priority"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:667
+msgid "Priority (Customer)"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1130
+msgid "Private"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1131
+msgid "Processing"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:668
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:117
+msgid "Product"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:669
+msgid "Product Description"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:670
+msgid "Product Distribution by Responses"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:671
+msgid "Product Distribution by Tickets"
+msgstr ""
+
+#: app/Models/Product.php:118
+msgid "Product has been deleted"
+msgstr ""
+
+#: app/Models/Product.php:84
+msgid "Product has been successfully created"
+msgstr ""
+
+#: app/Models/Product.php:103
+msgid "Product has been updated"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:672
+msgid "Product ID"
+msgstr ""
+
+#: app/Http/Controllers/CustomerPortalController.php:134
+msgid "Product is required"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:673
+msgid "Product Reports"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:674
+msgid "Product Statistics"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:675
+msgid "Product Summary"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:676
+msgid "Product Title"
+msgstr ""
+
+#: app/Http/Requests/ProductRequest.php:26
+msgid "Product Title is required"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:677
+msgid "Product-Specific Bots"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:678 app/Services/Helper.php:1173
+msgid "Products"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:679
+msgid "Products & Services"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:680
+msgid "Products Reports"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:681
+msgid "Products Settings"
+msgstr ""
+
+#: app/Services/AvatarUploder.php:36
+msgid "Profile picture has been updated successfully"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:682
+msgid "Prompt"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:684
+msgid "Prompt description (sent to AI)"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:683
+msgid "Prompt Options"
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:944
+msgid "Prompt options saved successfully"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1132
+msgid "Public"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:685
+msgid "Public Label"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:686
+msgid "Public Ticket ID"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:242
+msgid "Public Ticket Interaction"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:687
+msgid "Purchase Date"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:688
+msgid "Purchase one here"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:689
+msgid "Purchases"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:690
+msgid "Quantity"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:691
+msgid "Quick Setup Options"
+msgstr ""
+
+#: app/Hooks/Handlers/AdminBarHandler.php:35
+msgid "Quick Summary"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:692
+msgid "Re-open"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:693
+msgid "Read Documentation"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:694
+msgid "Read the email piping documentation"
+msgstr ""
+
+#: app/Services/Notifications/NotificationEventMap.php:66
+msgid "reassigned a ticket"
+msgstr ""
+
+#: app/Services/Helper.php:1213
+msgid "Recaptcha"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1065
+msgid "reCAPTCHA Settings"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1066
+msgid "reCAPTCHA Version"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:695
+msgid "Reconnect"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:696
+#: app/Services/TranslationStrings.php:1133
+msgid "Refresh"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:697
+msgid "Regenerate"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:698
+#: app/Services/TranslationStrings.php:1166
+msgid "Related Product/Service"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:699
+msgid "Remove prompt option"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:121
+msgid ""
+"Reopen a closed ticket. Sets status back to active and clears the resolved "
+"date. Use when a customer follows up on a closed issue."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:700
+#: app/Services/TranslationStrings.php:1134
+msgid "Reopen This ticket"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:120
+msgid "Reopen Ticket"
+msgstr ""
+
+#: app/Services/Notifications/NotificationEventMap.php:78
+msgid "reopened a ticket"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:701
+msgid "Replied By Agent"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:540
+msgid "Replied by Agent (To Customer)"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:702
+msgid "Replied By Customer"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:564
+msgid "Replied by Customer (To Agent/Admin)"
+msgstr ""
+
+#: app/Services/Notifications/NotificationEventMap.php:58
+#: app/Services/Notifications/NotificationEventMap.php:70
+msgid "replied to a ticket"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:703
+msgid "Replies"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1067
+msgid "replies and"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:704
+#: app/Services/TranslationStrings.php:1135
+msgid "Reply"
+msgstr ""
+
+#: app/Modules/MCP/Tools/ResponseTools.php:120
+msgid "Reply added to ticket #%d"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1136
+msgid "Reply and Close"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:707
+msgid "Reply and Close Ticket"
+msgstr ""
+
+#: app/Http/Requests/TicketResponseRequest.php:25
+msgid "Reply content is required"
+msgstr ""
+
+#: app/Services/CustomerPortalService.php:115
+msgid "Reply has been added"
+msgstr ""
+
+#: app/Modules/MCP/Tools/ResponseTools.php:119
+msgid "Reply sent and ticket #%d closed"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:705
+msgid "Reply Title"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:706
+msgid "Reply To Selected Tickets"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:89
+msgid "Reply to Ticket"
+msgstr ""
+
+#: app/Modules/PermissionManager.php:489
+msgid "Reporting"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:708 app/Hooks/Handlers/Menu.php:71
+#: app/Hooks/Handlers/Menu.php:72 app/Hooks/Handlers/Menu.php:163
+msgid "Reports"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:709
+msgid "Request Token"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:710
+msgid "Required"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:711
+msgid "Reset"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:712
+msgid "Reset Filter"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:713
+msgid "Reset Filters"
+msgstr ""
+
+#: app/Hooks/Handlers/AuthHandler.php:203
+msgid "Reset Password"
+msgstr ""
+
+#: app/Hooks/Handlers/AuthHandler.php:88
+msgid "Reset password"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:714
+msgid "Reset To Default Gravatar"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:715
+msgid "Reset to Defaults"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:716
+msgid "Reset to defaults"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:717
+msgid "Reset to gravatar?"
+msgstr ""
+
+#. %s is the site name
+#: app/Http/Controllers/AuthController.php:518
+#, php-format
+msgid "Reset your password for %s"
+msgstr ""
+
+#. %s is the site name
+#: app/Http/Controllers/AuthController.php:535
+#, php-format
+msgid "Reset your password for %s support portal"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:718
+msgid "Resolve Stats"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:719
+msgid "Response Content"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:720
+msgid "Response Count"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:553
+msgid "Response has been added"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:1277
+msgid "Response has been added to the selected tickets"
+msgstr ""
+
+#: app/Http/Controllers/ChatMessageParserController.php:38
+msgid "Response has been successfully recorded"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:721
+msgid "Response Stats"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:722
+msgid "Response Title"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:723 app/Services/Helper.php:837
+#: app/Modules/StatModule.php:81 app/Modules/StatModule.php:124
+#: app/Modules/StatModule.php:168
+#: app/Http/Controllers/ReportingController.php:444
+msgid "Responses"
+msgstr ""
+
+#: app/Services/Helper.php:1061
+msgid "Restrict Content pro"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:724
+msgid "Restrictions"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:725
+msgid "Resume Previous Migration"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:726
+msgid "Review your Workflow"
+msgstr ""
+
+#: app/Http/Controllers/McpSettingsController.php:219
+msgid ""
+"Run this in your terminal where Claude Code is installed, replacing the "
+"placeholder with base64 of \"username:application-password\"."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:727
+msgid "Run Workflow"
+msgstr ""
+
+#: app/Modules/PermissionManager.php:477
+msgid "Run workflows"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:728
+msgid "Running the"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:729
+msgid "Save"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:730
+msgid "Save Configuration"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:731
+msgid "Save Filter"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:732
+msgid "Save Prompt Options"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:733
+msgid "Save Reply"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:735
+msgid "Save search"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:734
+msgid "Save Settings"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:736
+msgid "Saved Draft"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:737
+msgid "Saved Filters"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:738 app/Hooks/Handlers/Menu.php:126
+#: app/Hooks/Handlers/Menu.php:127 app/Hooks/Handlers/Menu.php:199
+msgid "Saved Replies"
+msgstr ""
+
+#: app/Modules/MCP/Tools/ResponseTools.php:71
+msgid "Saved reply not found"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:739
+#: app/Services/TranslationStrings.php:1137
+msgid "Search"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:740
+msgid "Search Agents"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:294
+msgid "Search Customers"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:741
+msgid "Search Customers..."
+msgstr ""
+
+#: app/Services/TicketHelper.php:450
+msgid "Search deleted successfully."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:742
+msgid "Search Existing contact or provide email address"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:295
+msgid ""
+"Search for customers by name or email. Returns customer profiles with "
+"location and account age. Use get-customer-tickets if you already know which "
+"customer and want their tickets. Use this when you need to find or identify "
+"a customer first."
+msgstr ""
+
+#: app/Services/TicketHelper.php:455
+msgid "Search ID not found."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:743
+msgid "Search Name"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:745
+msgid "Search or provide email address"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:746
+msgid "Search replies"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:747
+msgid "Search responses..."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:744
+msgid "Search Widget..."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:748
+msgid "Search..."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:749
+msgid "Secret Key"
+msgstr ""
+
+#: app/Http/Controllers/AuthController.php:188
+msgid "Security verification failed"
+msgstr ""
+
+#: app/Http/Controllers/AuthController.php:34
+#: app/Http/Controllers/AuthController.php:442
+msgid "Security verification failed. Please try again"
+msgstr ""
+
+#. followed by the booking URL.
+#: app/Services/Integrations/FluentBooking/FluentBookingService.php:126
+#: app/Services/Integrations/FluentBooking/BookingAvailabilityHelper.php:387
+msgid "See all available times"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:750
+msgid "Select"
+msgstr ""
+
+#: app/Hooks/Handlers/AuthHandler.php:432
+msgid "Select a Country"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:774
+msgid "Select a customer"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:775
+msgid "Select a fallback group"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:773
+#: app/Services/EmailNotification/Settings.php:220
+msgid "Select a Page"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:776
+msgid "Select a product"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:751
+msgid "Select Action"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:752
+msgid "Select Agent"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:753
+msgid "Select Agent Group"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:754
+msgid "Select Agents"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:755
+msgid "Select All"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:777
+msgid "Select all"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:778
+msgid "Select an Agent"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:779
+msgid "Select an option:"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:756
+msgid "Select Board"
+msgstr ""
+
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:108
+msgid "Select Business"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:757
+msgid "Select Business Box"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:758
+msgid "Select Business Inbox"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1041
+msgid "Select columns that you want to export"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:759
+msgid "Select Contact Property"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:760
+msgid "Select Customer"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:780
+msgid "Select date range"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:761
+msgid "Select Field"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:762
+msgid "Select Field Type"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:763
+msgid "Select Form Property"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:764
+msgid "Select Integration Event"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:765
+msgid "Select Mailboxes"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:766
+msgid "Select Meeting Type"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:767
+msgid "Select Model"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:768
+msgid "Select Operator"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:769
+msgid "Select Option"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:223
+msgid "Select Portal Page"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:770
+msgid "Select Product"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:781
+msgid "Select products"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:782
+#: app/Services/TranslationStrings.php:1168
+msgid "Select related Product/Service"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:771
+msgid "Select Stage"
+msgstr ""
+
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:118
+msgid "Select Support Product"
+msgstr ""
+
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:109
+msgid "Select the Business you would like to add your Support Ticket to."
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:227
+msgid ""
+"Select the default status for new contacts. If you select pending and it's a "
+"new contact then a double optin email will be sent"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:783
+msgid "Select ticket that you want to move"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:784
+msgid "Select up to 7 dates"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:785
+msgid "Select up to 7 dates to preview availability."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:772
+msgid "Select Value"
+msgstr ""
+
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:196
+msgid ""
+"Select which Fluent Forms fields pair with their<br /> respective Fluent "
+"Support fields."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1073
+msgid "selected"
+msgstr ""
+
+#: app/Services/MailerInbox/MailBoxService.php:80
+msgid "Selected Business has been deleted"
+msgstr ""
+
+#: app/Services/MailerInbox/MailBoxService.php:151
+msgid "Selected Business has been set as default"
+msgstr ""
+
+#: app/Services/Integrations/FluentBooking/FluentBookingService.php:104
+#: app/Services/Integrations/FluentBooking/FluentBookingService.php:156
+msgid "Selected FluentBooking event type is not available."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:786
+msgid "Selected item already selected"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:1313
+msgid "Selected response has been deleted"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:1361
+msgid "Selected response has been updated"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:1147
+msgid "Selected tags has been added to tickets"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:787
+msgid "Selected workflows deleted successfully"
+msgstr ""
+
+#: app/Services/Helper.php:1015
+msgid "Self-hosted email and marketing automation for WordPress"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:90
+msgid ""
+"Send a customer-visible reply on a ticket. Set close_ticket=true to close "
+"after replying. Supports saved replies via saved_reply_id (use list-saved-"
+"replies to browse). If you just need to close without a reply, use close-"
+"ticket instead."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:789
+msgid "Send as Informational Reply"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:788
+msgid "Send Attachments"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:790
+msgid "Send message"
+msgstr ""
+
+#: app/Hooks/Handlers/Menu.php:399
+msgid ""
+"Send Telegram notifications to Group, Channel or individual person inbox and "
+"reply from Telegram inbox"
+msgstr ""
+
+#: app/Hooks/Handlers/Menu.php:406
+msgid "Send ticket activity notifications to slack"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:795
+msgid "Set as Default"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:796
+msgid "Set as Default Group"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:791
+msgid "Set Business Mailbox"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:792
+msgid "Set Estimated Time"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:793
+msgid "Set Estimation"
+msgstr ""
+
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:55
+msgid "Set FluentSupport"
+msgstr ""
+
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:128
+msgid "Set Product"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:794
+msgid "Set Your Trigger & Conditions"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:797
+#: app/Modules/PermissionManager.php:482 app/Hooks/Handlers/Menu.php:137
+#: app/Hooks/Handlers/Menu.php:138
+msgid "Settings"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:798
+msgid "Settings could not be found"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:799
+msgid "Settings could not be loaded"
+msgstr ""
+
+#: app/Http/Controllers/SlackController.php:41
+#: app/Http/Controllers/IntegrationController.php:41
+msgid "Settings failed to save"
+msgstr ""
+
+#: app/Services/MailerInbox/MailBoxService.php:195
+#: app/Http/Controllers/SlackController.php:48
+#: app/Http/Controllers/IntegrationController.php:49
+#: app/Http/Controllers/SettingsController.php:87
+msgid "Settings has been updated"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:800
+msgid "Setup products/services for ticket categorization"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:801
+msgid "Share Essentials"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1076
+msgid "shipping"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:802
+msgid "Shipping Details"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:803
+msgid "Shipping details"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:804
+msgid "Shipping method"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:805
+msgid "Shortcode copied to clipboard:"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:457
+msgid "Shortcut"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:806
+msgid "Show Bulk Action"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:807
+msgid "Signin and Registration forms are handled by FluentAuth Plugin"
+msgstr ""
+
+#: app/Hooks/Handlers/AuthHandler.php:151
+msgid "Signup"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:808
+msgid "Signup Form"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:809
+msgid "Site Key"
+msgstr ""
+
+#: app/Services/Helper.php:984 app/Hooks/Handlers/Menu.php:405
+msgid "Slack"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:810
+msgid "Slack Integration"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:811
+msgid "Slack User ID"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:812
+msgid "Slug"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:813
+msgid "Slug (Optional)"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:814
+msgid "Smart Codes"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:815
+msgid "Some General Prompts"
+msgstr ""
+
+#: app/Services/Notifications/NotificationFormatter.php:209
+#: app/Modules/MCP/Tools/ManagementTools.php:700
+msgid "Someone"
+msgstr ""
+
+#: app/Http/Controllers/AuthController.php:539
+msgid ""
+"Someone has requested a new password for the following account on WordPress:"
+msgstr ""
+
+#. %s is the site name
+#: app/Hooks/Handlers/TwoFaHandler.php:161
+#, php-format
+msgid ""
+"Someone requested to login to %s and here is the Login code that you can use "
+"in the login form"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:816
+msgid "Something went wrong"
+msgstr ""
+
+#: app/Services/AvatarUploder.php:29
+msgid "Something went wrong while updating the profile picture"
+msgstr ""
+
+#: app/Services/Integrations/FluentBot/FluentBotAPI.php:41
+msgid "Something went wrong."
+msgstr ""
+
+#: app/Services/Helper.php:1853
+#: app/Http/Controllers/FluentBotController.php:225
+msgid "Something went wrong. Please try again later."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:817
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:1151
+msgid "Sorry no action found as available"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:1229
+msgid "Sorry no tickets found based on your filter and bulk actions"
+msgstr ""
+
+#: app/Http/Controllers/CustomerPortalController.php:271
+msgid "Sorry you cannot create response"
+msgstr ""
+
+#: app/Http/Controllers/CustomerPortalController.php:201
+msgid "Sorry you cannot create ticket"
+msgstr ""
+
+#: app/Services/FluentCRMServices.php:124
+msgid "Sorry you do not have permission to add contact tags"
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:541
+msgid "Sorry! FluentCRM could not be installed. Please install manually"
+msgstr ""
+
+#: app/Services/CustomerPortalService.php:279
+msgid "Sorry! No customer found"
+msgstr ""
+
+#. %s is the action being performed (e.g., "view", "edit", "delete")
+#: app/Services/CustomerPortalService.php:451
+#, php-format
+msgid "Sorry! You cannot %s this ticket"
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:521
+#: app/Http/Controllers/SettingsController.php:558
+msgid "Sorry! you do not have permission to install plugin"
+msgstr ""
+
+#: app/Services/Tickets/Importer/AwesomeSupportTickets.php:44
+#: app/Services/Tickets/Importer/JSHelpdeskTickets.php:28
+#: app/Services/Tickets/Importer/SupportCandyTickets.php:42
+msgid "Sorry, no tickets available for import."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:818
+msgid "Sorry, settings could not be loaded"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1028
+msgid "Sorry, this customer has one ticket only"
+msgstr ""
+
+#: app/Services/CustomerPortalService.php:466
+msgid "Sorry, You cannot access this ticket"
+msgstr ""
+
+#: app/Services/CustomerPortalService.php:253
+#: app/Services/CustomerPortalService.php:444
+msgid "Sorry, You do not have access to customer portal"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:1353
+msgid "Sorry, You do not have permission to approve this draft response"
+msgstr ""
+
+#: app/Http/Controllers/McpSettingsController.php:55
+msgid "Sorry, you do not have permission to change the MCP setting."
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:1305
+msgid "Sorry, you do not have permission to delete this response."
+msgstr ""
+
+#: app/Http/Controllers/McpSettingsController.php:86
+msgid "Sorry, you do not have permission to install plugins."
+msgstr ""
+
+#: app/Services/CustomerPortalService.php:271
+#: app/Services/CustomerPortalService.php:440
+msgid "Sorry, You do not have permission to this support ticket"
+msgstr ""
+
+#: app/Http/Controllers/Controller.php:40
+msgid "Sorry, You do not have permission to this ticket"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:1341
+msgid "Sorry, you do not have permission to update this response."
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:534
+#: app/Http/Controllers/TicketController.php:690
+#: app/Http/Controllers/TicketController.php:738
+#: app/Http/Controllers/NotificationController.php:19
+#: app/Http/Controllers/NotificationController.php:38
+#: app/Http/Controllers/NotificationController.php:62
+#: app/Http/Controllers/NotificationController.php:77
+#: app/Http/Controllers/NotificationController.php:93
+msgid ""
+"Sorry, You do not have permission. Please add yourself as support agent first"
+msgstr ""
+
+#: app/Hooks/Handlers/TwoFaHandler.php:128
+msgid "Sorry, your login code has been expired. Please try to login again"
+msgstr ""
+
+#: app/Hooks/Handlers/ExternalPages.php:109
+msgid ""
+"Sorry, Your secure sign is invalid, Please reload the previous page and get "
+"new signed url"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:819
+#: app/Services/TranslationStrings.php:1138
+msgid "Sort"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:820
+#: app/Services/TranslationStrings.php:1139
+msgid "Sort By"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:821
+msgid "Source"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:822
+msgid "Specific Dates"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:823
+#: app/Modules/PermissionManager.php:467
+msgid "Split Ticket"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:824
+msgid "Staff"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:825
+msgid "Start"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:827
+msgid "Start date"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:826
+msgid "Start Fresh"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:257
+msgid ""
+"START HERE — call this first in any session. Returns: your agent identity, "
+"your open ticket queue, tickets needing attention (unassigned/longest-"
+"waiting/critical/SLA breaches), all reference data "
+"(agents/products/mailboxes/tags with IDs), ticket stats, valid "
+"priority/status values, and AI guidelines. One call gives you full "
+"situational awareness."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1157
+msgid "started the conversation"
+msgstr ""
+
+#: app/Models/Customer.php:55 app/Models/Traits/CustomerTrait.php:129
+#: app/Models/Traits/CustomerTrait.php:131
+#: app/Hooks/Handlers/AuthHandler.php:423
+#: app/Hooks/Handlers/AuthHandler.php:425
+#: app/Hooks/Handlers/PrivacyHandler.php:248
+msgid "State"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:828
+msgid "Stats"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:829
+#: app/Services/TranslationStrings.php:1140
+#: app/Models/Traits/CustomerTrait.php:86
+#: app/Hooks/Handlers/PrivacyHandler.php:220
+msgid "Status"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:830
+msgid "Step 1 of 2"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:831
+msgid "Step 2 of 2"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:832
+msgid "Subject"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1169
+msgid "subject"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:833
+msgid "Submit"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1171
+msgid "Submit a Support Ticket"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:834
+msgid "Submit Log"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:835
+msgid "Subscribe to our Bi-Monthly newsletter"
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:215
+msgid "Subscribed"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:836
+msgid "Subscription"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:837
+msgid "Success"
+msgstr ""
+
+#: app/Http/Controllers/AuthController.php:166
+msgid "Successfully registered to the site."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1141
+msgid "Suggested Articles"
+msgstr ""
+
+#: app/Services/Integrations/IntegrationInit.php:63
+#: app/Services/Integrations/FluentCart/FluentCart.php:242
+msgid "Support"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:838
+msgid "Support Candy"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:839
+msgid "Support Channel"
+msgstr ""
+
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:173
+msgid "Support Customer Field"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:840
+msgid "Support Inbox Email"
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:143
+msgid "Support Portal"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:841
+msgid "Support Portal Page (For Customers)"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:842
+#: app/Services/TranslationStrings.php:1142 app/Services/Helper.php:1178
+msgid "Support Staff"
+msgstr ""
+
+#: app/Http/Controllers/AgentController.php:183
+msgid "Support Staff avatar reset to gravatar default"
+msgstr ""
+
+#: app/Http/Controllers/AgentController.php:44
+msgid "Support Staff has been added"
+msgstr ""
+
+#: app/Http/Controllers/AgentController.php:97
+msgid "Support Staff has been deleted"
+msgstr ""
+
+#: app/Http/Controllers/AgentController.php:73
+msgid "Support Staff has been updated"
+msgstr ""
+
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:364
+msgid "Support ticket creation failed, because customer email is blocked"
+msgstr ""
+
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:346
+msgid "Support ticket creation failed, because no valid customer email found"
+msgstr ""
+
+#. %d is the ticket ID number
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:396
+msgid "Support ticket has been created at Fluent Support. Ticket ID: %d"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:843
+msgid "Support Tickets"
+msgstr ""
+
+#: app/Services/Integrations/FluentCrm/FluentCRMWidgets.php:24
+msgid "Support Tickets by Fluent Support"
+msgstr ""
+
+#: app/Services/Tickets/CustomFieldsService.php:12
+#: app/Services/Tickets/CustomFieldsService.php:15
+msgid "Support Type"
+msgstr ""
+
+#. %1$s is a comma-separated list of supported file types, %2$.01f is the maximum file size in megabytes
+#: app/Services/Helper.php:176
+#, php-format
+msgid "Supported Types: %1$s and max file size: %2$.01fMB"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:844
+msgid "Switch Knowledge Base"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:845
+msgid ""
+"Switching products changes the knowledge base used for responses. What would "
+"you like to do with the current conversation?"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:847
+msgid "Tag Description"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:1482
+msgid "Tag has been added to this ticket"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:1505
+msgid "Tag has been removed from this ticket"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:848
+msgid "Tag Name"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:849
+msgid "Tag Title"
+msgstr ""
+
+#: app/Modules/MCP/Tools/ManagementTools.php:567
+msgid "tag_ids is required for the tag action"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:850
+msgid "Tags"
+msgstr ""
+
+#: app/Modules/MCP/Tools/TicketTools.php:657
+msgid "Target ticket not found"
+msgstr ""
+
+#: app/Modules/MCP/Tools/TicketTools.php:652
+msgid "target_ticket_id and merge_ticket_ids are required"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:851
+msgid "Task Description"
+msgstr ""
+
+#: app/Http/Controllers/FluentBoardsController.php:90
+msgid "Task successfully added to Fluent Boards"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:852
+msgid "Task Title"
+msgstr ""
+
+#: app/Services/Helper.php:1005 app/Hooks/Handlers/Menu.php:398
+msgid "Telegram"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:853
+msgid "Telegram Chat ID"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:854
+msgid "Telegram Integration"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:855
+msgid "Templates"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:856
+msgid "Terms & Condition"
+msgstr ""
+
+#: app/Hooks/Handlers/EmailVerificationHandler.php:50
+msgid ""
+"Thank you for registering with us! To complete the setup of your account, "
+"please enter the verification code below on the registration page."
+msgstr ""
+
+#: app/Modules/MCP/Support/TicketAccessGuard.php:72
+msgid "That agent is restricted from this ticket's mailbox"
+msgstr ""
+
+#. %.01f is the maximum file size in megabytes
+#: app/Http/Controllers/UploaderController.php:71
+#, php-format
+msgid ""
+"The file cannot be more than %.01fMB. Please upload somewhere like "
+"Dropbox/Google Drive and paste the link in the response"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:857
+msgid "The following settings will be applied to the newly created"
+msgstr ""
+
+#: app/Services/Helper.php:1092
+msgid "The leading course platform built for WordPress"
+msgstr ""
+
+#: app/Services/Helper.php:966
+msgid "The most popular e-commerce platform for WordPress"
+msgstr ""
+
+#: app/Http/Controllers/AgentGroupController.php:137
+msgid "The selected fallback group does not exist"
+msgstr ""
+
+#: app/Modules/MCP/Tools/TicketTools.php:320
+#: app/Modules/MCP/Tools/TicketTools.php:531
+msgid "The specified agent does not exist"
+msgstr ""
+
+#: app/Modules/MCP/Tools/TicketTools.php:309
+#: app/Modules/MCP/Tools/TicketTools.php:475
+msgid "The specified mailbox does not exist"
+msgstr ""
+
+#: app/Modules/MCP/Tools/TicketTools.php:298
+#: app/Modules/MCP/Tools/TicketTools.php:485
+msgid "The specified product does not exist"
+msgstr ""
+
+#: app/Services/Helper.php:1071
+msgid "The standard plugin for knowledge base and documentation"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1078
+msgid "the status will be active."
+msgstr ""
+
+#: app/Services/Helper.php:994
+msgid "The ultimate platform for any member-focused business"
+msgstr ""
+
+#. Description of the plugin
+msgid "The Ultimate Support Plugin For Your WordPress."
+msgstr ""
+
+#: app/Services/Helper.php:1057
+msgid "The ultimate WordPress platform for digital products"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:858
+msgid "This bot will handle general queries for all products"
+msgstr ""
+
+#: app/Hooks/Handlers/EmailVerificationHandler.php:54
+#: app/Hooks/Handlers/TwoFaHandler.php:165
+msgid ""
+"This code is valid for 10 minutes and is meant to ensure the security of "
+"your account. If you did not initiate this request, please ignore this email."
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:565
+msgid ""
+"This email will be sent to Assigned Agent or Admin when a customer reply to "
+"a ticket"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:573
+msgid "This email will be sent to newly assigned agent"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:533
+msgid "This email will be sent when a customer submit a support ticket"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:549
+msgid "This email will be sent when an agent close a ticket"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:589
+msgid ""
+"This email will be sent when an agent creates a ticket using the \"Agent "
+"Initiated\" option to proactively reach out to a customer — includes the "
+"agent's message content"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:581
+msgid ""
+"This email will be sent when an agent logs a ticket on behalf of a customer "
+"(e.g. from a phone call or email received outside the system)"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:541
+msgid "This email will be sent when an agent reply to a ticket"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:557
+msgid ""
+"This email will be sent when the business when a new ticket has been "
+"submitted"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:859
+msgid "This is a"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1063
+msgid ""
+"This is a pro feature. Please upgrade to Fluent Support Pro to use this "
+"feature"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:860
+msgid "This is an agent only field"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:861
+msgid "This migrator will migrate total"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1048
+msgid ""
+"This reply will be visible to the customer but will not update the ticket's "
+"'waiting since' timestamp."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1143
+msgid "This ticket is"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1079
+#: app/Services/TranslationStrings.php:1172
+msgid "This ticket was closed on"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:862
+msgid "This week"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1069
+msgid "This will permanently delete response. Continue?"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:863
+msgid ""
+"This will remove all custom prompt options and restore the original defaults."
+" This action cannot be undone."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:864
+#: app/Services/TranslationStrings.php:1144
+msgid "Thread Follower"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:846
+msgid "THREAD STARTER"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:865
+#: app/Services/TranslationStrings.php:1145
+msgid "Thread Starter"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:866
+#: app/Services/TranslationStrings.php:1146
+msgid "Ticket"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:867
+#: app/Services/Notifications/NotificationCategory.php:33
+msgid "Ticket Activity"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:572
+msgid "Ticket Agent Change (To Agent)"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:868
+msgid "Ticket Assigned"
+msgstr ""
+
+#: app/Hooks/Handlers/PrivacyHandler.php:83
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:149
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:150
+msgid "Ticket Attachments"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:273
+#: app/Http/Controllers/TicketController.php:436
+msgid "Ticket cannot be fetched due to restricted mailbox"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:548
+msgid "Ticket Closed by Agent (To Customer)"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:869
+#: app/Hooks/Handlers/PrivacyHandler.php:79
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:142
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:143
+msgid "Ticket Content"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:889
+msgid "Ticket content excluded"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:890
+msgid "Ticket content included"
+msgstr ""
+
+#: app/Http/Requests/TicketCreateCustomerPortalRequest.php:27
+msgid "Ticket content is required"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:870
+msgid "Ticket Created"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:556
+msgid "Ticket Created (To Admin)"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:532
+msgid "Ticket Created (To Customer)"
+msgstr ""
+
+#: app/Hooks/Handlers/PrivacyHandler.php:103
+msgid "Ticket Created At"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:891
+msgid "Ticket created at"
+msgstr ""
+
+#: app/Modules/MCP/Tools/TicketTools.php:343
+msgid ""
+"Ticket created unassigned. Your permission level does not include access to "
+"unassigned tickets, so follow-up actions (reply, close, update) will be "
+"denied until the ticket is assigned to you by a manager."
+msgstr ""
+
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:259
+msgid "Ticket Custom Fields"
+msgstr ""
+
+#: app/Services/Integrations/FluentCrm/CreateTicketAction.php:85
+msgid "Ticket Description"
+msgstr ""
+
+#: app/Services/Integrations/FluentCrm/CreateTicketAction.php:84
+msgid "Ticket Description (you can use any smart code)"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:871
+#: app/Services/TranslationStrings.php:1173
+msgid "Ticket Details"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:872
+msgid "Ticket Email Settings"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:873
+msgid "Ticket Filters"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:874 app/Services/Helper.php:1163
+msgid "Ticket Form Config"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1080
+msgid ""
+"Ticket Form Customization including Knowledge base integration is available "
+"on Pro Version"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:875
+msgid "Ticket Form Settings"
+msgstr ""
+
+#: app/Services/CustomerPortalService.php:137
+#: app/Services/Tickets/ResponseService.php:124
+#: app/Services/Tickets/TicketService.php:39
+#: app/Http/Controllers/TicketController.php:951
+msgid "Ticket has been closed"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:224
+#: app/Http/Controllers/CustomerPortalController.php:219
+msgid "Ticket has been created successfully"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:1172
+msgid "Ticket has been deleted successfully"
+msgstr ""
+
+#: app/Services/CustomerPortalService.php:157
+#: app/Http/Controllers/TicketController.php:976
+msgid "Ticket has been opened again"
+msgstr ""
+
+#: app/Services/Tickets/TicketService.php:75
+msgid "Ticket has been reopened"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:876
+#: app/Services/TranslationStrings.php:1147
+#: app/Hooks/Handlers/PrivacyHandler.php:71
+#: app/Hooks/Handlers/PrivacyHandler.php:153
+msgid "Ticket ID"
+msgstr ""
+
+#: app/Services/Helper.php:1208
+msgid "Ticket Importer"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:877
+msgid "Ticket Link(Agent)"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:878
+msgid "Ticket Link(Customer)"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:580
+msgid "Ticket Logged by Agent (To Customer)"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:879
+msgid "Ticket Mailbox"
+msgstr ""
+
+#: app/Modules/MCP/Tools/TicketTools.php:684
+msgid ""
+"Ticket merge failed or was only partially completed. Some tickets may be in "
+"an inconsistent state."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:880
+msgid "Ticket Migration Settings"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:892
+#: app/Http/Controllers/WidgetsController.php:45
+#: app/Modules/MCP/Tools/TicketTools.php:145
+#: app/Modules/MCP/Tools/TicketTools.php:366
+#: app/Modules/MCP/Tools/TicketTools.php:423
+#: app/Modules/MCP/Tools/TicketTools.php:453
+#: app/Modules/MCP/Tools/TicketTools.php:572
+#: app/Modules/MCP/Tools/TicketTools.php:602
+#: app/Modules/MCP/Tools/ManagementTools.php:288
+#: app/Modules/MCP/Tools/ManagementTools.php:334
+#: app/Modules/MCP/Tools/ResponseTools.php:86
+#: app/Modules/MCP/Tools/ResponseTools.php:152
+msgid "Ticket not found"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:1537
+msgid "Ticket not found or customer already assigned."
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:354
+msgid "Ticket Prefix"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:881
+#: app/Hooks/Handlers/PrivacyHandler.php:99
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:157
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:158
+msgid "Ticket Priority"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:882
+#: app/Hooks/Handlers/PrivacyHandler.php:87
+msgid "Ticket Product"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:883
+msgid "Ticket Public URL"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:473
+#: app/Services/EmailNotification/Settings.php:490
+msgid "Ticket Reply – Bookmarks"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:472
+#: app/Services/EmailNotification/Settings.php:489
+msgid "Ticket Reply – Merge"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:471
+#: app/Services/EmailNotification/Settings.php:488
+msgid "Ticket Reply – Personal note"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:474
+#: app/Services/EmailNotification/Settings.php:491
+msgid "Ticket Reply – Refresh"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:470
+#: app/Services/EmailNotification/Settings.php:487
+msgid "Ticket Reply – Reply"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:884
+msgid "Ticket Resolve Stats"
+msgstr ""
+
+#: app/Hooks/Handlers/PrivacyHandler.php:95
+msgid "Ticket Status"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:885
+msgid "Ticket Submitted"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:886
+#: app/Hooks/Handlers/AdminBarHandler.php:42
+msgid "Ticket Summary"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:887 app/Services/Helper.php:1158
+#: app/Hooks/Handlers/PrivacyHandler.php:91
+msgid "Ticket Tags"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:888
+#: app/Hooks/Handlers/PrivacyHandler.php:75
+#: app/Services/Integrations/FluentCrm/CreateTicketAction.php:80
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:135
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:136
+msgid "Ticket Title"
+msgstr ""
+
+#: app/Services/Integrations/FluentCrm/CreateTicketAction.php:79
+msgid "Ticket Title (you can use any smart code)"
+msgstr ""
+
+#: app/Http/Requests/TicketCreateCustomerPortalRequest.php:26
+msgid "Ticket title is required"
+msgstr ""
+
+#. %s is the ticket title
+#: app/Hooks/Handlers/ActivityLogger.php:206
+#, php-format
+msgid "Ticket: %s"
+msgstr ""
+
+#: app/Modules/MCP/Tools/ManagementTools.php:283
+msgid "ticket_id and agent_id are required"
+msgstr ""
+
+#: app/Modules/MCP/Tools/TicketTools.php:139
+#: app/Modules/MCP/Tools/TicketTools.php:361
+#: app/Modules/MCP/Tools/TicketTools.php:418
+#: app/Modules/MCP/Tools/TicketTools.php:448
+#: app/Modules/MCP/Tools/TicketTools.php:567
+#: app/Modules/MCP/Tools/TicketTools.php:597
+#: app/Modules/MCP/Tools/ManagementTools.php:329
+#: app/Modules/MCP/Tools/ResponseTools.php:61
+#: app/Modules/MCP/Tools/ResponseTools.php:142
+msgid "ticket_id is required"
+msgstr ""
+
+#: app/Modules/MCP/Tools/ManagementTools.php:537
+msgid "ticket_ids and action are required"
+msgstr ""
+
+#: app/Modules/MCP/Tools/ManagementTools.php:541
+msgid ""
+"ticket_ids may not exceed %d items per request. Split into multiple calls."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:893 app/Hooks/Handlers/Menu.php:61
+#: app/Hooks/Handlers/Menu.php:62 app/Hooks/Handlers/Menu.php:158
+msgid "Tickets"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1081
+msgid "tickets"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:894
+msgid "Tickets Awaiting Reply"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:895
+msgid "Tickets Handled"
+msgstr ""
+
+#: app/Modules/PermissionManager.php:458
+msgid "Tickets Permissions"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1082
+msgid "tickets with"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:460
+#: app/Services/EmailNotification/Settings.php:478
+msgid "Tickets – Advanced filter toggle"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:464
+#: app/Services/EmailNotification/Settings.php:482
+msgid "Tickets – All Tickets"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:468
+#: app/Services/EmailNotification/Settings.php:486
+msgid "Tickets – Bookmarks"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:462
+#: app/Services/EmailNotification/Settings.php:480
+msgid "Tickets – Create Ticket"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:465
+#: app/Services/EmailNotification/Settings.php:483
+msgid "Tickets – My Tickets"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:461
+#: app/Services/EmailNotification/Settings.php:479
+msgid "Tickets – Refresh"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:463
+#: app/Services/EmailNotification/Settings.php:481
+msgid "Tickets – Reset filter"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:469
+msgid "Tickets – Toggle (Open, active, close, all)"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:466
+#: app/Services/EmailNotification/Settings.php:484
+msgid "Tickets – Unassigned"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:467
+#: app/Services/EmailNotification/Settings.php:485
+msgid "Tickets – Waiting for reply"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:896
+msgid "Time"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:897
+msgid "Time Logging"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:898
+msgid "Time Sheet"
+msgstr ""
+
+#: app/Services/Integrations/FluentBooking/BookingAvailabilityHelper.php:327
+msgid "Time zone:"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:899
+msgid "Timezone"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:900
+#: app/Services/TranslationStrings.php:1148
+#: app/Hooks/Handlers/AdminBarHandler.php:89
+msgid "Title"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1083
+msgid "title"
+msgstr ""
+
+#: app/Modules/MCP/Tools/TicketTools.php:243
+msgid "title and content are required"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:901
+#: app/Http/Controllers/CustomerPortalController.php:123
+msgid "Title is required"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:902
+msgid "To"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1086
+msgid ""
+"To create tickets using webhooks please copy this webhook URL and paste to "
+"the site from where you want to create ticket in this site."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1085
+msgid "to this following address."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1006
+msgid "Today's Active Tickets By Products"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:903
+msgid "Tokens"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:904
+msgid "Tone of customer"
+msgstr ""
+
+#: app/Http/Controllers/AuthController.php:244
+msgid "Too many login attempts. Please try again after 15 minutes."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:905
+msgid "Total"
+msgstr ""
+
+#: app/Modules/StatModule.php:204
+msgid "Total Closed"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:906
+msgid "Total Hours"
+msgstr ""
+
+#: app/Modules/StatModule.php:196
+#: app/Http/Controllers/ReportingController.php:440
+msgid "Total Replies"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:907
+msgid "Total Responses"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:908
+msgid "Total Summaries"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:909
+#: app/Services/Tickets/TicketStats.php:19
+msgid "Total Tickets"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:910
+msgid "Trigger"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:911
+msgid "Trigger Type"
+msgstr ""
+
+#: app/Services/Notifications/NotificationEventMap.php:82
+msgid "triggered automation"
+msgstr ""
+
+#: app/Services/Helper.php:998
+msgid "Tutor LMS"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:912
+msgid "Twilio Integration"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:913
+msgid "Type"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1087
+msgid "type and press enter"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:914
+msgid "Type Compare Value"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:915
+msgid "Un-Assigned"
+msgstr ""
+
+#: app/Services/Tickets/TicketStats.php:37
+msgid "Un-Assigned Tickets"
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:303
+msgid "Unable to delete reCAPTCHA settings, try again"
+msgstr ""
+
+#: app/Http/Controllers/CustomerPortalController.php:191
+msgid ""
+"Unable to identify. Please make sure you have provided correct information."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:916
+msgid "Unassigned"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:917 app/Models/Traits/AgentTrait.php:178
+msgid "Unassigned Tickets"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:918
+msgid "Uncheck all"
+msgstr ""
+
+#: app/Services/Integrations/FluentBot/FluentBotAPI.php:34
+msgid "Unknown error occurred"
+msgstr ""
+
+#: app/Services/Integrations/AI/BaseAIProvider.php:81
+#: app/Services/Integrations/AI/Providers/AnthropicProvider.php:73
+msgid "Unknown error occurred."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1149
+msgid "Unknown error. Please reload this page"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:919
+msgid "Unknown File"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:920
+msgid "Unread Notifications"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:921
+msgid "Unread only"
+msgstr ""
+
+#. %s is a comma-separated list of allowed file extensions (e.g., "jpg, png, gif")
+#: app/Services/AvatarUploder.php:63
+#, php-format
+msgid "Unsupported file submitted, allowed image file types are: %s"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:922
+msgid "Update"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:923
+msgid "Update And Approve Response"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:924
+msgid "Update Custom Field"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:925
+msgid "Update Customer"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:936
+msgid "Update customer"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:926
+msgid "Update Estimation"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:927
+msgid "Update Field"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:928
+msgid "Update Filter"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:929
+msgid "Update Group"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:930
+msgid "Update Product"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:931
+msgid "Update Reply"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:932
+msgid "Update Response"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:933
+msgid "Update Settings"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:133
+msgid "Update Ticket Properties"
+msgstr ""
+
+#: app/Modules/MCP/AbilitiesRegistrar.php:134
+msgid ""
+"Update ticket properties like title, priority, status, product, mailbox, or "
+"assigned agent. Can change multiple fields at once. Use get-support-context "
+"to look up valid IDs. For just closing or reopening, use close-ticket or "
+"reopen-ticket instead."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:934
+msgid "Update Ticket Tag"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:935
+msgid "Update Workflow"
+msgstr ""
+
+#: app/Services/Notifications/NotificationEventMap.php:93
+msgid "updated a ticket"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:937
+msgid "Updating Custom Field Data"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1088
+msgid "Upgrade Now"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:938
+msgid "Upgrade To Pro"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:939
+msgid "Upgrade to Pro"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:940
+msgid "Upload a Custom Picture"
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:769
+msgid "Upload and store the files to Amazon S3 cloud storage."
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:759
+msgid ""
+"Upload and store the files to Cloudflare R2 Storage with zero egress fees."
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:740
+msgid "Upload and store the files to your Dropbox Storage."
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:749
+msgid "Upload and store the files to your Google Drive Storage."
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:731
+msgid "Upload and store the files to your WordPress File System Storage."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:941
+msgid "Uploading 1 attachment. Please wait before submitting."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1089
+msgid "Use incoming webhook to create ticket from external sites."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:942
+msgid "Use OpenAI for responses, ticket summaries, and sentiment analysis"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:944
+msgid "Use reCAPTCHA on"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:943
+msgid "Use Shortcode"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:945
+#: app/Hooks/Handlers/AuthHandler.php:357
+#: app/Hooks/Handlers/AuthHandler.php:359
+msgid "Username"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:946
+msgid "Username is required for WordPress user."
+msgstr ""
+
+#. %s is the username
+#: app/Http/Controllers/AuthController.php:541
+#, php-format
+msgid "Username: %s"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1009
+msgid "Using advanced filtering you can get more specific tickets"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:947
+msgid "Validate Captcha"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:948
+msgid "Variant"
+msgstr ""
+
+#: app/Hooks/Handlers/EmailVerificationHandler.php:77
+#: app/Hooks/Handlers/TwoFaHandler.php:193
+msgid "Verification Code"
+msgstr ""
+
+#. %s is the verification code
+#. %s is the two-factor authentication code
+#: app/Hooks/Handlers/EmailVerificationHandler.php:52
+#: app/Hooks/Handlers/TwoFaHandler.php:163
+#, php-format
+msgid "Verification Code: %s"
+msgstr ""
+
+#: app/Hooks/Handlers/TwoFaHandler.php:205
+msgid "Verify and Login"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:949
+msgid "Verify License"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:950
+msgid "Verifying your API connection. Please wait"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:951
+msgid "Version 2"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:952
+msgid "Version 3"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:953
+#: app/Hooks/Handlers/AdminBarHandler.php:101
+msgid "View"
+msgstr ""
+
+#: app/Modules/PermissionManager.php:492
+msgid "View Activity Logs"
+msgstr ""
+
+#: app/Modules/PermissionManager.php:493
+msgid "View Agent Today Performance"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:954
+msgid "View All"
+msgstr ""
+
+#: app/Modules/PermissionManager.php:491
+msgid "View All Reports"
+msgstr ""
+
+#: app/Services/Integrations/FluentBooking/FluentBookingService.php:282
+msgid "View booking"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:956
+msgid "View completed bookings in FluentBooking"
+msgstr ""
+
+#: app/Modules/PermissionManager.php:460
+msgid "View Dashboard"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:955
+msgid "View Details"
+msgstr ""
+
+#: app/Services/Integrations/FluentCrm/FluentCRMWidgets.php:46
+msgid "View Ticket"
+msgstr ""
+
+#: app/Modules/PermissionManager.php:470
+msgid "View Tickets (Read Only)"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:957
+msgid "View upcoming bookings in FluentBooking"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1150
+msgid "View Your Tickets"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1090
+msgid "wait time"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:958
+msgid "Waiting"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:959
+msgid "Waiting For Reply"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:960
+msgid "Waiting Since"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:961 app/Services/Helper.php:841
+msgid "Waiting Tickets"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:962
+msgid "Waiting Time"
+msgstr ""
+
+#: app/Modules/StatModule.php:273
+msgid "Waiting Today"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:963
+msgid "Want to deactivate this license?"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:964
+msgid "Want to move all or custom selected"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:965
+msgid "Warning"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:966
+msgid "Watchers"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:967
+msgid "We will send tips and advanced usage of FluentSupport (monthly)"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1033
+msgid "Web and Email Based (MailBox)"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:968
+msgid "Web Based"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:969
+msgid "Welcome aboard!"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:970
+msgid "Welcome back to Fluent Support"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:971
+msgid "What we collect"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1170
+msgid "What's this support ticket about?"
+msgstr ""
+
+#: app/Services/Helper.php:1075
+msgid "WhatsApp"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:972
+msgid "WhatsApp Phone Number"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:973
+msgid ""
+"When new agents are created without being assigned to any group, they will "
+"automatically be added to the default group."
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:497
+msgid "Windows"
+msgstr ""
+
+#: app/Services/Helper.php:1047
+msgid "WishList Member"
+msgstr ""
+
+#: app/Services/Helper.php:963
+msgid "WooCommerce"
+msgstr ""
+
+#: app/Services/EmailNotification/Settings.php:417
+msgid "WooCommerce Account Navigation"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:974
+msgid "WordPress plugin then you can migrate from this section."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:975
+msgid "Work Description"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:976
+msgid "Work Description:"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:977
+#: app/Hooks/Handlers/InternalNotificationHandler.php:199
+#: app/Hooks/Handlers/InternalNotificationHandler.php:288
+msgid "Workflow"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:978
+msgid "Workflow Actions (Tasks)"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:982
+msgid "Workflow duplicated successfully"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:979
+msgid "Workflow Name"
+msgstr ""
+
+#: app/Modules/PermissionManager.php:474
+msgid "Workflow Permissions"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:983
+msgid "Workflow title is required"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:980
+msgid "Workflow Trigger"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:981
+msgid "Workflow Type"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1092
+msgid "workflow will perform the following actions:"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:984 app/Hooks/Handlers/Menu.php:115
+#: app/Hooks/Handlers/Menu.php:116 app/Hooks/Handlers/Menu.php:207
+msgid "Workflows"
+msgstr ""
+
+#: app/Modules/MCP/Tools/ManagementTools.php:737
+msgid "Workflows require Fluent Support Pro"
+msgstr ""
+
+#. Author of the plugin
+msgid "WPManageNinja LLC"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1151
+msgid "Write a reply"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:985
+msgid "Yes"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:986
+msgid "Yes, Count me in!"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:987
+msgid "Yes, Delete Selected Tickets"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:988
+msgid "Yes, Delete this Action"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:989
+#: app/Services/TranslationStrings.php:1152
+msgid "You"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:990
+msgid "You are adding internal Note. Only support staff can see this note."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:991
+msgid "You are almost done"
+msgstr ""
+
+#: app/Hooks/Handlers/AuthHandler.php:35 app/Hooks/Handlers/AuthHandler.php:114
+#: app/Hooks/Handlers/AuthHandler.php:173
+msgid "You are already logged in."
+msgstr ""
+
+#. %s is the URL to the support portal
+#: app/Hooks/Handlers/AuthHandler.php:221
+#, php-format
+msgid "You are already logged in. <a href=\"%s\">Go to support portal</a>"
+msgstr ""
+
+#: app/Http/Controllers/AuthController.php:182
+msgid "You are not allowed to login using this form"
+msgstr ""
+
+#: app/Http/Controllers/AuthController.php:434
+msgid "You are not allowed to reset password using this form"
+msgstr ""
+
+#: app/Http/Controllers/AuthController.php:28
+msgid "You are not allowed to signup using this form"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:992
+msgid "You can not change the slug once save a custom field"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:993
+msgid "You can select up to 7 dates."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:994
+msgid "You can upload maximum"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1021
+msgid ""
+"You cannot edit subject for this email. This subject pattern is required for "
+"email reply parsing"
+msgstr ""
+
+#: app/Modules/MCP/Tools/TicketTools.php:676
+#, php-format
+msgid "You do not have access to the following ticket(s): %s"
+msgstr ""
+
+#: app/Modules/MCP/Support/TicketAccessGuard.php:55
+msgid "You do not have access to the specified mailbox"
+msgstr ""
+
+#: app/Modules/MCP/Support/TicketAccessGuard.php:36
+#: app/Modules/MCP/Support/TicketAccessGuard.php:41
+msgid "You do not have access to this ticket"
+msgstr ""
+
+#: app/Http/Policies/PortalPolicy.php:38
+msgid "You do not have permission"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:1376
+msgid "You do not have permission to approve draft responses."
+msgstr ""
+
+#: app/Modules/MCP/Tools/TicketTools.php:316
+#: app/Modules/MCP/Tools/TicketTools.php:522
+#: app/Modules/MCP/Tools/ManagementTools.php:552
+msgid "You do not have permission to assign agents"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:795
+msgid "You do not have permission to delete this draft"
+msgstr ""
+
+#: app/Http/Controllers/TicketController.php:776
+msgid "You do not have permission to perform this action"
+msgstr ""
+
+#: app/Http/Controllers/Controller.php:23
+#: app/Modules/MCP/AbilitiesRegistrar.php:399
+msgid "You do not have permission to perform this action."
+msgstr ""
+
+#: app/Http/Controllers/FluentBotController.php:166
+msgid "You do not have permission to reset chat"
+msgstr ""
+
+#: app/Http/Controllers/UploaderController.php:122
+#: app/Http/Controllers/UploaderController.php:130
+msgid "You do not have permission to upload a file"
+msgstr ""
+
+#: app/Services/CustomerPortalService.php:455
+msgid "You do not have permission to view this support ticket"
+msgstr ""
+
+#: app/Hooks/Handlers/CustomerPortalHandler.php:29
+msgid "You don't have permission to access customer support portal"
+msgstr ""
+
+#: app/Http/Controllers/CustomerPortalController.php:390
+msgid "You have been logged out"
+msgstr ""
+
+#: app/Modules/MCP/Support/PermissionGate.php:58
+msgid "Your account does not have Fluent Support access."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1160
+msgid ""
+"Your account is currently inactive. You cannot create new tickets or reply "
+"to existing ones. Please contact the site administrator for assistance"
+msgstr ""
+
+#: app/Http/Controllers/CustomerPortalController.php:65
+msgid "Your account is not active. Please contact support."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:995
+msgid ""
+"Your Admin Email Address and Support From Email should not be same. Please "
+"use a different email address."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:996
+msgid "Your Bookmarked Tickets"
+msgstr ""
+
+#: app/Hooks/Handlers/AuthHandler.php:366
+#: app/Hooks/Handlers/AuthHandler.php:453
+msgid "Your Email Address"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1093
+msgid "your email piping settings first"
+msgstr ""
+
+#: app/Services/Integrations/FluentForm/FeedIntegration.php:102
+msgid "Your Feed Name"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:997
+msgid "Your Help Scout authorization code is:"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:998
+msgid "Your License Key"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1000
+msgid "Your license key is valid and activated"
+msgstr ""
+
+#. %1s is the site name
+#: app/Hooks/Handlers/TwoFaHandler.php:154
+#, php-format
+msgid "Your Login code for %1s"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1001
+msgid "Your mailbox is active."
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1002
+msgid "Your masked mailbox email has been issued"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1003
+msgid "Your previously selected model"
+msgstr ""
+
+#: app/Http/Controllers/TwofaController.php:19
+msgid "Your provided code is not valid. Please try again"
+msgstr ""
+
+#: app/Hooks/Handlers/TwoFaHandler.php:103
+#: app/Hooks/Handlers/TwoFaHandler.php:111
+msgid "Your provided code or url is not valid"
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:325
+msgid "Your recaptcha details are already saved."
+msgstr ""
+
+#: app/Http/Controllers/AuthController.php:65
+#: app/Http/Controllers/AuthController.php:200
+msgid "Your recaptcha is not verified"
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:361
+msgid "Your reCAPTCHA settings added successfully."
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:336
+msgid "Your reCAPTCHA settings are not valid."
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:298
+msgid "Your reCAPTCHA settings deleted successfully."
+msgstr ""
+
+#: app/Http/Controllers/SettingsController.php:350
+msgid "Your reCAPTCHA settings updated successfully."
+msgstr ""
+
+#. %s is the site name
+#: app/Hooks/Handlers/EmailVerificationHandler.php:44
+#, php-format
+msgid "Your registration verification code for %s"
+msgstr ""
+
+#: app/Services/TicketHelper.php:395
+msgid "Your saved search has been updated successfully!"
+msgstr ""
+
+#: app/Services/TicketHelper.php:396
+msgid "Your search has been saved successfully!"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1004
+msgid "Your support portal is now configured and ready to help your customers."
+msgstr ""
+
+#: app/Http/Controllers/AuthController.php:104
+msgid "Your verification code has been expired. Please try again"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:999
+msgid "Your Workflow Name"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1005
+msgid "Zendesk Domain"
+msgstr ""
+
+#: app/Services/Helper.php:218 app/Hooks/Handlers/AuthHandler.php:416
+#: app/Hooks/Handlers/AuthHandler.php:418
+#: app/Hooks/Handlers/PrivacyHandler.php:244
+msgid "Zip"
+msgstr ""
+
+#: app/Models/Customer.php:56 app/Models/Traits/CustomerTrait.php:136
+#: app/Models/Traits/CustomerTrait.php:138
+msgid "Zip Code"
+msgstr ""
+
+#: app/Services/TranslationStrings.php:1094
+msgid "{0} of {1} ticket replies sent as context"
+msgstr ""
